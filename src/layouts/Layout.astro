@@ -1,22 +1,64 @@
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>ns2agi</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+<html lang="en" class="bg-black">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>ns2agi</title>
+    <style>
+        /* Custom animations that can't be handled by default Tailwind */
+        @keyframes cross-vertical {
+            0%, 100% { height: 100%; }
+            50% { height: 70%; }
+        }
+        @keyframes cross-horizontal {
+            0%, 100% { width: 100%; }
+            50% { width: 70%; }
+        }
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+
+        /* Apply animations */
+        .animate-cross-vertical {
+            animation: cross-vertical 3s infinite;
+        }
+        .animate-cross-horizontal {
+            animation: cross-horizontal 3s infinite;
+        }
+
+        /* Enhanced glow effect */
+        .glow {
+            box-shadow:
+                0 0 10px rgba(255,255,255,0.7),
+                0 0 20px rgba(255,255,255,0.5),
+                0 0 30px rgba(255,255,255,0.3),
+                0 0 40px rgba(255,255,255,0.2),
+                0 0 50px rgba(255,255,255,0.1);
+        }
+		html,
+		body {
+			margin: 0;
+			width: 100%;
+			height: 100%;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /*  font-mono */
+		}
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <div class="relative min-h-screen p-8">
+        <!-- Animated cross/star with enhanced glow -->
+        <div class="absolute top-8 right-8 w-10 h-10 animate-pulse">
+            <div class="relative w-full h-full">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[2px] h-full bg-white/80 blur-[2px] animate-cross-vertical glow"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[2px] bg-white/80 blur-[2px] animate-cross-horizontal glow"></div>
+                <!-- Additional glow layers -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[3px] h-full bg-white/30 blur-[4px] animate-cross-vertical"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[3px] bg-white/30 blur-[4px] animate-cross-horizontal"></div>
+            </div>
+        </div>
+        <!-- Background gradient -->
+        <div class="fixed inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)] pointer-events-none"></div>
+        <slot />
+    </div>
+</body>
+</html>
