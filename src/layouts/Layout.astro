@@ -1,3 +1,5 @@
+---
+---
 <!doctype html>
 <html lang="en" class="bg-black">
 <head>
@@ -7,6 +9,34 @@
     <meta name="generator" content={Astro.generator} />
     <title>ns2agi</title>
     <style>
+        /* Global fade animations */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 1s ease-out forwards;
+        }
+        .animate-fade-in-delay-1 {
+            animation: fade-in 1s ease-out 0.3s backwards;
+        }
+        .animate-fade-in-delay-2 {
+            animation: fade-in 1s ease-out 0.6s backwards;
+        }
+        .animate-fade-in-delay-3 {
+            animation: fade-in 1s ease-out 0.9s backwards;
+        }
+        .animate-fade-in-delay-4 {
+            animation: fade-in 1s ease-out 1.2s backwards;
+        }
+
         /* Custom animations that can't be handled by default Tailwind */
         @keyframes cross-vertical {
             0%, 100% { height: 100%; }
@@ -16,7 +46,6 @@
             0%, 100% { width: 100%; }
             50% { width: 70%; }
         }
-
 
         /* Apply animations */
         .animate-cross-vertical {

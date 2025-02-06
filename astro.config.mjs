@@ -7,7 +7,7 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
 	integrations: [tailwind()],
 	site: "https://ns2agi.com",
-	base: "./",
+	base: "/",
 	build: {
 		assets: "assets",
 		assetsPrefix: ".",
