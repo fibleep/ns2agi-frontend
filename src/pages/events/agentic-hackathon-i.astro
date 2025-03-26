@@ -1,0 +1,116 @@
+---
+// src/pages/events/agentic-hackathon-i.astro
+import Layout from '../../layouts/Layout.astro';
+import ImageGallery from '../../components/ImageGallery.astro'; // Import the gallery component
+
+const winners = [
+  { category: "TECH", team: "Agentic Boys (Luis Beqja, Tan Dalkiran)", project: "fAInance: a fullstack app using a multi-agent swarm to perform financial analysis and provide insights." },
+  { category: "CREATIVITY", team: "Bugify (Alperen Doganci, Daria Matviichuk, Samuel Berton)", project: "A tool which strategically introduces controlled bugs into codebases to help companies evaluate their development teams." },
+  { category: "AI'S CHOICE", team: "Multi-agent Lab 6", project: "An AI-powered research agent which filters ArXiv papers based on relevance, author credibility, and social media discussions (X, Reddit, LinkedIn)." } // Added note
+];
+
+const originalEventDate = "March 8th, 2025";
+const originalEventLocation = "The Beacon, Sint-Pietersvliet 7, 2000 Antwerpen, Belgium";
+
+// Define the images for the gallery
+const hackathonImages = [
+  { src: "/agentic-hackathon-i/winners.jpeg", alt: "Hackathon winners receiving awards" },
+  { src: "/agentic-hackathon-i/ken.jpeg", alt: "Ken Casier giving the closing speech" },
+  { src: "/agentic-hackathon-i/aftermath.png", alt: "Pizzas" },
+  { src: "/agentic-hackathon-i/treasure.jpeg", alt: "Close-up of the hackathon trophies" }
+];
+---
+
+<Layout>
+  <main class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-8 text-center animate-fade-in text-white">Agentic Hackathon I - Recap</h1>
+    <p class="text-center text-lg text-white/80 mb-12 animate-fade-in-delay-1">
+      {originalEventDate} at <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] hover:underline">{originalEventLocation.split(',')[0]}</a>
+    </p>
+
+    {/* --- Success Section --- */}
+    <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
+        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">A Huge Success!</h2>
+        <p class="text-lg mb-4 text-white/90 leading-relaxed">
+            The first North Star AGI Agentic Hackathon was a massive success! We saw incredible energy and innovation as 14 teams battled it out, pushing the boundaries of AI agents.
+        </p>
+        <p class="text-lg text-white/90 leading-relaxed">
+            The creativity and technical skill on display were truly inspiring. A huge thank you to everyone who participated and made this event possible.
+        </p>
+    </section>
+
+    {/* --- Winners Section --- */}
+    <section class="mb-12 animate-fade-in-delay-3 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-8 text-white text-center">Congratulations to Our Winners!</h2>
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        {winners.map((winner, index) => (
+          <div class={`bg-gradient-to-br ${
+              index === 0 ? 'from-[#4158D0]/30 via-[#C850C0]/30 to-[#FFCC70]/30' :
+              index === 1 ? 'from-[#C850C0]/30 via-[#FFCC70]/30 to-[#4158D0]/30' :
+              'from-[#FFCC70]/30 via-[#4158D0]/30 to-[#C850C0]/30'
+            } backdrop-blur-md rounded-lg p-6 shadow-xl border border-white/10 flex flex-col h-full`}> {/* Added h-full */}
+            <h3 class="text-2xl font-bold mb-3 text-white glitchy-text" style={`animation-duration: ${1 + index * 0.2}s;`}>{winner.category}</h3>
+            <p class="text-lg font-semibold mb-2 text-white/95">{winner.team}</p>
+            <p class="text-white/80 flex-grow">{winner.project}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+     {/* --- Image Gallery Section --- */}
+     <ImageGallery
+        images={hackathonImages}
+        title="Event Moments"
+        class="mb-12 animate-fade-in-delay-4"
+      />
+
+    {/* --- Acknowledgements Section --- */}
+    <section class="mb-12 animate-fade-in-delay-5 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto"> {/* Adjusted delay */}
+      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Acknowledgements</h2>
+      <p class="text-lg mb-4 text-white/90 leading-relaxed">
+        We extend our sincere gratitude to <strong class="font-semibold">Ken Casier</strong> for delivering an inspiring closing speech that perfectly capped off the day.
+      </p>
+      <p class="text-lg mb-4 text-white/90 leading-relaxed">
+        A special thank you goes to <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] font-semibold hover:underline">The Beacon | Innovation Community</a> for generously providing the fantastic venue and support, making this event possible.
+      </p>
+       <p class="text-lg text-white/90 leading-relaxed">
+        And finally, thank you to all the participants, judges, volunteers, and sponsors – your contributions were invaluable!
+      </p>
+    </section>
+
+    {/* --- What's Next Section --- */}
+    <section class="text-center animate-fade-in-delay-6 max-w-4xl mx-auto"> {/* Adjusted delay */}
+       <h2 class="text-3xl font-semibold mb-6 text-white">What's Next?</h2>
+       <p class="text-lg mb-4 text-white/90">
+         As the dust settles, we're already looking towards the next step on our journey to the North Star. Your feedback is crucial!
+       </p>
+       <a
+         href="https://discord.gg/m5Hknymurb"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-[#5462EB] rounded-full hover:bg-[#4754c4] transition-colors duration-300 shadow-md"
+       >
+         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+             <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
+         </svg>
+         Join Discord & Share Feedback
+       </a>
+    </section>
+  </main>
+</Layout>
+
+<style is:global>
+/* Ensure glitchy text animation is available if not globally defined elsewhere */
+@keyframes glitch {
+  0% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
+  14% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
+  15% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #fc00ff; }
+  49% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #fc00ff; }
+  50% { text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #fc00ff; }
+  99% { text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #fc00ff; }
+  100% { text-shadow: -0.025em 0 0 #00fffc, -0.05em -0.025em 0 #fc00ff; }
+}
+.glitchy-text {
+    animation: glitch 1s infinite linear alternate-reverse;
+}
+</style>

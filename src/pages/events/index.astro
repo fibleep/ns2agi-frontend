@@ -1,0 +1,62 @@
+---
+// src/pages/events/index.astro
+import Layout from '../../layouts/Layout.astro';
+
+const pastEvents = [
+  { name: "Agentic Hackathon I", date: "March 8, 2025", link: "/events/agentic-hackathon-i", description: "Our first major hackathon focused on building autonomous AI agents."}
+];
+
+const upcomingEvents = [
+   {
+     name: "Agentic Hackathon II",
+     date: "May 10, 2025", // <<< UPDATED DATE
+     link: "/events/agentic-hackathon-ii", // <<< UPDATED LINK
+     description: "Join us again at The Beacon to build the future"
+    }
+];
+---
+<Layout>
+  <main class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-12 text-center animate-fade-in text-white">Events</h1>
+
+    {/* --- Upcoming Events --- */}
+    <section class="mb-16 animate-fade-in-delay-1">
+        <h2 class="text-3xl font-semibold mb-8 text-white border-b border-white/20 pb-3">Upcoming Events</h2>
+        {upcomingEvents.length > 0 ? (
+            <div class="grid md:grid-cols-2 gap-6">
+                {upcomingEvents.map(event => (
+                    // Consistent styling, removed hover:border specific color
+                    <a href={event.link} class="block bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-lg transition-all duration-300 border border-white/10 hover:border-white/20">
+                        {/* Removed glitchy-text, changed text color */}
+                        <h3 class="text-xl font-bold mb-2 text-white/95">{event.name}</h3>
+                        <p class="text-white/70 mb-3">{event.date}</p>
+                        <p class="text-white/90">{event.description}</p>
+                    </a>
+                ))}
+            </div>
+        ) : (
+            <p class="text-white/70 text-center">No upcoming events scheduled currently. Check back soon!</p>
+        )}
+    </section>
+
+    {/* --- Past Events --- */}
+    <section class="animate-fade-in-delay-2">
+        <h2 class="text-3xl font-semibold mb-8 text-white border-b border-white/20 pb-3">Past Events</h2>
+         {pastEvents.length > 0 ? (
+            <div class="space-y-6">
+                {pastEvents.map(event => (
+                     <a href={event.link} class="block bg-white/5 hover:bg-white/10 backdrop-blur-sm rounded-lg p-6 shadow-md transition-colors duration-300 border border-white/5 hover:border-white/20">
+                        <h3 class="text-xl font-semibold mb-2 text-white/90">{event.name}</h3>
+                        <p class="text-sm text-white/60 mb-3">{event.date}</p>
+                        <p class="text-white/80">{event.description}</p>
+                    </a>
+                ))}
+            </div>
+         ) : (
+             <p class="text-white/70 text-center">No past events recorded yet.</p>
+         )}
+    </section>
+  </main>
+</Layout>
+
+{/* Removed glitchy style definition if it was here, assuming it's global or not needed */}

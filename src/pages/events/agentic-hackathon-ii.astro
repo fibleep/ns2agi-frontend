@@ -1,0 +1,115 @@
+---
+// src/pages/events/agentic-hackathon-ii.astro
+import Layout from '../../layouts/Layout.astro';
+
+const event = {
+  title: "Agentic Hackathon II",
+  subtitle: "incoming transmission",
+  date: "10 // 05 // 2025", // May 10th, 2025
+  locationName: "The Beacon",
+  locationAddress: "Sint-Pietersvliet 7, 2000 Antwerpen",
+  locationUrl: "https://www.thebeacon.eu/",
+  registerUrl: "https://lu.ma/kwqe0h72", // URL also in iframe
+  moreInfoUrl: "https://www.ns2agi.com"
+};
+---
+<Layout>
+  <main class="container mx-auto px-4 py-16 md:py-20 flex flex-col items-center justify-start min-h-[calc(100vh-8rem)]">
+
+    <p class="text-sm uppercase tracking-[0.2em] text-[#fc00ff]/80 mb-4 animate-fade-in glitchy-text" style="animation-delay: 0.1s; animation-duration: 1.5s;">
+      {event.subtitle}
+    </p>
+
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wider mb-6 text-center animate-fade-in-delay-1 glitchy-text text-white">
+      {event.title}
+    </h1>
+
+    <p class="text-2xl md:text-3xl font-mono text-white/90 mb-6 animate-fade-in-delay-2 tracking-widest">
+      {event.date}
+    </p>
+
+    <p class="text-lg md:text-xl text-white/80 mb-10 text-center animate-fade-in-delay-3"> {/* Added text-center */}
+      @ <a href={event.locationUrl} target="_blank" rel="noopener noreferrer" class="text-[#00fffc]/90 hover:text-[#00fffc] underline decoration-dotted underline-offset-4 transition-colors">
+        {event.locationName}
+        </a>
+        <span class="text-xs block text-white/60 mt-1">({event.locationAddress})</span>
+    </p>
+
+    {/* --- Luma Iframe Embed --- */}
+    <div class="w-full max-w-xl md:max-w-2xl animate-fade-in-delay-4 mx-auto mb-10 shadow-lg"> {/* Added shadow */}
+      <iframe
+        src="https://lu.ma/embed/event/evt-J24Auy9z9e0vy4S/simple"
+        width="100%"  {/* Use 100% width for responsiveness */}
+        height="450" {/* Keep original height */}
+        frameborder="0"
+        style="border: 1px solid #bfcbda44; border-radius: 8px; display: block;" {/* Adjusted styles */}
+        allowfullscreen={true}
+        aria-hidden="false"
+        tabindex="0"
+        title={`Luma event embed for ${event.title}`} {/* Added title for accessibility */}
+      ></iframe>
+    </div>
+    {/* --- End Luma Iframe Embed --- */}
+
+
+    {/* Optional: Keep the separate register button if desired, maybe style differently */}
+    {/*
+    <a
+      href={event.registerUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="relative inline-flex items-center justify-center px-8 py-4 text-lg md:text-xl font-bold text-white rounded-full overflow-hidden
+             bg-gradient-to-r from-[#00fffc]/20 via-[#fc00ff]/20 to-purple-600/20
+             hover:scale-105 transition-transform duration-300
+             animate-fade-in-delay-5 group glitchy-border mb-6" // Note delay adjusted
+    >
+      <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-[#00fffc] via-[#fc00ff] to-purple-600 opacity-30 group-hover:opacity-50 transition-opacity duration-300 animate-pulse"></span>
+      <span class="relative z-10 glitchy-text" style="animation-duration: 0.8s;">Register Here (Button)</span>
+    </a>
+    */}
+
+    <p class="text-sm text-white/60 animate-fade-in-delay-5"> {/* Adjusted delay */}
+      More info coming soon to: <a href={event.moreInfoUrl} class="text-white/80 hover:text-white underline">{event.moreInfoUrl.replace('https://','')}</a>
+    </p>
+
+  </main>
+</Layout>
+
+{/* Include glitchy text/border animation if not global */}
+<style is:global>
+    @keyframes glitch {
+      0% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
+      14% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
+      15% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #fc00ff; }
+      49% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #fc00ff; }
+      50% { text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #fc00ff; }
+      99% { text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #fc00ff; }
+      100% { text-shadow: -0.025em 0 0 #00fffc, -0.05em -0.025em 0 #fc00ff; }
+    }
+    .glitchy-text {
+        animation: glitch 1s infinite linear alternate-reverse;
+    }
+
+    .glitchy-border::before,
+    .glitchy-border::after {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px;
+      background: linear-gradient(45deg, #fc00ff, #00fffc, #fc00ff);
+      background-size: 400%;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      z-index: -1;
+      animation: steam 20s linear infinite;
+      border-radius: 9999px; /* Match button rounding */
+    }
+    .glitchy-border::after {
+        filter: blur(15px);
+    }
+
+    @keyframes steam {
+      0% { background-position: 0 0; }
+      50% { background-position: 400% 0; }
+      100% { background-position: 0 0; }
+    }
+</style>

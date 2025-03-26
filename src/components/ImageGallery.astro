@@ -1,0 +1,141 @@
+---
+// src/components/ImageGallery.astro
+import type { HTMLAttributes } from 'astro/types';
+
+interface Image {
+  src: string;
+  alt: string;
+}
+
+interface Props extends HTMLAttributes<'div'> {
+  images: Image[];
+  title?: string; // Optional title for the gallery section
+  columns?: string; // Optional Tailwind classes for columns, e.g., "sm:columns-2 md:columns-3"
+}
+
+const {
+  images = [],
+  title,
+  columns = 'columns-1 sm:columns-2 md:columns-3', // Default columns
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+{/* Start Conditional Render for Gallery */}
+{images.length > 0 && (
+  <section class:list={["w-full max-w-6xl mx-auto px-4", className]} {...rest}>
+    {title && <h2 class="text-3xl font-semibold mb-8 text-white text-center">{title}</h2>}
+
+    {/* Gallery using CSS Columns */}
+    <div class={`gap-4 md:gap-6 ${columns}`}>
+      {images.map((image) => (
+        <div class="relative mb-4 md:mb-6 break-inside-avoid block overflow-hidden rounded-lg shadow-lg border border-white/10 group bg-black/20 cursor-pointer">
+          <img
+            src={image.src}
+            alt={image.alt}
+            class="w-full h-auto object-cover block transition-opacity duration-300 ease-in-out gallery-image"
+            loading="lazy"
+            data-alt={image.alt}
+          />
+          <div class="absolute inset-0 p-4 flex items-end bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+             <p class="text-white text-sm md:text-base line-clamp-2">{image.alt}</p>
+           </div>
+        </div>
+      ))} {/* End of .map() */}
+    </div> {/* End of columns div */}
+  </section>
+)} 
+
+<div id="lightbox-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out">
+  <button id="lightbox-close" class="absolute top-4 right-4 text-white/70 hover:text-white text-4xl font-bold z-50" aria-label="Close image viewer">&times;</button>
+  <figure class="max-w-full max-h-full relative">
+    <img id="lightbox-image" src="" alt="" class="block max-w-full max-h-[90vh] object-contain rounded-sm shadow-xl" /> {/* Ensure self-closing tag */}
+    <figcaption id="lightbox-caption" class="text-center text-white/80 mt-2 text-sm"></figcaption>
+  </figure>
+</div>
+
+{/* Lightbox Script (Placed AFTER all HTML) */}
+{/* Added is:inline as a best practice for scripts interacting directly with component's DOM */}
+<script is:inline>
+  // Simple Lightbox Functionality
+  // Wrap in a function to avoid polluting global scope and ensure elements exist
+  function initializeLightbox() {
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    const modal = document.getElementById('lightbox-modal');
+    const modalImage = document.getElementById('lightbox-image'); // No type assertion needed in JS
+    const modalCaption = document.getElementById('lightbox-caption');
+    const closeModalBtn = document.getElementById('lightbox-close');
+
+    // Early exit if essential elements aren't found
+    if (!modal || !modalImage || !modalCaption || galleryImages.length === 0) {
+      // console.warn("Lightbox elements not found or no gallery images.");
+      return;
+    }
+
+    function openModal(imgElement) {
+      const src = imgElement.getAttribute('src');
+      const alt = imgElement.getAttribute('data-alt') || imgElement.getAttribute('alt') || '';
+
+      if (src) {
+        modalImage.src = src;
+        modalImage.alt = alt;
+        modalCaption.textContent = alt;
+        modal.classList.remove('hidden');
+        // Use requestAnimationFrame for smoother transition start
+        requestAnimationFrame(() => {
+            modal.classList.remove('opacity-0');
+        });
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      }
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+          modal.classList.add('hidden');
+          modalImage.src = ""; // Clear src to stop loading/free memory
+          modalImage.alt = "";
+          modalCaption.textContent = "";
+          document.body.style.overflow = ''; // Restore background scrolling
+      }, 300); // Match transition duration
+    }
+
+    galleryImages.forEach(img => {
+      // Ensure we're adding listener to the clickable container if needed, or image itself
+      const clickableElement = img.closest('.cursor-pointer') || img; // Prefer container if exists
+      clickableElement.addEventListener('click', () => openModal(img));
+    });
+
+    closeModalBtn?.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      // Close only if clicking the backdrop itself, not the figure/image inside
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  }
+
+  // Run the initialization function after the DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeLightbox);
+  } else {
+    initializeLightbox();
+  }
+</script>
+
+{/* Style tag (Placed last) */}
+<style>
+  .break-inside-avoid { break-inside: avoid; }
+  /* Optional: Style for the image inside the modal if needed */
+  #lightbox-image {
+    /* Add any specific styles if needed, e.g., border */
+  }
+</style>

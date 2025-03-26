@@ -1,0 +1,69 @@
+---
+// src/components/Navbar.astro
+const navItems = [
+  { href: "/", label: "Home" }, // Added Home link
+  { href: "/vision", label: "Vision" },
+  { href: "/events", label: "Events" },
+];
+---
+
+<nav class="absolute top-0 left-0 w-full p-4 z-20 animate-fade-in">
+  <div class="container mx-auto flex justify-between items-center"> {/* Use justify-between and items-center */}
+
+    {/* Left side - Logo placeholder or leave empty */}
+    <div class="w-10 h-10"> {/* Placeholder for potential logo */}
+       <a href="/" aria-label="Home">
+            <img src="/favicon.svg" alt="North Star AGI Logo" class="w-full h-full opacity-80 hover:opacity-100 transition-opacity"/>
+       </a>
+    </div>
+
+    {/* Center/Right side - Navigation Links */}
+    <ul class="flex space-x-6 text-white/80">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="hover:text-white hover:underline decoration-[#C850C0] decoration-2 underline-offset-4 transition-colors duration-200 text-sm md:text-base" {/* Adjusted text size for responsiveness */}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    {/* Right side - Pulsing Star */}
+    <div class="w-8 h-8 md:w-10 md:h-10 animate-pulse"> {/* Adjusted size for navbar context */}
+        <div class="relative w-full h-full">
+            {/* Vertical Bar */}
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1.5px] md:w-[2px] h-full bg-white/80 blur-[1.5px] md:blur-[2px] animate-cross-vertical glow"></div>
+            {/* Horizontal Bar */}
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[1.5px] md:h-[2px] bg-white/80 blur-[1.5px] md:blur-[2px] animate-cross-horizontal glow"></div>
+            {/* Additional Glow Layers */}
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[2px] md:w-[3px] h-full bg-white/30 blur-[3px] md:blur-[4px] animate-cross-vertical"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[2px] md:h-[3px] bg-white/30 blur-[3px] md:blur-[4px] animate-cross-horizontal"></div>
+        </div>
+    </div>
+
+  </div>
+</nav>
+
+<style>
+    /* Ensure glow and cross animations are accessible if not defined globally */
+    /* You might already have these in Layout.astro, if so, no need to repeat */
+    @keyframes cross-vertical {
+        0%, 100% { height: 100%; }
+        50% { height: 70%; }
+    }
+    @keyframes cross-horizontal {
+        0%, 100% { width: 100%; }
+        50% { width: 70%; }
+    }
+    .animate-cross-vertical { animation: cross-vertical 3s infinite; }
+    .animate-cross-horizontal { animation: cross-horizontal 3s infinite; }
+    .glow {
+        box-shadow:
+            0 0 5px rgba(255,255,255,0.6), /* Adjusted glow for smaller size */
+            0 0 10px rgba(255,255,255,0.4),
+            0 0 15px rgba(255,255,255,0.2);
+    }
+</style>
