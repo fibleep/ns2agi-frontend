@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 
 const event = {
   title: "Agentic Hackathon II",
-  subtitle: "incoming transmission",
+  subtitle: "The Beacon Awaits",
   date: "10 // 05 // 2025", // May 10th, 2025
   locationName: "The Beacon",
   locationAddress: "Sint-Pietersvliet 7, 2000 Antwerpen",
@@ -12,70 +12,146 @@ const event = {
   registerUrl: "https://lu.ma/kwqe0h72", // URL also in iframe
   moreInfoUrl: "https://www.ns2agi.com"
 };
+
+const categories = [
+    { name: "AI'S CHOICE", description: "The machine will choose its champion." },
+    { name: "IMPACT", description: "We're preparing a meaningful use case for you to solve (details incoming!)." },
+    { name: "JUDGES' FAVORITE", description: "If you just want to be creative, we will evaluate your project based on the quality, the idea, and potential." }
+];
 ---
-<Layout>
-  <main class="container mx-auto px-4 py-16 md:py-20 flex flex-col items-center justify-start min-h-[calc(100vh-8rem)]">
+<Layout title={`North Star AGI | ${event.title}`}>
+  <main class="container mx-auto px-4 py-12 md:py-16">
 
-    <p class="text-sm uppercase tracking-[0.2em] text-[#fc00ff]/80 mb-4 animate-fade-in glitchy-text" style="animation-delay: 0.1s; animation-duration: 1.5s;">
-      {event.subtitle}
-    </p>
+    <section class="text-center mb-16">
+      <p class="text-sm uppercase tracking-[0.2em] text-[#fc00ff]/80 mb-4 animate-fade-in glitchy-text" style="animation-delay: 0.1s; animation-duration: 1.5s;">
+        {event.subtitle}
+      </p>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wider mb-6 animate-fade-in-delay-1 glitchy-text text-white">
+        {event.title}
+      </h1>
+      <p class="text-2xl md:text-3xl font-mono text-white/90 mb-6 animate-fade-in-delay-2 tracking-widest">
+        {event.date}
+      </p>
+      <p class="text-lg md:text-xl text-white/80 mb-10 animate-fade-in-delay-3">
+        @ <a href={event.locationUrl} target="_blank" rel="noopener noreferrer" class="text-[#00fffc]/90 hover:text-[#00fffc] underline decoration-dotted underline-offset-4 transition-colors">
+          {event.locationName}
+          </a>
+          <span class="text-xs block text-white/60 mt-1">({event.locationAddress})</span>
+      </p>
+    </section>
 
-    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wider mb-6 text-center animate-fade-in-delay-1 glitchy-text text-white">
-      {event.title}
-    </h1>
+    <section class="mb-12 animate-fade-in-delay-4 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
+        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Event Timeline</h2>
+        <ul class="space-y-4 text-lg text-white/90">
+            <li class="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                <span class="font-mono text-[#00fffc]/90 shrink-0 mb-1 sm:mb-0">9:00 AM</span>
+                <span>Doors Open & Welcome</span>
+            </li>
+            <li class="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                <span class="font-mono text-[#00fffc]/90 shrink-0 mb-1 sm:mb-0">9:15 AM</span>
+                <span>Kick-off & Introduction</span>
+            </li>
+            <li class="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                <span class="font-mono text-[#00fffc]/90 shrink-0 mb-1 sm:mb-0">9:45 AM</span>
+                <span>Hacking Begins!</span>
+            </li>
+            <li class="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                <span class="font-mono text-[#00fffc]/90 shrink-0 mb-1 sm:mb-0">12:00 PM</span>
+                <span>Lunch Break (Pizza!)</span>
+            </li>
+            <li class="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                <span class="font-mono text-[#fc00ff]/90 shrink-0 mb-1 sm:mb-0">7:00 PM</span>
+                <span>Hacking Deadline</span>
+            </li>
+            <li class="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                <span class="font-mono text-[#fc00ff]/90 shrink-0 mb-1 sm:mb-0">8:00 PM</span>
+                <span>Judging Complete</span>
+            </li>
+            <li class="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                <span class="font-mono text-[#fc00ff]/90 shrink-0 mb-1 sm:mb-0">8:00 PM</span>
+                <span>Awards Ceremony</span>
+            </li>
+            <li class="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                <span class="font-mono text-[#fc00ff]/90 shrink-0 mb-1 sm:mb-0 whitespace-nowrap">8:00 PM - 10:00 PM</span>
+                <span>Networking & Wrap-up</span>
+            </li>
+        </ul>
+    </section>
 
-    <p class="text-2xl md:text-3xl font-mono text-white/90 mb-6 animate-fade-in-delay-2 tracking-widest">
-      {event.date}
-    </p>
+    <section class="mb-12 animate-fade-in-delay-5 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-8 text-white text-center">Categories</h2>
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        {categories.map((category, index) => (
+          <div class={`bg-gradient-to-br ${
+              index === 0 ? 'from-[#00fffc]/30 via-[#4158D0]/30 to-[#fc00ff]/30' :
+              index === 1 ? 'from-[#4158D0]/30 via-[#fc00ff]/30 to-[#00fffc]/30' :
+              'from-[#fc00ff]/30 via-[#00fffc]/30 to-[#4158D0]/30'
+            } backdrop-blur-md rounded-lg p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
+            <h3 class="text-2xl font-bold mb-3 text-white glitchy-text" style={`animation-duration: ${1.2 + index * 0.2}s;`}>{category.name}</h3>
+            <p class="text-white/80 flex-grow">{category.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
 
-    <p class="text-lg md:text-xl text-white/80 mb-10 text-center animate-fade-in-delay-3"> {/* Added text-center */}
-      @ <a href={event.locationUrl} target="_blank" rel="noopener noreferrer" class="text-[#00fffc]/90 hover:text-[#00fffc] underline decoration-dotted underline-offset-4 transition-colors">
-        {event.locationName}
-        </a>
-        <span class="text-xs block text-white/60 mt-1">({event.locationAddress})</span>
-    </p>
+     <section class="mb-12 animate-fade-in-delay-6 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
+        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Judging Criteria Update</h2>
+        <p class="text-lg mb-4 text-white/90 leading-relaxed">
+            We're evolving how we evaluate projects. This time, a <strong class="font-semibold text-[#00fffc]/90">code submission will be required</strong> to complement the video and text descriptions. Don't worry, all IP rights remain yours! If your project doesn't involve code, detailed documentation on the process will be necessary.
+        </p>
+        <p class="text-lg text-white/90 leading-relaxed">
+            The creativity and memorability of your pitch video will also be a factor. Make it stand out! Team size remains capped at <strong class="font-semibold text-[#fc00ff]/90">3 people per team</strong>.
+        </p>
+    </section>
 
-    {/* --- Luma Iframe Embed --- */}
-    <div class="w-full max-w-xl md:max-w-2xl animate-fade-in-delay-4 mx-auto mb-10 shadow-lg"> {/* Added shadow */}
-      <iframe
-        src="https://lu.ma/embed/event/evt-J24Auy9z9e0vy4S/simple"
-        width="100%"  {/* Use 100% width for responsiveness */}
-        height="450" {/* Keep original height */}
-        frameborder="0"
-        style="border: 1px solid #bfcbda44; border-radius: 8px; display: block;" {/* Adjusted styles */}
-        allowfullscreen={true}
-        aria-hidden="false"
-        tabindex="0"
-        title={`Luma event embed for ${event.title}`} {/* Added title for accessibility */}
-      ></iframe>
-    </div>
-    {/* --- End Luma Iframe Embed --- */}
+    <section class="mb-12 animate-fade-in-delay-7 max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-semibold mb-6 text-white">Register Now!</h2>
+         <p class="text-lg mb-8 text-white/90 leading-relaxed">
+            Secure your spot for the Agentic Hackathon II. Space is limited!
+         </p>
+        <div class="w-full max-w-xl md:max-w-2xl mx-auto mb-10 shadow-lg rounded-lg overflow-hidden border border-white/10">
+          <iframe
+            src="https://lu.ma/embed/event/evt-J24Auy9z9e0vy4S/simple"
+            width="100%"
+            height="450"
+            frameborder="0"
+            style="border: 0; display: block;"
+            allowfullscreen={true}
+            aria-hidden="false"
+            tabindex="0"
+            title={`Luma event embed for ${event.title}`}
+          ></iframe>
+        </div>
+    </section>
 
+    <section class="mb-12 animate-fade-in-delay-8 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Want to Help?</h2>
+      <p class="text-lg mb-4 text-white/90 leading-relaxed">
+        As we grow, we need to expand our core team! Are you interested in helping with marketing, administration, IT support, or do you have another cool idea for how to contribute?
+      </p>
+      <p class="text-lg mb-4 text-white/90 leading-relaxed">
+        Let us know! Your involvement can help make this and future events even better. Reach out and let's make it happen together.
+      </p>
+       <a
+         href="https://discord.gg/m5Hknymurb"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-[#5462EB] rounded-full hover:bg-[#4754c4] transition-colors duration-300 shadow-md"
+       >
+         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+             <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
+         </svg>
+        Join our Discord
+       </a>
+    </section>
 
-    {/* Optional: Keep the separate register button if desired, maybe style differently */}
-    {/*
-    <a
-      href={event.registerUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="relative inline-flex items-center justify-center px-8 py-4 text-lg md:text-xl font-bold text-white rounded-full overflow-hidden
-             bg-gradient-to-r from-[#00fffc]/20 via-[#fc00ff]/20 to-purple-600/20
-             hover:scale-105 transition-transform duration-300
-             animate-fade-in-delay-5 group glitchy-border mb-6" // Note delay adjusted
-    >
-      <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-[#00fffc] via-[#fc00ff] to-purple-600 opacity-30 group-hover:opacity-50 transition-opacity duration-300 animate-pulse"></span>
-      <span class="relative z-10 glitchy-text" style="animation-duration: 0.8s;">Register Here (Button)</span>
-    </a>
-    */}
-
-    <p class="text-sm text-white/60 animate-fade-in-delay-5"> {/* Adjusted delay */}
-      More info coming soon to: <a href={event.moreInfoUrl} class="text-white/80 hover:text-white underline">{event.moreInfoUrl.replace('https://','')}</a>
+    <p class="text-center text-sm text-white/60 animate-fade-in-delay-9">
+        Keep an eye on <a href={event.moreInfoUrl} class="text-white/80 hover:text-white underline">{event.moreInfoUrl.replace('https://','')}</a> for more details as they become available.
     </p>
 
   </main>
 </Layout>
 
-{/* Include glitchy text/border animation if not global */}
 <style is:global>
     @keyframes glitch {
       0% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
@@ -101,7 +177,7 @@ const event = {
       height: calc(100% + 4px);
       z-index: -1;
       animation: steam 20s linear infinite;
-      border-radius: 9999px; /* Match button rounding */
+      border-radius: 9999px;
     }
     .glitchy-border::after {
         filter: blur(15px);
