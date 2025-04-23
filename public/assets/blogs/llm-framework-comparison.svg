@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+    <!-- Background gradient -->
+    <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0f172a" />
+            <stop offset="100%" stop-color="#1e293b" />
+        </linearGradient>
+        <radialGradient id="glowGradient" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.15)" />
+            <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+        </radialGradient>
+    </defs>
+
+    <!-- Main background -->
+    <rect width="1200" height="630" fill="url(#bgGradient)" />
+    <rect width="1200" height="630" fill="url(#glowGradient)" />
+
+    <!-- Grid pattern -->
+    <path d="M0 100 L1200 100 M0 200 L1200 200 M0 300 L1200 300 M0 400 L1200 400 M0 500 L1200 500 M0 600 L1200 600 M100 0 L100 630 M200 0 L200 630 M300 0 L300 630 M400 0 L400 630 M500 0 L500 630 M600 0 L600 630 M700 0 L700 630 M800 0 L800 630 M900 0 L900 630 M1000 0 L1000 630 M1100 0 L1100 630" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+
+    <!-- Connection lines -->
+    <g opacity="0.6">
+        <path d="M250 315 L450 215 M450 215 L650 315 M650 315 L850 215 M850 215 L950 315" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-linecap="round" />
+        <path d="M250 315 L450 415 M450 415 L650 315 M650 315 L850 415 M850 415 L950 315" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-linecap="round" />
+    </g>
+
+    <!-- Colored nodes representing different frameworks -->
+    <circle cx="250" cy="315" r="55" fill="#0ea5e9" opacity="0.9" /> <!-- LangChain (cyan) -->
+    <circle cx="450" cy="215" r="45" fill="#a855f7" opacity="0.9" /> <!-- LangGraph (purple) -->
+    <circle cx="450" cy="415" r="45" fill="#f59e0b" opacity="0.9" /> <!-- Haystack (amber) -->
+    <circle cx="650" cy="315" r="55" fill="#10b981" opacity="0.9" /> <!-- LlamaIndex (green) -->
+    <circle cx="850" cy="215" r="45" fill="#ef4444" opacity="0.9" /> <!-- Agno (red) -->
+    <circle cx="850" cy="415" r="45" fill="#3b82f6" opacity="0.9" /> <!-- AtomicAgents (blue) -->
+    <circle cx="950" cy="315" r="35" fill="#8b5cf6" opacity="0.8" /> <!-- Others -->
+
+    <!-- Glowing effect on nodes -->
+    <circle cx="250" cy="315" r="65" fill="none" stroke="#0ea5e9" stroke-width="2" opacity="0.2" />
+    <circle cx="450" cy="215" r="55" fill="none" stroke="#a855f7" stroke-width="2" opacity="0.2" />
+    <circle cx="450" cy="415" r="55" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.2" />
+    <circle cx="650" cy="315" r="65" fill="none" stroke="#10b981" stroke-width="2" opacity="0.2" />
+    <circle cx="850" cy="215" r="55" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.2" />
+    <circle cx="850" cy="415" r="55" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.2" />
+    <circle cx="950" cy="315" r="45" fill="none" stroke="#8b5cf6" stroke-width="2" opacity="0.2" />
+
+    <!-- Framework icons (simplified) -->
+    <text x="250" y="315" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-size="26" font-weight="700" fill="white">LC</text>
+    <text x="450" y="215" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-size="22" font-weight="700" fill="white">LG</text>
+    <text x="450" y="415" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-size="22" font-weight="700" fill="white">HS</text>
+    <text x="650" y="315" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-size="26" font-weight="700" fill="white">LI</text>
+    <text x="850" y="215" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-size="22" font-weight="700" fill="white">AG</text>
+    <text x="850" y="415" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-size="22" font-weight="700" fill="white">AA</text>
+    <text x="950" y="315" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-size="20" font-weight="700" fill="white">+</text>
+
+    <!-- Main Title -->
+    <text x="600" y="110" text-anchor="middle" font-family="sans-serif" font-size="56" font-weight="800" fill="white">LLM Framework Ecosystem</text>
+
+    <!-- Subtitle with colored text to match frameworks -->
+    <text x="600" y="170" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="400" fill="rgba(255,255,255,0.7)">Comparing the Tools That Power AI Applications</text>
+
+    <!-- Decorative code-like elements -->
+    <rect x="100" y="520" width="1000" height="30" fill="rgba(255,255,255,0.03)" rx="5" />
+    <text x="120" y="540" font-family="monospace" font-size="16" fill="rgba(255,255,255,0.6)">from <tspan fill="#0ea5e9">langchain</tspan> import Chain | from <tspan fill="#a855f7">langgraph</tspan> import Graph | from <tspan fill="#10b981">llama_index</tspan> import VectorIndex</text>
+
+    <!-- Framework names legend -->
+    <text x="200" y="580" font-family="monospace" font-size="18" fill="#0ea5e9">LangChain</text>
+    <text x="350" y="580" font-family="monospace" font-size="18" fill="#a855f7">LangGraph</text>
+    <text x="500" y="580" font-family="monospace" font-size="18" fill="#f59e0b">Haystack</text>
+    <text x="650" y="580" font-family="monospace" font-size="18" fill="#10b981">LlamaIndex</text>
+    <text x="800" y="580" font-family="monospace" font-size="18" fill="#ef4444">Agno</text>
+    <text x="900" y="580" font-family="monospace" font-size="18" fill="#3b82f6">AtomicAgents</text>
+</svg>
