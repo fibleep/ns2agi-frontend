@@ -78,7 +78,7 @@ const paginatedPosts = posts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPa
 			<a href={`/blogs/${post.data.slug}`} class="card">
 				<img src={post.data.thumbnail} alt={post.data.title} class="thumbnail" />
 				<h2 class="title">{post.data.title}</h2>
-				<span class="arrow">Read More →</span>
+				<span class="arrow">Read More -></span>
 			</a>
 		))}
 	</div>
