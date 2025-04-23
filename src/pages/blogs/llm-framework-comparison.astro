@@ -1,0 +1,15 @@
+---
+import { getEntry, render } from 'astro:content';
+import Layout from "../../layouts/Layout.astro";
+
+const entry = await getEntry('blogs', 'llm-framework-comparison');
+if (!entry) {
+    throw new Error('Could not find blog post 1');
+}
+const { Content } = await render(entry);
+---
+<Layout>
+	<article class="prose prose-invert max-w-none mx-8 pb-8">
+        <Content />
+	</article>
+</Layout>
