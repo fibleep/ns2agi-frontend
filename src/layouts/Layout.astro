@@ -1,6 +1,13 @@
 ---
 // src/layouts/Layout.astro
 import Navbar from '../components/Navbar.astro'; // Import the Navbar
+
+export interface Props {
+    title?: string;
+    backgroundImageUrl?: string;
+}
+
+const { title = 'North Star AGI', backgroundImageUrl } = Astro.props;
 ---
 <!doctype html>
 <html lang="en" class="bg-black">
@@ -9,8 +16,8 @@ import Navbar from '../components/Navbar.astro'; // Import the Navbar
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>ns2agi</title>
-    <style>
+    <title>{title}</title>
+    <style define:vars={{ bgImageUrl: backgroundImageUrl ? `url(${backgroundImageUrl})` : 'none' }}>
         /* Global fade animations */
         @keyframes fade-in {
             from {
@@ -102,6 +109,10 @@ import Navbar from '../components/Navbar.astro'; // Import the Navbar
             min-height: 100vh; /* Ensure it takes at least the full viewport height */
             display: flex; /* Use flexbox to manage layout */
             flex-direction: column; /* Stack children vertically */
+            background-image: var(--bgImageUrl);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Keep background fixed during scroll */
         }
 
         .main-content {
@@ -114,8 +125,13 @@ import Navbar from '../components/Navbar.astro'; // Import the Navbar
     <div class="layout-container relative"> {/* Added layout-container */}
         <Navbar /> {/* Include Navbar */}
 
-        {/* Background gradient (keep existing element) */}
-        <div class="fixed inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)] pointer-events-none -z-10"></div>
+        {/* Conditional overlay if background image is present */}
+        {backgroundImageUrl && (
+            <div class="fixed inset-0 bg-black/75 backdrop-blur-sm pointer-events-none -z-10"></div>
+        )}
+
+        {/* Background gradient (keep existing element, ensure it's behind content and potential overlay) */}
+        <div class="fixed inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)] pointer-events-none -z-20"></div>
 
         {/* Main content area */}
         <div class="main-content relative z-10 pt-20 md:pt-24"> {/* Added padding-top for navbar height + buffer, adjusted z-index */}
