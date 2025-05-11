@@ -193,38 +193,71 @@ const hackathonImages = [
       /** @type {HTMLIFrameElement | null} */
       const youtubePlayer = document.getElementById('youtubePlayer');
       const modalTeamName = document.getElementById('modalTeamName');
+      const modalDescription = document.getElementById('modalDescription'); 
+      const playerContainer = youtubePlayer ? youtubePlayer.parentElement : null;
 
-      function openModal(videoId, teamName) {
-        if (videoId && modal && modalContent && youtubePlayer && modalTeamName) {
-          modalTeamName.textContent = teamName || 'Video Showcase';
-          youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-          modal.classList.remove('hidden');
-          setTimeout(() => { 
-            modal.classList.remove('opacity-0');
-            modalContent.classList.remove('scale-95');
-          }, 10);
-          document.body.style.overflow = 'hidden';
+      /** 
+       * @param {string | null} videoId 
+       * @param {string} teamName
+       * @param {string | undefined} description
+      */
+      function openModal(videoId, teamName, description) {
+        if (!modal || !modalContent || !youtubePlayer || !modalTeamName || !playerContainer) {
+            console.error("Modal elements not found!");
+            return;
         }
+
+        modalTeamName.textContent = teamName || 'Video Showcase';
+        if (modalDescription) {
+            modalDescription.textContent = description || 'No description available.';
+        }
+
+        if (videoId && videoId !== 'null') {
+          youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+          playerContainer.style.display = 'block'; 
+          youtubePlayer.style.display = 'block';
+        } else {
+          youtubePlayer.src = ''; 
+          playerContainer.style.display = 'none'; 
+          youtubePlayer.style.display = 'none';
+        }
+
+        modal.classList.remove('hidden');
+        setTimeout(() => { 
+          modal.classList.remove('opacity-0');
+          if (modalContent) modalContent.classList.remove('scale-95');
+        }, 10);
+        document.body.style.overflow = 'hidden';
       }
 
       function closeTheModal() {
-        if (modal && modalContent && youtubePlayer) {
+        if (modal && modalContent && youtubePlayer && modalTeamName && playerContainer) {
           modal.classList.add('opacity-0');
-          modalContent.classList.add('scale-95');
+          if (modalContent) modalContent.classList.add('scale-95');
           setTimeout(() => { 
             modal.classList.add('hidden');
             youtubePlayer.src = ''; 
+            youtubePlayer.style.display = 'none'; 
+            if (playerContainer) playerContainer.style.display = 'none'; 
+            modalTeamName.textContent = '';
+            if (modalDescription) modalDescription.textContent = ''; 
             document.body.style.overflow = 'auto';
           }, 300);
         }
       }
 
       solutionCards.forEach(card => {
+        if (!(card instanceof HTMLElement)) return;
         card.addEventListener('click', () => {
-          const videoId = card.getAttribute('data-video-id');
-          const teamName = card.getAttribute('data-team-name');
-          if (videoId && videoId !== "null") { 
-            openModal(videoId, teamName);
+          let videoId = card.dataset.videoId;
+          if (videoId === 'null' || videoId === '') {
+            videoId = null;
+          }
+          const teamName = card.dataset.teamName;
+          const description = card.dataset.description; 
+          
+          if (teamName) { 
+            openModal(videoId, teamName, description || 'No description provided.');
           }
         });
       });

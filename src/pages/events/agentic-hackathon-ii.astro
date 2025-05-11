@@ -219,34 +219,50 @@ const hackathonImages = [
       /** @type {HTMLIFrameElement | null} */
       const youtubePlayer = document.getElementById('youtubePlayer');
       const modalTeamName = document.getElementById('modalTeamName');
-      const modalDescription = document.getElementById('modalDescription'); 
+      const modalDescription = document.getElementById('modalDescription');
+      const playerContainer = youtubePlayer ? youtubePlayer.parentElement : null; // Get the div wrapping the iframe
 
       /** 
-       * @param {string} videoId 
+       * @param {string | null} videoId 
        * @param {string} teamName
        * @param {string | undefined} description
       */
       function openModal(videoId, teamName, description) {
-        if (videoId && modal && modalContent && youtubePlayer && modalTeamName && modalDescription) {
-          modalTeamName.textContent = teamName || 'Video Showcase';
-          modalDescription.textContent = description || 'No description available.'; 
-          youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-          modal.classList.remove('hidden');
-          setTimeout(() => { 
-            modal.classList.remove('opacity-0');
-            if (modalContent) modalContent.classList.remove('scale-95');
-          }, 10);
-          document.body.style.overflow = 'hidden';
+        if (!modal || !modalContent || !youtubePlayer || !modalTeamName || !modalDescription || !playerContainer) {
+            console.error("Modal elements not found!");
+            return;
         }
+
+        modalTeamName.textContent = teamName || 'Video Showcase';
+        modalDescription.textContent = description || 'No description available.'; 
+
+        if (videoId && videoId !== 'null') {
+          youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+          playerContainer.style.display = 'block'; // Show player container
+          youtubePlayer.style.display = 'block';
+        } else {
+          youtubePlayer.src = ''; // Clear src
+          playerContainer.style.display = 'none'; // Hide player container
+          youtubePlayer.style.display = 'none';
+        }
+
+        modal.classList.remove('hidden');
+        setTimeout(() => { 
+          modal.classList.remove('opacity-0');
+          if (modalContent) modalContent.classList.remove('scale-95');
+        }, 10);
+        document.body.style.overflow = 'hidden';
       }
 
       function closeTheModal() {
-        if (modal && modalContent && youtubePlayer && modalTeamName && modalDescription) {
+        if (modal && modalContent && youtubePlayer && modalTeamName && modalDescription && playerContainer) {
           modal.classList.add('opacity-0');
           if (modalContent) modalContent.classList.add('scale-95');
           setTimeout(() => { 
             modal.classList.add('hidden');
             youtubePlayer.src = ''; 
+            youtubePlayer.style.display = 'none'; // Ensure player is hidden
+            if (playerContainer) playerContainer.style.display = 'none'; // Ensure container is hidden
             modalTeamName.textContent = '';
             modalDescription.textContent = ''; 
             document.body.style.overflow = 'auto';
@@ -257,11 +273,17 @@ const hackathonImages = [
       solutionCards.forEach(card => {
         if (!(card instanceof HTMLElement)) return;
         card.addEventListener('click', () => {
-          const videoId = card.dataset.videoId;
+          // Treat string "null" or empty string as actual null for videoId
+          let videoId = card.dataset.videoId;
+          if (videoId === 'null' || videoId === '') {
+            videoId = null;
+          }
           const teamName = card.dataset.teamName;
           const description = card.dataset.description; 
-          if (videoId && videoId !== "null" && teamName) { 
-            openModal(videoId, teamName, description);
+          
+          // Open modal if we have at least a team name and description to show
+          if (teamName) { 
+            openModal(videoId, teamName, description || 'No description provided.');
           }
         });
       });
