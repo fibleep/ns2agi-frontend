@@ -1,0 +1,110 @@
+{
+	"Null Pointers": {
+		"team_name": "Null Pointers",
+		"youtube_video_link": "https://www.youtube.com/watch?v=Yjuy_6nmC5U",
+		"eyecatcher": "Smarter Home Transport Score",
+		"description": "PubliScore empowers students and environmentally conscious individuals by transforming their home search based on public transport accessibility. It addresses concerns about commutes and environmental impact by evaluating locations using Antwerp's data on trams, buses, and public bikes. The system provides a score representing the public transport quality of a chosen location. This tool is designed to help users make informed decisions and assist realtors in promoting locations effectively."
+	},
+	"Zdob&Zdub": {
+		"team_name": "Zdob&Zdub",
+		"youtube_video_link": "https://youtu.be/bafzI_fzvG8?si=4nUCsO1KSP4n7kKq",
+		"eyecatcher": "Interactive Antwerp Detail Map",
+		"description": "This project presents a fun, interactive map showcasing detailed information about Antwerp, including traffic lights, speed cameras, and trees. Utilizing a large dataset, nodes with detailed descriptions were extracted for display on this map. These nodes were subsequently formatted and assigned distinct colors using a HuggingFace ClipModel based on their descriptive tags. Additionally, small sprites generated via ChatGPT appear when users zoom in, enriching the visual experience."
+	},
+	"Scream-Zone Finder-Antwerpen": {
+		"team_name": "Scream-Zone Finder-Antwerpen",
+		"youtube_video_link": "https://youtu.be/g2pHBWRf9ac",
+		"eyecatcher": "Find Your Scream Spot",
+		"description": "Scream-Zone Finder is a unique application guiding Antwerp residents to specific locations where they can safely and freely unleash a scream without causing disturbance. This tool innovatively combines cartography, sound therapy, and a touch of Belgian absurdism. Instead of typical map points, it identifies echo-rich tunnels, quiet riverbanks, and sound-amplifying parks. It promotes a novel form of self-care through therapeutic screaming, making stress relief accessible via bicycle."
+	},
+	"TomTom Waes": {
+		"team_name": "TomTom Waes",
+		"youtube_video_link": "https://youtu.be/3bmWxuL6WCo",
+		"eyecatcher": "Your Personal City Guide",
+		"description": "TomTom Waes is designed for individuals new to a city, addressing feelings of isolation by acting as a personal guide and friend. The application offers personalized tours and stories to help users explore, connect, and thrive in their new environment. By facilitating the discovery of hidden gems and fostering confidence, TomTom Waes aims to make users feel at home. The initial focus is Antwerp, with intentions for global expansion featuring local guides in multiple languages."
+	},
+	"data scavs": {
+		"team_name": "data scavs",
+		"youtube_video_link": "https://youtu.be/bOcsVAQa9fc",
+		"eyecatcher": "Order From Data Chaos",
+		"description": "DataCrawler is an opinionated, modular micro-service that extracts order from chaos by ingesting semi-structured data and returning a well-defined, query-ready dataset. It employs semantic-similarity clustering, entity-resolution heuristics, and schema-inference models to reveal latent structures within the information. This tool aims to automate the creation of clean tables from new data sources. This allows analysts to access data more rapidly and engineers to focus on model development."
+	},
+	"med monsterini": {
+		"team_name": "med monsterini",
+		"youtube_video_link": "https://www.youtube.com/watch?v=7_Q6-2r8FDg",
+		"eyecatcher": "Explore Hidden City Gems",
+		"description": "CityQuest is a Pokémon GO-inspired web app that helps users discover Antwerp's hidden gems by earning XP for finding niche locations. Instead of creatures, users chase culture, with more underground spots yielding more XP. The app features a personalized questionnaire to tailor recommendations using AI. Users can start quests via custom prompts or engage in a Tic-Tac-Toe battle against a bot to determine their path."
+	},
+	"markov": {
+		"team_name": "markov",
+		"youtube_video_link": "https://youtu.be/Mc0eLGCjbEk",
+		"eyecatcher": "AI YouTube Engineering Insights",
+		"description": "Hermes transforms raw YouTube tokens into high-alpha engineering insights quickly, offering AI shops a personalized research newspaper instead of lengthy manual reviews. It recognizes that AI's cutting edge often appears first in live talks and podcasts. By auto-ingesting content from curated, high-signal channels, Hermes delivers actionable insights while the information is still fresh. This approach aims to give a competitive edge by rapidly processing vast amounts of video content."
+	},
+	"Star Compass": {
+		"team_name": "Star Compass",
+		"youtube_video_link": "https://www.canva.com/design/DAGnEH4B-GQ/H8XgnibwMGs0SA4Uy-4K-w/watch?utm_content=DAGnEH4B-GQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hcfab6ce6d4",
+		"eyecatcher": "Discover Niche City Spots",
+		"description": "Star Compass is an app designed as a city trip guide, providing recommendations for fun activities based on user interests and location. It specializes in targeting niche and rare locations that standard searches might miss. By continuously using your location and understanding preferences, it offers engaging activity suggestions nearby. This app aims to be a reliable companion for future travels, enhancing urban exploration."
+	},
+	"Storywalker": {
+		"team_name": "Storywalker",
+		"youtube_video_link": "https://youtu.be/9Yja60Mt854",
+		"eyecatcher": "Interactive Audio City Tours",
+		"description": "Storywalker turns Antwerp into a dynamic, audible landscape where users unlock curated, genre-specific audio tours by dropping a pin on a map. This transforms city exploration into an immersive narrative experience. The project employs a sophisticated multi-agent system to personalize urban discovery. It caters to diverse interests, from history buffs and mystery seekers to those looking for practical local recommendations."
+	},
+	"TeamGenius": {
+		"team_name": "TeamGenius",
+		"youtube_video_link": "https://youtu.be/Acc7FM-k_T4",
+		"eyecatcher": "AI Smart Style Assistant",
+		"description": "This Smart Style web application is a personalized AI-based clothing recommendation app. It simplifies outfit selection using AI-powered suggestions, ensuring users wear suitable attire by considering weather, schedule, and personal style. The system helps find the best outfits by analyzing these factors and user preferences. The core idea is to make choosing the right outfit efficient and tailored to individual needs."
+	},
+	"Night Owls": {
+		"team_name": "Night Owls",
+		"youtube_video_link": "https://youtu.be/hf36wJ6EEzg",
+		"eyecatcher": "Safer Night City Navigation",
+		"description": "Antwerp@Night is a web-based navigation prototype designed for safer navigation in Antwerp after dark. It combines natural language processing with lighting-dependent routing, built using Flask, OpenAI’s API, and OpenStreetMap. Unlike traditional apps, it optimizes routes based on nighttime confidence, prioritizing well-lit and safer streets. The tool uses OSM tags and AI to generate these safer walking routes for users."
+	},
+	"MovieMixers": {
+		"team_name": "MovieMixers",
+		"youtube_video_link": "https://youtu.be/4lQKolxE6Sk",
+		"eyecatcher": "AI Group Movie Picker",
+		"description": "MovieMixer is an AI-powered group watchlist harmonizer designed to simplify deciding what to watch as a group. It uses Google's Gemini AI to analyze collective movie preferences and generate enjoyable recommendations for everyone. The system's intelligent algorithm aims for fair representation of all tastes, thereby reducing decision fatigue. It offers a smarter way to achieve consensus on movie nights."
+	},
+	"Szymon.dev": {
+		"team_name": "Szymon.dev",
+		"youtube_video_link": "https://youtu.be/bfs0t1W120g",
+		"eyecatcher": "AI Coding Tutor Buddy",
+		"description": "CSBuddy is a platform conceived from feedback from computer science students who struggled with getting timely code feedback and understanding errors. It aims to act as a personal tutor, providing AI-powered hints and difficulty-based challenges. The system is designed to offer a gamified progression system to motivate learning. The core idea is to be an interactive coding companion for students."
+	},
+	"Diamond": {
+		"team_name": "Diamond",
+		"youtube_video_link": "",
+		"eyecatcher": "Unlock Hidden City Worlds",
+		"description": "Diamond offers access to hidden gems, insider information, and unique city experiences. Built with Flutter, it is available across all platforms, including web, Android, iOS, and desktop. Users can start exploring by simply visiting the website or app and pressing 'explore'. It allows filtering by themes like bars and cultural centers to help discover curated secrets."
+	},
+	"navi-med": {
+		"team_name": "navi-med",
+		"youtube_video_link": "https://www.youtube.com/watch?v=I9wNloE1xzk",
+		"eyecatcher": "Antwerp Medical Care Navigator",
+		"description": "Antwerp HealthNav is a smart navigator for medical care in Antwerp, designed to help users quickly find doctors, pharmacies, or hospitals. It addresses the challenge of locating medical help, especially during critical times or in unfamiliar areas of the city. The user-friendly web application leverages OpenStreetMap data to connect individuals with needed medical amenities instantly. Its goal is to make health navigation simple, intuitive, and tailored for Antwerp."
+	},
+	"Le Superchicche": {
+		"team_name": "Le Superchicche",
+		"youtube_video_link": "https://youtu.be/OYxNpFl_oAE",
+		"eyecatcher": "AI Smart City Companion",
+		"description": "Anty, the AI agent behind DayByDay, serves as a smart city companion, helping people optimize their day. It combines personal preferences, real-time data, and calendar integration to learn user routines. Based on context like time, location, and weather, Anty suggests relevant places such as cafés, bars, or shops. Currently tailored for students in Antwerp, it aims to become a personalized everyday assistant with plans for expansion."
+	},
+	"The navigators": {
+		"team_name": "The navigators",
+		"youtube_video_link": "https://www.youtube.com/watch?v=sgfhWic9LnM",
+		"eyecatcher": "AI Mood-Aware Route Generator",
+		"description": "WanderlyAI is an AI-powered city discovery companion that acts as a smart, mood-aware walking route generator. It transforms everyday strolls into personalized adventures by tailoring urban exploration to user preferences, time, and emotional state. Designed as a mobile-first experience with a Django backend and Gemini AI integration, it aims to unlock any city's hidden charm. The app generates hyper-personalized routes based on simple user queries."
+	},
+	"JobPilot": {
+		"team_name": "JobPilot",
+		"youtube_video_link": "",
+		"eyecatcher": "AI Job Search Assistant",
+		"description": "JobPilot is a personal AI assistant designed to streamline the often exhausting job search process. It addresses the challenges of endless scrolling and repetitive application tasks by finding suitable opportunities. Furthermore, Jobpilot can draft motivation letters, saving users significant time and energy. The ultimate goal is to allow job seekers to focus more effectively on landing the job they deserve."
+	}
+}

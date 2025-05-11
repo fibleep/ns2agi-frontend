@@ -1,0 +1,74 @@
+{
+	"Phischer-MAN": {
+		"team_name": "Phischer-MAN",
+		"youtube_video_link": "https://youtu.be/YJmjI722QRE",
+		"eyecatcher": "Instant Phishing Email Detector",
+		"description": "The Phishing Email Detector helps users identify phishing emails by analyzing them for suspicious keywords, links, and senders. It calculates a Phishing Score and provides warnings and detailed analyses. Users can paste an email into the textbox for analysis, which then detects suspicious elements and presents a score. The technology uses HTML/Tailwind CSS for the interface and a DeepSeek LLM for advanced text analysis."
+	},
+	"SliceWise": {
+		"team_name": "SliceWise",
+		"youtube_video_link": "https://youtu.be/pgk3MrdI6gs",
+		"eyecatcher": "AI Pizza Event Estimator",
+		"description": "SliceWise is an innovative AI-powered application designed to accurately estimate the number of pizzas required for any event. Its goal is to prevent both shortages of food for guests and wastage of uneaten slices. By ensuring pizza precision every time, SliceWise offers a practical solution for event planning."
+	},
+	"ClaimBack10": {
+		"team_name": "ClaimBack10",
+		"youtube_video_link": "https://youtu.be/xn-YTzoHKdg",
+		"eyecatcher": "AI Meeting Focus Assistant",
+		"description": "ClaimBackTen enhances meeting productivity and structure by aiding with scheduling and focus management. When a meeting is set up, it assists in providing clear context and uses Teams to prompt for missing key details. During the meeting, it actively monitors discussions in real time. If conversations stray off-topic, ClaimBackTen issues an alert to help refocus the participants and keep meetings efficient."
+	},
+	"FocusFlow": {
+		"team_name": "FocusFlow",
+		"youtube_video_link": "https://youtu.be/W-FAIoJg3qY",
+		"eyecatcher": "Explore Project Repository",
+		"description": "This project's provided information consists solely of a reference to a code repository. Details regarding its purpose, functionality, or features are not available in the given description text. To understand the project, one would need to consult external resources or the repository itself if accessible."
+	},
+	"agentic boys": {
+		"team_name": "agentic boys",
+		"youtube_video_link": "https://youtu.be/tBpAk94NRhQ",
+		"eyecatcher": "AI Financial Document Analysis",
+		"description": "fAInance is a web-based AI platform designed to automate financial document analysis through a multi-agent system. Users can upload CSV or Excel financial documents, initiating a backend process handled by four distinct AI agents for data understanding, statistical analysis, market research, and report generation. The platform uses a Flask backend, Vue.js for displaying results, and CrewAI to manage the agents. fAInance aims to streamline financial insights, enabling businesses to make data-driven decisions more efficiently."
+	},
+	"Bugify": {
+		"team_name": "Bugify",
+		"youtube_video_link": "https://youtu.be/xrtWyPhH30s?si=Jf7_IbmXW9oNcGTJ",
+		"eyecatcher": "Controlled Code Bug Audits",
+		"description": "Bugify is a developer auditing tool that strategically introduces controlled bugs into codebases. This helps companies evaluate their development teams and enhance quality assurance processes. Its advanced bug generation engine creates realistic issues, from simple errors to complex failures, with controllable complexity and severity. The purpose is to assess developer effectiveness, identify workflow gaps, create troubleshooting scenarios, and test security issue identification."
+	},
+	"Guinness, Sake & Lotoko": {
+		"team_name": "Guinness, Sake & Lotoko",
+		"youtube_video_link": "https://youtu.be/19IBavct8kA",
+		"eyecatcher": "AI-Powered Dating Assistant",
+		"description": "This project enhances the dating experience by integrating multiple AI-powered agents. These agents provide intelligent matchmaking, conversation advice, and web-based recommendations for date locations and suitable hobbies. The system is built with a modular and scalable architecture, leveraging advanced language models and search mechanisms. Its goal is to deliver a highly interactive and personalized dating assistant."
+	},
+	"Paserjuan": {
+		"team_name": "Paserjuan",
+		"youtube_video_link": "https://youtu.be/RqRHQODUVDU",
+		"eyecatcher": "AI Discord Booking Assistant",
+		"description": "This project is an AI-powered booking assistant designed for Discord to address chaotic group activity coordination. It introduces an AI agent to automate scheduling and streamline bookings directly within Discord chats. The intelligent bot acts as a personal assistant, helping users book activities effortlessly. The system integrates Google Calendar for scheduling and Google's Gemini AI for smart decision-making and natural language interactions."
+	},
+	"tesseract": {
+		"team_name": "tesseract",
+		"youtube_video_link": "https://youtu.be/uhhVSV9uE7I",
+		"eyecatcher": "AI Personalized Travel Agent",
+		"description": "The AI Travel Agent is an intelligent travel planning assistant for creating personalized and optimized travel itineraries. It uses AI text generation, Google Maps API, and weather forecasting to offer detailed recommendations based on user preferences, budget, and activity level. The system is implemented with Streamlit for the user interface and Google Gemini AI for generating itineraries. Key features include location-based recommendations for accommodations and attractions, along with weather-aware planning."
+	},
+	"DEA": {
+		"team_name": "DEA",
+		"youtube_video_link": "https://www.youtube.com/watch?v=d0Lj3iA4E4s&feature=youtu.be",
+		"eyecatcher": "AI Finds Snack Deals",
+		"description": "SnackScout is an AI-powered application designed to find the best deals on users' favorite snacks and drinks at nearby stores. It quickly searches for the closest stores, considering product availability, price, and distance. Users can describe their craving for the AI to find it, optimizing for both affordability and proximity. The app aims to provide a user-friendly interface for quick and easy navigation to satisfy snack cravings efficiently."
+	},
+	"Multi-agent Lab 6": {
+		"team_name": "Multi-agent Lab 6",
+		"youtube_video_link": "https://youtu.be/-IsaZ2US3ys",
+		"eyecatcher": "AI Academic Paper Navigator",
+		"description": "This AI-powered research agent addresses the challenge of finding relevant academic papers amidst exponential publication growth. It filters ArXiv papers based on relevance, author credibility, and social media discussions, using multi-agent AI. The system refines queries, analyzes full texts, assesses authors, and tracks trends on platforms like X, Reddit, and LinkedIn. It also predicts future impact and allows user-customized rankings to highlight critical research efficiently."
+	},
+	"scheduler": {
+		"team_name": "scheduler",
+		"youtube_video_link": "https://youtu.be/5l7M0mCOei8",
+		"eyecatcher": "AI Employee Schedule Generator",
+		"description": "The AI-Powered Weekly Employee Schedule Generator is a web application built to automate and optimize employee work schedule creation. It utilizes a powerful AI model combined with a simple web interface. The application generates weekly shift schedules for employees based on user-defined parameters and default business rules. The primary aim is to simplify and improve the efficiency of scheduling tasks."
+	}
+}

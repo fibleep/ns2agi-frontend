@@ -2,61 +2,237 @@
 // src/pages/events/index.astro
 import Layout from '../../layouts/Layout.astro';
 
-const pastEvents = [
-  { name: "Agentic Hackathon I", date: "March 8, 2025", link: "/events/agentic-hackathon-i", description: "Our first major hackathon focused on building autonomous AI agents."}
+/**
+ * @typedef {'ALL' | 'IGNITE' | 'SIGNAL' | 'PULSE' | 'OTHER'} EventCategory
+ * @typedef {'upcoming' | 'past'} EventStatus
+ */
+
+/**
+ * @type {{name: string, date: string, link: string, description: string, category: EventCategory, status: EventStatus}[]} 
+ */
+const allEvents = [
+  {
+    name: "Agentic Hackathon I",
+    date: "March 8th, 2025",
+    link: "/events/agentic-hackathon-i",
+    description: "Our first major hackathon focused on building autonomous AI agents.",
+    category: "IGNITE",
+    status: "past"
+  },
+  {
+    name: "Agentic Hackathon II",
+    date: "May 10th, 2025",
+    link: "/events/agentic-hackathon-ii",
+    description: "The second iteration of our agentic hackathon series, building on previous successes.",
+    category: "IGNITE",
+    status: "past" 
+  },
+  // {
+  //   name: "SIGNAL",
+  //   date: "28",       // TODO: Update with actual date
+  //   link: "#upcoming-signal-event",       // TODO: Update with actual link or leave as hash
+  //   description: "Details for the upcoming SIGNAL event will be posted here soon.", // TODO: Update description
+  //   category: "SIGNAL",
+  //   status: "upcoming"
+  // }
 ];
 
-const upcomingEvents = [
-   {
-     name: "Agentic Hackathon II",
-     date: "May 10, 2025", // <<< UPDATED DATE
-     link: "/events/agentic-hackathon-ii", // <<< UPDATED LINK
-     description: "Join us again at The Beacon to build the future"
+// Sort events by date, newest first for consistent display if needed across tabs
+allEvents.sort((a, b) => {
+    // Handle "To Be Announced" dates by pushing them to the end of their status group
+    const isADateTBA = a.date === "To Be Announced";
+    const isBDateTBA = b.date === "To Be Announced";
+
+    if (a.status === 'upcoming' && b.status !== 'upcoming') return -1;
+    if (a.status !== 'upcoming' && b.status === 'upcoming') return 1;
+
+    if (a.status === b.status) { // Both upcoming or both past
+        if (isADateTBA && !isBDateTBA) return 1;  // a is TBA, b is not, so b comes first
+        if (!isADateTBA && isBDateTBA) return -1; // a is not TBA, b is, so a comes first
+        if (isADateTBA && isBDateTBA) return 0;   // both are TBA, order doesn't matter or sort by name
     }
-];
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+});
+
+/** @type {EventCategory[]} */
+const tabCategories = ["ALL", "IGNITE", "SIGNAL", "PULSE", "OTHER"];
 ---
+
 <Layout>
   <main class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-12 text-center animate-fade-in text-white">Events</h1>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-10 text-center animate-fade-in text-white">Our Events</h1>
 
-    {/* --- Upcoming Events --- */}
-    <section class="mb-16 animate-fade-in-delay-1">
-        <h2 class="text-3xl font-semibold mb-8 text-white border-b border-white/20 pb-3">Upcoming Events</h2>
-        {upcomingEvents.length > 0 ? (
-            <div class="grid md:grid-cols-2 gap-6">
-                {upcomingEvents.map(event => (
-                    // Consistent styling, removed hover:border specific color
-                    <a href={event.link} class="block bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-lg transition-all duration-300 border border-white/10 hover:border-white/20">
-                        {/* Removed glitchy-text, changed text color */}
-                        <h3 class="text-xl font-bold mb-2 text-white/95">{event.name}</h3>
-                        <p class="text-white/70 mb-3">{event.date}</p>
-                        <p class="text-white/90">{event.description}</p>
-                    </a>
-                ))}
-            </div>
-        ) : (
-            <p class="text-white/70 text-center">No upcoming events scheduled currently. Check back soon!</p>
-        )}
-    </section>
+    <div class="mb-10 animate-fade-in-delay-1">
+      <div class="flex flex-wrap justify-center gap-2 bg-white/5 p-2 rounded-lg max-w-xl mx-auto shadow-md" id="event-tabs">
+        {tabCategories.map(category => (
+          <button
+            class="tab-button flex-grow sm:flex-grow-0 px-3 py-2 md:px-4 md:py-2.5 text-xs sm:text-sm font-medium rounded-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 text-white/70 hover:bg-white/20"
+            data-category={category}
+          >
+            {category.charAt(0).toUpperCase() + category.slice(1).toLowerCase()}
+          </button>
+        ))}
+      </div>
+    </div>
 
-    {/* --- Past Events --- */}
-    <section class="animate-fade-in-delay-2">
-        <h2 class="text-3xl font-semibold mb-8 text-white border-b border-white/20 pb-3">Past Events</h2>
-         {pastEvents.length > 0 ? (
-            <div class="space-y-6">
-                {pastEvents.map(event => (
-                     <a href={event.link} class="block bg-white/5 hover:bg-white/10 backdrop-blur-sm rounded-lg p-6 shadow-md transition-colors duration-300 border border-white/5 hover:border-white/20">
-                        <h3 class="text-xl font-semibold mb-2 text-white/90">{event.name}</h3>
-                        <p class="text-sm text-white/60 mb-3">{event.date}</p>
-                        <p class="text-white/80">{event.description}</p>
-                    </a>
-                ))}
-            </div>
-         ) : (
-             <p class="text-white/70 text-center">No past events recorded yet.</p>
-         )}
+    <section id="events-container" class="animate-fade-in-delay-2">
+      {/* Event cards will be dynamically inserted here by JavaScript */}
+      {allEvents.length === 0 && (
+        <p class="text-white/70 text-center">No events found. Check back soon!</p>
+      )}
     </section>
   </main>
+
+  <script define:vars={{ allEventsData: allEvents, initialCategories: tabCategories }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabsContainer = document.getElementById('event-tabs');
+      const eventsContainer = document.getElementById('events-container');
+      
+      if (!allEventsData || !initialCategories) {
+        console.error('Event data or categories not loaded into script.');
+        if (eventsContainer) eventsContainer.innerHTML = '<p class="text-white/70 text-center col-span-full">Error loading event data.</p>';
+        return;
+      }
+      
+      const events = JSON.parse(JSON.stringify(allEventsData)); 
+      // Sorting logic already updated in the previous step to handle TBA dates correctly
+      // Ensure the sorting logic is robust if event dates can be invalid beyond 'To Be Announced'
+      events.sort((a, b) => {
+        const isADateTBA = a.date === "To Be Announced";
+        const isBDateTBA = b.date === "To Be Announced";
+
+        if (a.status === 'upcoming' && b.status !== 'upcoming') return -1;
+        if (a.status !== 'upcoming' && b.status === 'upcoming') return 1;
+
+        if (a.status === b.status) {
+            if (isADateTBA && !isBDateTBA) return 1;
+            if (!isADateTBA && isBDateTBA) return -1;
+            if (isADateTBA && isBDateTBA) return 0;
+        }
+        // Fallback for actual date comparison
+        const dateA = new Date(a.date).getTime();
+        const dateB = new Date(b.date).getTime();
+        if (isNaN(dateA) && !isNaN(dateB)) return 1; // Invalid dates go last
+        if (!isNaN(dateA) && isNaN(dateB)) return -1;
+        if (isNaN(dateA) && isNaN(dateB)) return 0;
+
+        return dateB - dateA; // Newest first
+      });
+
+      /** @param {string} category */
+      function renderEvents(category) {
+        if (!eventsContainer) return;
+        eventsContainer.innerHTML = ''; 
+
+        const filteredEvents = category === 'ALL' 
+          ? events 
+          : events.filter(event => event.category === category);
+
+        if (filteredEvents.length === 0) {
+          let message = `No events in the ${category.toLowerCase()} category yet. Stay tuned!`;
+          if (category === 'ALL' && events.length === 0) { // Check if allEvents itself is empty for the ALL tab
+             message = `No events scheduled. Check back soon!`;
+          }
+          eventsContainer.innerHTML = `<p class="text-white/70 text-center col-span-full">${message}</p>`;
+          return;
+        }
+        
+        const grid = document.createElement('div');
+        grid.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-6';
+
+        filteredEvents.forEach(event => {
+          const card = document.createElement('a');
+          card.href = event.link;
+          card.className = 'event-card block bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-lg transition-all duration-300 border border-white/10 hover:border-white/20 transform hover:-translate-y-1';
+          
+          let statusBadge = '';
+          if (event.status === 'upcoming') {
+            statusBadge = '<span class="absolute top-3 right-3 bg-green-500/80 text-white text-xs font-semibold px-2 py-0.5 rounded-full">Upcoming</span>';
+          } else if (event.status === 'past') {
+            statusBadge = '<span class="absolute top-3 right-3 bg-gray-500/80 text-white text-xs font-semibold px-2 py-0.5 rounded-full">Past</span>';
+          }
+
+          card.innerHTML = `
+            <div class="relative">
+              ${statusBadge}
+              <h3 class="text-xl font-bold mb-2 text-white/95">${event.name}</h3>
+              <p class="text-pink-400/80 text-sm mb-1">${event.category}</p>
+              <p class="text-white/70 mb-3 text-sm">${event.date}</p>
+              <p class="text-white/80 text-base leading-relaxed line-clamp-3">${event.description}</p>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+        eventsContainer.appendChild(grid);
+      }
+
+      /** @param {string} category */
+      function setActiveTab(category) {
+        if (!tabsContainer) return;
+        const buttons = tabsContainer.querySelectorAll('.tab-button');
+        buttons.forEach(button => {
+          if (!(button instanceof HTMLButtonElement)) return;
+          if (button.dataset.category === category) {
+            button.classList.add('bg-pink-600', 'text-white', 'shadow-lg');
+            button.classList.remove('hover:bg-white/20', 'text-white/70');
+          } else {
+            button.classList.remove('bg-pink-600', 'text-white', 'shadow-lg');
+            button.classList.add('hover:bg-white/20', 'text-white/70');
+          }
+        });
+        renderEvents(category);
+      }
+
+      if (tabsContainer) {
+        tabsContainer.addEventListener('click', (e) => {
+          const targetButton = e.target.closest('.tab-button');
+          if (targetButton && targetButton instanceof HTMLButtonElement) {
+            const category = targetButton.dataset.category;
+            if (category) {
+              setActiveTab(category);
+              window.location.hash = category.toLowerCase(); 
+            }
+          }
+        });
+      }
+      
+      const initialTabFromHash = window.location.hash.substring(1).toUpperCase();
+      if (initialCategories.includes(initialTabFromHash)) {
+        setActiveTab(initialTabFromHash);
+      } else {
+        setActiveTab('ALL'); 
+      }
+    });
+  </script>
+
+  <style>
+    .tab-button {
+      /* Base styles if not covered by Tailwind */
+    }
+    .tab-button.text-white\/70 {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    .tab-button.hover\:bg-white\/20:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    .tab-button.bg-pink-600 {
+       background-color: #db2777; /* Ensure Tailwind pink-600 */
+       color: white;
+    }
+    .event-card {
+        min-height: 180px; 
+        display: flex; 
+        flex-direction: column;
+    }
+    .event-card > div {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    .event-card p.leading-relaxed {
+        flex-grow: 1;
+    }
+  </style>
 </Layout>
 
 {/* Removed glitchy style definition if it was here, assuming it's global or not needed */}

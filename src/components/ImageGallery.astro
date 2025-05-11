@@ -10,13 +10,13 @@ interface Image {
 interface Props extends HTMLAttributes<'div'> {
   images: Image[];
   title?: string; // Optional title for the gallery section
-  columns?: string; // Optional Tailwind classes for columns, e.g., "sm:columns-2 md:columns-3"
+  columns?: string; // Optional Tailwind classes for columns, e.g., "sm:grid-cols-2 md:grid-cols-3"
 }
 
 const {
   images = [],
   title,
-  columns = 'columns-1 sm:columns-2 md:columns-3', // Default columns
+  columns = 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3', // Changed to grid classes
   class: className,
   ...rest
 } = Astro.props;
@@ -27,10 +27,10 @@ const {
   <section class:list={["w-full max-w-6xl mx-auto px-4", className]} {...rest}>
     {title && <h2 class="text-3xl font-semibold mb-8 text-white text-center">{title}</h2>}
 
-    {/* Gallery using CSS Columns */}
-    <div class={`gap-4 md:gap-6 ${columns}`}>
+    {/* Gallery using CSS Grid */}
+    <div class={`grid ${columns} gap-4 md:gap-6`}> {/* Apply grid and gap here */}
       {images.map((image) => (
-        <div class="relative mb-4 md:mb-6 break-inside-avoid block overflow-hidden rounded-lg shadow-lg border border-white/10 group bg-black/20 cursor-pointer">
+        <div class="relative block overflow-hidden rounded-lg shadow-lg border border-white/10 group bg-black/20 cursor-pointer">
           <img
             src={image.src}
             alt={image.alt}
@@ -43,7 +43,7 @@ const {
            </div>
         </div>
       ))} {/* End of .map() */}
-    </div> {/* End of columns div */}
+    </div> {/* End of grid div */}
   </section>
 )} 
 
@@ -133,7 +133,7 @@ const {
 
 {/* Style tag (Placed last) */}
 <style>
-  .break-inside-avoid { break-inside: avoid; }
+  /* break-inside-avoid is no longer needed with CSS Grid */
   /* Optional: Style for the image inside the modal if needed */
   #lightbox-image {
     /* Add any specific styles if needed, e.g., border */
