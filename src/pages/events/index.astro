@@ -12,52 +12,44 @@ import Layout from '../../layouts/Layout.astro';
  */
 const allEvents = [
   {
+    name: "SIGNAL I",
+    date: "June 5, 2025",
+    link: "/events/signal-i",
+    description: "Our first SIGNAL AI meetup featuring expert speakers from Bugify and imec, exploring the collapse of modern software development and social robotics.",
+    status: "past"
+  },
+  {
     name: "Agentic Hackathon I",
-    date: "March 8th, 2025",
+    date: "March 8, 2025",
     link: "/events/agentic-hackathon-i",
     description: "Our first major hackathon focused on building autonomous AI agents.",
-    category: "IGNITE",
     status: "past"
   },
   {
     name: "Agentic Hackathon II",
-    date: "May 10th, 2025",
+    date: "May 10, 2025",
     link: "/events/agentic-hackathon-ii",
     description: "The second iteration of our agentic hackathon series, building on previous successes.",
-    category: "IGNITE",
     status: "past" 
   },
   {
-    name: "Upcoming SIGNAL Event", 
-    date: "COMING SOON...",      
-    link: "#signal-coming-soon",       
-    description: "Details for the upcoming SIGNAL event will be posted here soon.", 
-    category: "SIGNAL",
+    name: "Worldwide Robotics Hackathon",
+    date: "June 14-15, 2025",
+    link: "/robotics-hackathon",
+    description: "In collaboration with Hugging Face and LeRobot, the Antwerp edition of the biggest robotics hackathon ever.",
     status: "upcoming"
   }
 ];
 
-// Sort events
+// Sort events - upcoming first, then by date
 allEvents.sort((a, b) => {
-    const isADateTBAOrComingSoon = a.date === "To Be Announced" || a.date === "COMING SOON...";
-    const isBDateTBAOrComingSoon = b.date === "To Be Announced" || b.date === "COMING SOON...";
-
-    if (a.status === 'upcoming' && b.status !== 'upcoming') return -1;
-    if (a.status !== 'upcoming' && b.status === 'upcoming') return 1;
-
-    if (a.status === b.status) { 
-        if (isADateTBAOrComingSoon && !isBDateTBAOrComingSoon) return 1;  
-        if (!isADateTBAOrComingSoon && isBDateTBAOrComingSoon) return -1; 
-        if (isADateTBAOrComingSoon && isBDateTBAOrComingSoon) return 0;   
-    }
-    
-    const dateA = new Date(a.date).getTime();
-    const dateB = new Date(b.date).getTime();
-    if (isNaN(dateA) && !isNaN(dateB)) return 1; 
-    if (!isNaN(dateA) && isNaN(dateB)) return -1;
-    if (isNaN(dateA) && isNaN(dateB)) return 0;
-
-    return dateB - dateA; 
+  if (a.status === 'upcoming' && b.status !== 'upcoming') return -1;
+  if (a.status !== 'upcoming' && b.status === 'upcoming') return 1;
+  
+  const dateA = new Date(a.date).getTime();
+  const dateB = new Date(b.date).getTime();
+  
+  return dateB - dateA; 
 });
 
 /** @type {EventCategory[]} */
@@ -66,25 +58,34 @@ const tabCategories = ["ALL", "IGNITE", "SIGNAL", "PULSE", "OTHER"];
 
 <Layout>
   <main class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-10 text-center animate-fade-in text-white">Our Events</h1>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-16 text-center animate-fade-in text-white">Our Events</h1>
 
-    <div class="mb-10 animate-fade-in-delay-1">
-      <div class="flex flex-wrap justify-center gap-2 bg-white/5 p-2 rounded-lg max-w-xl mx-auto shadow-md" id="event-tabs">
-        {tabCategories.map(category => (
-          <button
-            class="tab-button flex-grow sm:flex-grow-0 px-3 py-2 md:px-4 md:py-2.5 text-xs sm:text-sm font-medium rounded-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 text-white/70 hover:bg-white/20"
-            data-category={category}
-          >
-            {category.charAt(0).toUpperCase() + category.slice(1).toLowerCase()}
-          </button>
-        ))}
-      </div>
-    </div>
-
-    <section id="events-container" class="animate-fade-in-delay-2">
-      {/* Event cards will be dynamically inserted here by JavaScript */}
-      {allEvents.length === 0 && (
+    <section class="animate-fade-in-delay-1">
+      {allEvents.length === 0 ? (
         <p class="text-white/70 text-center">No events found. Check back soon!</p>
+      ) : (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {allEvents.map((event) => (
+            <a 
+              href={event.link}
+              class="event-card block bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-lg transition-all duration-300 border border-white/10 hover:border-white/20 transform hover:-translate-y-1"
+            >
+              <div class="relative">
+                <span class={`absolute top-0 right-0 text-xs font-semibold px-2 py-0.5 rounded-full ${
+                  event.status === 'upcoming' 
+                    ? 'bg-green-500/80 text-white' 
+                    : 'bg-gray-500/80 text-white'
+                }`}>
+                  {event.status === 'upcoming' ? 'Upcoming' : 'Past'}
+                </span>
+
+                <h3 class="text-xl font-bold mb-2 text-white/95 pr-16">{event.name}</h3>
+                <p class="text-white/70 mb-3 text-sm">{event.date}</p>
+                <p class="text-white/80 text-base leading-relaxed line-clamp-3">{event.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
       )}
     </section>
   </main>
@@ -240,5 +241,3 @@ const tabCategories = ["ALL", "IGNITE", "SIGNAL", "PULSE", "OTHER"];
     }
   </style>
 </Layout>
-
-{/* Removed glitchy style definition if it was here, assuming it's global or not needed */}

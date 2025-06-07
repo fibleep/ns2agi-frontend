@@ -1,0 +1,78 @@
+<html lang="en" class="bg-black">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>North Star AGI - Stars</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Using a common sans-serif font for now */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .donate-button {
+            background-color: #FF5E5B; /* Ko-fi red */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 94, 91, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        .donate-button:hover {
+            background-color: #E04A47;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 94, 91, 0.5);
+        }
+        .donate-button:active {
+            transform: translateY(0px);
+            box-shadow: 0 4px 15px rgba(255, 94, 91, 0.4);
+        }
+        .content-placeholder {
+            margin-top: 40px;
+            color: #aaa;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <h1>Our Supporters</h1>
+    <p>Become a star in our constellation by supporting North Star AGI.</p>
+
+    <a href="https://ko-fi.com/YOUR_KOFI_USERNAME" target="_blank" rel="noopener noreferrer" class="donate-button">
+        Donate via Ko-fi
+    </a>
+
+    <div class="content-placeholder">
+        <p>[3D Star Constellation - Coming Soon]</p>
+        <!-- Ko-fi Feed Embed Placeholder -->
+        <div id="kofi-feed-container" style="margin-top: 20px; border: 1px dashed #555; padding: 20px; width: 80%; max-width: 500px; height: 400px; overflow-y: auto; background-color: #1a1a1a;">
+            <p style="color: #ccc;">Ko-fi donations will appear here.</p>
+            <p style="color: #888; font-size: 0.9em;">Replace this section with the Ko-fi widget embed code (likely an iframe or script).</p>
+            <!-- Example of what an iframe embed might look like: -->
+            <!-- 
+            <iframe 
+                id='kofiframe' 
+                src='https://ko-fi.com/YOUR_KOFI_USERNAME/?hidefeed=true&widget=true&embed=true&preview=true' 
+                style='border:none;width:100%;padding:4px;background:#f9f9f9;' 
+                height='600' 
+                title='YOUR_KOFI_USERNAME'
+            ></iframe>
+            -->
+        </div>
+    </div>
+</body>
+</html> 

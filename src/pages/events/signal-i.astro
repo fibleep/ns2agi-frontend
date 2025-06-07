@@ -1,0 +1,289 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const speakers = [
+  {
+    name: "Daria Matviichuk & Samuel Berton",
+    company: "Bugify",
+    topic: "Collapse of modern software development",
+    description: "With an explosion of code, an explosion of bugs is sure to follow - how can we handle this? This team is one of the winners of our first hackathon - home raised ✌️",
+    emoji: "🪲"
+  },
+  {
+    name: "Thomas Huybrechts",
+    company: "Researcher @ imec",
+    topic: "Social Robotics + animatronic parrot demo!",
+    description: "An exciting exploration into social robotics with live demonstrations featuring an animatronic parrot.",
+    emoji: "🤖"
+  }
+];
+
+// Selected photos from the event
+const eventPhotos = [
+  'IMG_0533.jpg', 'IMG_0529.jpg', 'IMG_0519.jpg', 'IMG_0508.jpg', 
+  'IMG_0494.jpg', 'IMG_0470.jpg', 'IMG_0469.jpg', 'IMG_0467.jpg',
+  'IMG_0465.jpg', 'IMG_0461.jpg', 'IMG_0452.jpg', 'IMG_0448.jpg',
+  'IMG_0443.jpg', 'IMG_0431.jpg', 'IMG_0429.jpg', 'IMG_0421.jpg'
+];
+---
+
+<Layout>
+  <main class="container mx-auto px-4 py-16 md:py-20">
+    
+    <!-- Header Section -->
+    <div class="text-center mb-16 animate-fade-in">
+      <div class="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
+        <span class="text-sm font-medium text-white/90">SIGNAL EVENT</span>
+      </div>
+      
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-white">
+        SIGNAL I
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-white/80 mb-4">
+        AI Meetup - June 5, 2025
+      </p>
+      
+      <p class="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
+        Our first SIGNAL event brought together AI enthusiasts, researchers, and builders to explore the cutting edge of technology. Here's a look back at an amazing evening of insights and connections.
+      </p>
+    </div>
+
+    <!-- Speakers Section -->
+    <section class="mb-20 animate-fade-in-delay-1">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
+        Featured Speakers
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {speakers.map((speaker) => (
+          <div class="bg-white/5 backdrop-blur-md rounded-xl p-8 shadow-xl border border-white/10 hover:border-white/20 transition-all duration-300">
+            <div class="text-center mb-6">
+              <div class="text-4xl mb-4">{speaker.emoji}</div>
+              <h3 class="text-2xl font-bold text-white/95 mb-2">
+                {speaker.name}
+              </h3>
+              <p class="text-pink-400/90 font-medium text-lg mb-4">
+                {speaker.company}
+              </p>
+            </div>
+            
+            <div class="space-y-4">
+              <h4 class="text-xl font-semibold text-white/90">
+                {speaker.topic}
+              </h4>
+              <p class="text-white/80 leading-relaxed">
+                {speaker.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="mb-16 animate-fade-in-delay-2">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
+        Event Highlights
+      </h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+        {eventPhotos.map((photo, index) => (
+          <div 
+            class="group relative overflow-hidden rounded-lg aspect-square bg-white/5 hover:scale-105 transition-transform duration-300 cursor-pointer"
+            onclick={`openFullscreen(${index})`}
+          >
+            <img 
+              src={`/signal-i/${photo}`}
+              alt={`SIGNAL event moment ${index + 1}`}
+              class="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+              </svg>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-8">
+        <p class="text-white/60 text-sm">
+          Capturing the energy and connections from our first SIGNAL event
+        </p>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center animate-fade-in-delay-3">
+      <h3 class="text-2xl md:text-3xl font-bold mb-6 text-white">
+        Join Our Community
+      </h3>
+      
+      <p class="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
+        Don't miss future SIGNAL events and other exciting gatherings. Connect with us and be part of North Star AGI's growing community.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://discord.gg/m5Hknymurb"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 
+                 hover:bg-white/20 transition-all duration-300 text-white/90 hover:text-white hover:scale-105"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
+          </svg>
+          Join Our Discord
+        </a>
+        
+        <a
+          href="/events"
+          class="inline-flex items-center px-8 py-4 bg-pink-600 text-white font-semibold rounded-full 
+                 hover:bg-pink-700 hover:scale-105 transition-all duration-300 shadow-lg"
+        >
+          <span class="mr-2">View All Events</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Fullscreen Image Modal -->
+  <div 
+    id="fullscreen-modal" 
+    class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden items-center justify-center"
+    onclick="closeFullscreen(event)"
+  >
+    <div class="relative max-w-screen max-h-screen p-4 flex items-center justify-center">
+      <!-- Close Button -->
+      <button 
+        onclick="closeFullscreen()"
+        class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors duration-200"
+      >
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <!-- Previous Button -->
+      <button 
+        onclick="previousImage()"
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors duration-200"
+      >
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+
+      <!-- Next Button -->
+      <button 
+        onclick="nextImage()"
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors duration-200"
+      >
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <!-- Main Image -->
+      <img 
+        id="fullscreen-image"
+        src=""
+        alt=""
+        class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+      />
+
+      <!-- Image Counter -->
+      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+        <span id="image-counter" class="text-white text-sm font-medium"></span>
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ photos: eventPhotos }}>
+    let currentImageIndex = 0;
+    const eventPhotos = photos;
+
+    function openFullscreen(index) {
+      currentImageIndex = index;
+      const modal = document.getElementById('fullscreen-modal');
+      const image = document.getElementById('fullscreen-image');
+      const counter = document.getElementById('image-counter');
+      
+      image.src = `/signal-i/${eventPhotos[index]}`;
+      image.alt = `SIGNAL event moment ${index + 1}`;
+      counter.textContent = `${index + 1} / ${eventPhotos.length}`;
+      
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFullscreen(event) {
+      if (event && event.target !== event.currentTarget) return;
+      
+      const modal = document.getElementById('fullscreen-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % eventPhotos.length;
+      openFullscreen(currentImageIndex);
+    }
+
+    function previousImage() {
+      currentImageIndex = (currentImageIndex - 1 + eventPhotos.length) % eventPhotos.length;
+      openFullscreen(currentImageIndex);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (event) => {
+      const modal = document.getElementById('fullscreen-modal');
+      if (!modal.classList.contains('hidden')) {
+        switch(event.key) {
+          case 'Escape':
+            closeFullscreen();
+            break;
+          case 'ArrowRight':
+            nextImage();
+            break;
+          case 'ArrowLeft':
+            previousImage();
+            break;
+        }
+      }
+    });
+
+    // Make functions globally available
+    window.openFullscreen = openFullscreen;
+    window.closeFullscreen = closeFullscreen;
+    window.nextImage = nextImage;
+    window.previousImage = previousImage;
+  </script>
+</Layout>
+
+<style>
+  /* Smooth loading for images */
+  img {
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Ensure proper aspect ratio for gallery */
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Prevent body scroll when modal is open */
+  body.modal-open {
+    overflow: hidden;
+  }
+</style>
