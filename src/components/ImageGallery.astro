@@ -27,103 +27,164 @@ const {
   <section class:list={["w-full max-w-6xl mx-auto px-4", className]} {...rest}>
     {title && <h2 class="text-3xl font-semibold mb-8 text-white text-center">{title}</h2>}
 
-    {/* Gallery using CSS Grid */}
-    <div class={`grid ${columns} gap-4 md:gap-6`}> {/* Apply grid and gap here */}
-      {images.map((image) => (
-        <div class="relative block overflow-hidden rounded-lg shadow-lg border border-white/10 group bg-black/20 cursor-pointer">
+    {/* Gallery using CSS Grid with proper aspect ratio handling */}
+    <div class={`gallery-grid ${columns} gap-4 md:gap-6`}>
+      {images.map((image, index) => (
+        <div class="gallery-item relative overflow-hidden rounded-3xl shadow-lg border border-white/10 group bg-black/20 cursor-pointer transition-transform duration-300 hover:scale-[1.02]">
           <img
             src={image.src}
             alt={image.alt}
-            class="w-full h-auto object-cover block transition-opacity duration-300 ease-in-out gallery-image"
+            class="w-full h-full object-cover transition-all duration-300 ease-in-out gallery-image group-hover:scale-105"
             loading="lazy"
             data-alt={image.alt}
+            data-index={index}
           />
-          <div class="absolute inset-0 p-4 flex items-end bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
-             <p class="text-white text-sm md:text-base line-clamp-2">{image.alt}</p>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+          <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out transform translate-y-2 group-hover:translate-y-0">
+             <p class="text-white text-sm font-medium drop-shadow-lg">{image.alt}</p>
            </div>
         </div>
-      ))} {/* End of .map() */}
-    </div> {/* End of grid div */}
+      ))}
+    </div>
   </section>
 )} 
 
 <div id="lightbox-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out">
   <button id="lightbox-close" class="absolute top-4 right-4 text-white/70 hover:text-white text-4xl font-bold z-50" aria-label="Close image viewer">&times;</button>
+  
+  <!-- Previous/Next Navigation -->
+  <button id="lightbox-prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white text-3xl font-bold z-50 bg-black/30 hover:bg-black/50 rounded-full w-12 h-12 flex items-center justify-center transition-all duration-200" aria-label="Previous image">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+    </svg>
+  </button>
+  
+  <button id="lightbox-next" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white text-3xl font-bold z-50 bg-black/30 hover:bg-black/50 rounded-full w-12 h-12 flex items-center justify-center transition-all duration-200" aria-label="Next image">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+
   <figure class="max-w-full max-h-full relative">
-    <img id="lightbox-image" src="" alt="" class="block max-w-full max-h-[90vh] object-contain rounded-sm shadow-xl" /> {/* Ensure self-closing tag */}
-    <figcaption id="lightbox-caption" class="text-center text-white/80 mt-2 text-sm"></figcaption>
+    <img id="lightbox-image" src="" alt="" class="block max-w-full max-h-[90vh] object-contain rounded-lg shadow-xl" />
+    <figcaption id="lightbox-caption" class="text-center text-white/80 mt-4 text-sm"></figcaption>
+    <div id="lightbox-counter" class="text-center text-white/60 mt-2 text-xs"></div>
   </figure>
 </div>
 
-{/* Lightbox Script (Placed AFTER all HTML) */}
-{/* Added is:inline as a best practice for scripts interacting directly with component's DOM */}
+{/* Enhanced Lightbox Script with Navigation */}
 <script is:inline>
-  // Simple Lightbox Functionality
-  // Wrap in a function to avoid polluting global scope and ensure elements exist
+  // Enhanced Lightbox with Navigation Functionality
   function initializeLightbox() {
     const galleryImages = document.querySelectorAll('.gallery-image');
     const modal = document.getElementById('lightbox-modal');
-    const modalImage = document.getElementById('lightbox-image'); // No type assertion needed in JS
+    const modalImage = document.getElementById('lightbox-image');
     const modalCaption = document.getElementById('lightbox-caption');
+    const modalCounter = document.getElementById('lightbox-counter');
     const closeModalBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+
+    let currentImageIndex = 0;
+    const imageData = [];
 
     // Early exit if essential elements aren't found
     if (!modal || !modalImage || !modalCaption || galleryImages.length === 0) {
-      // console.warn("Lightbox elements not found or no gallery images.");
       return;
     }
 
-    function openModal(imgElement) {
-      const src = imgElement.getAttribute('src');
-      const alt = imgElement.getAttribute('data-alt') || imgElement.getAttribute('alt') || '';
+    // Collect image data
+    galleryImages.forEach((img, index) => {
+      imageData.push({
+        src: img.getAttribute('src'),
+        alt: img.getAttribute('data-alt') || img.getAttribute('alt') || '',
+        index: index
+      });
+    });
 
-      if (src) {
-        modalImage.src = src;
-        modalImage.alt = alt;
-        modalCaption.textContent = alt;
-        modal.classList.remove('hidden');
-        // Use requestAnimationFrame for smoother transition start
-        requestAnimationFrame(() => {
-            modal.classList.remove('opacity-0');
-        });
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    function updateModal(index) {
+      const imageInfo = imageData[index];
+      if (imageInfo) {
+        modalImage.src = imageInfo.src;
+        modalImage.alt = imageInfo.alt;
+        modalCaption.textContent = imageInfo.alt;
+        modalCounter.textContent = `${index + 1} of ${imageData.length}`;
+        
+        // Show/hide navigation buttons
+        prevBtn.style.display = imageData.length > 1 ? 'flex' : 'none';
+        nextBtn.style.display = imageData.length > 1 ? 'flex' : 'none';
       }
+    }
+
+    function openModal(index) {
+      currentImageIndex = index;
+      updateModal(currentImageIndex);
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0');
+      });
+      document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
       modal.classList.add('opacity-0');
       setTimeout(() => {
-          modal.classList.add('hidden');
-          modalImage.src = ""; // Clear src to stop loading/free memory
-          modalImage.alt = "";
-          modalCaption.textContent = "";
-          document.body.style.overflow = ''; // Restore background scrolling
-      }, 300); // Match transition duration
+        modal.classList.add('hidden');
+        modalImage.src = "";
+        modalImage.alt = "";
+        modalCaption.textContent = "";
+        modalCounter.textContent = "";
+        document.body.style.overflow = '';
+      }, 300);
     }
 
-    galleryImages.forEach(img => {
-      // Ensure we're adding listener to the clickable container if needed, or image itself
-      const clickableElement = img.closest('.cursor-pointer') || img; // Prefer container if exists
-      clickableElement.addEventListener('click', () => openModal(img));
+    function showPrevImage() {
+      currentImageIndex = currentImageIndex > 0 ? currentImageIndex - 1 : imageData.length - 1;
+      updateModal(currentImageIndex);
+    }
+
+    function showNextImage() {
+      currentImageIndex = currentImageIndex < imageData.length - 1 ? currentImageIndex + 1 : 0;
+      updateModal(currentImageIndex);
+    }
+
+    // Event listeners for images
+    galleryImages.forEach((img, index) => {
+      const clickableElement = img.closest('.cursor-pointer') || img;
+      clickableElement.addEventListener('click', () => openModal(index));
     });
 
+    // Event listeners for controls
     closeModalBtn?.addEventListener('click', closeModal);
+    prevBtn?.addEventListener('click', showPrevImage);
+    nextBtn?.addEventListener('click', showNextImage);
 
+    // Modal backdrop click
     modal.addEventListener('click', (e) => {
-      // Close only if clicking the backdrop itself, not the figure/image inside
       if (e.target === modal) {
         closeModal();
       }
     });
 
+    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-        closeModal();
+      if (!modal.classList.contains('hidden')) {
+        switch(e.key) {
+          case 'Escape':
+            closeModal();
+            break;
+          case 'ArrowLeft':
+            showPrevImage();
+            break;
+          case 'ArrowRight':
+            showNextImage();
+            break;
+        }
       }
     });
   }
 
-  // Run the initialization function after the DOM is ready
+  // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeLightbox);
   } else {
@@ -133,9 +194,125 @@ const {
 
 {/* Style tag (Placed last) */}
 <style>
-  /* break-inside-avoid is no longer needed with CSS Grid */
-  /* Optional: Style for the image inside the modal if needed */
+  /* Gallery Grid with proper aspect ratio handling */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: 200px;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  @media (min-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-auto-rows: 240px;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-auto-rows: 200px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-auto-rows: 220px;
+    }
+  }
+
+  /* Make some items span multiple rows for variety */
+  .gallery-item:nth-child(3n+1) {
+    grid-row: span 2;
+  }
+
+  .gallery-item:nth-child(5n+2) {
+    grid-row: span 1;
+  }
+
+  .gallery-item:nth-child(7n+3) {
+    grid-row: span 2;
+  }
+
+  .gallery-item:nth-child(11n+4) {
+    grid-row: span 1;
+  }
+
+  /* Ensure images fill their containers properly */
+  .gallery-item {
+    min-height: 200px;
+    height: 100%;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 250px;
+    }
+    
+    .gallery-item:nth-child(n) {
+      grid-row: span 1;
+    }
+  }
+
+  /* Lightbox modal styling */
   #lightbox-image {
-    /* Add any specific styles if needed, e.g., border */
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 0.5rem;
+  }
+
+  /* Navigation button styling */
+  #lightbox-prev,
+  #lightbox-next {
+    display: none; /* Hidden by default, shown by JS when needed */
+  }
+
+  #lightbox-prev:hover,
+  #lightbox-next:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  /* Hide navigation on touch devices when not needed */
+  @media (hover: none) {
+    #lightbox-prev,
+    #lightbox-next {
+      opacity: 0.8;
+    }
+  }
+
+  /* Responsive navigation positioning */
+  @media (max-width: 640px) {
+    #lightbox-prev {
+      left: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    
+    #lightbox-next {
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    
+    #lightbox-prev svg,
+    #lightbox-next svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
   }
 </style>
+

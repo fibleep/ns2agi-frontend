@@ -92,6 +92,33 @@ const { title = 'North Star AGI', backgroundImageUrl } = Astro.props;
             animation: glitch 1s infinite linear alternate-reverse;
         }
 
+        /* Additional fade-in delays for longer sequences */
+        .animate-fade-in-delay-6 {
+            animation: fade-in 1s ease-out 1.8s backwards;
+        }
+        .animate-fade-in-delay-7 {
+            animation: fade-in 1s ease-out 2.1s backwards;
+        }
+
+        /* Alternative glitch animation for variety */
+        @keyframes glitchy-text {
+          0%, 100% { 
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+          }
+          25% { 
+            text-shadow: -2px 0 5px rgba(255,0,100,0.7), 2px 0 5px rgba(0,255,255,0.7);
+          }
+          50% { 
+            text-shadow: 2px 0 5px rgba(255,0,100,0.7), -2px 0 5px rgba(0,255,255,0.7);
+          }
+          75% { 
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+          }
+        }
+        .glitchy-text-alt {
+            animation: glitchy-text 2s ease-in-out infinite;
+        }
+
 
         html,
         body {

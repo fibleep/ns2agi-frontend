@@ -53,10 +53,10 @@ const originalEventLocation = "The Beacon, Sint-Pietersvliet 7, 2000 Antwerpen, 
 
 // Define the images for the gallery
 const hackathonImages = [
-  { src: "/agentic-hackathon-i/winners.jpeg", alt: "Hackathon winners receiving awards" },
-  { src: "/agentic-hackathon-i/ken.jpeg", alt: "Ken Casier giving the closing speech" },
-  { src: "/agentic-hackathon-i/aftermath.png", alt: "Pizzas" },
-  { src: "/agentic-hackathon-i/treasure.jpeg", alt: "Close-up of the hackathon trophies" }
+  { src: "/agentic-hackathon-i/winners.jpeg", alt: "Agentic Hackathon I" },
+  { src: "/agentic-hackathon-i/ken.jpeg", alt: "Agentic Hackathon I" },
+  { src: "/agentic-hackathon-i/aftermath.png", alt: "Agentic Hackathon I" },
+  { src: "/agentic-hackathon-i/treasure.jpeg", alt: "Agentic Hackathon I" }
 ];
 ---
 
@@ -68,7 +68,7 @@ const hackathonImages = [
     </p>
 
     {/* --- Success Section --- */}
-    <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
+    <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
         <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">A Huge Success!</h2>
         <p class="text-lg mb-4 text-white/90 leading-relaxed">
             The first North Star AGI Agentic Hackathon was a massive success! We saw incredible energy and innovation as 14 teams battled it out, pushing the boundaries of AI agents.
@@ -83,11 +83,11 @@ const hackathonImages = [
       <h2 class="text-3xl font-semibold mb-8 text-white text-center">Congratulations to Our Winners!</h2>
       <div class="grid md:grid-cols-3 gap-6 md:gap-8">
         {winners.map((winner, index) => (
-          <div class={`bg-gradient-to-br ${
-              index === 0 ? 'from-[#4158D0]/30 via-[#C850C0]/30 to-[#FFCC70]/30' :
-              index === 1 ? 'from-[#C850C0]/30 via-[#FFCC70]/30 to-[#4158D0]/30' :
-              'from-[#FFCC70]/30 via-[#4158D0]/30 to-[#C850C0]/30'
-            } backdrop-blur-md rounded-lg p-6 shadow-xl border border-white/10 flex flex-col h-full`}> {/* Added h-full */}
+          <div class={`${
+              index === 0 ? 'bg-blue-500/10' :
+              index === 1 ? 'bg-purple-500/10' :
+              'bg-yellow-500/10'
+            } backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
             <h3 class="text-2xl font-bold mb-3 text-white glitchy-text" style={`animation-duration: ${1 + index * 0.2}s;`}>{winner.category}</h3>
             <p class="text-lg font-semibold mb-2 text-white/95">{winner.team}</p>
             <p class="text-white/80 flex-grow">{winner.project}</p>
@@ -283,18 +283,4 @@ const hackathonImages = [
   </script>
 </Layout>
 
-<style is:global>
-/* Ensure glitchy text animation is available if not globally defined elsewhere */
-@keyframes glitch {
-  0% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
-  14% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
-  15% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #fc00ff; }
-  49% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #fc00ff; }
-  50% { text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #fc00ff; }
-  99% { text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #fc00ff; }
-  100% { text-shadow: -0.025em 0 0 #00fffc, -0.05em -0.025em 0 #fc00ff; }
-}
-.glitchy-text {
-    animation: glitch 1s infinite linear alternate-reverse;
-}
-</style>
+

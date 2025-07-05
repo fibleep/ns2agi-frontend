@@ -1,243 +1,101 @@
 ---
 // src/pages/events/index.astro
+import EventsShowcase from '../../components/EventsShowcase.astro';
 import Layout from '../../layouts/Layout.astro';
 
-/**
- * @typedef {'ALL' | 'IGNITE' | 'SIGNAL' | 'PULSE' | 'OTHER'} EventCategory
- * @typedef {'upcoming' | 'past'} EventStatus
- */
 
-/**
- * @type {{name: string, date: string, link: string, description: string, category: EventCategory, status: EventStatus}[]} 
- */
-const allEvents = [
+
+// Convert events to EventsShowcase format with thumbnails
+const eventsData = [
   {
-    name: "SIGNAL I",
-    date: "June 5, 2025",
-    link: "/events/signal-i",
-    description: "Our first SIGNAL AI meetup featuring expert speakers from Bugify and imec, exploring the collapse of modern software development and social robotics.",
-    status: "past"
+    id: 'signal-i',
+    title: 'SIGNAL I',
+    date: 'June 5, 2025',
+    description: 'Our first SIGNAL AI meetup featuring expert speakers from Bugify and imec, exploring the collapse of modern software development and social robotics.',
+    thumbnail: '/signal-i/IMG_0331.jpg',
+    status: 'completed' as const
   },
   {
-    name: "Agentic Hackathon I",
-    date: "March 8, 2025",
-    link: "/events/agentic-hackathon-i",
-    description: "Our first major hackathon focused on building autonomous AI agents.",
-    status: "past"
+    id: 'agentic-hackathon-i',
+    title: 'Agentic Hackathon I',
+    date: 'March 8, 2025',
+    description: 'Our first AI hackathon - hosted at The Beacon with over 60 participants',
+    thumbnail: '/agentic-hackathon-i/winners.jpeg',
+    status: 'completed' as const
   },
   {
-    name: "Agentic Hackathon II",
-    date: "May 10, 2025",
-    link: "/events/agentic-hackathon-ii",
-    description: "The second iteration of our agentic hackathon series, building on previous successes.",
-    status: "past" 
+    id: 'agentic-hackathon-ii',
+    title: 'Agentic Hackathon II',
+    date: 'May 10, 2025',
+    description: 'The 2nd edition - bigger and better!',
+    thumbnail: '/agentic-hackathon-ii/winners.jpg',
+    status: 'completed' as const
   },
   {
-    name: "Worldwide Robotics Hackathon",
-    date: "June 14-15, 2025",
-    link: "/robotics-hackathon",
-    description: "In collaboration with Hugging Face and LeRobot, the Antwerp edition of the biggest robotics hackathon ever.",
-    status: "upcoming"
+    id: 'robotics-hackathon-i',
+    title: 'Robotics Hackathon I',
+    date: 'June 14-15, 2025',
+    description: 'Our first 2-day hackathon co-organized with HuggingFace',
+    thumbnail: '/robotics-i/LeRobot Hackathon June 14-15 2025 (2).jpg',
+    status: 'completed' as const
   }
 ];
-
-// Sort events - upcoming first, then by date
-allEvents.sort((a, b) => {
-  if (a.status === 'upcoming' && b.status !== 'upcoming') return -1;
-  if (a.status !== 'upcoming' && b.status === 'upcoming') return 1;
-  
-  const dateA = new Date(a.date).getTime();
-  const dateB = new Date(b.date).getTime();
-  
-  return dateB - dateA; 
-});
-
-/** @type {EventCategory[]} */
-const tabCategories = ["ALL", "IGNITE", "SIGNAL", "PULSE", "OTHER"];
 ---
 
 <Layout>
-  <main class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-16 text-center animate-fade-in text-white">Our Events</h1>
-
-    <section class="animate-fade-in-delay-1">
-      {allEvents.length === 0 ? (
-        <p class="text-white/70 text-center">No events found. Check back soon!</p>
-      ) : (
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {allEvents.map((event) => (
-            <a 
-              href={event.link}
-              class="event-card block bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-lg transition-all duration-300 border border-white/10 hover:border-white/20 transform hover:-translate-y-1"
-            >
-              <div class="relative">
-                <span class={`absolute top-0 right-0 text-xs font-semibold px-2 py-0.5 rounded-full ${
-                  event.status === 'upcoming' 
-                    ? 'bg-green-500/80 text-white' 
-                    : 'bg-gray-500/80 text-white'
-                }`}>
-                  {event.status === 'upcoming' ? 'Upcoming' : 'Past'}
-                </span>
-
-                <h3 class="text-xl font-bold mb-2 text-white/95 pr-16">{event.name}</h3>
-                <p class="text-white/70 mb-3 text-sm">{event.date}</p>
-                <p class="text-white/80 text-base leading-relaxed line-clamp-3">{event.description}</p>
-              </div>
-            </a>
-          ))}
+  <!-- Hero Section -->
+  <section class="py-20 bg-black">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-16">
+        <div class="mb-8">
+          <img src="/rmshine.png" alt="North Star AGI" class="w-24 h-24 mx-auto object-contain animate-fade-in"/>
         </div>
-      )}
-    </section>
-  </main>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white animate-fade-in-delay-1">
+          Our Events
+        </h1>
+      </div>
+    </div>
+  </section>
 
-  <script define:vars={{ allEventsData: allEvents, initialCategories: tabCategories }}>
-    document.addEventListener('DOMContentLoaded', () => {
-      const tabsContainer = document.getElementById('event-tabs');
-      const eventsContainer = document.getElementById('events-container');
-      
-      if (!allEventsData || !initialCategories) {
-        console.error('Event data or categories not loaded into script.');
-        if (eventsContainer) eventsContainer.innerHTML = '<p class="text-white/70 text-center col-span-full">Error loading event data.</p>';
-        return;
-      }
-      
-      const events = JSON.parse(JSON.stringify(allEventsData)); 
-      // Sorting logic already updated in the previous step to handle TBA dates correctly
-      // Ensure the sorting logic is robust if event dates can be invalid beyond 'To Be Announced'
-      events.sort((a, b) => {
-        const isADateTBAOrComingSoon = a.date === "To Be Announced" || a.date === "COMING SOON...";
-        const isBDateTBAOrComingSoon = b.date === "To Be Announced" || b.date === "COMING SOON...";
+  <!-- Events Showcase -->
+  <EventsShowcase 
+    title="Past Events" 
+    events={eventsData} 
+    showHeader={false}
+  />
 
-        if (a.status === 'upcoming' && b.status !== 'upcoming') return -1;
-        if (a.status !== 'upcoming' && b.status === 'upcoming') return 1;
-
-        if (a.status === b.status) {
-            if (isADateTBAOrComingSoon && !isBDateTBAOrComingSoon) return 1;
-            if (!isADateTBAOrComingSoon && isBDateTBAOrComingSoon) return -1;
-            if (isADateTBAOrComingSoon && isBDateTBAOrComingSoon) return 0;
-        }
-        // Fallback for actual date comparison
-        const dateA = new Date(a.date).getTime();
-        const dateB = new Date(b.date).getTime();
-        if (isNaN(dateA) && !isNaN(dateB)) return 1; // Invalid dates go last
-        if (!isNaN(dateA) && isNaN(dateB)) return -1;
-        if (isNaN(dateA) && isNaN(dateB)) return 0;
-
-        return dateB - dateA; // Newest first
-      });
-
-      /** @param {string} category */
-      function renderEvents(category) {
-        if (!eventsContainer) return;
-        eventsContainer.innerHTML = ''; 
-
-        const filteredEvents = category === 'ALL' 
-          ? events 
-          : events.filter(event => event.category === category);
-
-        if (filteredEvents.length === 0) {
-          let message = `No events in the ${category.toLowerCase()} category yet. Stay tuned!`;
-          if (category === 'ALL' && events.length === 0) { // Check if allEvents itself is empty for the ALL tab
-             message = `No events scheduled. Check back soon!`;
-          }
-          eventsContainer.innerHTML = `<p class="text-white/70 text-center col-span-full">${message}</p>`;
-          return;
-        }
-        
-        const grid = document.createElement('div');
-        grid.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-6';
-
-        filteredEvents.forEach(event => {
-          const card = document.createElement('a');
-          card.href = event.link;
-          card.className = 'event-card block bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-lg transition-all duration-300 border border-white/10 hover:border-white/20 transform hover:-translate-y-1';
-          
-          let statusBadge = '';
-          if (event.status === 'upcoming') {
-            statusBadge = '<span class="absolute top-3 right-3 bg-green-500/80 text-white text-xs font-semibold px-2 py-0.5 rounded-full">Upcoming</span>';
-          } else if (event.status === 'past') {
-            statusBadge = '<span class="absolute top-3 right-3 bg-gray-500/80 text-white text-xs font-semibold px-2 py-0.5 rounded-full">Past</span>';
-          }
-
-          card.innerHTML = `
-            <div class="relative">
-              ${statusBadge}
-              <h3 class="text-xl font-bold mb-2 text-white/95">${event.name}</h3>
-              <p class="text-pink-400/80 text-sm mb-1">${event.category}</p>
-              <p class="text-white/70 mb-3 text-sm">${event.date}</p>
-              <p class="text-white/80 text-base leading-relaxed line-clamp-3">${event.description}</p>
-            </div>
-          `;
-          grid.appendChild(card);
-        });
-        eventsContainer.appendChild(grid);
-      }
-
-      /** @param {string} category */
-      function setActiveTab(category) {
-        if (!tabsContainer) return;
-        const buttons = tabsContainer.querySelectorAll('.tab-button');
-        buttons.forEach(button => {
-          if (!(button instanceof HTMLButtonElement)) return;
-          if (button.dataset.category === category) {
-            button.classList.add('bg-pink-600', 'text-white', 'shadow-lg');
-            button.classList.remove('hover:bg-white/20', 'text-white/70');
-          } else {
-            button.classList.remove('bg-pink-600', 'text-white', 'shadow-lg');
-            button.classList.add('hover:bg-white/20', 'text-white/70');
-          }
-        });
-        renderEvents(category);
-      }
-
-      if (tabsContainer) {
-        tabsContainer.addEventListener('click', (e) => {
-          const targetButton = e.target.closest('.tab-button');
-          if (targetButton && targetButton instanceof HTMLButtonElement) {
-            const category = targetButton.dataset.category;
-            if (category) {
-              setActiveTab(category);
-              window.location.hash = category.toLowerCase(); 
-            }
-          }
-        });
-      }
-      
-      const initialTabFromHash = window.location.hash.substring(1).toUpperCase();
-      if (initialCategories.includes(initialTabFromHash)) {
-        setActiveTab(initialTabFromHash);
-      } else {
-        setActiveTab('ALL'); 
-      }
-    });
-  </script>
-
-  <style>
-    .tab-button {
-      /* Base styles if not covered by Tailwind */
-    }
-    .tab-button.text-white\/70 {
-        color: rgba(255, 255, 255, 0.7);
-    }
-    .tab-button.hover\:bg-white\/20:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
-    .tab-button.bg-pink-600 {
-       background-color: #db2777; /* Ensure Tailwind pink-600 */
-       color: white;
-    }
-    .event-card {
-        min-height: 180px; 
-        display: flex; 
-        flex-direction: column;
-    }
-    .event-card > div {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-    .event-card p.leading-relaxed {
-        flex-grow: 1;
-    }
-  </style>
 </Layout>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in { 
+    animation: fade-in 1s ease-out forwards; 
+  }
+  .animate-fade-in-delay-1 { 
+    animation: fade-in 1s ease-out 0.3s backwards; 
+  }
+  .animate-fade-in-delay-2 { 
+    animation: fade-in 1s ease-out 0.6s backwards; 
+  }
+  .animate-fade-in-delay-3 { 
+    animation: fade-in 1s ease-out 0.9s backwards; 
+  }
+  .animate-fade-in-delay-4 { 
+    animation: fade-in 1s ease-out 1.2s backwards; 
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

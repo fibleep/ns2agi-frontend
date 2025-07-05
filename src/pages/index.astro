@@ -1,10 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import EventsShowcase from '../components/EventsShowcase.astro';
 ---
 
 <Layout>
-    <div class="h-screen relative overflow-hidden flex flex-col justify-center bg-black text-white">
-        <main class="flex flex-col justify-center items-center text-center space-y-6 px-4">
+ 
+
+    <!-- Hero Section - North Star -->
+    <section id="hero" class="min-h-screen relative overflow-hidden flex flex-col justify-center bg-black text-white">
+        <main class="flex flex-col justify-center items-center text-center space-y-6 px-4 py-20">
+            <!-- North Star -->
+            <div class="relative mb-8">
+                <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-4 transition-transform duration-300 hover:scale-110 hover:rotate-12">
+                    <img src="/rmshine.png" alt="North Star AGI" class="w-full h-full object-contain filter drop-shadow-2xl"/>
+                </div>
+            </div>
+
             <h1 class="text-4xl md:text-6xl font-bold tracking-wider animate-fade-in">
                 north star agi
             </h1>
@@ -40,8 +51,141 @@ import Layout from '../layouts/Layout.astro';
                     </svg>
                 </a>
             </div>
+           
         </main>
-    </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fade-in-delay-4">
+            <div class="flex flex-col items-center">
+                <p class="text-white/60 text-sm mb-4 animate-pulse">Scroll to explore</p>
+                <div class="scroll-indicator">
+                    <div class="scroll-arrow animate-bounce">
+                        <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gradient overlay to indicate more content -->
+        <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+    </section>
+
+    <!-- Path to North Star Section -->
+    <section id="path-to-north-star" class="py-32 bg-black text-white relative">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <!-- Section Header -->
+            <div class="text-center mb-20">
+                <!-- Logo -->
+                <div class="relative mb-8">
+                    <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-4 transition-transform duration-300 hover:scale-110 hover:rotate-12">
+                        <img src="/rmshine.png" alt="North Star AGI" class="w-full h-full object-contain filter drop-shadow-2xl"/>
+                    </div>
+                </div>
+
+                <h2 class="text-5xl md:text-6xl font-light mb-6 tracking-tight">
+                    Paths to <span class="font-bold">North Star</span>
+                </h2>
+            </div>
+
+            <!-- Three Heroes Grid -->
+            <div class="grid lg:grid-cols-3 gap-12">
+                
+                <!-- Events Hero -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 transition-all duration-700 hover:border-zinc-700/50">
+                        <!-- Image -->
+                        <div class="relative h-80 overflow-hidden">
+                            <img 
+                                src="/signal-i/IMG_0443.jpg" 
+                                alt="Signal Event - Connecting driven people"
+                                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-8">
+                            <div class="flex items-center mb-4">
+                                <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                                <h3 class="text-2xl font-medium text-blue-400">Events</h3>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed font-light text-lg">
+                                Creating environments where driven people connect. When the right community forms, innovation emerges naturally.
+                            </p>
+                        </div>
+
+                        <!-- Subtle hover effect -->
+                        <div class="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    </div>
+                </div>
+
+                <!-- Robotics Hero -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 transition-all duration-700 hover:border-zinc-700/50">
+                        <!-- Image -->
+                        <div class="relative h-80 overflow-hidden">
+                            <img 
+                                src="/robotics-i/LeRobot Hackathon June 14-15 2025 (2).jpg" 
+                                alt="LeRobot Hackathon - Embodied AI future"
+                                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-8">
+                            <div class="flex items-center mb-4">
+                                <div class="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                                <h3 class="text-2xl font-medium text-orange-400">Robotics</h3>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed font-light text-lg">
+                                Embodied AI represents the next leap in technology. We're preparing the ecosystem for robotics' ChatGPT moment.
+                            </p>
+                        </div>
+
+                        <!-- Subtle hover effect -->
+                        <div class="absolute inset-0 bg-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    </div>
+                </div>
+
+                <!-- AI Hero -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 transition-all duration-700 hover:border-zinc-700/50">
+                        <!-- Image -->
+                        <div class="relative h-80 overflow-hidden">
+                            <img 
+                                src="/agentic-hackathon-i/winners.jpeg" 
+                                alt="Agentic Hackathon - AI Innovation"
+                                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-8">
+                            <div class="flex items-center mb-4">
+                                <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                                <h3 class="text-2xl font-medium text-green-400">AI</h3>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed font-light text-lg">
+                                We're creating an open community where talent gathers, startups are born and the future of Europe's AI is built
+                            </p>
+                        </div>
+
+                        <!-- Subtle hover effect -->
+                        <div class="absolute inset-0 bg-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Showcase -->
+    <EventsShowcase events={[]} />
+
 </Layout>
 
 <style>
@@ -56,6 +200,13 @@ import Layout from '../layouts/Layout.astro';
         }
     }
     
+
+    
+    @keyframes twinkle {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+    }
+    
     .animate-fade-in { 
         animation: fade-in 1s ease-out forwards; 
     }
@@ -68,8 +219,755 @@ import Layout from '../layouts/Layout.astro';
     .animate-fade-in-delay-3 { 
         animation: fade-in 1s ease-out 0.9s backwards; 
     }
+    
+
+    .animate-twinkle {
+        animation: twinkle 2s infinite;
+    }
+    
+    /* Quantum Animations */
+    @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    @keyframes reverse-spin {
+        from { transform: rotate(360deg); }
+        to { transform: rotate(0deg); }
+    }
+    
+    .animate-spin-slow {
+        animation: spin-slow 20s linear infinite;
+    }
+    
+    .animate-reverse-spin {
+        animation: reverse-spin 15s linear infinite;
+    }
+    
+    /* Quantum Particles */
+    .particle {
+        animation: particle-orbit 8s linear infinite;
+    }
+    
+    .particle-1 {
+        animation-delay: 0s;
+        top: 10%;
+        right: 20%;
+    }
+    
+    .particle-2 {
+        animation-delay: 2s;
+        bottom: 15%;
+        left: 25%;
+    }
+    
+    .particle-3 {
+        animation-delay: 4s;
+        top: 30%;
+        left: 10%;
+    }
+    
+    .particle-4 {
+        animation-delay: 6s;
+        bottom: 25%;
+        right: 15%;
+    }
+    
+    @keyframes particle-orbit {
+        0% { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+    }
+    
+    /* Timeline Styles */
+    .timeline-item {
+        position: relative;
+        opacity: 0;
+        animation: timeline-fade-in 0.8s ease-out forwards;
+    }
+    
+    .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+    .timeline-item:nth-child(5) { animation-delay: 1.0s; }
+    
+    @keyframes timeline-fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .timeline-content {
+        flex: 1;
+        max-width: 45%;
+    }
+    
+    .timeline-left {
+        text-align: right;
+        padding-right: 2rem;
+    }
+    
+    .timeline-right {
+        text-align: left;
+        padding-left: 2rem;
+    }
+    
+    .timeline-card {
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .timeline-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .timeline-item:hover .timeline-card {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .timeline-item:hover .timeline-card::before {
+        opacity: 1;
+    }
+    
+    .timeline-title {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+    
+    .timeline-description {
+        color: #d1d5db;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Path Icons */
+    .path-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    
+    .events-icon {
+        background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(99,102,241,0.2));
+        color: #60a5fa;
+        border: 2px solid rgba(59,130,246,0.3);
+    }
+    
+    .robotics-icon {
+        background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(217,119,6,0.2));
+        color: #fbbf24;
+        border: 2px solid rgba(245,158,11,0.3);
+    }
+    
+    .ai-icon {
+        background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(5,150,105,0.2));
+        color: #34d399;
+        border: 2px solid rgba(16,185,129,0.3);
+    }
+    
+    /* Path Highlights */
+    .path-highlights {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    
+    .highlight {
+        background: rgba(255,255,255,0.1);
+        color: #e5e7eb;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        border: 1px solid rgba(255,255,255,0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .events-path .highlight:hover {
+        background: rgba(59,130,246,0.2);
+        border-color: rgba(59,130,246,0.4);
+        color: #60a5fa;
+    }
+    
+    .robotics-path .highlight:hover {
+        background: rgba(245,158,11,0.2);
+        border-color: rgba(245,158,11,0.4);
+        color: #fbbf24;
+    }
+    
+    .ai-path .highlight:hover {
+        background: rgba(16,185,129,0.2);
+        border-color: rgba(16,185,129,0.4);
+        color: #34d399;
+    }
+    
+    /* Timeline Dots */
+    .timeline-dot {
+        position: relative;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: all 0.3s ease;
+    }
+    
+    .dot-inner {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    .timeline-item:hover .timeline-dot {
+        transform: scale(1.4);
+    }
+    
+    .timeline-item:hover .dot-inner {
+        transform: scale(1.1);
+    }
+    
+    /* Dot Variations */
+    .events-dot {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    }
+    
+    .events-dot .dot-inner {
+        background: rgba(96, 165, 250, 0.2);
+        color: #60a5fa;
+    }
+    
+    .robotics-dot {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+    }
+    
+    .robotics-dot .dot-inner {
+        background: rgba(251, 191, 36, 0.2);
+        color: #fbbf24;
+    }
+    
+    .ai-dot {
+        background: linear-gradient(135deg, #10b981, #059669);
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    }
+    
+    .ai-dot .dot-inner {
+        background: rgba(52, 211, 153, 0.2);
+        color: #34d399;
+    }
+    
+    .dot-glow {
+        position: absolute;
+        inset: -8px;
+        border-radius: 50%;
+        opacity: 0.6;
+        animation: dot-glow-pulse 2s ease-in-out infinite;
+    }
+    
+    .events-glow {
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
+    }
+    
+    .robotics-glow {
+        background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%);
+    }
+    
+    .ai-glow {
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);
+    }
+    
+    @keyframes dot-glow-pulse {
+        0%, 100% { 
+            transform: scale(1);
+            opacity: 0.4;
+        }
+        50% { 
+            transform: scale(1.3);
+            opacity: 0.8;
+        }
+    }
+    
+    /* Path-specific card styling */
+    .events-path {
+        border-color: rgba(59, 130, 246, 0.3);
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(99, 102, 241, 0.05));
+    }
+    
+    .robotics-path {
+        border-color: rgba(245, 158, 11, 0.3);
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(217, 119, 6, 0.05));
+    }
+    
+    .ai-path {
+        border-color: rgba(16, 185, 129, 0.3);
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.05));
+    }
+    
+    /* Convergence Point */
+    .convergence-point {
+        margin-top: 3rem;
+        padding-top: 2rem;
+    }
+    
+    .convergence-card {
+        text-align: center;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 2rem;
+        backdrop-filter: blur(20px);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .convergence-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .convergence-card:hover::before {
+        opacity: 1;
+    }
+    
+    .convergence-star {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+    
+    .convergence-glow {
+        position: absolute;
+        inset: -20px;
+        background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+        border-radius: 50%;
+        animation: convergence-pulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes convergence-pulse {
+        0%, 100% { 
+            transform: scale(1);
+            opacity: 0.5;
+        }
+        50% { 
+            transform: scale(1.4);
+            opacity: 0.9;
+        }
+    }
+    
+    .convergence-title {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, #60a5fa, #34d399, #fbbf24);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .convergence-description {
+        color: #d1d5db;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    /* Cosmic Portal Timeline Styles */
+    .portal-ray {
+        position: absolute;
+        width: 600px;
+        height: 6px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        border-radius: 3px;
+        transform-origin: center;
+    }
+    
+    .ray-1 {
+        background: linear-gradient(90deg, transparent, rgba(239,68,68,0.3), rgba(249,115,22,0.3), rgba(245,158,11,0.3), transparent);
+        transform: rotate(45deg);
+        animation: ray-pulse-1 4s ease-in-out infinite;
+    }
+    
+    .ray-2 {
+        background: linear-gradient(90deg, transparent, rgba(249,115,22,0.3), rgba(245,158,11,0.3), transparent);
+        transform: rotate(135deg);
+        animation: ray-pulse-2 4s ease-in-out infinite 1s;
+    }
+    
+    .ray-3 {
+        background: linear-gradient(90deg, transparent, rgba(245,158,11,0.3), rgba(239,68,68,0.3), transparent);
+        transform: rotate(225deg);
+        animation: ray-pulse-3 4s ease-in-out infinite 2s;
+    }
+    
+    .ray-4 {
+        background: linear-gradient(90deg, transparent, rgba(239,68,68,0.3), rgba(249,115,22,0.3), transparent);
+        transform: rotate(315deg);
+        animation: ray-pulse-4 4s ease-in-out infinite 3s;
+    }
+    
+    @keyframes ray-pulse-1 {
+        0%, 100% { opacity: 0.3; transform: scale(1) rotate(45deg); }
+        50% { opacity: 0.7; transform: scale(1.1) rotate(45deg); }
+    }
+    
+    @keyframes ray-pulse-2 {
+        0%, 100% { opacity: 0.3; transform: scale(1) rotate(135deg); }
+        50% { opacity: 0.7; transform: scale(1.1) rotate(135deg); }
+    }
+    
+    @keyframes ray-pulse-3 {
+        0%, 100% { opacity: 0.3; transform: scale(1) rotate(225deg); }
+        50% { opacity: 0.7; transform: scale(1.1) rotate(225deg); }
+    }
+    
+    @keyframes ray-pulse-4 {
+        0%, 100% { opacity: 0.3; transform: scale(1) rotate(315deg); }
+        50% { opacity: 0.7; transform: scale(1.1) rotate(315deg); }
+    }
+    
+    /* Stars */
+    .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: star-twinkle 3s ease-in-out infinite;
+    }
+    
+    .star-1 { width: 3px; height: 3px; top: 20%; left: 30%; animation-delay: 0s; }
+    .star-2 { width: 2px; height: 2px; top: 35%; left: 70%; animation-delay: 0.5s; }
+    .star-3 { width: 4px; height: 4px; top: 60%; left: 20%; animation-delay: 1s; }
+    .star-4 { width: 2px; height: 2px; top: 25%; left: 80%; animation-delay: 1.5s; }
+    .star-5 { width: 3px; height: 3px; top: 70%; left: 60%; animation-delay: 2s; }
+    .star-6 { width: 2px; height: 2px; top: 45%; left: 15%; animation-delay: 2.5s; }
+    .star-7 { width: 3px; height: 3px; top: 80%; left: 40%; animation-delay: 3s; }
+    .star-8 { width: 2px; height: 2px; top: 15%; left: 50%; animation-delay: 3.5s; }
+    
+    @keyframes star-twinkle {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.5); }
+    }
+    
+    /* Milestones */
+    .milestone {
+        position: absolute;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .milestone-1 { top: -120px; left: -60px; }
+    .milestone-2 { top: -60px; right: -120px; }
+    .milestone-3 { bottom: -60px; right: -120px; }
+    .milestone-4 { bottom: -120px; left: -60px; }
+    .milestone-5 { top: 50%; left: -160px; transform: translateY(-50%); }
+    
+    .milestone-dot {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin: 0 auto 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+    
+    .milestone-dot.completed {
+        background: linear-gradient(45deg, #10b981, #059669);
+        box-shadow: 0 0 20px rgba(16,185,129,0.5);
+    }
+    
+    .milestone-dot.in-progress {
+        background: linear-gradient(45deg, #f59e0b, #d97706);
+        box-shadow: 0 0 20px rgba(245,158,11,0.5);
+        animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .milestone-dot.pending {
+        background: linear-gradient(45deg, #6b7280, #4b5563);
+        box-shadow: 0 0 20px rgba(107,114,128,0.3);
+    }
+    
+    .milestone-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-align: center;
+        color: rgba(255,255,255,0.8);
+        white-space: nowrap;
+    }
+    
+    .milestone:hover .milestone-dot {
+        transform: scale(1.3);
+        box-shadow: 0 0 30px currentColor;
+    }
+    
+    @keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(245,158,11,0.5); }
+        50% { box-shadow: 0 0 30px rgba(245,158,11,0.8); }
+    }
+    
+    /* Floating Particles */
+    .particles {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+    
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255,255,255,0.6);
+        border-radius: 50%;
+        animation: float 20s linear infinite;
+    }
+    
+    .particle-1 { top: 20%; left: 10%; animation-delay: 0s; animation-duration: 25s; }
+    .particle-2 { top: 40%; right: 15%; animation-delay: 5s; animation-duration: 30s; }
+    .particle-3 { bottom: 30%; left: 20%; animation-delay: 10s; animation-duration: 35s; }
+    .particle-4 { bottom: 60%; right: 25%; animation-delay: 15s; animation-duration: 28s; }
+    .particle-5 { top: 70%; left: 80%; animation-delay: 20s; animation-duration: 32s; }
+    
+    @keyframes float {
+        0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+
 
     body {
         overflow-x: hidden;
     }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Scroll Indicator */
+    .scroll-indicator {
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .scroll-indicator:hover {
+        transform: scale(1.1);
+    }
+    
+    .scroll-arrow {
+        animation: scroll-bounce 2s ease-in-out infinite;
+    }
+    
+    @keyframes scroll-bounce {
+        0%, 100% { 
+            transform: translateY(0); 
+            opacity: 0.6;
+        }
+        50% { 
+            transform: translateY(8px); 
+            opacity: 1;
+        }
+    }
+    
+    /* Fade in animations */
+    .animate-fade-in-delay-4 { 
+        animation: fade-in 1s ease-out 1.2s backwards; 
+    }
 </style>
+
+<script>
+    // Milestone interactions
+    document.querySelectorAll('.milestone').forEach(milestone => {
+        milestone.addEventListener('click', (e: Event) => {
+            e.stopPropagation();
+            const element = milestone as HTMLElement;
+            
+            // Remove any existing tooltip
+            const existingTooltip = document.querySelector('.milestone-tooltip');
+            if (existingTooltip) {
+                existingTooltip.remove();
+            }
+            
+            // Create tooltip
+            const tooltip = document.createElement('div');
+            tooltip.className = 'milestone-tooltip fixed z-50 bg-slate-800 border border-slate-600 rounded-lg p-4 shadow-2xl max-w-sm';
+            tooltip.style.transform = 'translate(-50%, -50%)';
+            
+            const title = element.getAttribute('data-title') || '';
+            const date = element.getAttribute('data-date') || '';
+            const description = element.getAttribute('data-description') || '';
+            
+            tooltip.innerHTML = `
+                <div class="space-y-2">
+                    <h3 class="text-white font-bold text-lg">${title}</h3>
+                    <p class="text-blue-400 text-sm font-medium">${date}</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">${description}</p>
+                </div>
+                <button class="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors" onclick="this.parentElement.remove()">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            `;
+            
+            // Position tooltip
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            tooltip.style.left = centerX + 'px';
+            tooltip.style.top = centerY + 'px';
+            
+            document.body.appendChild(tooltip);
+            
+            // Animate in
+            tooltip.style.opacity = '0';
+            tooltip.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            
+            requestAnimationFrame(() => {
+                tooltip.style.transition = 'all 0.3s ease';
+                tooltip.style.opacity = '1';
+                tooltip.style.transform = 'translate(-50%, -50%) scale(1)';
+            });
+        });
+        
+        // Hover effects
+        milestone.addEventListener('mouseenter', () => {
+            (milestone as HTMLElement).style.transform = 'scale(1.1)';
+        });
+        
+        milestone.addEventListener('mouseleave', () => {
+            (milestone as HTMLElement).style.transform = 'scale(1)';
+        });
+    });
+    
+    // Close tooltip when clicking outside
+    document.addEventListener('click', function(e: Event) {
+        const target = e.target as Element;
+        if (target && !target.closest('.milestone') && !target.closest('.milestone-tooltip')) {
+            const tooltip = document.querySelector('.milestone-tooltip') as HTMLElement;
+            if (tooltip) {
+                tooltip.style.transition = 'all 0.3s ease';
+                tooltip.style.opacity = '0';
+                tooltip.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                setTimeout(() => tooltip.remove(), 300);
+            }
+        }
+    });
+
+    // Scroll indicator functionality
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const pathSection = document.getElementById('path-to-north-star');
+            if (pathSection) {
+                pathSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+
+    // Hide scroll indicator when user scrolls
+    let isScrolling = false;
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            const scrollIndicatorElement = document.querySelector('.scroll-indicator');
+            if (scrollIndicatorElement && window.scrollY > 100) {
+                (scrollIndicatorElement as HTMLElement).style.opacity = '0';
+                (scrollIndicatorElement as HTMLElement).style.transform = 'translateY(20px)';
+            } else if (scrollIndicatorElement && window.scrollY <= 100) {
+                (scrollIndicatorElement as HTMLElement).style.opacity = '1';
+                (scrollIndicatorElement as HTMLElement).style.transform = 'translateY(0)';
+            }
+        }
+    });
+    
+    // Portal interactions
+    const portalWindow = document.querySelector('.portal-window');
+    if (portalWindow) {
+        portalWindow.addEventListener('click', (e: Event) => {
+            const mouseEvent = e as MouseEvent;
+            const element = portalWindow as HTMLElement;
+            
+            // Add ripple effect
+            const ripple = document.createElement('div');
+            ripple.className = 'absolute rounded-full bg-white/20 pointer-events-none';
+            ripple.style.width = ripple.style.height = '20px';
+            ripple.style.left = (mouseEvent.offsetX - 10) + 'px';
+            ripple.style.top = (mouseEvent.offsetY - 10) + 'px';
+            ripple.style.animation = 'ripple 0.6s ease-out forwards';
+            
+            element.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+    }
+    
+    // Add ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(20);
+                opacity: 0;
+            }
+        }
+        
+        .milestone {
+            transition: transform 0.3s ease;
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+
+ 
+

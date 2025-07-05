@@ -72,10 +72,10 @@ const originalEventDate = "May 10th, 2025";
 const originalEventLocation = "The Beacon, Antwerp"; // Updated based on context
 
 const hackathonImages = [
-  { src: "/agentic-hackathon-ii/winners.jpg", alt: "Winners celebrating" },
-  { src: "/agentic-hackathon-ii/moment.jpg", alt: "A memorable moment" },
-  { src: "/agentic-hackathon-ii/rewards.jpg", alt: "Prizes and rewards" },
-  { src: "/agentic-hackathon-ii/pizzas.jpg", alt: "The legendary pizza tower" }
+  { src: "/agentic-hackathon-ii/winners.jpg", alt: "Agentic Hackathon II" },
+  { src: "/agentic-hackathon-ii/moment.jpg", alt: "Agentic Hackathon II" },
+  { src: "/agentic-hackathon-ii/rewards.jpg", alt: "Agentic Hackathon II" },
+  { src: "/agentic-hackathon-ii/pizzas.jpg", alt: "Agentic Hackathon II" }
 ];
 ---
 
@@ -87,7 +87,7 @@ const hackathonImages = [
     </p>
 
     {/* --- Success Section --- */}
-    <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
+    <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
         <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Competition Was Fierce!</h2>
         <p class="text-lg mb-4 text-white/90 leading-relaxed">
             The second North Star AGI Agentic Hackathon was a massive success! The competition was fierce, and we had a lot of interesting solutions, all for the noble goal of augmenting Antwerp with AI. 🙌
@@ -103,11 +103,11 @@ const hackathonImages = [
       {winners.length > 0 ? (
         <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
           {winners.map((winner, index) => (
-            <div class={`bg-gradient-to-br ${
-                index === 0 ? 'from-sky-500/30 via-cyan-400/30 to-blue-500/30' :      // Navigator - Blues/Cyans
-                index === 1 ? 'from-pink-500/30 via-red-500/30 to-rose-400/30' :       // Judges - Pinks/Reds
-                'from-purple-600/30 via-indigo-500/30 to-violet-500/30'  // AI - Purples/Indigos
-              } backdrop-blur-md rounded-lg p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
+            <div class={`${
+                index === 0 ? 'bg-blue-500/10' :      // Navigator
+                index === 1 ? 'bg-pink-500/10' :       // Judges
+                'bg-purple-500/10'  // AI
+              } backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
               <h3 class="text-2xl font-bold mb-3 text-white glitchy-text" style={`animation-duration: ${1 + index * 0.2}s; animation-delay: ${index * 0.1}s`}>{winner.category}</h3>
               <p class="text-lg font-semibold mb-2 text-white/95">{winner.team}</p>
               <p class="text-white/80 flex-grow">{winner.project}</p>
@@ -310,20 +310,6 @@ const hackathonImages = [
 </Layout>
 
 <style is:global>
-/* Ensure glitchy text animation is available if not globally defined elsewhere */
-@keyframes glitch {
-  0% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
-  14% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
-  15% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #fc00ff; }
-  49% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #fc00ff; }
-  50% { text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #fc00ff; }
-  99% { text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #fc00ff; }
-  100% { text-shadow: -0.025em 0 0 #00fffc, -0.05em -0.025em 0 #fc00ff; }
-}
-.glitchy-text {
-    animation: glitch 1s infinite linear alternate-reverse;
-}
-
 /* Additional styles for aspect ratio if not covered by Tailwind aspect-ratio plugin */
 .aspect-w-16 { position: relative; padding-bottom: 56.25%; /* 16:9 */ }
 .aspect-h-9 { /* Can be empty if aspect-w-16 handles it */ }
