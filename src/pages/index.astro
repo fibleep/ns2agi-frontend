@@ -1,6 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import EventsShowcase from '../components/EventsShowcase.astro';
+
+const eventsData = [
+  {
+    id: 'signal-i',
+    title: 'SIGNAL I',
+    date: 'June 5, 2025',
+    description: 'Our first SIGNAL AI meetup featuring expert speakers from Bugify and imec, exploring the collapse of modern software development and social robotics.',
+    thumbnail: '/signal-i/IMG_0331.jpg',
+    status: 'completed' as const
+  },
+  {
+    id: 'agentic-hackathon-i',
+    title: 'Agentic Hackathon I',
+    date: 'March 8, 2025',
+    description: 'Our first AI hackathon - hosted at The Beacon with over 60 participants',
+    thumbnail: '/agentic-hackathon-i/winners.jpeg',
+    status: 'completed' as const
+  },
+  {
+    id: 'agentic-hackathon-ii',
+    title: 'Agentic Hackathon II',
+    date: 'May 10, 2025',
+    description: 'The 2nd edition - bigger and better!',
+    thumbnail: '/agentic-hackathon-ii/winners.jpg',
+    status: 'completed' as const
+  },
+  {
+    id: 'robotics-hackathon-i',
+    title: 'Robotics Hackathon I',
+    date: 'June 14-15, 2025',
+    description: 'Our first 2-day hackathon co-organized with HuggingFace',
+    thumbnail: '/robotics-i/LeRobot Hackathon June 14-15 2025 (2).jpg',
+    status: 'completed' as const
+  }
+];
 ---
 
 <Layout>
@@ -108,7 +143,6 @@ import EventsShowcase from '../components/EventsShowcase.astro';
                         <!-- Content -->
                         <div class="p-8">
                             <div class="flex items-center mb-4">
-                                <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
                                 <h3 class="text-2xl font-medium text-blue-400">Events</h3>
                             </div>
                             <p class="text-gray-300 leading-relaxed font-light text-lg">
@@ -137,7 +171,6 @@ import EventsShowcase from '../components/EventsShowcase.astro';
                         <!-- Content -->
                         <div class="p-8">
                             <div class="flex items-center mb-4">
-                                <div class="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
                                 <h3 class="text-2xl font-medium text-orange-400">Robotics</h3>
                             </div>
                             <p class="text-gray-300 leading-relaxed font-light text-lg">
@@ -156,7 +189,7 @@ import EventsShowcase from '../components/EventsShowcase.astro';
                         <!-- Image -->
                         <div class="relative h-80 overflow-hidden">
                             <img 
-                                src="/agentic-hackathon-i/winners.jpeg" 
+                                src="/agentic-hackathon-ii/winners.jpg" 
                                 alt="Agentic Hackathon - AI Innovation"
                                 class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                             />
@@ -166,7 +199,6 @@ import EventsShowcase from '../components/EventsShowcase.astro';
                         <!-- Content -->
                         <div class="p-8">
                             <div class="flex items-center mb-4">
-                                <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
                                 <h3 class="text-2xl font-medium text-green-400">AI</h3>
                             </div>
                             <p class="text-gray-300 leading-relaxed font-light text-lg">
@@ -184,7 +216,7 @@ import EventsShowcase from '../components/EventsShowcase.astro';
     </section>
 
     <!-- Events Showcase -->
-    <EventsShowcase events={[]} />
+    <EventsShowcase events={eventsData} />
 
 </Layout>
 
@@ -225,58 +257,6 @@ import EventsShowcase from '../components/EventsShowcase.astro';
         animation: twinkle 2s infinite;
     }
     
-    /* Quantum Animations */
-    @keyframes spin-slow {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-    
-    @keyframes reverse-spin {
-        from { transform: rotate(360deg); }
-        to { transform: rotate(0deg); }
-    }
-    
-    .animate-spin-slow {
-        animation: spin-slow 20s linear infinite;
-    }
-    
-    .animate-reverse-spin {
-        animation: reverse-spin 15s linear infinite;
-    }
-    
-    /* Quantum Particles */
-    .particle {
-        animation: particle-orbit 8s linear infinite;
-    }
-    
-    .particle-1 {
-        animation-delay: 0s;
-        top: 10%;
-        right: 20%;
-    }
-    
-    .particle-2 {
-        animation-delay: 2s;
-        bottom: 15%;
-        left: 25%;
-    }
-    
-    .particle-3 {
-        animation-delay: 4s;
-        top: 30%;
-        left: 10%;
-    }
-    
-    .particle-4 {
-        animation-delay: 6s;
-        bottom: 25%;
-        right: 15%;
-    }
-    
-    @keyframes particle-orbit {
-        0% { transform: rotate(0deg) translateX(60px) rotate(0deg); }
-        100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
-    }
     
     /* Timeline Styles */
     .timeline-item {
@@ -617,82 +597,7 @@ import EventsShowcase from '../components/EventsShowcase.astro';
         line-height: 1.6;
     }
     
-    /* Cosmic Portal Timeline Styles */
-    .portal-ray {
-        position: absolute;
-        width: 600px;
-        height: 6px;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-        border-radius: 3px;
-        transform-origin: center;
-    }
     
-    .ray-1 {
-        background: linear-gradient(90deg, transparent, rgba(239,68,68,0.3), rgba(249,115,22,0.3), rgba(245,158,11,0.3), transparent);
-        transform: rotate(45deg);
-        animation: ray-pulse-1 4s ease-in-out infinite;
-    }
-    
-    .ray-2 {
-        background: linear-gradient(90deg, transparent, rgba(249,115,22,0.3), rgba(245,158,11,0.3), transparent);
-        transform: rotate(135deg);
-        animation: ray-pulse-2 4s ease-in-out infinite 1s;
-    }
-    
-    .ray-3 {
-        background: linear-gradient(90deg, transparent, rgba(245,158,11,0.3), rgba(239,68,68,0.3), transparent);
-        transform: rotate(225deg);
-        animation: ray-pulse-3 4s ease-in-out infinite 2s;
-    }
-    
-    .ray-4 {
-        background: linear-gradient(90deg, transparent, rgba(239,68,68,0.3), rgba(249,115,22,0.3), transparent);
-        transform: rotate(315deg);
-        animation: ray-pulse-4 4s ease-in-out infinite 3s;
-    }
-    
-    @keyframes ray-pulse-1 {
-        0%, 100% { opacity: 0.3; transform: scale(1) rotate(45deg); }
-        50% { opacity: 0.7; transform: scale(1.1) rotate(45deg); }
-    }
-    
-    @keyframes ray-pulse-2 {
-        0%, 100% { opacity: 0.3; transform: scale(1) rotate(135deg); }
-        50% { opacity: 0.7; transform: scale(1.1) rotate(135deg); }
-    }
-    
-    @keyframes ray-pulse-3 {
-        0%, 100% { opacity: 0.3; transform: scale(1) rotate(225deg); }
-        50% { opacity: 0.7; transform: scale(1.1) rotate(225deg); }
-    }
-    
-    @keyframes ray-pulse-4 {
-        0%, 100% { opacity: 0.3; transform: scale(1) rotate(315deg); }
-        50% { opacity: 0.7; transform: scale(1.1) rotate(315deg); }
-    }
-    
-    /* Stars */
-    .star {
-        position: absolute;
-        background: white;
-        border-radius: 50%;
-        opacity: 0.8;
-        animation: star-twinkle 3s ease-in-out infinite;
-    }
-    
-    .star-1 { width: 3px; height: 3px; top: 20%; left: 30%; animation-delay: 0s; }
-    .star-2 { width: 2px; height: 2px; top: 35%; left: 70%; animation-delay: 0.5s; }
-    .star-3 { width: 4px; height: 4px; top: 60%; left: 20%; animation-delay: 1s; }
-    .star-4 { width: 2px; height: 2px; top: 25%; left: 80%; animation-delay: 1.5s; }
-    .star-5 { width: 3px; height: 3px; top: 70%; left: 60%; animation-delay: 2s; }
-    .star-6 { width: 2px; height: 2px; top: 45%; left: 15%; animation-delay: 2.5s; }
-    .star-7 { width: 3px; height: 3px; top: 80%; left: 40%; animation-delay: 3s; }
-    .star-8 { width: 2px; height: 2px; top: 15%; left: 50%; animation-delay: 3.5s; }
-    
-    @keyframes star-twinkle {
-        0%, 100% { opacity: 0.3; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.5); }
-    }
     
     /* Milestones */
     .milestone {
@@ -745,39 +650,7 @@ import EventsShowcase from '../components/EventsShowcase.astro';
         box-shadow: 0 0 30px currentColor;
     }
     
-    @keyframes pulse-glow {
-        0%, 100% { box-shadow: 0 0 20px rgba(245,158,11,0.5); }
-        50% { box-shadow: 0 0 30px rgba(245,158,11,0.8); }
-    }
     
-    /* Floating Particles */
-    .particles {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-    }
-    
-    .particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: rgba(255,255,255,0.6);
-        border-radius: 50%;
-        animation: float 20s linear infinite;
-    }
-    
-    .particle-1 { top: 20%; left: 10%; animation-delay: 0s; animation-duration: 25s; }
-    .particle-2 { top: 40%; right: 15%; animation-delay: 5s; animation-duration: 30s; }
-    .particle-3 { bottom: 30%; left: 20%; animation-delay: 10s; animation-duration: 35s; }
-    .particle-4 { bottom: 60%; right: 25%; animation-delay: 15s; animation-duration: 28s; }
-    .particle-5 { top: 70%; left: 80%; animation-delay: 20s; animation-duration: 32s; }
-    
-    @keyframes float {
-        0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-    }
     
 
 
@@ -916,57 +789,29 @@ import EventsShowcase from '../components/EventsShowcase.astro';
         });
     }
 
-    // Hide scroll indicator when user scrolls
-    let isScrolling = false;
-    window.addEventListener('scroll', () => {
-        if (!isScrolling) {
-            const scrollIndicatorElement = document.querySelector('.scroll-indicator');
-            if (scrollIndicatorElement && window.scrollY > 100) {
+    // Hide scroll indicator when user scrolls - throttled for performance
+    let ticking = false;
+    function updateScrollIndicator() {
+        const scrollIndicatorElement = document.querySelector('.scroll-indicator');
+        if (scrollIndicatorElement) {
+            if (window.scrollY > 100) {
                 (scrollIndicatorElement as HTMLElement).style.opacity = '0';
                 (scrollIndicatorElement as HTMLElement).style.transform = 'translateY(20px)';
-            } else if (scrollIndicatorElement && window.scrollY <= 100) {
+            } else {
                 (scrollIndicatorElement as HTMLElement).style.opacity = '1';
                 (scrollIndicatorElement as HTMLElement).style.transform = 'translateY(0)';
             }
         }
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollIndicator);
+            ticking = true;
+        }
     });
     
-    // Portal interactions
-    const portalWindow = document.querySelector('.portal-window');
-    if (portalWindow) {
-        portalWindow.addEventListener('click', (e: Event) => {
-            const mouseEvent = e as MouseEvent;
-            const element = portalWindow as HTMLElement;
-            
-            // Add ripple effect
-            const ripple = document.createElement('div');
-            ripple.className = 'absolute rounded-full bg-white/20 pointer-events-none';
-            ripple.style.width = ripple.style.height = '20px';
-            ripple.style.left = (mouseEvent.offsetX - 10) + 'px';
-            ripple.style.top = (mouseEvent.offsetY - 10) + 'px';
-            ripple.style.animation = 'ripple 0.6s ease-out forwards';
-            
-            element.appendChild(ripple);
-            
-            setTimeout(() => ripple.remove(), 600);
-        });
-    }
-    
-    // Add ripple animation
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes ripple {
-            to {
-                transform: scale(20);
-                opacity: 0;
-            }
-        }
-        
-        .milestone {
-            transition: transform 0.3s ease;
-        }
-    `;
-    document.head.appendChild(style);
 </script>
 
  
