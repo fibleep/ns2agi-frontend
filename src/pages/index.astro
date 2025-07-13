@@ -32,7 +32,7 @@ const eventsData = [
     title: 'Robotics Hackathon I',
     date: 'June 14-15, 2025',
     description: 'Our first 2-day hackathon co-organized with HuggingFace',
-    thumbnail: '/robotics-i/LeRobot Hackathon June 14-15 2025 (2).jpg',
+    thumbnail: '/robotics-i/LeRobot Hackathon June 14-15 2025 (1).JPG',
     status: 'completed' as const
   }
 ];
@@ -46,7 +46,7 @@ const eventsData = [
         <main class="flex flex-col justify-center items-center text-center space-y-6 px-4 py-20">
             <!-- North Star -->
             <div class="relative mb-8">
-                <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-4 transition-transform duration-300 hover:scale-110 hover:rotate-12">
+                <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-4">
                     <img src="/rmshine.png" alt="North Star AGI" class="w-full h-full object-contain filter drop-shadow-2xl"/>
                 </div>
             </div>
@@ -61,8 +61,24 @@ const eventsData = [
                 founded 1st january 2025
             </p>
 
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in-delay-3">
+                <a
+                    href="/join"
+                    class="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                    JOIN US
+                </a>
+                <a
+                    href="/support"
+                    class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-full border-2 border-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-105"
+                >
+                    SPONSOR
+                </a>
+            </div>
+
             <!-- Social links -->
-            <div class="flex space-x-6 animate-fade-in-delay-3">
+            <div class="flex space-x-6 animate-fade-in-delay-4">
                 <a
                     href="https://discord.gg/m5Hknymurb"
                     target="_blank"
@@ -89,26 +105,13 @@ const eventsData = [
            
         </main>
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fade-in-delay-4">
-            <div class="flex flex-col items-center">
-                <p class="text-white/60 text-sm mb-4 animate-pulse">Scroll to explore</p>
-                <div class="scroll-indicator">
-                    <div class="scroll-arrow animate-bounce">
-                        <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Gradient overlay to indicate more content -->
         <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
     </section>
 
     <!-- Path to North Star Section -->
-    <section id="path-to-north-star" class="py-32 bg-black text-white relative">
+    <section id="path-to-north-star" class="py-32 bg-black text-white relative -mt-20">
         <div class="container mx-auto px-6 max-w-7xl">
             <!-- Section Header -->
             <div class="text-center mb-20">
@@ -692,6 +695,9 @@ const eventsData = [
     /* Fade in animations */
     .animate-fade-in-delay-4 { 
         animation: fade-in 1s ease-out 1.2s backwards; 
+    }
+    .animate-fade-in-delay-5 { 
+        animation: fade-in 1s ease-out 1.5s backwards; 
     }
 </style>
 
