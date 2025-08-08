@@ -50,32 +50,48 @@ const defaultEvents: Event[] = [
     ]
   },
   {
-    id: 'agentic-hackathon-i',
-    title: 'Agentic Hackathon I',
+    id: 'signal-ii',
+    title: 'SIGNAL II',
+    date: 'August 21, 2025',
+    description: 'Talks by AI and robotics experts, live demos, and networking with pizza & drinks at The Beacon.',
+    thumbnail: '/signal-ii/signalii.png',
+    status: 'upcoming'
+  },
+  {
+    id: 'ai-hackathon-i',
+    title: 'AI Hackathon I',
     date: 'March 8, 2025',
     description: 'Our first AI hackathon - hosted at The Beacon with over 60 participants',
-    thumbnail: '/agentic-hackathon-i/aftermath.jpeg',
+    thumbnail: '/ai-hackathon-i/aftermath.png',
     status: 'completed',
     gallery: [
-      '/agentic-hackathon-i/winners.jpeg',
-      '/agentic-hackathon-i/aftermath.png',
-      '/agentic-hackathon-i/ken.jpeg',
-      '/agentic-hackathon-i/treasure.jpeg'
+      '/ai-hackathon-i/winners.jpeg',
+      '/ai-hackathon-i/aftermath.png',
+      '/ai-hackathon-i/ken.jpeg',
+      '/ai-hackathon-i/treasure.jpeg'
     ]
   },
   {
-    id: 'agentic-hackathon-ii',
-    title: 'Agentic Hackathon II',
+    id: 'ai-hackathon-ii',
+    title: 'AI Hackathon II',
     date: 'May 10, 2025',
     description: 'The 2nd edition - bigger and better!',
-    thumbnail: '/agentic-hackathon-ii/winners.jpg',
+    thumbnail: '/ai-hackathon-ii/winners.jpg',
     status: 'completed',
     gallery: [
-      '/agentic-hackathon-ii/winners.jpg',
-      '/agentic-hackathon-ii/moment.jpg',
-      '/agentic-hackathon-ii/pizzas.jpg',
-      '/agentic-hackathon-ii/rewards.jpg'
+      '/ai-hackathon-ii/winners.jpg',
+      '/ai-hackathon-ii/moment.jpg',
+      '/ai-hackathon-ii/pizzas.jpg',
+      '/ai-hackathon-ii/rewards.jpg'
     ]
+  },
+  {
+    id: 'ai-hackathon-iii',
+    title: 'AI Hackathon III',
+    date: 'August 30, 2025',
+    description: 'Our flagship hackathon returns at The Beacon. Students skip screening, pros ship side projects, companies scout talent. 09:00–19:00. Food & drinks provided.',
+    thumbnail: '',
+    status: 'upcoming'
   },
   {
     id: 'robotics-hackathon-i',
@@ -93,8 +109,10 @@ const eventsData = events.length > 0 ? events : defaultEvents;
 function getEventLink(eventId: string): string {
   const eventRoutes = {
     'signal-i': '/events/signal-i',
-    'agentic-hackathon-i': '/events/agentic-hackathon-i', 
-    'agentic-hackathon-ii': '/events/agentic-hackathon-ii',
+    'signal-ii': '/events/signal-ii',
+    'ai-hackathon-i': '/events/ai-hackathon-i', 
+    'ai-hackathon-ii': '/events/ai-hackathon-ii',
+    'ai-hackathon-iii': '/events/ai-hackathon-iii',
     'robotics-hackathon-i': '/events/robotics-hackathon-i'
   };
   return eventRoutes[eventId as keyof typeof eventRoutes] || '/events';

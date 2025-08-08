@@ -1,18 +1,9 @@
 ---
-// src/pages/events/agentic-hackathon-ii.astro
+// src/pages/events/ai-hackathon-i.astro
 import Layout from '../../layouts/Layout.astro';
 import ImageGallery from '../../components/ImageGallery.astro'; // Import the gallery component
-import solutionsData from '../../../public/agentic-hackathon-ii/solutions.json';
+import solutionsData from '../../../public/ai-hackathon-i/solutions.json';
 
-/**
- * @typedef {object} Solution
- * @property {string} team_name
- * @property {string} youtube_video_link
- * @property {string} description
- * @property {string} [eyecatcher] - Eyecatcher is optional
- */
-
-/** @type {Solution[]} */
 const solutions = Object.values(solutionsData);
 
 /**
@@ -31,6 +22,7 @@ function getYouTubeVideoId(url) {
     const match = url.match(pattern);
     if (match && match[1] && match[1].length === 11) return match[1];
   }
+  // Corrected simpleMatch regex with proper escapes for standard strings
   const simpleMatch = url.match(/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]{11}).*/);
   if (simpleMatch && simpleMatch[2] && simpleMatch[2].length === 11) return simpleMatch[2];
   console.warn(`Could not extract YouTube video ID from URL: ${url}`);
@@ -51,84 +43,69 @@ function getYouTubeThumbnailUrl(videoId, quality = 'hqdefault') {
 }
 
 const winners = [
-  {
-    category: "🧭 NAVIGATOR'S AWARD",
-    team: "Team Med Monsterini",
-    project: "'Pokemon Go'-like experience for exploring Antwerp."
-  },
-  {
-    category: "❤️ JUDGES' FAVOURITE",
-    team: "Team Le Superchicche",
-    project: "DayByDay – Your Smart City Companion."
-  },
-  {
-    category: "🤖 AI'S CHOICE",
-    team: "Team TomTom Waes",
-    project: "Discover Antwerp with Tom Waes as your voice-over guide."
-  }
+  { category: "TECH", team: "Agentic Boys", project: "fAInance: a fullstack app using a multi-agent swarm to perform financial analysis and provide insights." },
+  { category: "CREATIVITY", team: "Bugify", project: "A tool which strategically introduces controlled bugs into codebases to help companies evaluate their development teams." },
+  { category: "AI'S CHOICE", team: "Multi-agent Lab 6", project: "An AI-powered research agent which filters ArXiv papers based on relevance, author credibility, and social media discussions (X, Reddit, LinkedIn)." } // Added note
 ];
 
-const originalEventDate = "May 10th, 2025";
-const originalEventLocation = "The Beacon, Antwerp"; // Updated based on context
+const originalEventDate = "March 8th, 2025";
+const originalEventLocation = "The Beacon, Sint-Pietersvliet 7, 2000 Antwerpen, Belgium";
 
+// Define the images for the gallery
 const hackathonImages = [
-  { src: "/agentic-hackathon-ii/winners.jpg", alt: "Agentic Hackathon II" },
-  { src: "/agentic-hackathon-ii/moment.jpg", alt: "Agentic Hackathon II" },
-  { src: "/agentic-hackathon-ii/rewards.jpg", alt: "Agentic Hackathon II" },
-  { src: "/agentic-hackathon-ii/pizzas.jpg", alt: "Agentic Hackathon II" }
+  { src: "/ai-hackathon-i/winners.jpeg", alt: "AI Hackathon I" },
+  { src: "/ai-hackathon-i/ken.jpeg", alt: "AI Hackathon I" },
+  { src: "/ai-hackathon-i/aftermath.png", alt: "AI Hackathon I" },
+  { src: "/ai-hackathon-i/treasure.jpeg", alt: "AI Hackathon I" }
 ];
 ---
 
 <Layout>
   <main class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-8 text-center animate-fade-in text-white">Agentic Hackathon II</h1>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-8 text-center animate-fade-in text-white">AI Hackathon I - Recap</h1>
     <p class="text-center text-lg text-white/80 mb-12 animate-fade-in-delay-1">
-      {originalEventDate} at <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] hover:underline">{originalEventLocation}</a>
+      {originalEventDate} at <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] hover:underline">{originalEventLocation.split(',')[0]}</a>
     </p>
 
     {/* --- Success Section --- */}
     <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
-        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Competition Was Fierce!</h2>
+        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">A Huge Success!</h2>
         <p class="text-lg mb-4 text-white/90 leading-relaxed">
-            The second North Star AGI Agentic Hackathon was a massive success! The competition was fierce, and we had a lot of interesting solutions, all for the noble goal of augmenting Antwerp with AI. 🙌
+            The first North Star AGI Agentic Hackathon was a massive success! We saw incredible energy and innovation as 14 teams battled it out, pushing the boundaries of AI agents.
         </p>
         <p class="text-lg text-white/90 leading-relaxed">
-            We're also proud to announce that we've met our pizza-box KPI, and the tower has grown significantly this time! 🍕
+            The creativity and technical skill on display were truly inspiring. A huge thank you to everyone who participated and made this event possible.
         </p>
     </section>
 
     {/* --- Winners Section --- */}
     <section class="mb-12 animate-fade-in-delay-3 max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-8 text-white text-center">Congratulations to Our Winners! 🏆</h2>
-      {winners.length > 0 ? (
-        <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-          {winners.map((winner, index) => (
-            <div class={`${
-                index === 0 ? 'bg-blue-500/10' :      // Navigator
-                index === 1 ? 'bg-pink-500/10' :       // Judges
-                'bg-purple-500/10'  // AI
-              } backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
-              <h3 class="text-2xl font-bold mb-3 text-white glitchy-text" style={`animation-duration: ${1 + index * 0.2}s; animation-delay: ${index * 0.1}s`}>{winner.category}</h3>
-              <p class="text-lg font-semibold mb-2 text-white/95">{winner.team}</p>
-              <p class="text-white/80 flex-grow">{winner.project}</p>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p class="text-center text-lg text-white/70">Winner announcements are coming soon. Stay tuned!</p>
-      )}
+      <h2 class="text-3xl font-semibold mb-8 text-white text-center">Congratulations to Our Winners!</h2>
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        {winners.map((winner, index) => (
+          <div class={`${
+              index === 0 ? 'bg-blue-500/10' :
+              index === 1 ? 'bg-purple-500/10' :
+              'bg-yellow-500/10'
+            } backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
+            <h3 class="text-2xl font-bold mb-3 text-white glitchy-text" style={`animation-duration: ${1 + index * 0.2}s;`}>{winner.category}</h3>
+            <p class="text-lg font-semibold mb-2 text-white/95">{winner.team}</p>
+            <p class="text-white/80 flex-grow">{winner.project}</p>
+          </div>
+        ))}
+      </div>
     </section>
 
      {/* --- Image Gallery Section --- */}
      <ImageGallery
         images={hackathonImages}
-        title="Event Highlights"
+        title="Event Moments"
         class="mb-12 animate-fade-in-delay-4"
       />
 
     {/* --- Solutions Showcase Section --- */}
     <section class="mb-12 animate-fade-in-delay-5 max-w-6xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-8 text-white text-center">Projects from the Hackathon</h2>
+      <h2 class="text-3xl font-semibold mb-8 text-white text-center">Hackathon Projects Showcase</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {solutions.map(solution => {
           const videoId = getYouTubeVideoId(solution.youtube_video_link);
@@ -138,16 +115,15 @@ const hackathonImages = [
               class="solution-card bg-white/10 backdrop-blur-md rounded-lg p-5 shadow-xl border border-white/10 flex flex-col cursor-pointer hover:bg-white/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1"
               data-video-id={videoId}
               data-team-name={solution.team_name}
-              data-description={solution.description} 
               title={videoId ? `Watch video from ${solution.team_name}` : `No video preview available for ${solution.team_name}`}
             >
-              <img
-                src={thumbnailUrl}
-                alt={`Thumbnail for ${solution.team_name}`}
+              <img 
+                src={thumbnailUrl} 
+                alt={`Thumbnail for ${solution.team_name}`} 
                 class="rounded-md mb-4 w-full h-48 object-cover bg-gray-700"
               />
               <h3 class="text-xl font-bold mb-2 text-white">{solution.team_name}</h3>
-              <p class="text-white/80 text-sm flex-grow line-clamp-3">{solution.eyecatcher || ''}</p>
+              <p class="text-white/80 text-sm flex-grow line-clamp-3">{solution.eyecatcher}</p>
             </div>
           );
         })}
@@ -156,10 +132,9 @@ const hackathonImages = [
 
     {/* --- Video Modal --- */}
     <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-[1000] p-4 transition-opacity duration-300 opacity-0">
-      <div class="bg-gray-800 p-5 rounded-lg shadow-2xl relative w-full max-w-3xl text-white transform scale-95 transition-transform duration-300 overflow-y-auto max-h-[90vh]">
-        <button id="closeModalBtn" class="absolute top-3 right-3 text-gray-300 hover:text-white text-3xl leading-none z-10 sticky -top-0 bg-gray-800 rounded-full p-1">&times;</button>
-        <h3 id="modalTeamName" class="text-2xl font-semibold mb-2 pr-12"></h3>
-        <p id="modalDescription" class="text-sm text-white/70 mb-4 whitespace-pre-line"></p> 
+      <div class="bg-gray-800 p-5 rounded-lg shadow-2xl relative w-full max-w-3xl text-white transform scale-95 transition-transform duration-300">
+        <button id="closeModalBtn" class="absolute top-3 right-3 text-gray-300 hover:text-white text-3xl leading-none z-10" aria-label="Close modal">&times;</button>
+        <h3 id="modalTeamName" class="text-2xl font-semibold mb-4 pr-12"></h3>
         <div class="aspect-w-16 aspect-h-9 bg-black rounded overflow-hidden">
           <iframe
             id="youtubePlayer"
@@ -176,41 +151,40 @@ const hackathonImages = [
     </div>
 
     {/* --- Acknowledgements Section --- */}
-    <section class="mb-12 animate-fade-in-delay-6 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Thank You! ❤️</h2>
+    <section class="mb-12 animate-fade-in-delay-6 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto"> {/* Adjusted delay */}
+      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Acknowledgements</h2>
       <p class="text-lg mb-4 text-white/90 leading-relaxed">
-        A huge thank you to our sponsors <strong class="font-semibold text-pink-400">Dashdot</strong> and <strong class="font-semibold text-pink-400">Rollo</strong> for their generous support! ⭐️
+        We extend our sincere gratitude to <strong class="font-semibold">Ken Casier</strong> for delivering an inspiring closing speech that perfectly capped off the day.
       </p>
       <p class="text-lg mb-4 text-white/90 leading-relaxed">
-        And of course, a massive shout-out to everyone that helped make it happen: 
-        <strong class="font-semibold text-cyan-400">Filip, Oleksandr, Thibaud, Wim, Nathan, The Beacon, and Robin.</strong> Your contributions were invaluable!
+        A special thank you goes to <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] font-semibold hover:underline">The Beacon | Innovation Community</a> for generously providing the fantastic venue and support, making this event possible.
       </p>
        <p class="text-lg text-white/90 leading-relaxed">
-        Thank you so much everyone! Until next time :)
+        And finally, thank you to all the participants, judges, volunteers, and sponsors – your contributions were invaluable!
       </p>
     </section>
 
     {/* --- What's Next Section --- */}
-    <section class="text-center animate-fade-in-delay-7 max-w-4xl mx-auto">
+    <section class="text-center animate-fade-in-delay-7 max-w-4xl mx-auto"> {/* Adjusted delay */}
        <h2 class="text-3xl font-semibold mb-6 text-white">What's Next?</h2>
        <p class="text-lg mb-4 text-white/90">
-         During the closing speech, participants saw the next steps for North Star. We will be progressively revealing more on LinkedIn - see you at 12!
+         As the dust settles, we're already looking towards the next step on our journey to the North Star. Your feedback is crucial!
        </p>
        <a
-         href="https://www.linkedin.com/company/north-star-agi/"
+         href="https://discord.gg/m5Hknymurb"
          target="_blank"
          rel="noopener noreferrer"
-         class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-[#0077B5] rounded-full hover:bg-[#005582] transition-colors duration-300 shadow-md"
+         class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-[#5462EB] rounded-full hover:bg-[#4754c4] transition-colors duration-300 shadow-md"
        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-          </svg>
-         Follow us on LinkedIn
+         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+             <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
+         </svg>
+         Join Discord & Share Feedback
        </a>
     </section>
   </main>
 
-  <script define:vars={{ solutionsFromProps: solutions }}>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
       const solutionCards = document.querySelectorAll('.solution-card');
       const modal = document.getElementById('videoModal');
@@ -219,8 +193,8 @@ const hackathonImages = [
       /** @type {HTMLIFrameElement | null} */
       const youtubePlayer = document.getElementById('youtubePlayer');
       const modalTeamName = document.getElementById('modalTeamName');
-      const modalDescription = document.getElementById('modalDescription');
-      const playerContainer = youtubePlayer ? youtubePlayer.parentElement : null; // Get the div wrapping the iframe
+      const modalDescription = document.getElementById('modalDescription'); 
+      const playerContainer = youtubePlayer ? youtubePlayer.parentElement : null;
 
       /** 
        * @param {string | null} videoId 
@@ -228,21 +202,23 @@ const hackathonImages = [
        * @param {string | undefined} description
       */
       function openModal(videoId, teamName, description) {
-        if (!modal || !modalContent || !youtubePlayer || !modalTeamName || !modalDescription || !playerContainer) {
+        if (!modal || !modalContent || !youtubePlayer || !modalTeamName || !playerContainer) {
             console.error("Modal elements not found!");
             return;
         }
 
         modalTeamName.textContent = teamName || 'Video Showcase';
-        modalDescription.textContent = description || 'No description available.'; 
+        if (modalDescription) {
+            modalDescription.textContent = description || 'No description available.';
+        }
 
         if (videoId && videoId !== 'null') {
           youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-          playerContainer.style.display = 'block'; // Show player container
+          playerContainer.style.display = 'block'; 
           youtubePlayer.style.display = 'block';
         } else {
-          youtubePlayer.src = ''; // Clear src
-          playerContainer.style.display = 'none'; // Hide player container
+          youtubePlayer.src = ''; 
+          playerContainer.style.display = 'none'; 
           youtubePlayer.style.display = 'none';
         }
 
@@ -255,16 +231,16 @@ const hackathonImages = [
       }
 
       function closeTheModal() {
-        if (modal && modalContent && youtubePlayer && modalTeamName && modalDescription && playerContainer) {
+        if (modal && modalContent && youtubePlayer && modalTeamName && playerContainer) {
           modal.classList.add('opacity-0');
           if (modalContent) modalContent.classList.add('scale-95');
           setTimeout(() => { 
             modal.classList.add('hidden');
             youtubePlayer.src = ''; 
-            youtubePlayer.style.display = 'none'; // Ensure player is hidden
-            if (playerContainer) playerContainer.style.display = 'none'; // Ensure container is hidden
+            youtubePlayer.style.display = 'none'; 
+            if (playerContainer) playerContainer.style.display = 'none'; 
             modalTeamName.textContent = '';
-            modalDescription.textContent = ''; 
+            if (modalDescription) modalDescription.textContent = ''; 
             document.body.style.overflow = 'auto';
           }, 300);
         }
@@ -273,7 +249,6 @@ const hackathonImages = [
       solutionCards.forEach(card => {
         if (!(card instanceof HTMLElement)) return;
         card.addEventListener('click', () => {
-          // Treat string "null" or empty string as actual null for videoId
           let videoId = card.dataset.videoId;
           if (videoId === 'null' || videoId === '') {
             videoId = null;
@@ -281,7 +256,6 @@ const hackathonImages = [
           const teamName = card.dataset.teamName;
           const description = card.dataset.description; 
           
-          // Open modal if we have at least a team name and description to show
           if (teamName) { 
             openModal(videoId, teamName, description || 'No description provided.');
           }
@@ -309,15 +283,4 @@ const hackathonImages = [
   </script>
 </Layout>
 
-<style is:global>
-/* Additional styles for aspect ratio if not covered by Tailwind aspect-ratio plugin */
-.aspect-w-16 { position: relative; padding-bottom: 56.25%; /* 16:9 */ }
-.aspect-h-9 { /* Can be empty if aspect-w-16 handles it */ }
-.aspect-w-16 > iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-</style>
+
