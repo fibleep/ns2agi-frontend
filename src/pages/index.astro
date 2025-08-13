@@ -125,108 +125,26 @@ const eventsData = [
 
     </section>
 
-    <!-- Path to North Star Section -->
-    <section id="path-to-north-star" class="py-20 bg-black text-white relative">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-light mb-6 tracking-tight">
-                    Paths to <span class="font-bold">North Star</span>
-                </h2>
-                <p class="text-white/70 text-lg">Three ways we're building the future</p>
-            </div>
+    <EventsShowcase events={eventsData} title="Paths to North Star" subtitle="Our journey through groundbreaking events" />
 
-            <!-- Three Heroes Grid -->
-            <div class="grid lg:grid-cols-3 gap-8">
-                
-                <!-- Events Hero -->
-                <a href="/events" class="group relative block">
-                    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 transition-all duration-500 hover:border-zinc-700/50 hover:scale-[1.02]">
-                        <!-- Image -->
-                        <div class="relative h-64 overflow-hidden">
-                            <img 
-                                src="/signal-i/IMG_0443.jpg" 
-                                alt="Signal Event - Connecting driven people"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="p-6">
-                            <div class="flex items-center mb-3">
-                                <h3 class="text-xl font-medium text-blue-400">Events</h3>
-                            </div>
-                            <p class="text-gray-300 leading-relaxed font-light">
-                                Creating environments where driven people connect and innovation emerges naturally.
-                            </p>
-                        </div>
-
-                        <!-- Subtle hover effect -->
-                        <div class="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                </a>
-
-                <!-- Robotics Hero -->
-                <a href="/events/robotics-hackathon-i" class="group relative block">
-                    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 transition-all duration-500 hover:border-zinc-700/50 hover:scale-[1.02]">
-                        <!-- Image -->
-                        <div class="relative h-64 overflow-hidden">
-                            <img 
-                                src="/robotics-i/LeRobot Hackathon June 14-15 2025 (2).jpg" 
-                                alt="LeRobot Hackathon - Embodied AI future"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="p-6">
-                            <div class="flex items-center mb-3">
-                                <h3 class="text-xl font-medium text-orange-400">Robotics</h3>
-                            </div>
-                            <p class="text-gray-300 leading-relaxed font-light">
-                                Preparing the ecosystem for robotics' ChatGPT moment through hands-on innovation.
-                            </p>
-                        </div>
-
-                        <!-- Subtle hover effect -->
-                        <div class="absolute inset-0 bg-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                </a>
-
-                <!-- AI Hero -->
-                <a href="/events/ai-hackathon-iii" class="group relative block">
-                    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 transition-all duration-500 hover:border-zinc-700/50 hover:scale-[1.02]">
-                        <!-- Image -->
-                        <div class="relative h-64 overflow-hidden">
-                            <img 
-                                src="/ai-hackathon-ii/winners.jpg" 
-                                alt="AI Hackathon - AI Innovation"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="p-6">
-                            <div class="flex items-center mb-3">
-                                <h3 class="text-xl font-medium text-green-400">AI</h3>
-                            </div>
-                            <p class="text-gray-300 leading-relaxed font-light">
-                                Building Europe's AI future where talent gathers and startups are born.
-                            </p>
-                        </div>
-
-                        <!-- Subtle hover effect -->
-                        <div class="absolute inset-0 bg-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                </a>
-
+    <!-- Calendar Section -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-8">Calendar</h2>
+            <div class="rounded-2xl overflow-hidden border border-white/20">
+                <iframe
+                    src="https://lu.ma/embed/calendar/cal-hBJ2pN8HgWlhWZu/events"
+                    width="100%"
+                    height="600"
+                    frameborder="0"
+                    style="border: 1px solid #bfcbda88; border-radius: 4px; width: 100%;"
+                    allowfullscreen
+                    aria-hidden="false"
+                    tabindex="0"
+                ></iframe>
             </div>
         </div>
     </section>
-
 
     <!-- Sponsors Section -->
     <section class="py-20 bg-black">
@@ -266,8 +184,6 @@ const eventsData = [
                                         />
                                     </div>
                                     <h4 class="text-xl font-bold text-white mb-2">Brucon</h4>
-                                    <p class="text-blue-400/80 text-sm">Hacking for B33R</p>
-                                    <p class="text-white/60 text-xs mt-2">Diamond Sponsor</p>
                                 </div>
                             </div>
                         </a>
@@ -309,7 +225,6 @@ const eventsData = [
         </div>
     </section>
 
-    <EventsShowcase events={eventsData} />
 
     <!-- Sticky shine effect at bottom of viewport -->
     <div id="bottom-shine" class="fixed bottom-0 left-0 right-0 h-32 pointer-events-none z-30 transition-all duration-700 ease-out">
