@@ -1,45 +1,100 @@
 ---
+import ImageGallery from '../../components/ImageGallery.astro';
 import Layout from '../../layouts/Layout.astro';
+
+const speakers = [
+  {
+    name: "Francis Wyffels",
+    company: "AI/Robotics professor @ Ugent",
+    topic: "If ChatGPT can think, what is there left for robotic labs to do?",
+    description: "Francis Wyffels, Ghent University professor in AI & Robotics 🤖, shared how his lab is advancing the local scene of Robotics & AI 🚀 He's also the founder of Dwengo vzw, creating open-source STEM/CS teaching materials and fostering educational robotics 📚",
+    emoji: "🤖"
+  },
+  {
+    name: "Jerome Leclanche",
+    company: "CEO @ Ingram",
+    topic: "Hardening AI coding agents",
+    description: "Jerome Leclanche is a serial tech entrepreneur, founder and CEO of Ingram Technologies, an Artificial Intelligence R&D lab 🥼 based in Brussels. In tech for 23 years, his background is in software engineering, data analytics and cybersecurity 💻",
+    emoji: "🛡️"
+  }
+];
+
+// Define the images for the gallery
+const signalImages = [
+  { src: "/signal-ii/Banner from Canva (1).png", alt: "SIGNAL II Event" },
+  { src: "/signal-ii/IMG_0061.jpg", alt: "SIGNAL II Event" },
+  { src: "/signal-ii/IMG_0109 (1).jpg", alt: "SIGNAL II Event" },
+  { src: "/signal-ii/IMG_0210 (1).jpg", alt: "SIGNAL II Event" },
+  { src: "/signal-ii/IMG_0216 (1).jpg", alt: "SIGNAL II Event" },
+  { src: "/signal-ii/filipsignalii.jpeg", alt: "SIGNAL II Event" },
+  { src: "/signal-ii/jeromesignalii.jpeg", alt: "SIGNAL II Event" }
+];
 ---
 
 <Layout>
   <main class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-4 text-center text-white">SIGNAL ✦ AI MEETUP</h1>
-    <p class="text-center text-lg text-white/80 mb-12">Thursday, August 21, 2025 • 19:00 • The Beacon, Sint Pietersvliet 7, Antwerp</p>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-8 text-center animate-fade-in text-white">SIGNAL II - Recap</h1>
+    <p class="text-center text-lg text-white/80 mb-12 animate-fade-in-delay-1">
+      August 21, 2025 in Antwerp, Belgium
+    </p>
 
-    <section class="mb-12 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-3xl mx-auto border border-white/10">
-      <h2 class="text-2xl font-semibold mb-4 text-white">About This Event</h2>
-      <p class="text-white/85 mb-4">A series of talks by experts in AI and Robotics, covering the latest breakthroughs, real-world applications, and future developments. Join innovators, students, and professionals building Europe's AI ecosystem.</p>
-      <p class="text-white/85">The evening includes expert presentations, live demos, and open discussions, followed by networking with free pizzas and drinks. Connect with founders, engineers, researchers, and fellow AI enthusiasts.</p>
+    {/* --- Success Section --- */}
+    <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
+        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Thank you for coming to our SIGNAL! 📡</h2>
+        <p class="text-lg mb-4 text-white/90 leading-relaxed">
+            It was full house at The Beacon with 61 attendees 🤯
+        </p>
+        <p class="text-lg text-white/90 leading-relaxed">
+            Our speakers Francis and Jerome kept the crowd engaged. Important questions were asked, predictions were made and a discussion was started.
+        </p>
     </section>
 
-    <section class="mb-12 max-w-3xl mx-auto grid sm:grid-cols-2 gap-6">
-      <div class="backdrop-blur-sm bg-white/5 rounded-3xl p-6 shadow-lg border border-white/10">
-        <p class="text-white/60 text-sm">Date & Time</p>
-        <p class="text-white">Thursday, August 21, 2025</p>
-        <p class="text-white">19:00</p>
+    {/* --- Speakers Section --- */}
+    <section class="mb-12 animate-fade-in-delay-3 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-8 text-white text-center">Featured Speakers 🎤</h2>
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+        {speakers.map((speaker, index) => (
+          <div class={`${
+              index === 0 ? 'bg-blue-500/10' : 'bg-green-500/10'
+            } backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
+            <div class="text-center mb-4">
+              <div class="text-3xl mb-2">{speaker.emoji}</div>
+              <h3 class="text-xl font-bold mb-2 text-white">{speaker.name}</h3>
+              <p class="text-white/70 font-medium mb-2">{speaker.company}</p>
+              <h4 class="text-lg font-semibold text-white/90 mb-3">{speaker.topic}</h4>
+            </div>
+            <p class="text-white/80 flex-grow text-center">{speaker.description}</p>
+          </div>
+        ))}
       </div>
-      <div class="backdrop-blur-sm bg-white/5 rounded-3xl p-6 shadow-lg border border-white/10">
-        <p class="text-white/60 text-sm">Location</p>
-        <p class="text-white">The Beacon</p>
-        <p class="text-white">Sint Pietersvliet 7, Antwerp</p>
-      </div>
     </section>
 
-    <div class="text-center mb-12">
-      <img src="/signal-ii/signalii.png" alt="SIGNAL II" class="inline-block rounded-2xl border border-white/10 max-h-72 object-contain" />
-    </div>
+     {/* --- Image Gallery Section --- */}
+     <ImageGallery
+        images={signalImages}
+        title="Event Highlights"
+        class="mb-12 animate-fade-in-delay-4"
+      />
 
-    <section class="text-center max-w-3xl mx-auto">
-      <a
-        href="https://lu.ma/6m6bpvzg?tk=FjX5KN"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-black bg-white rounded-full hover:bg-white/90 transition-colors duration-300 shadow-md"
-      >
-        Register for Event
-      </a>
+    {/* --- What's Next Section --- */}
+    <section class="text-center animate-fade-in-delay-5 max-w-4xl mx-auto">
+       <h2 class="text-3xl font-semibold mb-6 text-white">What's Next?</h2>
+       <p class="text-lg mb-4 text-white/90">
+         Don't miss future SIGNAL events and other exciting gatherings. Connect with us and be part of North Star AGI's growing community.
+       </p>
+       <a
+         href="https://discord.gg/m5Hknymurb"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-[#5462EB] rounded-full hover:bg-[#4754c4] transition-colors duration-300 shadow-md"
+       >
+         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+             <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
+         </svg>
+         Join Discord & Share Feedback
+       </a>
     </section>
+
   </main>
 </Layout>
 

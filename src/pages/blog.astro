@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Blog posts data
+const blogPosts = [
+  {
+    id: 'hackathon-winners-playbook',
+    title: 'The Hackathon Winners\' Playbook',
+    date: 'January 20, 2025',
+    excerpt: 'Insights from our AI Hackathon champions Luis Beqja and Samuel Berton on what it really takes to win - from team formation to the perfect pitch.',
+    author: 'North Star AGI Team',
+    thumbnail: '/blogs/hackathon-winners/pizza.png',
+    readTime: '8 min read',
+    slug: 'hackathon-winners-playbook'
+  }
+];
+
+// Helper function to format date
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
+---
+
+<Layout title="Blog - North Star AGI">
+    <!-- Hero Section -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-16">
+                <div class="mb-8">
+                    <img src="/rmshine.png" alt="North Star AGI" class="w-24 h-24 mx-auto object-contain animate-fade-in"/>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white animate-fade-in-delay-1">
+                    Our Blog
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Blog Content -->
+    <section class="py-12 bg-black">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                {blogPosts.map((post) => (
+                    <article class="group h-full">
+                        <div class="
+                            rounded-3xl overflow-hidden h-full flex flex-col
+                            backdrop-blur-sm border border-white/20 
+                            transition-all duration-300 hover:scale-[1.02] hover:border-white/40
+                            bg-slate-900/10 hover:bg-slate-900/20
+                        ">
+                            <!-- Thumbnail Image -->
+                            <div class="relative h-48 overflow-hidden flex-shrink-0">
+                                {post.thumbnail ? (
+                                    <img 
+                                        src={post.thumbnail} 
+                                        alt={post.title}
+                                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                    />
+                                ) : (
+                                    <div class="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
+                                        <div class="text-center">
+                                            <svg class="w-16 h-16 text-white/30 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                            </svg>
+                                            <p class="text-white/50 text-sm font-medium">Blog Post</p>
+                                        </div>
+                                    </div>
+                                )}
+                                
+                                <!-- Reading Time Badge -->
+                                <div class="absolute top-4 right-4">
+                                    <div class="
+                                        px-3 py-1 rounded-full text-xs font-semibold
+                                        backdrop-blur-sm border
+                                        bg-blue-500/20 text-blue-300 border-blue-500/30
+                                    ">
+                                        {post.readTime}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="p-6 flex flex-col flex-1">
+                                <!-- Blog Post Title -->
+                                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-white/90 transition-colors line-clamp-2">
+                                    {post.title}
+                                </h3>
+                                
+                                <!-- Meta Information -->
+                                <div class="flex items-center text-white/60 text-sm mb-4 space-x-4">
+                                    <span class="font-medium">{post.author}</span>
+                                    <span>•</span>
+                                    <time datetime={post.date}>{formatDate(post.date)}</time>
+                                </div>
+                                
+                                <!-- Excerpt -->
+                                <p class="text-white/80 text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
+                                    {post.excerpt}
+                                </p>
+                                
+                                <!-- CTA Button -->
+                                <div class="mt-auto">
+                                    <a 
+                                        href={`/blog/${post.slug}`}
+                                        class="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-semibold text-sm rounded-full 
+                                               hover:bg-white/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                    >
+                                        Read More
+                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
+
+<script>
+    // Add smooth scrolling and loading states
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add loading states to blog post links
+        const blogLinks = document.querySelectorAll('a[href^="/blog/"]');
+        blogLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Add a subtle loading state
+                const card = this.querySelector('div');
+                if (card) {
+                    card.style.opacity = '0.8';
+                    card.style.transform = 'scale(0.98)';
+                }
+            });
+        });
+        
+        // Improve keyboard navigation
+        blogLinks.forEach(link => {
+            link.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+    });
+</script>
+
