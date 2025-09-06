@@ -113,7 +113,8 @@ function getEventLink(eventId: string): string {
     'ai-hackathon-i': '/events/ai-hackathon-i', 
     'ai-hackathon-ii': '/events/ai-hackathon-ii',
     'ai-hackathon-iii': '/events/ai-hackathon-iii',
-    'robotics-hackathon-i': '/events/robotics-hackathon-i'
+    'robotics-hackathon-i': '/events/robotics-hackathon-i',
+    'kids-ai-vibecoding-hackathon': '/events/kids-ai-vibecoding-hackathon'
   };
   return eventRoutes[eventId as keyof typeof eventRoutes] || '/events';
 }

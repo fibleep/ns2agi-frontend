@@ -1,46 +1,107 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
+
+const winners = [
+  { category: "JUDGES' FAVORITE", team: "Ji-Ling Hou and Artem Boichenko", project: "LLM search optimization app which uses browser use to test your websites!" },
+  { category: "AI'S CHOICE", team: "Queena Lin, Noah Guerin, Margarita Stoyanova", project: "Echo Journal - A global, connected way for daily journaling with an AI spin on it" },
+  { category: "ATLAS", team: "Teodor Trotea, Eugen Donescu", project: "belgiumtechchat and a scraper for major event websites" }
+];
+
+const originalEventDate = "August 30, 2025";
+const originalEventLocation = "The Beacon, Sint-Pietersvliet 7, Antwerp";
+
+// Define the images for the gallery
+const hackathonImages = [
+  { src: "/ai-hackathon-iii/IMG_1879.jpg", alt: "AI Hackathon III - Teams working" },
+  { src: "/ai-hackathon-iii/IMG_1883.jpg", alt: "AI Hackathon III - Innovation in action" },
+  { src: "/ai-hackathon-iii/IMG_8089.jpg", alt: "AI Hackathon III - Collaborative atmosphere" },
+  { src: "/ai-hackathon-iii/IMG_20250831_180011_481.jpg", alt: "AI Hackathon III - Evening presentations" },
+  { src: "/ai-hackathon-iii/IMG_20250831_003219_376.jpg", alt: "AI Hackathon III - Night coding session" },
+  { src: "/ai-hackathon-iii/20250830_153822.jpg", alt: "AI Hackathon III - Afternoon energy" },
+  { src: "/ai-hackathon-iii/IMG_20250831_193708_008.jpg", alt: "AI Hackathon III - Networking and celebration" },
+  { src: "/ai-hackathon-iii/IMG_20250831_193704_299.jpg", alt: "AI Hackathon III - Award ceremony" },
+  { src: "/ai-hackathon-iii/IMG_20250831_193704_690.jpg", alt: "AI Hackathon III - Community spirit" }
+];
 ---
 
-// src/pages/events/ai-hackathon-iii.astro
 <Layout>
   <main class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-4 text-center text-white">AI HACKATHON III ✦ CHANGE THE OUTCOME</h1>
-    <p class="text-center text-lg text-white/80 mb-12">Saturday, August 30, 2025 • 09:00–19:00 • The Beacon, Sint-Pietersvliet 7, Antwerp</p>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-8 text-center animate-fade-in text-white">AI Hackathon III - Recap</h1>
+    <p class="text-center text-lg text-white/80 mb-12 animate-fade-in-delay-1">
+      {originalEventDate} at <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] hover:underline">{originalEventLocation.split(',')[0]}</a>
+    </p>
 
-    <section class="mb-12 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-3xl mx-auto border border-white/10">
-      <h2 class="text-2xl font-semibold mb-4 text-white">About Event</h2>
-      <p class="text-white/85 mb-3">Our flagship hackathon is back at The Beacon.</p>
-      <ul class="text-white/85 list-disc list-inside space-y-1">
-        <li>Students: Skip job screening and meet hiring startups</li>
-        <li>Professionals: Ship side projects and expand your network</li>
-        <li>Companies: Scout talent and support the vision</li>
-      </ul>
-      <p class="text-white/85 mt-4">Food and drinks provided.</p>
+    {/* --- Success Section --- */}
+    <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
+        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Change The Outcome - Mission Accomplished!</h2>
+        <p class="text-lg mb-4 text-white/90 leading-relaxed">
+            🚀 Over 400 man-hours of innovation packed into one weekend at The Beacon | Innovation Community! 
+        </p>
+        <p class="text-lg mb-4 text-white/90 leading-relaxed">
+            ⚡️ These hackathons are what change the outcome - it's the people with conviction to come together and build something meaningful, on a Saturday, during summer.
+        </p>
+        <p class="text-lg text-white/90 leading-relaxed">
+            The energy, creativity, and technical excellence displayed throughout the weekend were truly inspiring. Thank you to everyone who participated and made this event unforgettable.
+        </p>
     </section>
 
-    <section class="mb-12 max-w-3xl mx-auto grid sm:grid-cols-2 gap-6">
-      <div class="backdrop-blur-sm bg-white/5 rounded-3xl p-6 shadow-lg border border-white/10">
-        <p class="text-white/60 text-sm">Date & Time</p>
-        <p class="text-white">Saturday, August 30, 2025</p>
-        <p class="text-white">09:00–19:00</p>
-      </div>
-      <div class="backdrop-blur-sm bg-white/5 rounded-3xl p-6 shadow-lg border border-white/10">
-        <p class="text-white/60 text-sm">Location</p>
-        <p class="text-white">The Beacon</p>
-        <p class="text-white">Sint-Pietersvliet 7, Antwerp</p>
+    {/* --- Winners Section --- */}
+    <section class="mb-12 animate-fade-in-delay-3 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-8 text-white text-center">🏆 Congratulations to Our Winners!</h2>
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        {winners.map((winner, index) => (
+          <div class={`${
+              index === 0 ? 'bg-blue-500/10' :
+              index === 1 ? 'bg-purple-500/10' :
+              'bg-yellow-500/10'
+            } backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
+            <h3 class="text-2xl font-bold mb-3 text-white glitchy-text" style={`animation-duration: ${1 + index * 0.2}s;`}>{winner.category}</h3>
+            <p class="text-lg font-semibold mb-2 text-white/95">{winner.team}</p>
+            <p class="text-white/80 flex-grow">{winner.project}</p>
+          </div>
+        ))}
       </div>
     </section>
 
-    <section class="text-center max-w-3xl mx-auto">
-      <a
-        href="https://lu.ma/ufw1goiy"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-black bg-white rounded-full hover:bg-white/90 transition-colors duration-300 shadow-md"
-      >
-        Register on Luma
-      </a>
+     {/* --- Image Gallery Section --- */}
+     <ImageGallery
+        images={hackathonImages}
+        title="Event Moments"
+        class="mb-12 animate-fade-in-delay-4"
+      />
+
+    {/* --- Acknowledgements Section --- */}
+    <section class="mb-12 animate-fade-in-delay-5 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Acknowledgements</h2>
+      <p class="text-lg mb-4 text-white/90 leading-relaxed">
+        A heartfelt thank you to <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] font-semibold hover:underline">The Beacon | Innovation Community</a> for providing an incredible venue that perfectly captured the spirit of innovation and collaboration.
+      </p>
+      <p class="text-lg mb-4 text-white/90 leading-relaxed">
+        Special recognition to our dedicated judges who carefully evaluated each project and provided valuable feedback to all participants.
+      </p>
+       <p class="text-lg text-white/90 leading-relaxed">
+        And most importantly, thank you to all the hackers, mentors, and supporters who brought their passion and expertise to make this weekend truly special!
+      </p>
+    </section>
+
+    {/* --- What's Next Section --- */}
+    <section class="text-center animate-fade-in-delay-6 max-w-4xl mx-auto">
+       <h2 class="text-3xl font-semibold mb-6 text-white">What's Next?</h2>
+       <p class="text-lg mb-4 text-white/90">
+         The innovation doesn't stop here! Join our community to stay connected and be the first to know about future hackathons.
+       </p>
+       <a
+         href="https://discord.gg/m5Hknymurb"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-[#5462EB] rounded-full hover:bg-[#4754c4] transition-colors duration-300 shadow-md"
+       >
+         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+             <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
+         </svg>
+         Join Discord Community
+       </a>
     </section>
   </main>
 </Layout>
