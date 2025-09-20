@@ -1,0 +1,279 @@
+---
+// Contribute page for North Star AGI
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contribute - North Star AGI">
+    <!-- Main Content -->
+    <main class="min-h-screen">
+        <div class="container mx-auto px-8 py-24">
+            <!-- Page Header -->
+            <div class="text-center mb-16">
+                <div class="mb-8">
+                    <img src="/rmshine.png" alt="North Star AGI" class="w-24 h-24 mx-auto object-contain"/>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+                    Contribute to Our Mission
+                </h1>
+            </div>
+
+            <!-- Contribution Options -->
+            <div class="max-w-7xl mx-auto space-y-32">
+                
+                <!-- Fundraiser Section -->
+                <section class="text-center py-16">
+                    <div class="w-20 h-20 mx-auto mb-8 bg-white/10 rounded-full flex items-center justify-center">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-12">Support Our Fundraiser</h2>
+
+                    <a 
+                        href="https://www.weglow.world/o/northstaragi/c/VRN975Y6" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center px-12 py-5 bg-white text-black font-bold text-lg rounded-full hover:bg-white/90 transition-all duration-300 hover:scale-105"
+                    >
+                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                        Donate to Our Fundraiser
+                    </a>
+                </section>
+
+                <!-- Sponsoring Section -->
+                <section>
+                    <div class="text-center mb-16">
+                        <div class="w-20 h-20 mx-auto mb-8 bg-white/10 rounded-full flex items-center justify-center">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-16">Become a Sponsor</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8 mb-16">
+                        <!-- Satellite Sponsors -->
+                        <div class="relative min-h-[400px] rounded-3xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0">
+                                <img src="/partnerships/icons/satellite.jpg" alt="Satellite Background" class="w-full h-full object-cover"/>
+                                <div class="absolute inset-0 bg-black/60"></div>
+                            </div>
+                            <div class="relative z-10 p-8 h-full flex flex-col justify-center">
+                                <h3 class="text-3xl font-bold mb-6 text-center">🛰️ Satellite Sponsors</h3>
+                                <ul class="text-white/90 space-y-3 text-lg">
+                                    <li class="flex items-center">
+                                        <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                        Logo on website
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                        Social media post
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Planet Sponsors -->
+                        <div class="relative min-h-[400px] rounded-3xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0">
+                                <img src="/partnerships/icons/planet.png" alt="Planet Background" class="w-full h-full object-cover"/>
+                                <div class="absolute inset-0 bg-black/60"></div>
+                            </div>
+                            <div class="relative z-10 p-8 h-full flex flex-col justify-center">
+                                <h3 class="text-3xl font-bold mb-6 text-center">🪐 Planet Sponsors</h3>
+                                <ul class="text-white/90 space-y-3 text-lg">
+                                    <li class="flex items-center">
+                                        <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                        Big logo
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                        Strategic partnership
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                        Event shoutouts
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Galaxy Sponsors -->
+                        <div class="relative min-h-[400px] rounded-3xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0">
+                                <img src="/partnerships/icons/galaxy.png" alt="Galaxy Background" class="w-full h-full object-cover"/>
+                                <div class="absolute inset-0 bg-black/60"></div>
+                            </div>
+                            <div class="relative z-10 p-8 h-full flex flex-col justify-center">
+                                <h3 class="text-3xl font-bold mb-6 text-center">🌌 Galaxy Sponsors</h3>
+                                <ul class="text-white/90 space-y-3 text-lg">
+                                    <li class="flex items-center">
+                                        <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                        Vision Alignment
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                        Deals & talents referrals
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                        Your success is ours too
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Wildcard Section -->
+                <section id="join-core" class="relative">
+                    <!-- Large background graphic for section -->
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
+                        <svg viewBox="0 0 400 400" class="w-full h-full">
+                            <circle cx="200" cy="200" r="150" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <circle cx="200" cy="200" r="100" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <circle cx="200" cy="200" r="50" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <path d="M50 200 L350 200 M200 50 L200 350" stroke="currentColor" stroke-width="0.5"/>
+                        </svg>
+                    </div>
+
+                    <div class="relative text-center mb-20">
+                        <div class="w-24 h-24 mx-auto mb-12 bg-white/10 rounded-full flex items-center justify-center">
+                            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+                            Wildcard <span class="block">Collaborations</span>
+                        </h2>
+                        <div class="w-32 h-1 bg-white/30 mx-auto mb-12"></div>
+                    </div>
+
+                    <!-- Main Content Grid -->
+                    <div class="grid lg:grid-cols-2 gap-16 mb-20">
+                        <!-- Left Column: Services -->
+                        <div>
+                            <h3 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center lg:text-left">
+                                What We Offer
+                            </h3>
+                            <div class="space-y-8">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-white mb-3">Workshops & Lectures</h4>
+                                        <p class="text-white/70 text-lg leading-relaxed">
+                                            Custom educational sessions tailored for your team's needs in AI and robotics
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-white mb-3">Hackathons</h4>
+                                        <p class="text-white/70 text-lg leading-relaxed">
+                                            Intensive innovation sprints to rapidly prototype solutions for your organization
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Collaboration Types -->
+                        <div>
+                            <h3 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center lg:text-left">
+                                Collaboration Types
+                            </h3>
+                            <div class="space-y-8">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-white mb-3">Research Projects</h4>
+                                        <p class="text-white/70 text-lg leading-relaxed">
+                                            Collaborative research in AI safety, robotics, and emerging technologies
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-white mb-3">Innovation Projects</h4>
+                                        <p class="text-white/70 text-lg leading-relaxed">
+                                            Joint development of tools, platforms, and solutions for the AI community
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-white mb-3">Pilot Programs</h4>
+                                        <p class="text-white/70 text-lg leading-relaxed">
+                                            Experimental initiatives to test new approaches and methodologies
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Contact Form Section -->
+            <section class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <div class="w-20 h-20 mx-auto mb-8 bg-white/10 rounded-full flex items-center justify-center">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h2>
+                </div>
+                
+                <!-- Notion Form Embed -->
+                <div class="px-4 md:p-8">
+                    <iframe 
+                        src="https://beaded-pineapple-898.notion.site/ebd/274d61b47ae280be826fcc817dd3af2c" 
+                        width="100%" 
+                        height="700" 
+                        frameborder="0" 
+                        allowfullscreen
+                        class="rounded-2xl w-full"
+                        title="Contact Form"
+                    ></iframe>
+                </div>
+            </section>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    input:focus, textarea:focus, select:focus {
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    }
+</style>
