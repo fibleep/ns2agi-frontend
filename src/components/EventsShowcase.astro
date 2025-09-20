@@ -16,13 +16,17 @@ export interface Props {
   events: Event[];
   showHeader?: boolean;
   compact?: boolean;
+  limit?: number;
+  showSeeMore?: boolean;
 }
 
 const { 
   title = "Our Accomplishments", 
   events = [],
   showHeader = true,
-  compact = false
+  compact = false,
+  limit,
+  showSeeMore = false
 } = Astro.props;
 
 // Default events data
@@ -103,7 +107,12 @@ const defaultEvents: Event[] = [
   }
 ];
 
-const eventsData = events.length > 0 ? events : defaultEvents;
+let eventsData = events.length > 0 ? events : defaultEvents;
+
+// Apply limit if specified
+if (limit && limit > 0) {
+  eventsData = eventsData.slice(0, limit);
+}
 
 // Helper function to get event link
 function getEventLink(eventId: string): string {
@@ -216,5 +225,19 @@ function getEventLink(eventId: string): string {
         </div>
       ))}
     </div>
+    
+    {showSeeMore && (
+      <div class="text-center mt-12">
+        <a 
+          href="/events"
+          class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-full border-2 border-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-105"
+        >
+          See All Events
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    )}
   </div>
 </section> 
