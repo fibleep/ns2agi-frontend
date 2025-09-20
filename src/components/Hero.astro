@@ -10,19 +10,19 @@
             <!-- Left Column - Content -->
             <div class="space-y-8">
                 <div class="space-y-6">
-                    <h1 class="text-4xl md:text-6xl font-bold tracking-wider animate-fade-in-delay-1">
+                    <h1 class="text-4xl md:text-6xl font-bold tracking-wider hero-element" data-delay="0">
                         North Star AGI
                     </h1>
-                    <p class="text-lg md:text-xl text-white/90 animate-fade-in-delay-3">
+                    <p class="text-lg md:text-xl text-white/90 hero-element" data-delay="200">
                         North Star AGI is a non-profit building the ecosystem through hackathons, meetups, projects and global challenges 
                     </p>
-                    <p class="text-lg md:text-xl text-white/80 animate-fade-in-delay-5 italic font-light">
+                    <p class="text-lg md:text-xl text-white/80 italic font-light hero-element" data-delay="400">
                     Let's build it together
                     </p>
                 </div>
 
                 <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-delay-6">
+                <div class="flex flex-col sm:flex-row gap-4 hero-element" data-delay="600">
                     <a
                         href="/events"
                         class="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
@@ -46,7 +46,7 @@
                 </div>
 
                 <!-- Social links & Founded -->
-                <div class="flex items-center space-x-6 animate-fade-in-delay-7">
+                <div class="flex items-center space-x-6 hero-element" data-delay="800">
                     <span class="text-white/60 text-sm font-medium">Founded 1st January 2025</span>
                     <a
                         href="https://discord.gg/m5Hknymurb"
@@ -85,7 +85,7 @@
             </div>
 
             <!-- Right Column - North Star Logo -->
-            <div class="flex items-center justify-center animate-fade-in-delay-2">
+            <div class="flex items-center justify-center hero-element" data-delay="100">
                 <div class="w-80 h-80 md:w-96 md:h-96 flex items-center justify-center">
                     <img src="/rmshine.png" alt="North Star AGI" class="w-full h-full object-contain filter drop-shadow-2xl animate-pulse"/>
                 </div>
@@ -112,15 +112,24 @@
         animation: fade-in 1s ease-out forwards; 
     }
     .animate-fade-in-delay-1 { 
-        animation: fade-in 1s ease-out 0.3s backwards; 
+        animation: fade-in 1s ease-out 0.5s backwards; 
     }
     .animate-fade-in-delay-2 { 
-        animation: fade-in 1s ease-out 0.6s backwards; 
+        animation: fade-in 1s ease-out 1s backwards; 
     }
     .animate-fade-in-delay-3 { 
-        animation: fade-in 1s ease-out 0.9s backwards; 
+        animation: fade-in 1s ease-out 2s backwards; 
     }
     .animate-fade-in-delay-4 { 
-        animation: fade-in 1s ease-out 1.2s backwards; 
+        animation: fade-in 1s ease-out 2.5s backwards; 
+    }
+    .animate-fade-in-delay-5 { 
+        animation: fade-in 1s ease-out 3.5s backwards; 
+    }
+    .animate-fade-in-delay-6 { 
+        animation: fade-in 1s ease-out 4.5s backwards; 
+    }
+    .animate-fade-in-delay-7 { 
+        animation: fade-in 1s ease-out 5.5s backwards; 
     }
 </style>

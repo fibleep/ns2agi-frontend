@@ -109,6 +109,13 @@ const defaultEvents: Event[] = [
 
 let eventsData = events.length > 0 ? events : defaultEvents;
 
+// Sort events by date (latest first)
+eventsData = eventsData.sort((a, b) => {
+  const dateA = new Date(a.date);
+  const dateB = new Date(b.date);
+  return dateB.getTime() - dateA.getTime();
+});
+
 // Apply limit if specified
 if (limit && limit > 0) {
   eventsData = eventsData.slice(0, limit);
