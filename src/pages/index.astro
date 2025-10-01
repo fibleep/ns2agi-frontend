@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import EventsShowcase from '../components/EventsShowcase.astro';
 import BlogShowcase from '../components/BlogShowcase.astro';
 import Hero from '../components/Hero.astro';
+import KidsHackathonPopup from '../components/KidsHackathonPopup.astro';
 
 const eventsData = [
   {
@@ -65,6 +66,7 @@ const eventsData = [
 ---
 
 <Layout>
+    <KidsHackathonPopup />
     <Hero />
 
     <EventsShowcase events={eventsData} title="Paths to North Star" subtitle="Our journey through groundbreaking events" limit={3} showSeeMore={true} />
