@@ -5,40 +5,16 @@
 		<title>North Star AGI</title>
 	</head>
 	<body class="overflow-hidden text-white font-mono">
-		<div class="h-screen relative overflow-hidden flex flex-col justify-center"> {/* Adjusted flex properties */}
-			<main class="flex flex-col justify-center items-center text-center space-y-6 px-4"> {/* Added padding */}
-				<!-- <h1 class="text-4xl md:text-6xl font-bold tracking-wider animate-fade-in">
-					north star agi
-				</h1>
-				<p class="text-lg md:text-xl text-white/90 animate-fade-in-delay-1">
-					reach the north star
-				</p>
-				<p class="text-xs text-white/70 animate-fade-in-delay-2">
-					founded 1st january 2025
-				</p> -->
-<!-- 
-               <a
-    class="relative inline-flex items-center justify-center px-6 py-3 text-lg font-bold text-white rounded-full overflow-hidden
-           bg-white/10
-           hover:scale-105 transition-transform duration-300
-           animate-fade-in-delay-3 group glitchy-border"
-    href="/events/ai-hackathon-ii" 
->
-    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-[#00fffc] via-[#fc00ff] to-purple-600 opacity-30 group-hover:opacity-50 transition-opacity duration-300 animate-pulse"></span>
-    <span class="relative z-10 glitchy-text">AI Hackathon II - Join now!</span> 
-</a>                
+		<div class="h-screen relative overflow-hidden flex flex-col justify-center"> 
+			<main class="flex flex-col justify-center items-center text-center space-y-6 px-4"> 
+				
 
-                <a class="text-sm text-white/60 hover:text-white/80 underline decoration-[#C850C0]/50 underline-offset-2 transition-colors duration-200 animate-fade-in-delay-4"
-                   href="/events/ai-hackathon-i"
-                >
-                    See results from AI Hackathon I
-                </a> -->
 
                 
 
-                {/* New Event Section: SIGNAL */}
+                
                 <div class="mt-10 animate-fade-in-delay-4 text-center space-y-4"> 
-                    {/* Text from image, styled with Georgia font stack */}
+                    
                     <div class="font-georgia mb-3">
                         <p class="text-xl md:text-2xl text-white/80">find the</p>
                         <h2 class="text-6xl md:text-8xl font-bold text-white tracking-tight my-1 uppercase">SIGNAL</h2>
@@ -46,7 +22,7 @@
                         <p class="text-sm md:text-base text-white/60 mt-2 tracking-wider">05/06/2025 ♦ ns2agi.com</p>
                     </div>
 
-                    {/* Updated Button Style for SIGNAL */}
+                    
                     <a
                         class="inline-block px-8 py-3 font-georgia text-lg font-medium text-black bg-white rounded-full 
                                border border-black/20 
@@ -61,8 +37,8 @@
                     </a>
                 </div>
 
-				{/* Social links */}
-				<div class="flex space-x-6 animate-fade-in-delay-5"> {/* Adjusted delay */}
+				
+				<div class="flex space-x-6 animate-fade-in-delay-5"> 
 					<a
 						href="https://discord.gg/m5Hknymurb"
 						target="_blank"
@@ -101,12 +77,12 @@
 	</body>
 </html>
 <style>
-	/* Add Georgia font stack to a utility class */
+	
 	.font-georgia {
 		font-family: Georgia, serif;
 	}
 
-	/* Keep existing fade-in styles */
+	
 	@keyframes fade-in {
 		from {
 			opacity: 0;
@@ -125,7 +101,7 @@
     .animate-fade-in-delay-5 { animation: fade-in 1s ease-out 1.5s backwards; }
 
 
-    /* Glitchy Text Animation (same as Layout.astro) */
+    
     @keyframes glitch {
       0% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
       14% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
@@ -139,7 +115,7 @@
         animation: glitch 0.65s infinite linear alternate-reverse;
     }
 
-    /* Optional: Glitchy border effect */
+    
     .glitchy-border::before,
     .glitchy-border::after {
       content: '';
@@ -151,7 +127,7 @@
       height: calc(100% + 4px);
       z-index: -1;
       animation: steam 20s linear infinite;
-      border-radius: 9999px; /* Match button rounding */
+      border-radius: 9999px; 
     }
     .glitchy-border::after {
         filter: blur(15px);

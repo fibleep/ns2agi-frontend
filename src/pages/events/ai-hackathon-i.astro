@@ -1,16 +1,12 @@
 ---
-// src/pages/events/ai-hackathon-i.astro
+
 import Layout from '../../layouts/Layout.astro';
-import ImageGallery from '../../components/ImageGallery.astro'; // Import the gallery component
+import ImageGallery from '../../components/ImageGallery.astro'; 
 import solutionsData from '../../../public/ai-hackathon-i/solutions.json';
 
 const solutions = Object.values(solutionsData);
 
-/**
- * Extracts the YouTube video ID from a given URL.
- * @param {string | null | undefined} url The YouTube URL.
- * @returns {string | null} The video ID or null if not found.
- */
+
 function getYouTubeVideoId(url) {
   if (!url) return null;
   const patterns = [
@@ -22,19 +18,14 @@ function getYouTubeVideoId(url) {
     const match = url.match(pattern);
     if (match && match[1] && match[1].length === 11) return match[1];
   }
-  // Corrected simpleMatch regex with proper escapes for standard strings
+  
   const simpleMatch = url.match(/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]{11}).*/);
   if (simpleMatch && simpleMatch[2] && simpleMatch[2].length === 11) return simpleMatch[2];
   console.warn(`Could not extract YouTube video ID from URL: ${url}`);
   return null;
 }
 
-/**
- * Generates a YouTube thumbnail URL or a placeholder SVG.
- * @param {string | null} videoId The YouTube video ID.
- * @param {string} quality The desired thumbnail quality (e.g., 'hqdefault').
- * @returns {string} The thumbnail URL or a data URI for a placeholder SVG.
- */
+
 function getYouTubeThumbnailUrl(videoId, quality = 'hqdefault') {
   if (!videoId) {
     return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='90' viewBox='0 0 160 90'%3E%3Crect width='160' height='90' fill='%234A4A4A'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23EEEEEE' font-size='14' font-family='Arial, Helvetica, sans-serif'%3ENo Preview%3C/text%3E%3C/svg%3E";
@@ -45,13 +36,13 @@ function getYouTubeThumbnailUrl(videoId, quality = 'hqdefault') {
 const winners = [
   { category: "TECH", team: "Agentic Boys", project: "fAInance: a fullstack app using a multi-agent swarm to perform financial analysis and provide insights." },
   { category: "CREATIVITY", team: "Bugify", project: "A tool which strategically introduces controlled bugs into codebases to help companies evaluate their development teams." },
-  { category: "AI'S CHOICE", team: "Multi-agent Lab 6", project: "An AI-powered research agent which filters ArXiv papers based on relevance, author credibility, and social media discussions (X, Reddit, LinkedIn)." } // Added note
+  { category: "AI'S CHOICE", team: "Multi-agent Lab 6", project: "An AI-powered research agent which filters ArXiv papers based on relevance, author credibility, and social media discussions (X, Reddit, LinkedIn)." } 
 ];
 
 const originalEventDate = "March 8th, 2025";
 const originalEventLocation = "The Beacon, Sint-Pietersvliet 7, 2000 Antwerpen, Belgium";
 
-// Define the images for the gallery
+
 const hackathonImages = [
   { src: "/ai-hackathon-i/winners.jpeg", alt: "AI Hackathon I" },
   { src: "/ai-hackathon-i/ken.jpeg", alt: "AI Hackathon I" },
@@ -67,7 +58,7 @@ const hackathonImages = [
       {originalEventDate} at <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] hover:underline">{originalEventLocation.split(',')[0]}</a>
     </p>
 
-    {/* --- Success Section --- */}
+    
     <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
         <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">A Huge Success!</h2>
         <p class="text-lg mb-4 text-white/90 leading-relaxed">
@@ -78,7 +69,7 @@ const hackathonImages = [
         </p>
     </section>
 
-    {/* --- Winners Section --- */}
+    
     <section class="mb-12 animate-fade-in-delay-3 max-w-4xl mx-auto">
       <h2 class="text-3xl font-semibold mb-8 text-white text-center">Congratulations to Our Winners!</h2>
       <div class="grid md:grid-cols-3 gap-6 md:gap-8">
@@ -96,14 +87,14 @@ const hackathonImages = [
       </div>
     </section>
 
-     {/* --- Image Gallery Section --- */}
+     
      <ImageGallery
         images={hackathonImages}
         title="Event Moments"
         class="mb-12 animate-fade-in-delay-4"
       />
 
-    {/* --- Solutions Showcase Section --- */}
+    
     <section class="mb-12 animate-fade-in-delay-5 max-w-6xl mx-auto">
       <h2 class="text-3xl font-semibold mb-8 text-white text-center">Hackathon Projects Showcase</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -130,7 +121,7 @@ const hackathonImages = [
       </div>
     </section>
 
-    {/* --- Video Modal --- */}
+    
     <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-[1000] p-4 transition-opacity duration-300 opacity-0">
       <div class="bg-gray-800 p-5 rounded-lg shadow-2xl relative w-full max-w-3xl text-white transform scale-95 transition-transform duration-300">
         <button id="closeModalBtn" class="absolute top-3 right-3 text-gray-300 hover:text-white text-3xl leading-none z-10" aria-label="Close modal">&times;</button>
@@ -150,8 +141,8 @@ const hackathonImages = [
       </div>
     </div>
 
-    {/* --- Acknowledgements Section --- */}
-    <section class="mb-12 animate-fade-in-delay-6 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto"> {/* Adjusted delay */}
+    
+    <section class="mb-12 animate-fade-in-delay-6 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto"> 
       <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Acknowledgements</h2>
       <p class="text-lg mb-4 text-white/90 leading-relaxed">
         We extend our sincere gratitude to <strong class="font-semibold">Ken Casier</strong> for delivering an inspiring closing speech that perfectly capped off the day.
@@ -164,8 +155,8 @@ const hackathonImages = [
       </p>
     </section>
 
-    {/* --- What's Next Section --- */}
-    <section class="text-center animate-fade-in-delay-7 max-w-4xl mx-auto"> {/* Adjusted delay */}
+    
+    <section class="text-center animate-fade-in-delay-7 max-w-4xl mx-auto"> 
        <h2 class="text-3xl font-semibold mb-6 text-white">What's Next?</h2>
        <p class="text-lg mb-4 text-white/90">
          As the dust settles, we're already looking towards the next step on our journey to the North Star. Your feedback is crucial!
@@ -190,17 +181,13 @@ const hackathonImages = [
       const modal = document.getElementById('videoModal');
       const modalContent = modal ? modal.querySelector('.bg-gray-800') : null;
       const closeModalBtn = document.getElementById('closeModalBtn');
-      /** @type {HTMLIFrameElement | null} */
+      
       const youtubePlayer = document.getElementById('youtubePlayer');
       const modalTeamName = document.getElementById('modalTeamName');
       const modalDescription = document.getElementById('modalDescription'); 
       const playerContainer = youtubePlayer ? youtubePlayer.parentElement : null;
 
-      /** 
-       * @param {string | null} videoId 
-       * @param {string} teamName
-       * @param {string | undefined} description
-      */
+      
       function openModal(videoId, teamName, description) {
         if (!modal || !modalContent || !youtubePlayer || !modalTeamName || !playerContainer) {
             console.error("Modal elements not found!");

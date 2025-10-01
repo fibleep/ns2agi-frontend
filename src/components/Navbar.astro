@@ -1,20 +1,20 @@
-  <!-- Centered Pill Navbar -->
+  
     <nav id="navbar" class="fixed top-0 left-0 w-full z-50 flex justify-center py-6 px-4">
         <div class="flex items-center justify-between px-6 py-3 bg-black backdrop-blur-xl rounded-full shadow-xl w-full max-w-4xl relative border border-white/20">
-            <!-- Logo -->
+            
             <div class="flex items-center">
                 <a href="/" class="w-8 h-8 mr-6 transition-transform duration-300 hover:rotate-12 hover:scale-110">
                     <img src="/rmshine.png" alt="North Star AGI" class="w-8 h-8 object-contain" loading="eager"/>
                 </a>
             </div>
             
-            <!-- Desktop Navigation -->
+            
             <nav class="hidden lg:flex items-center space-x-8">
                 <a href="/" class="text-sm text-white hover:text-white transition-all duration-300 font-medium hover:scale-105 transform">
                     Home
                 </a>
                 
-                <!-- Join Us Dropdown -->
+                
                 <div class="relative group">
                     <button class="text-sm text-white hover:text-white transition-all duration-300 font-medium hover:scale-105 transform flex items-center">
                         Join us
@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <!-- Impact Dropdown -->
+                
                 <div class="relative group">
                     <button class="text-sm text-white hover:text-white transition-all duration-300 font-medium hover:scale-105 transform flex items-center">
                         Impact
@@ -68,7 +68,7 @@
                 </a>
             </nav>
 
-            <!-- Desktop CTA Button -->
+            
             <div class="hidden lg:block">
                 <a href="https://discord.gg/m5Hknymurb" target="_blank"
                    class="inline-flex items-center justify-center px-5 py-2 text-sm text-white bg-gray-900 rounded-full hover:bg-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-lg font-medium">
@@ -76,7 +76,7 @@
                 </a>
             </div>
 
-            <!-- Mobile Menu Button -->
+            
             <button id="mobile-menu-toggle" class="lg:hidden flex items-center transition-transform duration-200 hover:scale-95">
                 <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -84,7 +84,7 @@
             </button>
         </div>
 
-        <!-- Mobile Menu Overlay -->
+        
         <div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 pt-24 px-6 lg:hidden opacity-0 invisible transition-all duration-300 transform translate-x-full">
             <button id="mobile-menu-close" class="absolute top-6 right-6 p-2 transition-transform duration-200 hover:scale-95">
                 <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,7 +96,7 @@
                     Home
                 </a>
                 
-                <!-- Mobile Join Us -->
+                
                 <div>
                     <button class="mobile-dropdown-toggle text-base text-white font-medium w-full text-left flex items-center justify-between">
                         Join us
@@ -111,7 +111,7 @@
                     </div>
                 </div>
 
-                <!-- Mobile Impact -->
+                
                 <div>
                     <button class="mobile-dropdown-toggle text-base text-white font-medium w-full text-left flex items-center justify-between">
                         Impact
@@ -142,32 +142,32 @@
     </nav>
 
     <script>
-        // Mobile menu functionality
+        
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuClose = document.getElementById('mobile-menu-close');
             const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
 
-            // Function to open mobile menu
+            
             function openMobileMenu() {
                 if (mobileMenu) {
                     mobileMenu.classList.remove('opacity-0', 'invisible', 'translate-x-full');
                     mobileMenu.classList.add('opacity-100', 'visible', 'translate-x-0');
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+                    document.body.style.overflow = 'hidden'; 
                 }
             }
 
-            // Function to close mobile menu
+            
             function closeMobileMenu() {
                 if (mobileMenu) {
                     mobileMenu.classList.add('opacity-0', 'invisible', 'translate-x-full');
                     mobileMenu.classList.remove('opacity-100', 'visible', 'translate-x-0');
-                    document.body.style.overflow = ''; // Restore scrolling
+                    document.body.style.overflow = ''; 
                 }
             }
 
-            // Toggle mobile menu when hamburger is clicked
+            
             if (mobileMenuToggle) {
                 mobileMenuToggle.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -175,7 +175,7 @@
                 });
             }
 
-            // Close mobile menu when close button is clicked
+            
             if (mobileMenuClose) {
                 mobileMenuClose.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -183,7 +183,7 @@
                 });
             }
 
-            // Close mobile menu when clicking on overlay background
+            
             if (mobileMenu) {
                 mobileMenu.addEventListener('click', function(e) {
                     if (e.target === mobileMenu) {
@@ -192,21 +192,21 @@
                 });
             }
 
-            // Close mobile menu when any navigation link is clicked
+            
             mobileMenuLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     closeMobileMenu();
                 });
             });
 
-            // Close mobile menu when escape key is pressed
+            
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     closeMobileMenu();
                 }
             });
 
-            // Mobile dropdown toggles
+            
             document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
                 toggle.addEventListener('click', () => {
                     const content = toggle.nextElementSibling;

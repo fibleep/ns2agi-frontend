@@ -26,7 +26,7 @@ const {
   limit
 } = Astro.props;
 
-// Default blog posts data
+
 const defaultPosts: BlogPost[] = [
   {
     id: 'hackathon-winners-playbook',
@@ -44,12 +44,12 @@ const defaultPosts: BlogPost[] = [
 const postsData = posts.length > 0 ? posts : defaultPosts;
 const displayedPosts = limit ? postsData.slice(0, limit) : postsData;
 
-// Helper function to get post link
+
 function getPostLink(slug: string): string {
   return `/blog/${slug}`;
 }
 
-// Helper function to format date
+
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
   return date.toLocaleDateString('en-US', { 
@@ -81,7 +81,7 @@ function formatDate(dateString: string): string {
             transition-all duration-300 hover:scale-[1.02] hover:border-white/40
             bg-slate-900/10 hover:bg-slate-900/20
           ">
-            <!-- Thumbnail Image -->
+            
             <div class="relative h-48 overflow-hidden flex-shrink-0">
               {post.thumbnail ? (
                 <img 
@@ -100,7 +100,7 @@ function formatDate(dateString: string): string {
                 </div>
               )}
               
-              <!-- Reading Time Badge -->
+              
               <div class="absolute top-4 right-4">
                 <div class="
                   px-3 py-1 rounded-full text-xs font-semibold
@@ -112,27 +112,27 @@ function formatDate(dateString: string): string {
               </div>
             </div>
 
-            <!-- Content -->
+            
             <div class="p-6 flex flex-col flex-1">
-              <!-- Blog Post Title -->
+              
               <h3 class="text-xl font-bold text-white mb-3 group-hover:text-white/90 transition-colors line-clamp-2">
                 {post.title}
               </h3>
               
-              <!-- Meta Information -->
+              
               <div class="flex items-center text-white/60 text-sm mb-4 space-x-4">
                 <span class="font-medium">{post.author}</span>
                 <span>•</span>
                 <time datetime={post.date}>{formatDate(post.date)}</time>
               </div>
               
-              <!-- Excerpt -->
+              
               <p class="text-white/80 text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
                 {post.excerpt}
               </p>
               
               
-              <!-- CTA Button -->
+              
               <div class="mt-auto">
                 <a 
                   href={getPostLink(post.slug)}

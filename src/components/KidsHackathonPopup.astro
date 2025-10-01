@@ -1,18 +1,18 @@
 ---
-// Kids Hackathon Popup Component
+
 ---
 
 <div id="kids-popup-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
   <div id="kids-popup-content" class="relative max-w-2xl w-full bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600 rounded-3xl shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden">
 
-    <!-- Animated background blobs -->
+    
     <div class="absolute inset-0 opacity-30 pointer-events-none">
       <div class="absolute top-10 left-10 w-32 h-32 bg-yellow-400 rounded-full mix-blend-multiply filter blur-2xl animate-blob"></div>
       <div class="absolute top-20 right-10 w-40 h-40 bg-pink-400 rounded-full mix-blend-multiply filter blur-2xl animate-blob animation-delay-2000"></div>
       <div class="absolute bottom-10 left-20 w-36 h-36 bg-orange-400 rounded-full mix-blend-multiply filter blur-2xl animate-blob animation-delay-4000"></div>
     </div>
 
-    <!-- Close button -->
+    
     <button
       id="kids-popup-close"
       class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
@@ -23,9 +23,9 @@
       </svg>
     </button>
 
-    <!-- Content -->
+    
     <div class="relative z-10 p-6 md:p-8">
-      <!-- Image -->
+      
       <div class="mb-6">
         <img
           src="/kids-hackathon/united_for_kids.png"
@@ -34,7 +34,7 @@
         />
       </div>
 
-      <!-- Title -->
+      
       <div class="text-center mb-6">
         <h2 class="text-3xl md:text-4xl font-black text-white drop-shadow-lg mb-2 tracking-tight">
           <span class="inline-block animate-bounce" style="animation-delay: 0s;">🇧🇪</span>
@@ -49,7 +49,7 @@
         </p>
       </div>
 
-      <!-- CTA Buttons -->
+      
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
           href="/kids"
@@ -69,7 +69,7 @@
       </div>
     </div>
 
-    <!-- Floating stars -->
+    
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
       {[...Array(8)].map((_, i) => (
         <div
@@ -153,7 +153,7 @@
     transform: scale(1);
   }
 
-  /* Mobile optimizations */
+  
   @media (max-width: 640px) {
     #kids-popup-content {
       max-height: 90vh;
@@ -163,9 +163,9 @@
 </style>
 
 <script>
-  // Show popup after 3 seconds, but only once per session
+  
   const POPUP_KEY = 'kids_hackathon_popup_shown';
-  const POPUP_DELAY = 3000; // 3 seconds
+  const POPUP_DELAY = 0; 
 
   function showPopup() {
     const overlay = document.getElementById('kids-popup-overlay');
@@ -180,36 +180,36 @@
     const overlay = document.getElementById('kids-popup-overlay');
     if (overlay) {
       overlay.classList.remove('show');
-      // Mark as shown in session storage
+      
       sessionStorage.setItem(POPUP_KEY, 'true');
     }
   }
 
-  // Initialize popup behavior
+  
   document.addEventListener('DOMContentLoaded', () => {
-    // Check if popup was already shown this session
+    
     const alreadyShown = sessionStorage.getItem(POPUP_KEY);
 
     if (!alreadyShown) {
-      // Show popup after delay
+      
       setTimeout(() => {
         showPopup();
       }, POPUP_DELAY);
     }
 
-    // Close button
+    
     const closeButton = document.getElementById('kids-popup-close');
     if (closeButton) {
       closeButton.addEventListener('click', hidePopup);
     }
 
-    // Dismiss button
+    
     const dismissButton = document.getElementById('kids-popup-dismiss');
     if (dismissButton) {
       dismissButton.addEventListener('click', hidePopup);
     }
 
-    // Close on overlay click (but not content click)
+    
     const overlay = document.getElementById('kids-popup-overlay');
     if (overlay) {
       overlay.addEventListener('click', (e) => {
@@ -219,7 +219,7 @@
       });
     }
 
-    // Close on ESC key
+    
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         const overlay = document.getElementById('kids-popup-overlay');

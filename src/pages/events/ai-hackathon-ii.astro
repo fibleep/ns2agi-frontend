@@ -1,25 +1,15 @@
 ---
-// src/pages/events/ai-hackathon-ii.astro
+
 import Layout from '../../layouts/Layout.astro';
-import ImageGallery from '../../components/ImageGallery.astro'; // Import the gallery component
+import ImageGallery from '../../components/ImageGallery.astro'; 
 import solutionsData from '../../../public/ai-hackathon-ii/solutions.json';
 
-/**
- * @typedef {object} Solution
- * @property {string} team_name
- * @property {string} youtube_video_link
- * @property {string} description
- * @property {string} [eyecatcher] - Eyecatcher is optional
- */
 
-/** @type {Solution[]} */
+
+
 const solutions = Object.values(solutionsData);
 
-/**
- * Extracts the YouTube video ID from a given URL.
- * @param {string | null | undefined} url The YouTube URL.
- * @returns {string | null} The video ID or null if not found.
- */
+
 function getYouTubeVideoId(url) {
   if (!url) return null;
   const patterns = [
@@ -37,12 +27,7 @@ function getYouTubeVideoId(url) {
   return null;
 }
 
-/**
- * Generates a YouTube thumbnail URL or a placeholder SVG.
- * @param {string | null} videoId The YouTube video ID.
- * @param {string} quality The desired thumbnail quality (e.g., 'hqdefault').
- * @returns {string} The thumbnail URL or a data URI for a placeholder SVG.
- */
+
 function getYouTubeThumbnailUrl(videoId, quality = 'hqdefault') {
   if (!videoId) {
     return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='90' viewBox='0 0 160 90'%3E%3Crect width='160' height='90' fill='%234A4A4A'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23EEEEEE' font-size='14' font-family='Arial, Helvetica, sans-serif'%3ENo Preview%3C/text%3E%3C/svg%3E";
@@ -69,7 +54,7 @@ const winners = [
 ];
 
 const originalEventDate = "May 10th, 2025";
-const originalEventLocation = "The Beacon, Antwerp"; // Updated based on context
+const originalEventLocation = "The Beacon, Antwerp"; 
 
 const hackathonImages = [
   { src: "/ai-hackathon-ii/winners.jpg", alt: "AI Hackathon II" },
@@ -86,7 +71,7 @@ const hackathonImages = [
       {originalEventDate} at <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] hover:underline">{originalEventLocation}</a>
     </p>
 
-    {/* --- Success Section --- */}
+    
     <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
         <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Competition Was Fierce!</h2>
         <p class="text-lg mb-4 text-white/90 leading-relaxed">
@@ -97,7 +82,7 @@ const hackathonImages = [
         </p>
     </section>
 
-    {/* --- Winners Section --- */}
+    
     <section class="mb-12 animate-fade-in-delay-3 max-w-4xl mx-auto">
       <h2 class="text-3xl font-semibold mb-8 text-white text-center">Congratulations to Our Winners! 🏆</h2>
       {winners.length > 0 ? (
@@ -119,14 +104,14 @@ const hackathonImages = [
       )}
     </section>
 
-     {/* --- Image Gallery Section --- */}
+     
      <ImageGallery
         images={hackathonImages}
         title="Event Highlights"
         class="mb-12 animate-fade-in-delay-4"
       />
 
-    {/* --- Solutions Showcase Section --- */}
+    
     <section class="mb-12 animate-fade-in-delay-5 max-w-6xl mx-auto">
       <h2 class="text-3xl font-semibold mb-8 text-white text-center">Projects from the Hackathon</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -154,7 +139,7 @@ const hackathonImages = [
       </div>
     </section>
 
-    {/* --- Video Modal --- */}
+    
     <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-[1000] p-4 transition-opacity duration-300 opacity-0">
       <div class="bg-gray-800 p-5 rounded-lg shadow-2xl relative w-full max-w-3xl text-white transform scale-95 transition-transform duration-300 overflow-y-auto max-h-[90vh]">
         <button id="closeModalBtn" class="absolute top-3 right-3 text-gray-300 hover:text-white text-3xl leading-none z-10 sticky -top-0 bg-gray-800 rounded-full p-1">&times;</button>
@@ -175,7 +160,7 @@ const hackathonImages = [
       </div>
     </div>
 
-    {/* --- Acknowledgements Section --- */}
+    
     <section class="mb-12 animate-fade-in-delay-6 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
       <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Thank You! ❤️</h2>
       <p class="text-lg mb-4 text-white/90 leading-relaxed">
@@ -190,7 +175,7 @@ const hackathonImages = [
       </p>
     </section>
 
-    {/* --- What's Next Section --- */}
+    
     <section class="text-center animate-fade-in-delay-7 max-w-4xl mx-auto">
        <h2 class="text-3xl font-semibold mb-6 text-white">What's Next?</h2>
        <p class="text-lg mb-4 text-white/90">
@@ -312,7 +297,7 @@ const hackathonImages = [
 <style is:global>
 /* Additional styles for aspect ratio if not covered by Tailwind aspect-ratio plugin */
 .aspect-w-16 { position: relative; padding-bottom: 56.25%; /* 16:9 */ }
-.aspect-h-9 { /* Can be empty if aspect-w-16 handles it */ }
+.aspect-h-9 
 .aspect-w-16 > iframe {
   position: absolute;
   top: 0;

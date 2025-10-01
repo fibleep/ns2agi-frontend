@@ -1,11 +1,11 @@
 ---
-// src/pages/events/index.astro
+
 import EventsShowcase from '../../components/EventsShowcase.astro';
 import Layout from '../../layouts/Layout.astro';
 
 
 
-// Convert events to EventsShowcase format with thumbnails
+
 const eventsData = [
   {
     id: 'signal-i',
@@ -67,7 +67,7 @@ const eventsData = [
 ---
 
 <Layout>
-  <!-- Hero Section -->
+  
   <section class="py-20 bg-black">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-16">
@@ -81,7 +81,7 @@ const eventsData = [
     </div>
   </section>
 
-  <!-- Events Showcase -->
+  
   <EventsShowcase 
     title="Events" 
     events={eventsData} 
@@ -118,7 +118,7 @@ const eventsData = [
     animation: fade-in 1s ease-out 1.2s backwards; 
   }
   
-  /* Smooth scrolling */
+  
   html {
     scroll-behavior: smooth;
   }

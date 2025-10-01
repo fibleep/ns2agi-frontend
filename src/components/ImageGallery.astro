@@ -1,5 +1,5 @@
 ---
-// src/components/ImageGallery.astro
+
 import type { HTMLAttributes } from 'astro/types';
 
 interface Image {
@@ -9,25 +9,25 @@ interface Image {
 
 interface Props extends HTMLAttributes<'div'> {
   images: Image[];
-  title?: string; // Optional title for the gallery section
-  columns?: string; // Optional Tailwind classes for columns, e.g., "sm:grid-cols-2 md:grid-cols-3"
+  title?: string; 
+  columns?: string; 
 }
 
 const {
   images = [],
   title,
-  columns = 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3', // Changed to grid classes
+  columns = 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3', 
   class: className,
   ...rest
 } = Astro.props;
 ---
 
-{/* Start Conditional Render for Gallery */}
+
 {images.length > 0 && (
   <section class:list={["w-full max-w-6xl mx-auto px-4", className]} {...rest}>
     {title && <h2 class="text-3xl font-semibold mb-8 text-white text-center">{title}</h2>}
 
-    {/* Gallery using CSS Grid with proper aspect ratio handling */}
+    
     <div class={`gallery-grid ${columns} gap-4 md:gap-6`}>
       {images.map((image, index) => (
         <div class="gallery-item relative overflow-hidden rounded-3xl shadow-lg border border-white/10 group bg-black/20 cursor-pointer transition-transform duration-300 hover:scale-[1.02]">
@@ -52,7 +52,7 @@ const {
 <div id="lightbox-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out">
   <button id="lightbox-close" class="absolute top-4 right-4 text-white/70 hover:text-white text-4xl font-bold z-50" aria-label="Close image viewer">&times;</button>
   
-  <!-- Previous/Next Navigation -->
+  
   <button id="lightbox-prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white text-3xl font-bold z-50 bg-black/30 hover:bg-black/50 rounded-full w-12 h-12 flex items-center justify-center transition-all duration-200" aria-label="Previous image">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -72,9 +72,9 @@ const {
   </figure>
 </div>
 
-{/* Enhanced Lightbox Script with Navigation */}
+
 <script is:inline>
-  // Enhanced Lightbox with Navigation Functionality
+  
   function initializeLightbox() {
     const galleryImages = document.querySelectorAll('.gallery-image');
     const modal = document.getElementById('lightbox-modal');
@@ -88,12 +88,12 @@ const {
     let currentImageIndex = 0;
     const imageData = [];
 
-    // Early exit if essential elements aren't found
+    
     if (!modal || !modalImage || !modalCaption || galleryImages.length === 0) {
       return;
     }
 
-    // Collect image data
+    
     galleryImages.forEach((img, index) => {
       imageData.push({
         src: img.getAttribute('src'),
@@ -110,7 +110,7 @@ const {
         modalCaption.textContent = imageInfo.alt;
         modalCounter.textContent = `${index + 1} of ${imageData.length}`;
         
-        // Show/hide navigation buttons
+        
         prevBtn.style.display = imageData.length > 1 ? 'flex' : 'none';
         nextBtn.style.display = imageData.length > 1 ? 'flex' : 'none';
       }
@@ -148,25 +148,25 @@ const {
       updateModal(currentImageIndex);
     }
 
-    // Event listeners for images
+    
     galleryImages.forEach((img, index) => {
       const clickableElement = img.closest('.cursor-pointer') || img;
       clickableElement.addEventListener('click', () => openModal(index));
     });
 
-    // Event listeners for controls
+    
     closeModalBtn?.addEventListener('click', closeModal);
     prevBtn?.addEventListener('click', showPrevImage);
     nextBtn?.addEventListener('click', showNextImage);
 
-    // Modal backdrop click
+    
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         closeModal();
       }
     });
 
-    // Keyboard navigation
+    
     document.addEventListener('keydown', (e) => {
       if (!modal.classList.contains('hidden')) {
         switch(e.key) {
@@ -184,7 +184,7 @@ const {
     });
   }
 
-  // Initialize when DOM is ready
+  
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeLightbox);
   } else {
@@ -192,9 +192,9 @@ const {
   }
 </script>
 
-{/* Style tag (Placed last) */}
+
 <style>
-  /* Gallery Grid with proper aspect ratio handling */
+  
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -225,7 +225,7 @@ const {
     }
   }
 
-  /* Make some items span multiple rows for variety */
+  
   .gallery-item:nth-child(3n+1) {
     grid-row: span 2;
   }
@@ -242,7 +242,7 @@ const {
     grid-row: span 1;
   }
 
-  /* Ensure images fill their containers properly */
+  
   .gallery-item {
     min-height: 200px;
     height: 100%;
@@ -255,7 +255,7 @@ const {
     object-position: center;
   }
 
-  /* Responsive adjustments for smaller screens */
+  
   @media (max-width: 640px) {
     .gallery-grid {
       grid-template-columns: 1fr;
@@ -267,7 +267,7 @@ const {
     }
   }
 
-  /* Lightbox modal styling */
+  
   #lightbox-image {
     max-width: 100%;
     max-height: 90vh;
@@ -275,10 +275,10 @@ const {
     border-radius: 0.5rem;
   }
 
-  /* Navigation button styling */
+  
   #lightbox-prev,
   #lightbox-next {
-    display: none; /* Hidden by default, shown by JS when needed */
+    display: none; 
   }
 
   #lightbox-prev:hover,
@@ -286,7 +286,7 @@ const {
     transform: translateY(-50%) scale(1.1);
   }
 
-  /* Hide navigation on touch devices when not needed */
+  
   @media (hover: none) {
     #lightbox-prev,
     #lightbox-next {
@@ -294,7 +294,7 @@ const {
     }
   }
 
-  /* Responsive navigation positioning */
+  
   @media (max-width: 640px) {
     #lightbox-prev {
       left: 1rem;

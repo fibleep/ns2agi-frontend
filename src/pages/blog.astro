@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Blog posts data
+
 const blogPosts = [
   {
     id: 'hackathon-winners-playbook',
@@ -15,7 +15,7 @@ const blogPosts = [
   }
 ];
 
-// Helper function to format date
+
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
   return date.toLocaleDateString('en-US', { 
@@ -27,7 +27,7 @@ function formatDate(dateString: string): string {
 ---
 
 <Layout title="Blog - North Star AGI">
-    <!-- Hero Section -->
+    
     <section class="py-20 bg-black">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center mb-16">
@@ -41,7 +41,7 @@ function formatDate(dateString: string): string {
         </div>
     </section>
 
-    <!-- Main Blog Content -->
+    
     <section class="py-12 bg-black">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -53,7 +53,7 @@ function formatDate(dateString: string): string {
                             transition-all duration-300 hover:scale-[1.02] hover:border-white/40
                             bg-slate-900/10 hover:bg-slate-900/20
                         ">
-                            <!-- Thumbnail Image -->
+                            
                             <div class="relative h-48 overflow-hidden flex-shrink-0">
                                 {post.thumbnail ? (
                                     <img 
@@ -72,7 +72,7 @@ function formatDate(dateString: string): string {
                                     </div>
                                 )}
                                 
-                                <!-- Reading Time Badge -->
+                                
                                 <div class="absolute top-4 right-4">
                                     <div class="
                                         px-3 py-1 rounded-full text-xs font-semibold
@@ -84,26 +84,26 @@ function formatDate(dateString: string): string {
                                 </div>
                             </div>
 
-                            <!-- Content -->
+                            
                             <div class="p-6 flex flex-col flex-1">
-                                <!-- Blog Post Title -->
+                                
                                 <h3 class="text-xl font-bold text-white mb-3 group-hover:text-white/90 transition-colors line-clamp-2">
                                     {post.title}
                                 </h3>
                                 
-                                <!-- Meta Information -->
+                                
                                 <div class="flex items-center text-white/60 text-sm mb-4 space-x-4">
                                     <span class="font-medium">{post.author}</span>
                                     <span>•</span>
                                     <time datetime={post.date}>{formatDate(post.date)}</time>
                                 </div>
                                 
-                                <!-- Excerpt -->
+                                
                                 <p class="text-white/80 text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
                                     {post.excerpt}
                                 </p>
                                 
-                                <!-- CTA Button -->
+                                
                                 <div class="mt-auto">
                                     <a 
                                         href={`/blog/${post.slug}`}
@@ -142,13 +142,13 @@ function formatDate(dateString: string): string {
 </style>
 
 <script>
-    // Add smooth scrolling and loading states
+    
     document.addEventListener('DOMContentLoaded', function() {
-        // Add loading states to blog post links
+        
         const blogLinks = document.querySelectorAll('a[href^="/blog/"]');
         blogLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                // Add a subtle loading state
+                
                 const card = this.querySelector('div');
                 if (card) {
                     card.style.opacity = '0.8';
@@ -157,7 +157,7 @@ function formatDate(dateString: string): string {
             });
         });
         
-        // Improve keyboard navigation
+        
         blogLinks.forEach(link => {
             link.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
