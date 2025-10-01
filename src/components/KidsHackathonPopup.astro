@@ -15,10 +15,11 @@
     
     <button
       id="kids-popup-close"
-      class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+      class="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer"
       aria-label="Close popup"
+      type="button"
     >
-      <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-6 h-6 text-gray-800 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
       </svg>
     </button>
@@ -163,9 +164,8 @@
 </style>
 
 <script>
-  
   const POPUP_KEY = 'kids_hackathon_popup_shown';
-  const POPUP_DELAY = 0; 
+  const POPUP_DELAY = 0;
 
   function showPopup() {
     const overlay = document.getElementById('kids-popup-overlay');
@@ -180,36 +180,37 @@
     const overlay = document.getElementById('kids-popup-overlay');
     if (overlay) {
       overlay.classList.remove('show');
-      
       sessionStorage.setItem(POPUP_KEY, 'true');
     }
   }
 
-  
   document.addEventListener('DOMContentLoaded', () => {
-    
     const alreadyShown = sessionStorage.getItem(POPUP_KEY);
 
     if (!alreadyShown) {
-      
       setTimeout(() => {
         showPopup();
       }, POPUP_DELAY);
     }
 
-    
     const closeButton = document.getElementById('kids-popup-close');
     if (closeButton) {
-      closeButton.addEventListener('click', hidePopup);
+      closeButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        hidePopup();
+      });
     }
 
-    
     const dismissButton = document.getElementById('kids-popup-dismiss');
     if (dismissButton) {
-      dismissButton.addEventListener('click', hidePopup);
+      dismissButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        hidePopup();
+      });
     }
 
-    
     const overlay = document.getElementById('kids-popup-overlay');
     if (overlay) {
       overlay.addEventListener('click', (e) => {
@@ -219,7 +220,6 @@
       });
     }
 
-    
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         const overlay = document.getElementById('kids-popup-overlay');
