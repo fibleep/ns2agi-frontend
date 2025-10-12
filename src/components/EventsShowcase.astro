@@ -126,11 +126,12 @@ function getEventLink(eventId: string): string {
   const eventRoutes = {
     'signal-i': '/events/signal-i',
     'signal-ii': '/events/signal-ii',
-    'ai-hackathon-i': '/events/ai-hackathon-i', 
+    'ai-hackathon-i': '/events/ai-hackathon-i',
     'ai-hackathon-ii': '/events/ai-hackathon-ii',
     'ai-hackathon-iii': '/events/ai-hackathon-iii',
     'robotics-hackathon-i': '/events/robotics-hackathon-i',
-    'kids-ai-vibecoding-hackathon': '/events/kids-ai-vibecoding-hackathon'
+    'kids-ai-vibecoding-hackathon': '/events/kids-ai-vibecoding-hackathon',
+    'future-in-bloom-pt1': 'https://luma.com/vl1ksuok'
   };
   return eventRoutes[eventId as keyof typeof eventRoutes] || '/events';
 }
