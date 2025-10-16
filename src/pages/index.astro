@@ -4,6 +4,7 @@ import EventsShowcase from '../components/EventsShowcase.astro';
 import BlogShowcase from '../components/BlogShowcase.astro';
 import Hero from '../components/Hero.astro';
 import FutureInBloomPopup from '../components/FutureInBloomPopup.astro';
+import PartnersMarquee from '../components/PartnersMarquee.tsx';
 
 const eventsData = [
   {
@@ -77,6 +78,8 @@ const eventsData = [
     <FutureInBloomPopup />
     <Hero />
 
+    <PartnersMarquee client:load />
+
     <EventsShowcase events={eventsData} title="Paths to North Star" subtitle="Our journey through groundbreaking events" limit={3} showSeeMore={true} />
 
     
@@ -110,7 +113,7 @@ const eventsData = [
             
             <div class="text-center mb-16">
                 <div class="mb-8">
-                    <img src="/rmshine.png" alt="North Star AGI" class="w-24 h-24 mx-auto object-contain"/>
+                    <img src="/rmshine.png" alt="North Star" class="w-24 h-24 mx-auto object-contain"/>
                 </div>
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Core Sponsors</h2>
             </div>
@@ -236,35 +239,7 @@ const eventsData = [
                 <div class="relative z-10 pb-8"></div>
             </div>
 
-            
-            <div class="mb-16 relative min-h-[500px] w-full">
-                
-                <div class="absolute inset-0 rounded-3xl overflow-hidden opacity-60">
-                    <img 
-                        src="/partnerships/icons/satellite.jpg" 
-                        alt="Satellite Background"
-                        class="w-full h-full object-cover object-center"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-b from-purple-900/50 to-purple-900/70"></div>
-                </div>
-                <div class="relative z-10 text-center mb-8 pt-8">
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-2 flex items-center justify-center gap-3">
-                        🛰️
-                        Satellite Sponsors
-                        🛰️
-                    </h3>
-                    <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-purple-400 to-transparent mx-auto"></div>
-                </div>
-                
-                <div class="relative z-10 flex justify-center">
-                    <div class="text-center">
-                        <span class="text-4xl text-white/60 font-light tracking-widest">...</span>
-                    </div>
-                </div>
-                <div class="relative z-10 pb-8"></div>
-            </div>
 
-            
             <div class="mt-20 mb-16">
                 <div class="text-center mb-8">
                     <h3 class="text-xl md:text-2xl font-bold text-white mb-2 flex items-center justify-center gap-3">
