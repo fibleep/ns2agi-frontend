@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import EventsShowcase from '../components/EventsShowcase.astro';
 import BlogShowcase from '../components/BlogShowcase.astro';
 import Hero from '../components/Hero.astro';
-import FutureInBloomPopup from '../components/FutureInBloomPopup.astro';
 
 const eventsData = [
   {
@@ -74,7 +73,6 @@ const eventsData = [
 ---
 
 <Layout>
-    <FutureInBloomPopup />
     <Hero />
 
     <EventsShowcase events={eventsData} title="Paths to North Star" subtitle="Our journey through groundbreaking events" limit={3} showSeeMore={true} />
