@@ -98,14 +98,21 @@
                 <h3 class="text-xl font-light text-white/90">Our Sponsors & Friends</h3>
             </div>
 
-            <div class="relative overflow-hidden py-6">
+            <div class="relative overflow-hidden py-6" data-marquee-wrapper>
                 <!-- Gradient Overlays -->
                 <div class="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-black via-black/90 to-transparent z-10 pointer-events-none"></div>
                 <div class="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-black via-black/90 to-transparent z-10 pointer-events-none"></div>
 
                 <!-- Scrolling Track -->
                 <div class="flex items-center">
-                    <div class="flex gap-8 items-center animate-marquee-fast">
+                    <div data-marquee-track class="flex gap-8 items-center animate-marquee-fast" style="--marquee-duration: 60s;">
+                        <a href="https://huggingface.co/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                            <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
+                                <img src="/partnerships/workedwith/Huggingface Logo.png" alt="Hugging Face" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </a>
+
+
                         <!-- GALAXY SPONSORS (Largest - With Galaxy Background) -->
                         <a href="https://www.brucon.org/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="relative w-56 h-32 flex items-center justify-center p-6 rounded-3xl backdrop-blur-md overflow-hidden transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/30">
@@ -151,13 +158,7 @@
                             </div>
                         </a>
 
-                        <a href="https://huggingface.co/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
-                            <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
-                                <img src="/partnerships/workedwith/Huggingface Logo.png" alt="Hugging Face" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
-                        </a>
 
-                        <a href="https://www.kdg.be/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/kdg.webp" alt="Karel de Grote Hogeschool" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
@@ -187,25 +188,25 @@
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://www.lagrandposte.be/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/Grand Poste Logo Thumbnail.png" alt="Grand Poste" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://aiforgood.itu.int/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/AI for Good Logo.png" alt="AI for Good" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/Beacon Logo.jpg" alt="The Beacon" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://commonshub.brussels/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/CHB Sticker for Print.png" alt="Commons Hub Brussels" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
@@ -217,7 +218,7 @@
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://www.westem.eu/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/WeSTEM Logo Transparent.png" alt="WeSTEM" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
@@ -235,7 +236,7 @@
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://campus19.be/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/Campus 19 Belgium Screenshot Jun 22 2022.png" alt="Campus 19 Belgium" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
@@ -253,15 +254,45 @@
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://liegeville.youngengineers.org/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/Young Engineers Liege Logo.jpeg" alt="Young Engineers Liege" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://www.e6k.be/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/e6k.jpeg" alt="E6K" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </a>
+
+                        <a href="https://www.techniekenwetenschapsacademie.be/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                            <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
+                                <img src="/partnerships/workedwith/TWA-logo-def_kleur-367w.webp" alt="UCLL Techniek- en WetenschapsAcademie (TWA)" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </a>
+
+                        <a href="https://www.edison.vlaanderen/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                            <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
+                                <img src="/partnerships/workedwith/edison_logo.webp" alt="Edison" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </a>
+
+                        <a href="https://stripe.com/en-be" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                            <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
+                                <img src="/partnerships/workedwith/Stripe_wordmark_White.svg" alt="Stripe" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </a>
+
+                        <a href="https://decreatievestem.be" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                            <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
+                                <img src="/partnerships/workedwith/creative_stem_logo.jpg" alt="De Creatieve STEM" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </a>
+
+                        <a href="https://www.portofantwerpbruges.com/en" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                            <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
+                                <img src="/partnerships/workedwith/port-of-antwerp-bruges-no-bg.png" alt="Port of Antwerp-Bruges" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                         </a>
 
@@ -344,25 +375,25 @@
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://www.lagrandposte.be/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/Grand Poste Logo Thumbnail.png" alt="Grand Poste" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://aiforgood.itu.int/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/AI for Good Logo.png" alt="AI for Good" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/Beacon Logo.jpg" alt="The Beacon" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://commonshub.brussels/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/CHB Sticker for Print.png" alt="Commons Hub Brussels" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
@@ -374,7 +405,7 @@
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://www.westem.eu/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/WeSTEM Logo Transparent.png" alt="WeSTEM" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
@@ -392,7 +423,7 @@
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://campus19.be/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/Campus 19 Belgium Screenshot Jun 22 2022.png" alt="Campus 19 Belgium" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
@@ -410,15 +441,33 @@
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://liegeville.youngengineers.org/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/Young Engineers Liege Logo.jpeg" alt="Young Engineers Liege" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                         </a>
 
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                        <a href="https://www.e6k.be/" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
                             <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
                                 <img src="/partnerships/workedwith/e6k.jpeg" alt="E6K" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </a>
+
+                        <a href="https://stripe.com/en-be" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                            <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
+                                <img src="/partnerships/workedwith/Stripe_wordmark_White.svg" alt="Stripe" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </a>
+
+                        <a href="https://decreatievestem.be" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                            <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
+                                <img src="/partnerships/workedwith/creative_stem_logo.jpg" alt="De Creatieve STEM" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </a>
+
+                        <a href="https://www.portofantwerpbruges.com/en" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 group">
+                            <div class="w-36 h-20 flex items-center justify-center p-3 rounded-3xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-500 hover:scale-105">
+                                <img src="/partnerships/workedwith/port-of-antwerp-bruges-no-bg.png" alt="Port of Antwerp-Bruges" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                         </a>
                     </div>
@@ -426,6 +475,27 @@
             </div>
         </div>
     </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.querySelector('[data-marquee-wrapper]');
+    if (!wrapper) return;
+    const track = wrapper.querySelector('[data-marquee-track]');
+    if (!(track instanceof HTMLElement)) return;
+
+    // Build a second row with reverse marquee and same duration
+    const row = document.createElement('div');
+    row.className = 'flex items-center mt-4';
+
+    // Clone the existing track to preserve Astro's scoped attributes
+    const newTrack = track.cloneNode(true) as HTMLElement;
+    newTrack.classList.remove('animate-marquee-fast');
+    newTrack.classList.add('animate-marquee-reverse');
+
+    row.appendChild(newTrack);
+    wrapper.appendChild(row);
+  });
+</script>
+
 </section>
 
 <style>
@@ -475,7 +545,36 @@
     }
 
     .animate-marquee-fast {
-        animation: marquee 40s linear infinite;
+        animation: marquee var(--marquee-duration, 40s) linear infinite;
         will-change: transform;
+    }
+
+    @keyframes marquee-reverse {
+        0% {
+            transform: translateX(-50%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    .animate-marquee-reverse {
+        animation: marquee-reverse var(--marquee-duration, 40s) linear infinite;
+        will-change: transform;
+    }
+
+    /* Pause entire track when hovering any logo */
+    .animate-marquee-fast:hover,
+    .animate-marquee-reverse:hover {
+        animation-play-state: paused;
+    }
+
+    /* Grayscale-to-color on hover for logos */
+    .group > div > img {
+        filter: grayscale(100%) saturate(0%) brightness(0.85);
+        transition: filter 300ms ease, opacity 300ms ease, transform 300ms ease;
+    }
+    .group:hover > div > img {
+        filter: grayscale(0%) saturate(100%) brightness(1);
     }
 </style>
