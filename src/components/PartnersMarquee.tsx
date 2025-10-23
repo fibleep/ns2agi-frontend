@@ -57,27 +57,6 @@ const PartnersMarquee = () => {
         accentColor: 'orange-400',
         speed: 60
       }
-    },
-    {
-      name: 'Community Partners',
-      emoji: '💚',
-      logos: [
-        {
-          src: '/partnerships/logos/imaginelab.jpg',
-          alt: 'iMagineLab',
-          url: 'https://imaginelab.club/'
-        },
-        {
-          src: '/partnerships/logos/nerdlab.webp',
-          alt: 'Nerdlab',
-          url: 'https://nerdlab.be/'
-        }
-      ],
-      theme: {
-        gradient: 'from-green-900/40 via-green-800/30 to-green-900/40',
-        accentColor: 'green-400',
-        speed: 60
-      }
     }
   ];
 
