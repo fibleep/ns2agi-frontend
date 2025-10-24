@@ -39,7 +39,7 @@ const PartnersMarquee = () => {
       theme: {
         gradient: 'from-blue-900/40 via-blue-800/30 to-blue-900/40',
         accentColor: 'blue-400',
-        speed: 30
+        speed: 60
       }
     },
     {
@@ -55,28 +55,7 @@ const PartnersMarquee = () => {
       theme: {
         gradient: 'from-orange-900/40 via-orange-800/30 to-orange-900/40',
         accentColor: 'orange-400',
-        speed: 25
-      }
-    },
-    {
-      name: 'Community Partners',
-      emoji: '💚',
-      logos: [
-        {
-          src: '/partnerships/logos/imaginelab.jpg',
-          alt: 'iMagineLab',
-          url: 'https://imaginelab.club/'
-        },
-        {
-          src: '/partnerships/logos/nerdlab.webp',
-          alt: 'Nerdlab',
-          url: 'https://nerdlab.be/'
-        }
-      ],
-      theme: {
-        gradient: 'from-green-900/40 via-green-800/30 to-green-900/40',
-        accentColor: 'green-400',
-        speed: 35
+        speed: 60
       }
     }
   ];
@@ -140,7 +119,7 @@ const PartnersMarquee = () => {
                         rel="noopener noreferrer"
                         className="flex-shrink-0 group"
                       >
-                        <div className="relative w-40 h-24 flex items-center justify-center p-4 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110 hover:bg-white/10">
+                        <div className="relative w-40 h-24 flex items-center justify-center p-4 rounded-lg bg-white/5 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-white/10">
                           <img
                             src={logo.src}
                             alt={logo.alt}
@@ -167,7 +146,7 @@ const PartnersMarquee = () => {
                         rel="noopener noreferrer"
                         className="flex-shrink-0 group"
                       >
-                        <div className="relative w-40 h-24 flex items-center justify-center p-4 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110 hover:bg-white/10">
+                        <div className="relative w-40 h-24 flex items-center justify-center p-4 rounded-lg bg-white/5 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-white/10">
                           <img
                             src={logo.src}
                             alt={logo.alt}
@@ -196,6 +175,15 @@ const PartnersMarquee = () => {
 
         .animate-marquee {
           animation: marquee linear infinite;
+        }
+
+        /* Grayscale-to-color on hover for logos */
+        .group > div > img {
+          filter: grayscale(100%) saturate(0%) brightness(0.85);
+          transition: filter 300ms ease, opacity 300ms ease, transform 300ms ease;
+        }
+        .group:hover > div > img {
+          filter: grayscale(0%) saturate(100%) brightness(1);
         }
       `}</style>
     </section>
