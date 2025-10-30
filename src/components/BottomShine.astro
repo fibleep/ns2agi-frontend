@@ -1,0 +1,96 @@
+---
+// Bottom shine scroll effect
+---
+
+<div id="bottom-shine" class="fixed bottom-0 left-0 right-0 h-32 pointer-events-none z-30 transition-all duration-700 ease-out">
+
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
+
+
+    <div class="absolute bottom-0 left-0 right-0 h-16 shine-container">
+        <div class="shine-effect absolute inset-0 bg-gradient-to-t from-white/20 via-white/8 to-transparent opacity-50"></div>
+        <div class="shine-effect-delayed absolute inset-0 bg-gradient-to-t from-blue-400/15 via-blue-400/4 to-transparent opacity-70"></div>
+    </div>
+
+
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 shine-arrow">
+        <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+        </svg>
+    </div>
+</div>
+
+<style>
+    @keyframes shine-sweep {
+        0% {
+            transform: translateY(100%) scaleY(0.3);
+            opacity: 0;
+        }
+        50% {
+            transform: translateY(0%) scaleY(1);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-20%) scaleY(0.8);
+            opacity: 0;
+        }
+    }
+
+    @keyframes arrow-float {
+        0%, 100% {
+            transform: translate(-50%, 0) scale(1);
+            opacity: 0.4;
+        }
+        50% {
+            transform: translate(-50%, -8px) scale(1.1);
+            opacity: 0.8;
+        }
+    }
+
+    .shine-effect {
+        animation: shine-sweep 4s ease-in-out infinite;
+    }
+
+    .shine-effect-delayed {
+        animation: shine-sweep 4s ease-in-out infinite 0.5s;
+    }
+
+    .shine-arrow {
+        animation: arrow-float 3s ease-in-out infinite 1.5s;
+    }
+
+    .shine-container:hover .shine-effect {
+        animation-duration: 2s;
+    }
+
+    .shine-container:hover .shine-arrow {
+        animation-duration: 1.5s;
+        opacity: 0.9;
+    }
+</style>
+
+<script>
+    let ticking = false;
+    function updateBottomShine() {
+        const bottomShine = document.getElementById('bottom-shine');
+        if (bottomShine) {
+            const scrollThreshold = 150;
+            if (window.scrollY > scrollThreshold) {
+                bottomShine.style.opacity = '0';
+                bottomShine.style.transform = 'translateY(100%)';
+            } else {
+                const opacity = Math.max(0, 1 - (window.scrollY / scrollThreshold));
+                bottomShine.style.opacity = opacity.toString();
+                bottomShine.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+            }
+        }
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateBottomShine);
+            ticking = true;
+        }
+    });
+</script>

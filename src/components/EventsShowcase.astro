@@ -178,13 +178,13 @@ function getEventLink(eventId: string): string {
                 </div>
               )}
               
-              
+
               <div class="absolute top-4 right-4">
                 <div class={`
                   px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide
-                  backdrop-blur-sm border
-                  ${event.status === 'completed' ? 'bg-green-500/20 text-green-300 border-green-500/30' : 
-                    event.status === 'upcoming' ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' : 
+                  backdrop-blur-sm border status-badge
+                  ${event.status === 'completed' ? 'bg-green-500/20 text-green-300 border-green-500/30' :
+                    event.status === 'upcoming' ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' :
                     'bg-gray-500/20 text-gray-300 border-gray-500/30'}
                 `}>
                   {event.status.replace('-', ' ')}
@@ -248,4 +248,26 @@ function getEventLink(eventId: string): string {
       </div>
     )}
   </div>
-</section> 
+</section>
+
+<style>
+  /* Mobile improvements for better text contrast */
+  @media (max-width: 768px) {
+    /* Add text shadow to status badges on mobile */
+    .status-badge {
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.6) !important;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Add stronger shadows to buttons */
+    section .inline-flex {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Improve text contrast in event cards */
+    .group h3, .group p {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+  }
+</style> 

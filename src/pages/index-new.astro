@@ -1,0 +1,478 @@
+---
+import Layout from '../layouts/Layout.astro';
+import InteractiveStar from '../components/InteractiveStar.astro';
+import ScrollNav from '../components/ScrollNav.astro';
+
+const socialLinks = [
+    { name: 'insta', url: 'https://www.instagram.com/northstaragi/', label: 'Instagram' },
+    { name: 'linkedin', url: 'https://www.linkedin.com/company/north-star-agi', label: 'LinkedIn' },
+    { name: 'discord', url: 'https://discord.gg/m5Hknymurb', label: 'Discord' }
+];
+---
+
+<Layout title="North Star - Building Belgium's AI & Robotics Ecosystem">
+    <InteractiveStar />
+    <ScrollNav />
+
+    <!-- Add custom fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <!-- Hero Section with Star -->
+    <section id="north-star" class="min-h-screen flex flex-col items-center justify-center relative px-4">
+        <div class="text-center z-10 space-y-6 max-w-4xl">
+            <h1 class="text-6xl md:text-8xl font-bold tracking-wider animate-fade-in">
+                North Star
+            </h1>
+            <div class="flex items-center justify-center gap-4 animate-fade-in-delay-1">
+                <div class="h-px w-16 bg-gradient-to-r from-transparent to-white"></div>
+                <div class="flex gap-3">
+                    {socialLinks.map(link => (
+                        <a href={link.url} target="_blank" rel="noopener noreferrer"
+                           class="text-white/60 hover:text-white transition-colors text-sm">
+                            {link.name}
+                        </a>
+                    ))}
+                </div>
+                <div class="h-px w-16 bg-gradient-to-l from-transparent to-white"></div>
+            </div>
+            <p class="text-xl md:text-2xl text-white/80 animate-fade-in-delay-2">
+                Building Belgium's AI & Robotics Ecosystem
+            </p>
+            <p class="text-sm text-white/60 animate-fade-in-delay-3">
+                Our friends & sponsors/
+            </p>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-fade-in-delay-4">
+            <div class="flex flex-col items-center gap-2">
+                <svg class="w-6 h-6 text-white/40 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Events Section -->
+    <section id="our-events" class="min-h-screen py-20 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">Our Events</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Event timeline visualization -->
+                <div class="col-span-full">
+                    <div class="relative">
+                        <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/50 via-blue-500 to-blue-500/50"></div>
+
+                        <!-- Events will be dynamically added here -->
+                        <div class="text-center py-12">
+                            <p class="text-white/60">Timeline of events coming soon...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Today Marker -->
+    <div class="flex items-center justify-center py-12">
+        <div class="flex items-center gap-4">
+            <div class="h-px w-32 bg-gradient-to-r from-transparent to-white/30"></div>
+            <span class="text-white/60 text-sm">Today</span>
+            <div class="h-px w-32 bg-gradient-to-l from-transparent to-white/30"></div>
+        </div>
+    </div>
+
+    <!-- NS Kids Section -->
+    <section id="ns-kids" class="min-h-screen flex flex-col items-center justify-center kids-section relative overflow-hidden px-4">
+        <!-- Logo Center Stage -->
+        <div class="flex justify-center mb-8 md:mb-12">
+            <img src="/nskids.png" alt="NS Kids" class="w-80 h-80 md:w-[32rem] md:h-[32rem] object-contain drop-shadow-2xl animate-float" />
+        </div>
+
+        <!-- Title -->
+        <h2 class="text-6xl md:text-8xl font-bold mb-6 kids-title text-center" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; color: #FFD53E; text-shadow: 3px 3px 0 #8B5A9C, 6px 6px 0 rgba(139, 90, 156, 0.5); -webkit-text-stroke: 3px #8B5A9C;">
+            NS KIDS
+        </h2>
+
+        <!-- Tagline -->
+        <p class="text-2xl md:text-4xl font-medium mb-12 text-center" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; color: #FFD53E;">
+            UNITED FOR KIDS
+        </p>
+
+        <!-- Content Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl w-full mb-12">
+            <!-- Hackathon -->
+            <div id="kids-hackathon" class="kids-card group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 flex items-center justify-center text-3xl">🎮</div>
+                    <h3 class="text-3xl md:text-4xl font-bold" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; color: #FFD53E;">
+                        Hackathon
+                    </h3>
+                </div>
+                <p class="text-lg md:text-xl" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; color: #FFD53E;">
+                    Empowering young minds through creative coding and AI experiences.
+                </p>
+            </div>
+
+            <!-- Mission -->
+            <div id="kids-mission" class="kids-card group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 flex items-center justify-center text-3xl">🎯</div>
+                    <h3 class="text-3xl md:text-4xl font-bold" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; color: #FFD53E;">
+                        Mission
+                    </h3>
+                </div>
+                <p class="text-lg md:text-xl" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; color: #FFD53E;">
+                    Making AI and technology accessible to kids aged 9-13 across Belgium.
+                </p>
+            </div>
+        </div>
+
+        <!-- Sponsors Section -->
+        <div class="text-center mb-6">
+            <p class="text-xl md:text-2xl font-medium mb-6" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; color: #FFD53E;">
+                Our Amazing Partners
+            </p>
+            <div class="flex flex-wrap justify-center gap-6 items-center max-w-4xl">
+                <!-- Partner Logos -->
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/95 p-3 flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-110">
+                    <img src="/partnerships/logos/nerdlab.webp" alt="NerdLab" class="w-full h-full object-contain" />
+                </div>
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/95 p-3 flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-110">
+                    <img src="/partnerships/logos/imaginelab.jpg" alt="ImagineLab" class="w-full h-full object-contain" />
+                </div>
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/95 p-3 flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-110">
+                    <img src="/partnerships/logos/autodiscovery.png" alt="Auto Discovery" class="w-full h-full object-contain" />
+                </div>
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/95 p-3 flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-110">
+                    <img src="/partnerships/logos/brucon.png" alt="BruCON" class="w-full h-full object-contain" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Belgium Flag or Region Indicator -->
+        <div class="mt-8">
+            <p class="text-lg md:text-xl font-medium" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; color: #FFD53E;">
+                🇧🇪 Across Belgium
+            </p>
+        </div>
+
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 pointer-events-none opacity-20">
+            <div class="absolute top-20 left-10 w-32 h-32 rounded-full" style="background: #FFD53E; filter: blur(40px);"></div>
+            <div class="absolute bottom-20 right-10 w-40 h-40 rounded-full" style="background: #86D8FF; filter: blur(50px);"></div>
+            <div class="absolute top-1/2 left-1/2 w-64 h-64 rounded-full" style="background: #91438E; filter: blur(60px); opacity: 0.1;"></div>
+        </div>
+    </section>
+
+    <!-- NS Robotics Section -->
+    <section id="ns-robotics" class="min-h-screen flex flex-col items-center justify-center robotics-section relative overflow-hidden px-4">
+        <!-- Logo Center Stage -->
+        <div class="flex justify-center mb-8 md:mb-12">
+            <img src="/nsrobotics-orange.png" alt="NS Robotics" class="w-80 h-80 md:w-[32rem] md:h-[32rem] object-contain drop-shadow-2xl animate-pulse-glow" />
+        </div>
+
+        <!-- Title -->
+        <h2 class="text-6xl md:text-8xl font-bold mb-6 robotics-title text-center" style="font-family: 'VT323', monospace; color: #FFB636; letter-spacing: 0.15em;">
+            NS_ROBOTICS
+        </h2>
+
+        <!-- Tagline -->
+        <p class="text-2xl md:text-4xl mb-12 text-center" style="font-family: 'VT323', monospace; color: #FFB636;">
+            &gt; BUILDING_THE_FUTURE_
+        </p>
+
+        <!-- Content Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl w-full mb-12">
+            <!-- Funding -->
+            <div id="robotics-funding" class="robotics-card group">
+                <div class="mb-4 text-4xl md:text-5xl" style="font-family: 'VT323', monospace; color: #FFB636;">
+                    &lt;!$~$!&gt;
+                </div>
+                <p class="text-sm uppercase tracking-wider mb-3 opacity-60" style="font-family: 'VT323', monospace; color: #FFB636;">
+                    &gt;&gt; FUNDING
+                </p>
+                <p class="text-base md:text-lg" style="font-family: 'VT323', monospace; color: #FFB636;">
+                    Supporting innovative robotics projects and research.
+                </p>
+            </div>
+
+            <!-- Why -->
+            <div id="robotics-why" class="robotics-card group">
+                <div class="mb-4 text-4xl md:text-5xl" style="font-family: 'VT323', monospace; color: #FFB636;">
+                    &lt;!?o?!&gt;
+                </div>
+                <p class="text-sm uppercase tracking-wider mb-3 opacity-60" style="font-family: 'VT323', monospace; color: #FFB636;">
+                    &gt;&gt; WHY
+                </p>
+                <p class="text-base md:text-lg" style="font-family: 'VT323', monospace; color: #FFB636;">
+                    Embodied AI is the future. We need to be ready.
+                </p>
+            </div>
+
+            <!-- Open -->
+            <div id="robotics-open" class="robotics-card group">
+                <div class="mb-4 text-4xl md:text-5xl" style="font-family: 'VT323', monospace; color: #FFB636;">
+                    &lt;!OvO!&gt;
+                </div>
+                <p class="text-sm uppercase tracking-wider mb-3 opacity-60" style="font-family: 'VT323', monospace; color: #FFB636;">
+                    &gt;&gt; OPEN_SOURCE
+                </p>
+                <p class="text-base md:text-lg" style="font-family: 'VT323', monospace; color: #FFB636;">
+                    Building together in the open, for everyone.
+                </p>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="w-full max-w-2xl mb-8">
+            <div class="bg-black/60 border-2 border-[#FFB636] rounded-lg p-4" style="font-family: 'VT323', monospace; color: #FFB636;">
+                <p class="text-lg md:text-xl">
+                    &gt; STATUS: [<span class="animate-pulse">ACTIVE</span>]<br/>
+                    &gt; PROJECTS: [<span class="text-white">LOADING...</span>]<br/>
+                    &gt; LOCATION: [BELGIUM]
+                </p>
+            </div>
+        </div>
+
+        <!-- Grid background for retro effect -->
+        <div class="absolute inset-0 pointer-events-none opacity-10" style="background-image: linear-gradient(#FFB636 1px, transparent 1px), linear-gradient(90deg, #FFB636 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+        <!-- Scanline effect -->
+        <div class="absolute inset-0 pointer-events-none opacity-5" style="background: linear-gradient(transparent 50%, #FFB636 50%); background-size: 100% 4px;"></div>
+    </section>
+
+    <!-- Footer with navigation back -->
+    <footer class="py-20 text-center">
+        <a href="#north-star" class="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors">
+            <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+            Back to top
+        </a>
+    </footer>
+</Layout>
+
+<style>
+    /* Base animations */
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fade-in 1s ease-out forwards;
+    }
+
+    .animate-fade-in-delay-1 {
+        animation: fade-in 1s ease-out 0.3s backwards;
+    }
+
+    .animate-fade-in-delay-2 {
+        animation: fade-in 1s ease-out 0.6s backwards;
+    }
+
+    .animate-fade-in-delay-3 {
+        animation: fade-in 1s ease-out 0.9s backwards;
+    }
+
+    .animate-fade-in-delay-4 {
+        animation: fade-in 1s ease-out 1.2s backwards;
+    }
+
+    /* NS Kids Section Styles */
+    .kids-section {
+        background: linear-gradient(135deg, #86D8FF 0%, #FFD53E 100%);
+    }
+
+    .kids-title {
+        transform: translateY(-3px);
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+
+    .kids-card {
+        background: rgba(139, 90, 156, 0.3);
+        border: 4px solid #8B5A9C;
+        border-radius: 24px;
+        padding: 2rem;
+        transform: translateY(0);
+        transition: all 0.3s ease;
+        box-shadow:
+            0 4px 0 #8B5A9C,
+            0 8px 20px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+    }
+
+    .kids-card:hover {
+        transform: translateY(-8px);
+        box-shadow:
+            0 8px 0 #8B5A9C,
+            0 16px 30px rgba(0, 0, 0, 0.2);
+        border-width: 5px;
+    }
+
+    /* NS Robotics Section Styles */
+    .robotics-section {
+        background: #000000;
+        position: relative;
+    }
+
+    .robotics-title {
+        text-shadow:
+            0 0 10px #FFB636,
+            0 0 20px #FFB636,
+            0 0 30px #FFB636;
+        letter-spacing: 0.1em;
+    }
+
+    .robotics-card {
+        background: rgba(0, 0, 0, 0.8);
+        border: 2px solid #FFB636;
+        border-radius: 8px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .robotics-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 182, 54, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .robotics-card:hover::before {
+        left: 100%;
+    }
+
+    .robotics-card:hover {
+        background: rgba(0, 0, 0, 0.95);
+        border-color: #FFB636;
+        box-shadow:
+            0 0 20px rgba(255, 182, 54, 0.3),
+            inset 0 0 20px rgba(255, 182, 54, 0.1);
+        transform: translateY(-4px);
+    }
+
+    /* Smooth section transitions */
+    @keyframes float-in {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .kids-section,
+    .robotics-section {
+        animation: float-in 0.8s ease-out;
+    }
+
+    /* Responsive text sizing */
+    @media (max-width: 768px) {
+        .kids-card,
+        .robotics-card {
+            padding: 1.5rem;
+        }
+
+        .kids-card {
+            border-width: 3px;
+        }
+
+        .kids-card:hover {
+            border-width: 4px;
+        }
+    }
+
+    /* Logo animations */
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    @keyframes pulse-glow-anim {
+        0%, 100% {
+            filter: drop-shadow(0 0 20px rgba(255, 182, 54, 0.6))
+                    drop-shadow(0 0 40px rgba(255, 182, 54, 0.4));
+        }
+        50% {
+            filter: drop-shadow(0 0 30px rgba(255, 182, 54, 0.8))
+                    drop-shadow(0 0 60px rgba(255, 182, 54, 0.6));
+        }
+    }
+
+    .animate-float {
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .animate-pulse-glow {
+        animation: pulse-glow-anim 2s ease-in-out infinite;
+    }
+</style>
+
+<script>
+    // Smooth color transitions based on scroll position
+    const kidsSection = document.getElementById('ns-kids');
+    const roboticsSection = document.getElementById('ns-robotics');
+
+    function updateSectionStyles() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        if (kidsSection) {
+            const kidsSectionTop = kidsSection.offsetTop;
+            const kidsSectionBottom = kidsSectionTop + kidsSection.offsetHeight;
+
+            // Calculate opacity based on scroll position
+            if (scrollY > kidsSectionTop - windowHeight && scrollY < kidsSectionBottom) {
+                const progress = (scrollY - (kidsSectionTop - windowHeight)) / (windowHeight + kidsSection.offsetHeight);
+                const opacity = Math.min(1, Math.max(0, progress * 2));
+                kidsSection.style.opacity = opacity.toString();
+            }
+        }
+
+        if (roboticsSection) {
+            const roboticsSectionTop = roboticsSection.offsetTop;
+            const roboticsSectionBottom = roboticsSectionTop + roboticsSection.offsetHeight;
+
+            // Calculate opacity based on scroll position
+            if (scrollY > roboticsSectionTop - windowHeight && scrollY < roboticsSectionBottom) {
+                const progress = (scrollY - (roboticsSectionTop - windowHeight)) / (windowHeight + roboticsSection.offsetHeight);
+                const opacity = Math.min(1, Math.max(0, progress * 2));
+                roboticsSection.style.opacity = opacity.toString();
+            }
+        }
+    }
+
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+            requestAnimationFrame(() => {
+                updateSectionStyles();
+                scrollTicking = false;
+            });
+            scrollTicking = true;
+        }
+    });
+
+    // Initial call
+    updateSectionStyles();
+</script>

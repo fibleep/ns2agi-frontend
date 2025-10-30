@@ -1,0 +1,93 @@
+---
+// Interactive Star Component with Cursor Tracking using North Star logo
+---
+
+<div id="star-container" class="fixed inset-0 pointer-events-none z-0">
+    <div id="interactive-star" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out">
+        <div class="relative w-96 h-96 flex items-center justify-center">
+            <!-- North Star Logo -->
+            <img src="/rmshine-original.png" alt="North Star" class="w-80 h-80 object-contain star-glow" />
+
+            <!-- Outer glow -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full blur-3xl pulse-glow"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    @keyframes pulse-glow {
+        0%, 100% {
+            opacity: 0.3;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+            opacity: 0.6;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+    }
+
+    .pulse-glow {
+        animation: pulse-glow 4s ease-in-out infinite;
+    }
+</style>
+
+<script>
+    // Interactive cursor tracking
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let currentX = window.innerWidth / 2;
+    let currentY = window.innerHeight / 2;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    const star = document.getElementById('interactive-star');
+    const container = document.getElementById('star-container');
+
+    if (star && container) {
+        // Track mouse movement
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Smooth animation loop
+        function animate() {
+            // Smooth interpolation
+            currentX += (mouseX - currentX) * 0.05;
+            currentY += (mouseY - currentY) * 0.05;
+
+            // Calculate offset from center (max 50px)
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            offsetX = (currentX - centerX) * 0.05;
+            offsetY = (currentY - centerY) * 0.05;
+
+            // Apply transform
+            star.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`;
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Scale based on scroll
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    const maxScroll = 800;
+                    const opacity = Math.max(0, 1 - (scrollY / maxScroll));
+                    const scale = Math.max(0.5, 1 - (scrollY / maxScroll) * 0.5);
+
+                    container.style.opacity = opacity.toString();
+                    star.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) scale(${scale})`;
+
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+</script>

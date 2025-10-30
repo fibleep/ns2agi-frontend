@@ -1,0 +1,624 @@
+---
+// Hero section with scrolling background
+---
+
+<section id="hero-section" class="relative min-h-screen overflow-hidden bg-black transition-colors duration-500">
+    <!-- Scrolling background - right side on desktop, full on mobile -->
+    <div id="background-images" class="absolute inset-0 md:left-1/2 overflow-hidden transition-opacity duration-500">
+        <div class="scrolling-banner-fullscreen">
+            <img src="/background.png" alt="Events Collage" class="w-full h-auto" />
+            <img src="/background.png" alt="Events Collage" class="w-full h-auto" />
+        </div>
+    </div>
+
+    <!-- Video background for kids (hidden by default) - fullscreen -->
+    <div id="background-video" class="absolute inset-0 overflow-hidden hidden transition-opacity duration-500">
+        <video
+            id="kids-video"
+            class="w-full h-full object-cover"
+            autoplay
+            muted
+            loop
+            playsinline
+        >
+            <source src="/kidsaicoding.mp4" type="video/mp4" />
+        </video>
+    </div>
+
+    <!-- Static image background for robotics (hidden by default) -->
+    <div id="background-robotics" class="absolute inset-0 md:left-1/2 overflow-hidden hidden transition-opacity duration-500">
+        <img src="/nsrobotics_flyer.png" alt="North Star Robotics" class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Left to right gradient overlay for unified look -->
+    <div id="gradient-overlay" class="absolute inset-0 bg-gradient-left-right pointer-events-none transition-opacity duration-500"></div>
+
+    <!-- Hero content - left side on desktop, centered on mobile -->
+    <div id="hero-content" class="relative z-10 min-h-screen flex items-center justify-center md:justify-start">
+        <div class="text-center md:text-left space-y-8 px-4 md:px-12 md:w-1/2 relative">
+            <!-- Brand toggles -->
+            <div class="flex justify-center md:justify-start mb-8">
+                <div id="toggle-container" class="flex gap-0 bg-white/5 backdrop-blur-sm rounded-full p-1 border border-white/10 transition-all duration-300">
+                    <button data-brand="northstar" class="brand-toggle active relative px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 rounded-full">
+                        <span class="relative z-10">Core</span>
+                    </button>
+                    <button data-brand="kids" class="brand-toggle relative px-6 py-2.5 text-sm font-medium text-white/60 transition-all duration-300 rounded-full">
+                        <span class="relative z-10">Kids</span>
+                    </button>
+                    <button data-brand="robotics" class="brand-toggle relative px-6 py-2.5 text-sm font-medium text-white/60 transition-all duration-300 rounded-full">
+                        <span class="relative z-10">Robotics</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative">
+                <!-- Logo container with fixed height to prevent stutters -->
+                <div class="h-32 md:h-44 mb-6 flex items-center justify-center md:justify-start">
+                    <!-- Default North Star with icon + text -->
+                    <div id="default-branding" class="flex items-center gap-4 transition-opacity duration-300">
+                        <img src="/rmshine.png" alt="North Star" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+                        <h1 class="text-4xl md:text-6xl font-bold text-white whitespace-nowrap">
+                            North Star
+                        </h1>
+                    </div>
+
+                    <!-- Full logo branding (hidden by default) -->
+                    <div id="full-logo-branding" class="hidden transition-opacity duration-300">
+                        <img id="brand-full-logo" src="" alt="" class="h-32 md:h-44 object-contain" />
+                    </div>
+                </div>
+
+                <p id="brand-tagline" class="text-lg md:text-xl text-white/90 max-w-2xl transition-all duration-300">
+                AI & robotics education through hackathons and community events across Belgium
+                </p>
+
+                <!-- Social Media Icons -->
+                <div class="flex items-center gap-4 justify-center md:justify-start mt-6">
+                    <a href="https://www.linkedin.com/company/north-star-agi" target="_blank" rel="noopener noreferrer" class="social-icon text-white hover:text-blue-500 transition-all duration-300 hover:scale-110" aria-label="LinkedIn">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/northstaragi/" target="_blank" rel="noopener noreferrer" class="social-icon text-white hover:text-pink-400 transition-all duration-300 hover:scale-110" aria-label="Instagram">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://discord.gg/m5Hknymurb" target="_blank" rel="noopener noreferrer" class="social-icon text-white hover:text-purple-400 transition-all duration-300 hover:scale-110" aria-label="Discord">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+    /* Fullscreen scrolling banner animation */
+    @keyframes scroll-vertical {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-50%);
+        }
+    }
+
+    .scrolling-banner-fullscreen {
+        animation: scroll-vertical 60s linear infinite;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        will-change: transform;
+    }
+
+    /* Left to right gradient - removed for cleaner look */
+    .bg-gradient-left-right {
+        background: transparent;
+    }
+
+    /* Mobile improvements - better contrast */
+    @media (max-width: 768px) {
+        /* Darken background images for better contrast */
+        #background-images img,
+        #background-robotics img {
+            filter: brightness(0.5);
+        }
+
+        /* Keep kids video bright - gradient handles contrast */
+        #background-video video {
+            filter: none;
+        }
+
+        /* Strong text shadows for better readability */
+        #hero-content h1,
+        #brand-tagline {
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9),
+                         0 4px 16px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Add background to toggle container for better visibility */
+        #toggle-container {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Add stylish radial gradient spotlight effect */
+        #hero-content > div {
+            position: relative;
+        }
+
+        #hero-content > div::before {
+            content: '';
+            position: absolute;
+            inset: -4rem;
+            background: radial-gradient(circle at center,
+                rgba(0, 0, 0, 0.9) 0%,
+                rgba(0, 0, 0, 0.75) 20%,
+                rgba(0, 0, 0, 0.6) 35%,
+                rgba(0, 0, 0, 0.45) 50%,
+                rgba(0, 0, 0, 0.3) 65%,
+                rgba(0, 0, 0, 0.15) 80%,
+                transparent 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Remove backdrop for robotics and kids modes */
+        .robotics-active #hero-content > div::before,
+        .kids-active #hero-content > div::before {
+            display: none;
+        }
+
+        /* Hide background image container completely for robotics on mobile - show only color */
+        #hero-section.robotics-active #background-robotics {
+            display: none;
+        }
+
+        /* Remove brightness filter for robotics */
+        #hero-section.robotics-active #background-robotics img {
+            filter: none;
+        }
+
+        /* Lighter text shadows for robotics (on solid color) */
+        #hero-section.robotics-active #hero-content h1,
+        #hero-section.robotics-active #brand-tagline {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Lighter toggle background for robotics */
+        #hero-section.robotics-active #toggle-container {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Stronger text shadows for kids on mobile */
+        #hero-section.kids-active #hero-content h1,
+        #hero-section.kids-active #brand-tagline {
+            text-shadow: 3px 3px 0 #8B5A9C,
+                         6px 6px 0 rgba(139, 90, 156, 0.5),
+                         0 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        #hero-section.kids-active #brand-tagline {
+            -webkit-text-stroke: 1.5px #8B5A9C;
+        }
+
+        /* Kids social icons on mobile */
+        #hero-section.kids-active .social-icon {
+            filter: drop-shadow(2px 2px 0px #8B5A9C) drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Robotics social icons on mobile */
+        #hero-section.robotics-active .social-icon {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Remove button shadows and borders on mobile */
+        .action-btn {
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        /* Remove any visible borders from button containers */
+        #action-buttons a {
+            box-shadow: none !important;
+        }
+    }
+
+    /* Kids gradient - stronger for better text visibility */
+    .bg-gradient-left-right.kids {
+        background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.3) 0%,
+            rgba(0, 0, 0, 0.2) 30%,
+            rgba(0, 0, 0, 0.1) 50%,
+            transparent 100%);
+    }
+
+    /* Robotics gradient - removed */
+    .bg-gradient-left-right.robotics {
+        background: transparent;
+    }
+
+    /* Mobile: use stronger gradient for kids */
+    @media (max-width: 768px) {
+        .bg-gradient-left-right {
+            background: transparent;
+        }
+
+        .bg-gradient-left-right.kids {
+            background: linear-gradient(to right,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(0, 0, 0, 0.25) 40%,
+                rgba(0, 0, 0, 0.1) 60%,
+                transparent 100%);
+        }
+
+        .bg-gradient-left-right.robotics {
+            background: transparent;
+        }
+    }
+
+    /* Kids button styling - using nskids.png colors with better contrast */
+    #action-buttons.kids .action-btn-primary {
+        background: #FDD835;
+        color: #8B5A9C;
+        border: none;
+        font-weight: 700;
+    }
+
+    #action-buttons.kids .action-btn-primary:hover {
+        background: #FECA57;
+        transform: scale(1.08);
+        box-shadow: none;
+    }
+
+    #action-buttons.kids .action-btn-secondary {
+        background: rgba(139, 90, 156, 0.8);
+        color: #FDD835;
+        border: none;
+        font-weight: 700;
+    }
+
+    #action-buttons.kids .action-btn-secondary:hover {
+        background: #8B5A9C;
+        color: #FDD835;
+        box-shadow: none;
+    }
+
+    /* Robotics button styling - matching nsrobotics flyer */
+    #action-buttons.robotics .action-btn-primary {
+        background: #000000;
+        color: #FFA500;
+        border: none;
+    }
+
+    #action-buttons.robotics .action-btn-primary:hover {
+        background: #FFA500;
+        color: #000000;
+        transform: scale(1.08);
+    }
+
+    #action-buttons.robotics .action-btn-secondary {
+        background: rgba(0, 0, 0, 0.8);
+        color: #FFA500;
+        border: none;
+    }
+
+    #action-buttons.robotics .action-btn-secondary:hover {
+        background: #000000;
+        color: #FFA500;
+    }
+
+    /* Brand toggle styles */
+    .brand-toggle {
+        cursor: pointer;
+        position: relative;
+    }
+
+    .brand-toggle::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: white;
+        border-radius: 9999px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+    }
+
+    .brand-toggle.active::before {
+        opacity: 1;
+    }
+
+    .brand-toggle.active {
+        color: black;
+    }
+
+    .brand-toggle:not(.active):hover {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .brand-toggle:not(.active):hover::before {
+        opacity: 0.1;
+    }
+
+    /* Toggle container variants for better contrast */
+    #toggle-container.robotics-mode {
+        background: rgba(0, 0, 0, 0.2);
+        border-color: rgba(0, 0, 0, 0.3);
+    }
+
+    #toggle-container.robotics-mode .brand-toggle {
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    #toggle-container.robotics-mode .brand-toggle.active {
+        color: #FFA500;
+    }
+
+    #toggle-container.robotics-mode .brand-toggle::before {
+        background: black;
+    }
+
+    #toggle-container.robotics-mode .brand-toggle:not(.active):hover {
+        color: rgba(0, 0, 0, 0.9);
+    }
+
+    #toggle-container.kids-mode {
+        background: rgba(139, 90, 156, 0.6);
+        border: 2px solid #8B5A9C;
+        backdrop-filter: blur(10px);
+    }
+
+    #toggle-container.kids-mode .brand-toggle {
+        color: rgba(139, 90, 156, 1);
+        font-weight: 600;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    #toggle-container.kids-mode .brand-toggle.active {
+        color: #8B5A9C;
+        font-weight: 700;
+    }
+
+    #toggle-container.kids-mode .brand-toggle::before {
+        background: #FDD835;
+    }
+
+    #toggle-container.kids-mode .brand-toggle:not(.active):hover {
+        color: rgba(139, 90, 156, 1);
+    }
+
+    /* Robotics text color */
+    .robotics-active #brand-tagline {
+        color: rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Kids text color - use gold for better contrast on blue */
+    .kids-active #brand-tagline {
+        color: #FFD53E !important;
+        font-weight: 700;
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        text-shadow: 3px 3px 0 #8B5A9C,
+                     6px 6px 0 rgba(139, 90, 156, 0.5),
+                     0 0 20px rgba(0, 0, 0, 0.3);
+        -webkit-text-stroke: 1.5px #8B5A9C;
+    }
+
+    /* Kids logo shadow for better contrast */
+    .kids-active #brand-full-logo {
+        filter: drop-shadow(3px 3px 0px #8B5A9C)
+                drop-shadow(6px 6px 0px rgba(139, 90, 156, 0.5))
+                drop-shadow(0 0 15px rgba(0, 0, 0, 0.4));
+    }
+
+    /* Kids social icons - gold with purple hover */
+    .kids-active .social-icon {
+        color: #FFD53E;
+        filter: drop-shadow(2px 2px 0px #8B5A9C);
+    }
+
+    .kids-active .social-icon:hover {
+        color: #8B5A9C;
+        filter: drop-shadow(2px 2px 0px #FFD53E);
+    }
+
+    /* Robotics social icons - orange with black hover */
+    .robotics-active .social-icon {
+        color: #FFA500;
+    }
+
+    .robotics-active .social-icon:hover {
+        color: #000000;
+    }
+</style>
+
+<script>
+    const brandData = {
+        northstar: {
+            title: 'north star',
+            tagline: "AI & robotics education through hackathons and community events across Belgium",
+            className: '',
+            backgroundColor: '#000000',
+            useVideo: false,
+            useRoboticsImage: false,
+            useFullLogo: false,
+            fullLogo: ''
+        },
+        kids: {
+            title: 'north star kids',
+            tagline: 'Hands-on AI & robotics workshops for schools and youth hackathons',
+            className: 'kids',
+            backgroundColor: '#84D7FE',
+            useVideo: true,
+            useRoboticsImage: false,
+            useFullLogo: true,
+            fullLogo: '/nskids-full-logo-transparent.png',
+            fontFamily: 'Comic Sans MS'
+        },
+        robotics: {
+            title: 'north star robotics',
+            tagline: 'Robotics hardware distribution and integration services for festivals, events, and businesses',
+            className: 'robotics',
+            backgroundColor: '#FFA500',
+            useVideo: false,
+            useRoboticsImage: true,
+            useFullLogo: true,
+            fullLogo: '/nsrobotics-full-logo.png'
+        }
+    };
+
+    const brandTagline = document.getElementById('brand-tagline');
+    const defaultBranding = document.getElementById('default-branding');
+    const fullLogoBranding = document.getElementById('full-logo-branding');
+    const brandFullLogo = document.getElementById('brand-full-logo');
+    const toggleContainer = document.getElementById('toggle-container');
+    const heroSection = document.getElementById('hero-section');
+    const heroContent = document.getElementById('hero-content');
+    const backgroundImages = document.getElementById('background-images');
+    const backgroundVideo = document.getElementById('background-video');
+    const backgroundRobotics = document.getElementById('background-robotics');
+    const gradientOverlay = document.getElementById('gradient-overlay');
+    const actionButtons = document.getElementById('action-buttons');
+    const kidsVideo = document.getElementById('kids-video') as HTMLVideoElement;
+    const toggleButtons = document.querySelectorAll('.brand-toggle');
+
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const brand = button.getAttribute('data-brand') as keyof typeof brandData;
+            const data = brandData[brand];
+
+            // Update active state
+            toggleButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.remove('text-white');
+                btn.classList.add('text-white/60');
+            });
+            button.classList.add('active');
+            button.classList.remove('text-white/60');
+            button.classList.add('text-white');
+
+            // Toggle between default branding and full logo with smooth transition
+            if (defaultBranding && fullLogoBranding && brandFullLogo) {
+                if (data.useFullLogo) {
+                    // Fade out default, fade in full logo
+                    defaultBranding.style.opacity = '0';
+                    setTimeout(() => {
+                        defaultBranding.classList.add('hidden');
+                        fullLogoBranding.classList.remove('hidden');
+                        brandFullLogo.src = data.fullLogo;
+                        brandFullLogo.alt = data.title;
+                        setTimeout(() => {
+                            fullLogoBranding.style.opacity = '1';
+                        }, 10);
+                    }, 300);
+                } else {
+                    // Fade out full logo, fade in default
+                    fullLogoBranding.style.opacity = '0';
+                    setTimeout(() => {
+                        fullLogoBranding.classList.add('hidden');
+                        defaultBranding.classList.remove('hidden');
+                        setTimeout(() => {
+                            defaultBranding.style.opacity = '1';
+                        }, 10);
+                    }, 300);
+                }
+            }
+
+            // Update tagline
+            if (brandTagline) {
+                brandTagline.textContent = data.tagline;
+            }
+
+            // Update background
+            if (heroSection) {
+                heroSection.style.backgroundColor = data.backgroundColor;
+            }
+
+            // Toggle between video, robotics image, and default images
+            if (backgroundImages && backgroundVideo && backgroundRobotics) {
+                if (data.useVideo) {
+                    // Kids view - use video
+                    backgroundImages.classList.add('hidden');
+                    backgroundVideo.classList.remove('hidden');
+                    backgroundRobotics.classList.add('hidden');
+                    if (kidsVideo) {
+                        kidsVideo.play();
+                    }
+                } else if (data.useRoboticsImage) {
+                    // Robotics view - use static image
+                    backgroundImages.classList.add('hidden');
+                    backgroundVideo.classList.add('hidden');
+                    backgroundRobotics.classList.remove('hidden');
+                    if (kidsVideo) {
+                        kidsVideo.pause();
+                    }
+                } else {
+                    // Default view - use scrolling images
+                    backgroundImages.classList.remove('hidden');
+                    backgroundVideo.classList.add('hidden');
+                    backgroundRobotics.classList.add('hidden');
+                    if (kidsVideo) {
+                        kidsVideo.pause();
+                    }
+                }
+            }
+
+            // Update gradient overlay
+            if (gradientOverlay) {
+                gradientOverlay.classList.remove('kids', 'robotics');
+                if (brand === 'kids') {
+                    gradientOverlay.classList.add('kids');
+                } else if (brand === 'robotics') {
+                    gradientOverlay.classList.add('robotics');
+                }
+            }
+
+            // Update action buttons styling
+            if (actionButtons) {
+                actionButtons.classList.remove('kids', 'robotics');
+                if (brand === 'kids') {
+                    actionButtons.classList.add('kids');
+                } else if (brand === 'robotics') {
+                    actionButtons.classList.add('robotics');
+                }
+            }
+
+            // Update hero content for text colors
+            if (heroContent) {
+                heroContent.classList.remove('robotics-active', 'kids-active');
+                if (brand === 'robotics') {
+                    heroContent.classList.add('robotics-active');
+                } else if (brand === 'kids') {
+                    heroContent.classList.add('kids-active');
+                }
+            }
+
+            // Update hero section for background control
+            if (heroSection) {
+                heroSection.classList.remove('robotics-active', 'kids-active');
+                if (brand === 'robotics') {
+                    heroSection.classList.add('robotics-active');
+                } else if (brand === 'kids') {
+                    heroSection.classList.add('kids-active');
+                }
+            }
+
+            // Update toggle container styling for contrast
+            if (toggleContainer) {
+                toggleContainer.classList.remove('robotics-mode', 'kids-mode');
+                if (brand === 'robotics') {
+                    toggleContainer.classList.add('robotics-mode');
+                } else if (brand === 'kids') {
+                    toggleContainer.classList.add('kids-mode');
+                }
+            }
+        });
+    });
+</script>
