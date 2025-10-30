@@ -3,20 +3,68 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout>
-  <main class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-4 text-center text-white">Kids AI Vibecoding Hackathon</h1>
-    <p class="text-center text-lg text-white/80 mb-8">Saturday, October 11, 2025 • Multiple Cities in Belgium</p>
-    
-    
-    <div class="flex justify-center mb-12">
-      <div class="max-w-md mx-auto">
-        <img 
-          src="/kids-hackathon/Kids AI Coding.png" 
-          alt="Kids AI Vibecoding Hackathon Poster - Ages 9-13, Saturday 11 October, Ghent, Antwerp, Brussels" 
-          class="w-full h-auto rounded-2xl shadow-2xl border border-white/20"
-        />
+  <!-- Hero Section with Fullscreen Video -->
+  <section class="relative min-h-screen overflow-hidden bg-[#84D7FE] -mt-20 md:-mt-24">
+    <!-- Video Background -->
+    <div class="absolute inset-0">
+      <video
+        class="w-full h-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+      >
+        <source src="/kidsaicoding.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Left to Middle Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#84D7FE] via-[#84D7FE]/60 to-transparent pointer-events-none"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 min-h-screen flex items-center justify-center md:justify-start">
+      <div class="text-center md:text-left space-y-8 px-4 md:px-12 md:w-1/2 max-w-3xl">
+        <!-- Logo -->
+        <div class="flex justify-center md:justify-start mb-6">
+          <img
+            src="/nskids-full-logo-transparent.png"
+            alt="North Star Kids"
+            class="h-32 md:h-44 object-contain"
+          />
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; color: #FFD53E; -webkit-text-stroke: 2px #8B5A9C; text-shadow: 3px 3px 0 #8B5A9C;">
+          Kids AI Vibecoding Hackathon
+        </h1>
+
+        <!-- Date and Location -->
+        <p class="text-xl md:text-2xl font-semibold" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; color: #FFD53E;">
+          Saturday, October 11, 2025<br />
+          Ghent • Antwerp • Brussels
+        </p>
+
+        <!-- CTA Button -->
+        <div class="pt-4">
+          <a
+            href="https://tally.so/r/w7ypoa"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-[#FDD835] text-[#8B5A9C] rounded-full hover:bg-[#FECA57] transition-all duration-300 hover:scale-105 shadow-lg"
+            style="font-family: 'Comic Sans MS', 'Comic Sans', cursive;"
+          >
+            Register Now
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
+  </section>
+
+  <!-- Content Sections -->
+  <main class="container mx-auto px-4 py-12">
 
     <article class="mb-12 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
       <h2 class="text-3xl font-semibold mb-6 text-white">Bringing AI Learning to Young Minds Across Belgium</h2>

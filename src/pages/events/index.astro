@@ -1,10 +1,7 @@
 ---
-
 import EventsShowcase from '../../components/EventsShowcase.astro';
 import Layout from '../../layouts/Layout.astro';
-
-
-
+import EventsViewToggle from '../../components/events-view-toggle';
 
 const eventsData = [
   {
@@ -75,7 +72,7 @@ const eventsData = [
 ---
 
 <Layout>
-  
+
   <section class="py-20 bg-black">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-16">
@@ -89,12 +86,17 @@ const eventsData = [
     </div>
   </section>
 
-  
-  <EventsShowcase 
-    title="Events" 
-    events={eventsData} 
-    showHeader={false}
-  />
+  {/* View Toggle with Timeline/Grid */}
+  <EventsViewToggle client:load events={eventsData} />
+
+  {/* Grid View (shown when toggle is set to grid) */}
+  <div id="grid-view-container">
+    <EventsShowcase
+      title="Events"
+      events={eventsData}
+      showHeader={false}
+    />
+  </div>
 
 </Layout>
 
@@ -109,25 +111,38 @@ const eventsData = [
       transform: translateY(0);
     }
   }
-  
-  .animate-fade-in { 
-    animation: fade-in 1s ease-out forwards; 
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
   }
-  .animate-fade-in-delay-1 { 
-    animation: fade-in 1s ease-out 0.3s backwards; 
+  .animate-fade-in-delay-1 {
+    animation: fade-in 1s ease-out 0.3s backwards;
   }
-  .animate-fade-in-delay-2 { 
-    animation: fade-in 1s ease-out 0.6s backwards; 
+  .animate-fade-in-delay-2 {
+    animation: fade-in 1s ease-out 0.6s backwards;
   }
-  .animate-fade-in-delay-3 { 
-    animation: fade-in 1s ease-out 0.9s backwards; 
+  .animate-fade-in-delay-3 {
+    animation: fade-in 1s ease-out 0.9s backwards;
   }
-  .animate-fade-in-delay-4 { 
-    animation: fade-in 1s ease-out 1.2s backwards; 
+  .animate-fade-in-delay-4 {
+    animation: fade-in 1s ease-out 1.2s backwards;
   }
-  
-  
+
   html {
     scroll-behavior: smooth;
   }
+
+  /* Initial grid visibility based on localStorage */
+  #grid-view-container {
+    display: block;
+  }
 </style>
+
+<script>
+  // Handle initial view mode on page load
+  const savedView = localStorage.getItem("events-view-mode");
+  const gridContainer = document.getElementById("grid-view-container");
+  if (gridContainer && savedView === "timeline") {
+    gridContainer.style.display = "none";
+  }
+</script>

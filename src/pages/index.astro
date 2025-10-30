@@ -1,26 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import EventsShowcase from '../components/EventsShowcase.astro';
 import BlogShowcase from '../components/BlogShowcase.astro';
-import Hero from '../components/Hero.astro';
+import HeroScrolling from '../components/HeroScrolling.astro';
+import BottomShine from '../components/BottomShine.astro';
+import HorizontalTimeline from '../components/horizontal-timeline';
+import PartnersMarquee from '../components/PartnersMarquee';
 
 const eventsData = [
-  {
-    id: 'signal-i',
-    title: 'SIGNAL I',
-    date: 'June 5, 2025',
-    description: 'Our first SIGNAL AI meetup featuring expert speakers from Bugify and imec, exploring the collapse of modern software development and social robotics.',
-    thumbnail: '/signal-i/IMG_0331.jpg',
-    status: 'completed' as const
-  },
-  {
-    id: 'signal-ii',
-    title: 'SIGNAL II',
-    date: 'August 21, 2025',
-    description: 'Talks by AI and robotics experts, live demos, and networking with pizza & drinks at The Beacon.',
-    thumbnail: '/signal-ii/signalii.png',
-    status: 'completed' as const
-  },
   {
     id: 'ai-hackathon-i',
     title: 'AI Hackathon I',
@@ -35,6 +21,30 @@ const eventsData = [
     date: 'May 10, 2025',
     description: 'The 2nd edition - bigger and better!',
     thumbnail: '/ai-hackathon-ii/winners.jpg',
+    status: 'completed' as const
+  },
+  {
+    id: 'signal-i',
+    title: 'SIGNAL I',
+    date: 'June 5, 2025',
+    description: 'Our first SIGNAL AI meetup featuring expert speakers from Bugify and imec, exploring the collapse of modern software development and social robotics.',
+    thumbnail: '/signal-i/IMG_0331.jpg',
+    status: 'completed' as const
+  },
+  {
+    id: 'robotics-hackathon-i',
+    title: 'Robotics Hackathon I',
+    date: 'June 14, 2025',
+    description: 'Our first 2-day hackathon co-organized with HuggingFace',
+    thumbnail: '/robotics-i/LeRobot Hackathon June 14-15 2025 (1).JPG',
+    status: 'completed' as const
+  },
+  {
+    id: 'signal-ii',
+    title: 'SIGNAL II',
+    date: 'August 21, 2025',
+    description: 'Talks by AI and robotics experts, live demos, and networking with pizza & drinks at The Beacon.',
+    thumbnail: '/signal-ii/signalii.png',
     status: 'completed' as const
   },
   {
@@ -59,881 +69,98 @@ const eventsData = [
     date: 'October 18, 2025',
     description: '🤖 A co-working, make-athon - 1st part of our FUTURE IN BLOOM series. Embodied AI is coming, and we need to be ready for it.',
     thumbnail: '/future-in-bloom/cover.jpg',
+    status: 'completed' as const
+  },
+  {
+    id: 'cassini-hackathon',
+    title: 'Cassini Hackathon - Consumer Experience',
+    date: 'November 7, 2025',
+    description: '🛰️ EU Space hackathon across 10 locations. BeCentral Brussels for Belgium. Gaming, sports, and travel challenges using Galileo, Copernicus & EGNOS data.',
+    thumbnail: '/cassini-hackathon/cassini.png',
     status: 'upcoming' as const
   },
   {
-    id: 'robotics-hackathon-i',
-    title: 'Robotics Hackathon I',
-    date: 'June 14-15, 2025',
-    description: 'Our first 2-day hackathon co-organized with HuggingFace',
-    thumbnail: '/robotics-i/LeRobot Hackathon June 14-15 2025 (1).JPG',
-    status: 'completed' as const
+    id: 'belgium-nlp-meetup-27',
+    title: '27th Belgium NLP Meetup',
+    date: 'November 20, 2025',
+    description: 'AI and multi-agent systems meetup at The Beacon. From Monolith to Multi-Agent architectures, exploring production-ready AI systems.',
+    thumbnail: '/belgium-nlp-meetup/belgiumnlpmeetup.avif',
+    status: 'upcoming' as const
+  },
+  {
+    id: 'stripe-hackathon',
+    title: 'Agentic Payments Hackathon with Stripe',
+    date: 'November 22, 2025',
+    description: '💳 Hack, pilot and ship payment experiences using Stripe APIs. Build bold payment experiences with agents and automation at Commons Hub Brussels.',
+    thumbnail: '/stripe-hackathon/stripe.avif',
+    status: 'upcoming' as const
   }
 ];
 ---
 
 <Layout>
-    <Hero />
+    <HeroScrolling />
 
-    <EventsShowcase events={eventsData} title="Paths to North Star" subtitle="Our journey through groundbreaking events" limit={3} showSeeMore={true} />
-
-    
-    <BlogShowcase 
-        showHeader={false}
-        limit={2}
-    />
-
-    
+    {/* Paths to North Star Section with Horizontal Timeline */}
     <section class="py-20 bg-black">
-        <div class="container mx-auto px-4 max-w-6xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-8">Calendar</h2>
-            <div class="rounded-2xl overflow-hidden border border-white/20">
-                <iframe
-                    src="https://lu.ma/embed/calendar/cal-hBJ2pN8HgWlhWZu/events"
-                    width="100%"
-                    height="600"
-                    frameborder="0"
-                    style="border: 1px solid #bfcbda88; border-radius: 4px; width: 100%;"
-                    allowfullscreen
-                    aria-hidden="false"
-                    tabindex="0"
-                ></iframe>
-            </div>
-        </div>
-    </section>
-
-    
-    <section class="py-20 bg-black">
-        <div class="container mx-auto px-4 max-w-6xl">
-            
-            <div class="text-center mb-16">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="text-center mb-12">
                 <div class="mb-8">
                     <img src="/rmshine.png" alt="North Star" class="w-24 h-24 mx-auto object-contain"/>
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Core Sponsors</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Paths to North Star</h2>
             </div>
 
-            
-            <div class="mb-16 relative min-h-[500px] w-full">
-                
-                <div class="absolute inset-0 rounded-3xl overflow-hidden opacity-60">
-                    <img 
-                        src="/partnerships/icons/galaxy.png" 
-                        alt="Galaxy Background"
-                        class="w-full h-full object-cover object-center"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-b from-blue-900/50 to-blue-900/70"></div>
-                </div>
-                <div class="relative z-10 text-center mb-8 pt-8">
-                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-2 flex items-center justify-center gap-3">
-                        🌌
-                        Galaxy Sponsors
-                        🌌
-                    </h3>
-                    <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto"></div>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8">
-                    
-                    <div class="group max-w-lg">
-                        <a href="https://www.brucon.org/" target="_blank" rel="noopener noreferrer" class="block">
-                            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-500/10 to-blue-600/5 backdrop-blur-sm p-6 h-64 transition-all duration-500 hover:shadow-xl hover:shadow-blue-400/10">
-                                
-                                <div class="relative flex flex-col items-center justify-center h-full text-center">
-                                    
-                                    <div class="flex items-center justify-center mb-3">
-                                        <div class="relative rounded-lg w-44 h-22 sm:w-56 sm:h-28 flex items-center justify-center overflow-hidden">
-                                            <div class="relative z-10 w-full h-full flex items-center justify-center">
-                                                <img 
-                                                    src="/partnerships/logos/brucon.png" 
-                                                    alt="Brucon - Hacking for B33R"
-                                                    class="max-w-[90%] max-h-[90%] object-contain"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h4 class="text-xl font-bold text-white mb-2">Brucon</h4>
-                                    <div class="text-sm text-gray-300 opacity-70 mt-2">RBT&#123;stellar_guidance_for_agi_future&#125;</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    
-                    <div class="group max-w-lg">
-                        <a href="https://autodiscovery.eu/" target="_blank" rel="noopener noreferrer" class="block">
-                            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-500/10 to-blue-600/5 backdrop-blur-sm p-6 h-64 transition-all duration-500 hover:shadow-xl hover:shadow-blue-400/10">
-                                
-                                <div class="relative flex flex-col items-center justify-center h-full text-center">
-                                    
-                                    <div class="flex items-center justify-center mb-3">
-                                        <div class="relative rounded-lg w-44 h-22 sm:w-56 sm:h-28 flex items-center justify-center overflow-hidden">
-                                            <div class="relative z-10 w-full h-full flex items-center justify-center">
-                                                <img 
-                                                    src="/partnerships/logos/autodiscovery.png" 
-                                                    alt="Autodiscovery"
-                                                    class="max-w-[90%] max-h-[90%] object-contain"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h4 class="text-xl font-bold text-white mb-2">Autodiscovery</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="relative z-10 pb-8"></div>
-            </div>
+            {/* Horizontal Timeline */}
+            <HorizontalTimeline client:load events={eventsData} />
 
-            
-            <div class="mb-16 relative min-h-[500px] w-full">
-                
-                <div class="absolute inset-0 rounded-3xl overflow-hidden opacity-60">
-                    <img 
-                        src="/partnerships/icons/planet.png" 
-                        alt="Planet Background"
-                        class="w-full h-full object-cover object-center"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-b from-orange-900/50 to-orange-900/70"></div>
-                </div>
-                <div class="relative z-10 text-center mb-8 pt-8">
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-2 flex items-center justify-center gap-3">
-                        🪐
-                        Planet Sponsors
-                        🪐
-                    </h3>
-                    <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent mx-auto"></div>
-                </div>
-                
-                <div class="flex justify-center">
-                    
-                    <div class="group max-w-lg">
-                        <a href="https://tysonrobotics.com/Landing" target="_blank" rel="noopener noreferrer" class="block">
-                            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500/10 to-orange-600/5 backdrop-blur-sm p-6 h-64 transition-all duration-500 hover:shadow-xl hover:shadow-orange-400/10">
-                                
-                                <div class="relative flex flex-col items-center justify-center h-full text-center">
-                                    
-                                    <div class="flex items-center justify-center mb-3">
-                                        <div class="relative rounded-lg w-32 h-16 sm:w-40 sm:h-20 flex items-center justify-center overflow-hidden">
-                                            <div class="relative z-10 w-full h-full flex items-center justify-center">
-                                                <img 
-                                                    src="/partnerships/logos/tysonrobotics.png" 
-                                                    alt="Tyson Robotics"
-                                                    class="max-w-[90%] max-h-[90%] object-contain"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h4 class="text-xl font-bold text-white mb-2">Tyson Robotics</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="relative z-10 pb-8"></div>
-            </div>
-
-
-
-
-            
-            <div class="text-center mt-16">
-                <p class="text-white/70 mb-6">Interested in sponsoring our events or becoming a core sponsor?</p>
-                <a 
-                    href="/support" 
-                    class="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            {/* Events Link Button */}
+            <div class="text-center mt-12">
+                <a
+                    href="https://belgiumtech.event"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex flex-col items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-full border-2 border-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-105"
                 >
-                    Become a Sponsor
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
+                    <span class="text-sm font-normal mb-1">Explore more events at our homecooked</span>
+                    <span class="text-lg font-bold">BELGIUMTECH.EVENT</span>
                 </a>
             </div>
         </div>
     </section>
 
-    
-    <div id="bottom-shine" class="fixed bottom-0 left-0 right-0 h-32 pointer-events-none z-30 transition-all duration-700 ease-out">
-        
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
-        
-        
-        <div class="absolute bottom-0 left-0 right-0 h-16 shine-container">
-            <div class="shine-effect absolute inset-0 bg-gradient-to-t from-white/20 via-white/8 to-transparent opacity-50"></div>
-            <div class="shine-effect-delayed absolute inset-0 bg-gradient-to-t from-blue-400/15 via-blue-400/4 to-transparent opacity-70"></div>
-        </div>
-        
-        
-        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 shine-arrow">
-            <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-            </svg>
-        </div>
-    </div>
+    <PartnersMarquee client:load />
 
+    <BlogShowcase
+        showHeader={false}
+        limit={2}
+    />
+
+    <BottomShine />
 </Layout>
 
-<style>
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
+<style is:global>
+  /* Custom scrollbar for horizontal timeline */
+  .horizontal-timeline-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
 
-    
-    @keyframes twinkle {
-        0%, 100% { opacity: 0.3; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.2); }
-    }
-    
-    .animate-fade-in { 
-        animation: fade-in 1s ease-out forwards; 
-    }
-    .animate-fade-in-delay-1 { 
-        animation: fade-in 1s ease-out 0.3s backwards; 
-    }
-    .animate-fade-in-delay-2 { 
-        animation: fade-in 1s ease-out 0.6s backwards; 
-    }
-    .animate-fade-in-delay-3 { 
-        animation: fade-in 1s ease-out 0.9s backwards; 
-    }
-    
+  .horizontal-timeline-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-    .animate-twinkle {
-        animation: twinkle 2s infinite;
-    }
-    
-    
-    
-    .timeline-item {
-        position: relative;
-        opacity: 0;
-        animation: timeline-fade-in 0.8s ease-out forwards;
-    }
-    
-    .timeline-item:nth-child(1) { animation-delay: 0.2s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.4s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.6s; }
-    .timeline-item:nth-child(4) { animation-delay: 0.8s; }
-    .timeline-item:nth-child(5) { animation-delay: 1.0s; }
-    
-    @keyframes timeline-fade-in {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .timeline-content {
-        flex: 1;
-        max-width: 45%;
-    }
-    
-    .timeline-left {
-        text-align: right;
-        padding-right: 2rem;
-    }
-    
-    .timeline-right {
-        text-align: left;
-        padding-left: 2rem;
-    }
-    
-    .timeline-card {
-        background: rgba(15, 23, 42, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 1.5rem;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .timeline-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .timeline-item:hover .timeline-card {
-        transform: translateY(-4px);
-        border-color: rgba(255, 255, 255, 0.3);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-    
-    .timeline-item:hover .timeline-card::before {
-        opacity: 1;
-    }
-    
-    .timeline-title {
-        color: white;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        line-height: 1.3;
-    }
-    
-    .timeline-description {
-        color: #d1d5db;
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-    }
-    
-    
-    .path-icon {
-        width: 60px;
-        height: 60px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-        transition: all 0.3s ease;
-    }
-    
-    .events-icon {
-        background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(99,102,241,0.2));
-        color: #60a5fa;
-        border: 2px solid rgba(59,130,246,0.3);
-    }
-    
-    .robotics-icon {
-        background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(217,119,6,0.2));
-        color: #fbbf24;
-        border: 2px solid rgba(245,158,11,0.3);
-    }
-    
-    .ai-icon {
-        background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(5,150,105,0.2));
-        color: #34d399;
-        border: 2px solid rgba(16,185,129,0.3);
-    }
-    
-    
-    .path-highlights {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 1rem;
-    }
-    
-    .highlight {
-        background: rgba(255,255,255,0.1);
-        color: #e5e7eb;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 500;
-        border: 1px solid rgba(255,255,255,0.2);
-        transition: all 0.3s ease;
-    }
-    
-    .events-path .highlight:hover {
-        background: rgba(59,130,246,0.2);
-        border-color: rgba(59,130,246,0.4);
-        color: #60a5fa;
-    }
-    
-    .robotics-path .highlight:hover {
-        background: rgba(245,158,11,0.2);
-        border-color: rgba(245,158,11,0.4);
-        color: #fbbf24;
-    }
-    
-    .ai-path .highlight:hover {
-        background: rgba(16,185,129,0.2);
-        border-color: rgba(16,185,129,0.4);
-        color: #34d399;
-    }
-    
-    
-    .timeline-dot {
-        position: relative;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-        transition: all 0.3s ease;
-    }
-    
-    .dot-inner {
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-    }
-    
-    .timeline-item:hover .timeline-dot {
-        transform: scale(1.4);
-    }
-    
-    .timeline-item:hover .dot-inner {
-        transform: scale(1.1);
-    }
-    
-    
-    .events-dot {
-        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-    }
-    
-    .events-dot .dot-inner {
-        background: rgba(96, 165, 250, 0.2);
-        color: #60a5fa;
-    }
-    
-    .robotics-dot {
-        background: linear-gradient(135deg, #f59e0b, #d97706);
-        box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
-    }
-    
-    .robotics-dot .dot-inner {
-        background: rgba(251, 191, 36, 0.2);
-        color: #fbbf24;
-    }
-    
-    .ai-dot {
-        background: linear-gradient(135deg, #10b981, #059669);
-        box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
-    }
-    
-    .ai-dot .dot-inner {
-        background: rgba(52, 211, 153, 0.2);
-        color: #34d399;
-    }
-    
-    .dot-glow {
-        position: absolute;
-        inset: -8px;
-        border-radius: 50%;
-        opacity: 0.6;
-        animation: dot-glow-pulse 2s ease-in-out infinite;
-    }
-    
-    .events-glow {
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
-    }
-    
-    .robotics-glow {
-        background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%);
-    }
-    
-    .ai-glow {
-        background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);
-    }
-    
-    @keyframes dot-glow-pulse {
-        0%, 100% { 
-            transform: scale(1);
-            opacity: 0.4;
-        }
-        50% { 
-            transform: scale(1.3);
-            opacity: 0.8;
-        }
-    }
-    
-    
-    .events-path {
-        border-color: rgba(59, 130, 246, 0.3);
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(99, 102, 241, 0.05));
-    }
-    
-    .robotics-path {
-        border-color: rgba(245, 158, 11, 0.3);
-        background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(217, 119, 6, 0.05));
-    }
-    
-    .ai-path {
-        border-color: rgba(16, 185, 129, 0.3);
-        background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.05));
-    }
-    
-    
-    .convergence-point {
-        margin-top: 3rem;
-        padding-top: 2rem;
-    }
-    
-    .convergence-card {
-        text-align: center;
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        padding: 2rem;
-        backdrop-filter: blur(20px);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .convergence-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .convergence-card:hover::before {
-        opacity: 1;
-    }
-    
-    .convergence-star {
-        position: relative;
-        display: inline-block;
-        margin-bottom: 1rem;
-    }
-    
-    .convergence-glow {
-        position: absolute;
-        inset: -20px;
-        background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-        border-radius: 50%;
-        animation: convergence-pulse 3s ease-in-out infinite;
-    }
-    
-    @keyframes convergence-pulse {
-        0%, 100% { 
-            transform: scale(1);
-            opacity: 0.5;
-        }
-        50% { 
-            transform: scale(1.4);
-            opacity: 0.9;
-        }
-    }
-    
-    .convergence-title {
-        color: white;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        background: linear-gradient(135deg, #60a5fa, #34d399, #fbbf24);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    
-    .convergence-description {
-        color: #d1d5db;
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-    
-    
-    
-    
-    .milestone {
-        position: absolute;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .milestone-1 { top: -120px; left: -60px; }
-    .milestone-2 { top: -60px; right: -120px; }
-    .milestone-3 { bottom: -60px; right: -120px; }
-    .milestone-4 { bottom: -120px; left: -60px; }
-    .milestone-5 { top: 50%; left: -160px; transform: translateY(-50%); }
-    
-    .milestone-dot {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        margin: 0 auto 8px;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 20px rgba(255,255,255,0.3);
-    }
-    
-    .milestone-dot.completed {
-        background: linear-gradient(45deg, #10b981, #059669);
-        box-shadow: 0 0 20px rgba(16,185,129,0.5);
-    }
-    
-    .milestone-dot.in-progress {
-        background: linear-gradient(45deg, #f59e0b, #d97706);
-        box-shadow: 0 0 20px rgba(245,158,11,0.5);
-        animation: pulse-glow 2s ease-in-out infinite;
-    }
-    
-    .milestone-dot.pending {
-        background: linear-gradient(45deg, #6b7280, #4b5563);
-        box-shadow: 0 0 20px rgba(107,114,128,0.3);
-    }
-    
-    .milestone-label {
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-align: center;
-        color: rgba(255,255,255,0.8);
-        white-space: nowrap;
-    }
-    
-    .milestone:hover .milestone-dot {
-        transform: scale(1.3);
-        box-shadow: 0 0 30px currentColor;
-    }
-    
-    
-    
+  .horizontal-timeline-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
 
+  .horizontal-timeline-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
 
-    body {
-        overflow-x: hidden;
-    }
-    
-    
-    html {
-        scroll-behavior: smooth;
-    }
-    
-    
-    .scroll-indicator {
-        position: relative;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .scroll-indicator:hover {
-        transform: scale(1.1);
-    }
-    
-    .scroll-arrow {
-        animation: scroll-bounce 2s ease-in-out infinite;
-    }
-    
-    @keyframes scroll-bounce {
-        0%, 100% { 
-            transform: translateY(0); 
-            opacity: 0.6;
-        }
-        50% { 
-            transform: translateY(8px); 
-            opacity: 1;
-        }
-    }
-    
-    
-    .animate-fade-in-delay-2-5 { 
-        animation: fade-in 1s ease-out 0.75s backwards; 
-    }
-    .animate-fade-in-delay-4 { 
-        animation: fade-in 1s ease-out 1.2s backwards; 
-    }
-    .animate-fade-in-delay-5 { 
-        animation: fade-in 1s ease-out 1.5s backwards; 
-    }
-
-    
-    @keyframes shine-sweep {
-        0% { 
-            transform: translateY(100%) scaleY(0.3);
-            opacity: 0;
-        }
-        50% { 
-            transform: translateY(0%) scaleY(1);
-            opacity: 1;
-        }
-        100% { 
-            transform: translateY(-20%) scaleY(0.8);
-            opacity: 0;
-        }
-    }
-
-    @keyframes shine-glow {
-        0%, 100% { 
-            opacity: 0.3;
-            transform: scale(1);
-        }
-        50% { 
-            opacity: 0.8;
-            transform: scale(1.05);
-        }
-    }
-
-    @keyframes arrow-float {
-        0%, 100% { 
-            transform: translate(-50%, 0) scale(1);
-            opacity: 0.4;
-        }
-        50% { 
-            transform: translate(-50%, -8px) scale(1.1);
-            opacity: 0.8;
-        }
-    }
-
-    .shine-effect {
-        animation: shine-sweep 4s ease-in-out infinite;
-    }
-
-    .shine-effect-delayed {
-        animation: shine-sweep 4s ease-in-out infinite 0.5s;
-    }
-
-    .shine-arrow {
-        animation: arrow-float 3s ease-in-out infinite 1.5s;
-    }
-
-    .shine-container:hover .shine-effect {
-        animation-duration: 2s;
-    }
-
-    .shine-container:hover .shine-arrow {
-        animation-duration: 1.5s;
-        opacity: 0.9;
-    }
+  /* Firefox scrollbar */
+  .horizontal-timeline-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
 </style>
-
-<script>
-    
-    document.querySelectorAll('.milestone').forEach(milestone => {
-        milestone.addEventListener('click', (e: Event) => {
-            e.stopPropagation();
-            const element = milestone as HTMLElement;
-            
-            
-            const existingTooltip = document.querySelector('.milestone-tooltip');
-            if (existingTooltip) {
-                existingTooltip.remove();
-            }
-            
-            
-            const tooltip = document.createElement('div');
-            tooltip.className = 'milestone-tooltip fixed z-50 bg-slate-800 border border-slate-600 rounded-lg p-4 shadow-2xl max-w-sm';
-            tooltip.style.transform = 'translate(-50%, -50%)';
-            
-            const title = element.getAttribute('data-title') || '';
-            const date = element.getAttribute('data-date') || '';
-            const description = element.getAttribute('data-description') || '';
-            
-            tooltip.innerHTML = `
-                <div class="space-y-2">
-                    <h3 class="text-white font-bold text-lg">${title}</h3>
-                    <p class="text-blue-400 text-sm font-medium">${date}</p>
-                    <p class="text-gray-300 text-sm leading-relaxed">${description}</p>
-                </div>
-                <button class="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors" onclick="this.parentElement.remove()">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            `;
-            
-            
-            const rect = element.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            
-            tooltip.style.left = centerX + 'px';
-            tooltip.style.top = centerY + 'px';
-            
-            document.body.appendChild(tooltip);
-            
-            
-            tooltip.style.opacity = '0';
-            tooltip.style.transform = 'translate(-50%, -50%) scale(0.8)';
-            
-            requestAnimationFrame(() => {
-                tooltip.style.transition = 'all 0.3s ease';
-                tooltip.style.opacity = '1';
-                tooltip.style.transform = 'translate(-50%, -50%) scale(1)';
-            });
-        });
-        
-        
-        milestone.addEventListener('mouseenter', () => {
-            (milestone as HTMLElement).style.transform = 'scale(1.1)';
-        });
-        
-        milestone.addEventListener('mouseleave', () => {
-            (milestone as HTMLElement).style.transform = 'scale(1)';
-        });
-    });
-    
-    
-    document.addEventListener('click', function(e: Event) {
-        const target = e.target as Element;
-        if (target && !target.closest('.milestone') && !target.closest('.milestone-tooltip')) {
-            const tooltip = document.querySelector('.milestone-tooltip') as HTMLElement;
-            if (tooltip) {
-                tooltip.style.transition = 'all 0.3s ease';
-                tooltip.style.opacity = '0';
-                tooltip.style.transform = 'translate(-50%, -50%) scale(0.8)';
-                setTimeout(() => tooltip.remove(), 300);
-            }
-        }
-    });
-
-    
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            const pathSection = document.getElementById('path-to-north-star');
-            if (pathSection) {
-                pathSection.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    }
-
-    
-    let ticking = false;
-    function updateBottomShine() {
-        const bottomShine = document.getElementById('bottom-shine');
-        if (bottomShine) {
-            const scrollThreshold = 150;
-            if (window.scrollY > scrollThreshold) {
-                bottomShine.style.opacity = '0';
-                bottomShine.style.transform = 'translateY(100%)';
-            } else {
-                const opacity = Math.max(0, 1 - (window.scrollY / scrollThreshold));
-                bottomShine.style.opacity = opacity.toString();
-                bottomShine.style.transform = `translateY(${window.scrollY * 0.5}px)`;
-            }
-        }
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(updateBottomShine);
-            ticking = true;
-        }
-    });
-    
-</script>
-
- 
-
