@@ -22,6 +22,7 @@ interface Event {
   description: string;
   thumbnail: string;
   status: "completed" | "upcoming" | "coming-soon";
+  organizationType?: "ORGANIZED" | "CONTRIBUTED";
 }
 
 interface EventsTimelineProps {
@@ -181,6 +182,25 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
                     </Badge>
                   </div>
 
+                  {event.organizationType && (
+                    <div className="flex items-center gap-1 mb-1">
+                      {event.organizationType === "ORGANIZED" && (
+                        <span className="text-[10px]">⭐</span>
+                      )}
+                      <Badge
+                        variant="outline"
+                        className={cn(
+                          "text-[10px] font-bold uppercase tracking-wider border px-1.5 py-0",
+                          event.organizationType === "ORGANIZED"
+                            ? "bg-blue-500/20 text-blue-300 border-blue-500/40"
+                            : "bg-white/10 text-white/60 border-white/30"
+                        )}
+                      >
+                        {event.organizationType}
+                      </Badge>
+                    </div>
+                  )}
+
                   <div className="flex items-center gap-2 text-sm text-white/60">
                     <MapPin className="h-3 w-3" />
                     <span>{event.date}</span>
@@ -191,13 +211,21 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
               <TimelineContent className="ml-12">
                 {/* Thumbnail */}
                 {event.thumbnail && (
-                  <div className="relative h-48 rounded-xl overflow-hidden mb-4 group">
+                  <div className={cn(
+                    "relative h-48 rounded-xl overflow-hidden mb-4 group",
+                    event.thumbnail.endsWith('.svg') && "bg-white"
+                  )}>
                     <img
                       src={event.thumbnail}
                       alt={event.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className={cn(
+                        "w-full h-full transition-transform duration-300 group-hover:scale-105",
+                        event.thumbnail.endsWith('.svg') ? "object-contain p-4" : "object-cover"
+                      )}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {!event.thumbnail.endsWith('.svg') && (
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    )}
                   </div>
                 )}
 

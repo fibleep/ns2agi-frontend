@@ -12,6 +12,7 @@ interface Event {
   description: string;
   thumbnail: string;
   status: "completed" | "upcoming" | "coming-soon";
+  organizationType?: "ORGANIZED" | "CONTRIBUTED";
 }
 
 interface HorizontalTimelineProps {
@@ -178,6 +179,7 @@ export default function HorizontalTimeline({ events }: HorizontalTimelineProps) 
                   className="absolute top-0 bottom-0 z-20"
                   style={{
                     left: `${todayIndex * (cardWidth + gap) - (gap / 2)}px`,
+                    transform: "translateX(-50%)",
                   }}
                 >
                   <div className="relative h-full flex flex-col items-center">
@@ -199,16 +201,15 @@ export default function HorizontalTimeline({ events }: HorizontalTimelineProps) 
                   </div>
                 </div>
 
-                {/* Glowing dot at intersection */}
+                {/* Glowing dot at intersection with horizontal bar */}
                 <div
-                  className="absolute z-20"
+                  className="absolute z-30"
                   style={{
                     top: `${timelineHeight}px`,
                     left: `${todayIndex * (cardWidth + gap) - (gap / 2)}px`,
-                    transform: "translate(-50%, -50%)",
                   }}
                 >
-                  <div className="relative">
+                  <div className="relative -translate-x-1/2 -translate-y-1/2">
                     <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-blue-500 shadow-lg shadow-blue-500/50 animate-pulse" />
                     <div className="absolute inset-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-blue-400 blur-md" />
                   </div>
@@ -247,7 +248,10 @@ export default function HorizontalTimeline({ events }: HorizontalTimelineProps) 
                         {/* Thumbnail */}
                         {event.thumbnail && (
                           <div
-                            className="relative overflow-hidden"
+                            className={cn(
+                              "relative overflow-hidden",
+                              event.thumbnail.endsWith('.svg') && "bg-white"
+                            )}
                             style={{
                               height: `${thumbnailHeight}px`
                             }}
@@ -257,12 +261,17 @@ export default function HorizontalTimeline({ events }: HorizontalTimelineProps) 
                               alt={event.title}
                               loading="lazy"
                               decoding="async"
-                              className="w-full h-full object-cover"
+                              className={cn(
+                                "w-full h-full",
+                                event.thumbnail.endsWith('.svg') ? "object-contain p-4" : "object-cover"
+                              )}
                               width={cardWidth}
                               height={thumbnailHeight}
                             />
-                            {/* Gradient overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                            {/* Gradient overlay - only for non-SVG images */}
+                            {!event.thumbnail.endsWith('.svg') && (
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                            )}
                           </div>
                         )}
 
@@ -274,26 +283,54 @@ export default function HorizontalTimeline({ events }: HorizontalTimelineProps) 
                           }}
                         >
                           {/* Header */}
-                          <div className="flex items-start justify-between gap-2 mb-2 md:mb-3">
-                            <h3 className={cn(
-                              "text-lg md:text-xl font-bold leading-tight",
-                              isKidsEvent ? "text-purple-900" : isRoboticsEvent ? "text-black" : "text-white"
-                            )}>
-                              {event.title}
-                            </h3>
-                            <Badge
-                              variant="outline"
-                              className={cn(
-                                "text-xs font-semibold uppercase tracking-wide border shrink-0",
-                                isKidsEvent ? "border-purple-900/30 text-purple-900" : isRoboticsEvent ? "border-black/30 text-black" : styles.badge
-                              )}
-                            >
-                              {event.status === "completed"
-                                ? "✓"
-                                : event.status === "upcoming"
-                                ? "→"
-                                : "•"}
-                            </Badge>
+                          <div className="mb-2 md:mb-3">
+                            <div className="flex items-start justify-between gap-2 mb-1">
+                              <h3 className={cn(
+                                "text-lg md:text-xl font-bold leading-tight flex-1",
+                                isKidsEvent ? "text-purple-900" : isRoboticsEvent ? "text-black" : "text-white"
+                              )}>
+                                {event.title}
+                              </h3>
+                              <Badge
+                                variant="outline"
+                                className={cn(
+                                  "text-xs font-semibold uppercase tracking-wide border shrink-0",
+                                  isKidsEvent ? "border-purple-900/30 text-purple-900" : isRoboticsEvent ? "border-black/30 text-black" : styles.badge
+                                )}
+                              >
+                                {event.status === "completed"
+                                  ? "✓"
+                                  : event.status === "upcoming"
+                                  ? "→"
+                                  : "•"}
+                              </Badge>
+                            </div>
+                            {event.organizationType && (
+                              <div className="flex items-center gap-1">
+                                {event.organizationType === "ORGANIZED" && (
+                                  <span className="text-[10px]">⭐</span>
+                                )}
+                                <Badge
+                                  variant="outline"
+                                  className={cn(
+                                    "text-[10px] font-bold uppercase tracking-wider border px-1.5 py-0",
+                                    event.organizationType === "ORGANIZED"
+                                      ? isKidsEvent
+                                        ? "bg-purple-900/20 text-purple-900 border-purple-900/40"
+                                        : isRoboticsEvent
+                                        ? "bg-black/20 text-black border-black/40"
+                                        : "bg-blue-500/20 text-blue-300 border-blue-500/40"
+                                      : isKidsEvent
+                                      ? "bg-purple-900/10 text-purple-900/70 border-purple-900/30"
+                                      : isRoboticsEvent
+                                      ? "bg-black/10 text-black/70 border-black/30"
+                                      : "bg-white/10 text-white/60 border-white/30"
+                                  )}
+                                >
+                                  {event.organizationType}
+                                </Badge>
+                              </div>
+                            )}
                           </div>
 
                           {/* Date */}

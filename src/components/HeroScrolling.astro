@@ -197,13 +197,6 @@
             backdrop-filter: blur(4px);
         }
 
-        /* Stronger text shadows for kids on mobile */
-        #hero-section.kids-active #hero-content h1,
-        #hero-section.kids-active #brand-tagline {
-            text-shadow: 3px 3px 0 #8B5A9C,
-                         6px 6px 0 rgba(139, 90, 156, 0.5),
-                         0 0 20px rgba(0, 0, 0, 0.4);
-        }
 
         #hero-section.kids-active #brand-tagline {
             -webkit-text-stroke: 1.5px #8B5A9C;
@@ -234,10 +227,10 @@
     /* Kids gradient - stronger for better text visibility */
     .bg-gradient-left-right.kids {
         background: linear-gradient(to right,
-            rgba(0, 0, 0, 0.3) 0%,
-            rgba(0, 0, 0, 0.2) 30%,
-            rgba(0, 0, 0, 0.1) 50%,
-            transparent 100%);
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0.4) 30%,
+            rgba(0, 0, 0, 0.2) 50%,
+            rgba(0, 0, 0, 0.1) 100%);
     }
 
     /* Robotics gradient - removed */
@@ -252,11 +245,11 @@
         }
 
         .bg-gradient-left-right.kids {
-            background: linear-gradient(to right,
-                rgba(0, 0, 0, 0.4) 0%,
-                rgba(0, 0, 0, 0.25) 40%,
-                rgba(0, 0, 0, 0.1) 60%,
-                transparent 100%);
+            background: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0.6) 0%,
+                rgba(0, 0, 0, 0.5) 30%,
+                rgba(0, 0, 0, 0.4) 60%,
+                rgba(0, 0, 0, 0.3) 100%);
         }
 
         .bg-gradient-left-right.robotics {
@@ -371,28 +364,32 @@
     }
 
     #toggle-container.kids-mode {
-        background: rgba(139, 90, 156, 0.6);
-        border: 2px solid #8B5A9C;
+        background: rgba(0, 0, 0, 0.3);
+        border: 3px solid rgba(255, 221, 62, 0.5);
         backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5),
+                    0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     #toggle-container.kids-mode .brand-toggle {
-        color: rgba(139, 90, 156, 1);
-        font-weight: 600;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        color: rgba(255, 221, 62, 0.9);
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     #toggle-container.kids-mode .brand-toggle.active {
-        color: #8B5A9C;
-        font-weight: 700;
+        color: #FFD53E;
+        font-weight: 900;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     }
 
     #toggle-container.kids-mode .brand-toggle::before {
-        background: #FDD835;
+        background: #FFD53E;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     #toggle-container.kids-mode .brand-toggle:not(.active):hover {
-        color: rgba(139, 90, 156, 1);
+        color: rgba(255, 221, 62, 1);
     }
 
     /* Robotics text color */
@@ -403,29 +400,33 @@
     /* Kids text color - use gold for better contrast on blue */
     .kids-active #brand-tagline {
         color: #FFD53E !important;
-        font-weight: 700;
-        text-shadow: 3px 3px 0 #8B5A9C,
-                     6px 6px 0 rgba(139, 90, 156, 0.5),
-                     0 0 20px rgba(0, 0, 0, 0.3);
-        -webkit-text-stroke: 1.5px #8B5A9C;
+        font-weight: 900;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9),
+                     0 8px 24px rgba(0, 0, 0, 0.7),
+                     0 12px 40px rgba(0, 0, 0, 0.5);
+        -webkit-text-stroke: 0px transparent;
     }
 
     /* Kids logo shadow for better contrast */
     .kids-active #brand-full-logo {
-        filter: drop-shadow(3px 3px 0px #8B5A9C)
-                drop-shadow(6px 6px 0px rgba(139, 90, 156, 0.5))
-                drop-shadow(0 0 15px rgba(0, 0, 0, 0.4));
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.9))
+                drop-shadow(0 8px 24px rgba(0, 0, 0, 0.7))
+                drop-shadow(0 12px 40px rgba(0, 0, 0, 0.5));
     }
 
-    /* Kids social icons - gold with purple hover */
+    /* Kids social icons - gold with hover */
     .kids-active .social-icon {
         color: #FFD53E;
-        filter: drop-shadow(2px 2px 0px #8B5A9C);
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.9))
+                drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+        font-size: 1.5rem;
     }
 
     .kids-active .social-icon:hover {
-        color: #8B5A9C;
-        filter: drop-shadow(2px 2px 0px #FFD53E);
+        color: #FFF;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.9))
+                drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7));
+        transform: scale(1.15);
     }
 
     /* Robotics social icons - orange with black hover */
