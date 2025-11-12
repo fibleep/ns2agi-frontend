@@ -2,166 +2,304 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout>
-  <!-- Hero Section with Fullscreen Video -->
-  <section class="relative min-h-screen overflow-hidden bg-[#84D7FE] -mt-20 md:-mt-24">
-    <!-- Video Background -->
-    <div class="absolute inset-0">
-      <video
-        class="w-full h-full object-cover"
-        autoplay
-        muted
-        loop
-        playsinline
-      >
-        <source src="/kidsaicoding.mp4" type="video/mp4" />
-      </video>
-    </div>
+<Layout title="Kids AI Vibecoding Hackathon - North Star Kids">
 
-    <!-- Left to Middle Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[#84D7FE] via-[#84D7FE]/60 to-transparent pointer-events-none"></div>
+    <!-- Hero Section -->
+    <section class="py-20 bg-[#84D7FE]">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-12">
 
-    <!-- Hero Content -->
-    <div class="relative z-10 min-h-screen flex items-center justify-center md:justify-start">
-      <div class="text-center md:text-left space-y-8 px-4 md:px-12 md:w-1/2 max-w-3xl">
-        <!-- Logo -->
-        <div class="flex justify-center md:justify-start mb-6">
-          <img
-            src="/nskids-full-logo-transparent.png"
-            alt="North Star Kids"
-            class="h-32 md:h-44 object-contain"
-          />
+                <div class="mb-12">
+                    <a href="/" class="text-black/60 hover:text-black transition-colors text-sm uppercase tracking-wide font-bold">
+                        ← Back to Home
+                    </a>
+                </div>
+
+                <!-- Logo -->
+                <div class="mb-8">
+                    <img
+                        src="/nskids-full-logo-transparent.png"
+                        alt="North Star Kids"
+                        class="h-32 md:h-44 object-contain mx-auto"
+                        style="filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));"
+                    />
+                </div>
+
+                <!-- Date Badge -->
+                <div class="mb-6">
+                    <span class="inline-block px-6 py-2 bg-[#FDD835] text-black font-bold text-sm uppercase tracking-wide rounded-full">
+                        Saturday, October 11, 2025
+                    </span>
+                </div>
+
+                <h1 class="text-3xl md:text-5xl font-bold text-black mb-6 leading-tight">
+                    Kids AI Vibecoding Hackathon ⭐️🧇
+                </h1>
+
+                <p class="text-xl text-black/80 max-w-3xl mx-auto leading-relaxed font-semibold">
+                    Belgian chapter of the Worldwide Kids AI Vibecoding Hackathon
+                </p>
+
+                <!-- Location Badges -->
+                <div class="flex flex-wrap gap-3 justify-center items-center mt-8">
+                    <span class="px-4 py-2 bg-black/10 text-black font-bold rounded-full text-sm">📍 Ghent</span>
+                    <span class="px-4 py-2 bg-black/10 text-black font-bold rounded-full text-sm">📍 Antwerp</span>
+                    <span class="px-4 py-2 bg-black/10 text-black font-bold rounded-full text-sm">📍 Brussels</span>
+                </div>
+            </div>
         </div>
-
-        <!-- Title -->
-        <h1 class="text-4xl md:text-6xl font-bold leading-tight" style="color: #FFD53E; -webkit-text-stroke: 2px #8B5A9C; text-shadow: 3px 3px 0 #8B5A9C;">
-          Kids AI Vibecoding Hackathon
-        </h1>
-
-        <!-- Date and Location -->
-        <p class="text-xl md:text-2xl font-semibold" style="color: #FFD53E;">
-          Saturday, October 11, 2025<br />
-          Ghent • Antwerp • Brussels
-        </p>
-
-        <!-- CTA Button -->
-        <div class="pt-4">
-          <a
-            href="https://tally.so/r/w7ypoa"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-[#FDD835] text-[#8B5A9C] rounded-full hover:bg-[#FECA57] transition-all duration-300 hover:scale-105 shadow-lg"
-            style="font-family: 'Comic Sans MS', 'Comic Sans', cursive;"
-          >
-            Register Now
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Content Sections -->
-  <main class="container mx-auto px-4 py-12">
-
-    <article class="mb-12 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
-      <h2 class="text-3xl font-semibold mb-6 text-white">Bringing AI Learning to Young Minds Across Belgium</h2>
-      
-      <p class="text-white/85 mb-6 text-lg leading-relaxed">
-        We're excited to announce that North Star is hosting the Belgian chapter of the Worldwide Kids AI Vibecoding Hackathon for Kids. This groundbreaking event will take place simultaneously across multiple cities in Belgium, creating an unprecedented opportunity for young minds to engage with artificial intelligence.
-      </p>
-      
-      <p class="text-white/85 mb-6 leading-relaxed">
-        This special event brings together leading organizations including <strong>Nerdlab</strong>, <strong>iMagineLab - Technology Club @ FTI UAntwerp</strong>, and <strong>Commons Hub Brussels</strong> to create a coordinated learning experience spanning our entire country.
-      </p>
-
-      <div class="bg-blue-500/10 rounded-2xl p-6 mb-6 border border-blue-500/20">
-        <h3 class="text-xl font-semibold mb-3 text-white">About Kids AI Coding</h3>
-        <p class="text-white/90 leading-relaxed">
-          <strong>Kids AI Coding</strong>, founded by Thomas Wolf (Hugging Face) and Robert Keus (GreenPT), is a worldwide initiative dedicated to helping children grow up as AI-natives. The program teaches kids to use artificial intelligence as naturally as we once learned to browse the web or use smartphones, preparing them for a future where AI literacy is essential.
-        </p>
-      </div>
-
-      <p class="text-white/85 leading-relaxed">
-        We extend our gratitude to our global partners <strong>Lovable</strong> and <strong>Rosebud AI</strong> for their support in making this initiative possible.
-      </p>
-    </article>
-
-    <section class="mb-12 max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-8 text-white text-center">How to Participate</h2>
-      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
-        <div class="bg-green-500/10 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full">
-          <h3 class="text-2xl font-bold mb-3 text-white">Young Participants</h3>
-          <p class="text-lg font-semibold mb-3 text-green-300">Ages 9-13</p>
-          <p class="text-white/80 flex-grow">Join us for a 4-hour creative coding experience designed to spark curiosity and imagination. No prior coding experience required.</p>
-        </div>
-        
-        <div class="bg-purple-500/10 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full">
-          <h3 class="text-2xl font-bold mb-3 text-white">Volunteers</h3>
-          <p class="text-lg font-semibold mb-3 text-purple-300">Mentors & Support</p>
-          <p class="text-white/80 flex-grow">Help us create safe, fun, and creative learning sessions at venues across Belgium. Perfect for educators and tech enthusiasts.</p>
-        </div>
-        
-        <div class="bg-yellow-500/10 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full">
-          <h3 class="text-2xl font-bold mb-3 text-white">Sponsors</h3>
-          <p class="text-lg font-semibold mb-3 text-yellow-300">Support the Future</p>
-          <p class="text-white/80 flex-grow">Support with resources, funding, venues, or in-kind contributions to help bring AI education to the next generation.</p>
-        </div>
-      </div>
     </section>
 
-    <section class="mb-12 max-w-3xl mx-auto grid sm:grid-cols-2 gap-6">
-      <div class="backdrop-blur-sm bg-white/5 rounded-3xl p-6 shadow-lg border border-white/10">
-        <p class="text-white/60 text-sm font-medium uppercase tracking-wide">Date & Duration</p>
-        <p class="text-white text-xl font-semibold">Saturday, October 11, 2025</p>
-        <p class="text-white/80">4-hour creative sessions</p>
-      </div>
-      <div class="backdrop-blur-sm bg-white/5 rounded-3xl p-6 shadow-lg border border-white/10">
-        <p class="text-white/60 text-sm font-medium uppercase tracking-wide">Locations</p>
-        <p class="text-white text-xl font-semibold">Multiple Belgian Cities</p>
-        <p class="text-white/80">Ghent, Antwerp, Brussels</p>
-      </div>
+    <!-- Main Content Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <article class="prose prose-lg max-w-none">
+                <div class="space-y-8">
+
+                    <!-- Event Highlights -->
+                    <div class="bg-[#84D7FE]/20 rounded-2xl p-8 border-4 border-[#FDD835]">
+                        <h2 class="text-2xl font-bold text-black mb-4">🎯 Event Highlights</h2>
+                        <ul class="space-y-3 text-black/80 text-lg">
+                            <li><strong>Ages:</strong> 9-13 years old</li>
+                            <li><strong>Duration:</strong> 4-hour creative coding experience</li>
+                            <li><strong>Experience Required:</strong> None! Beginners welcome! 🎉</li>
+                            <li><strong>Format:</strong> Hands-on coding workshops with AI tools</li>
+                        </ul>
+                    </div>
+
+                    <!-- What is Vibecoding? -->
+                    <div class="space-y-4">
+                        <h2 class="text-3xl font-bold text-black border-b-4 border-[#FDD835] pb-2 inline-block">
+                            What is Vibecoding? 🤔
+                        </h2>
+                        <p class="text-lg text-black/80 leading-relaxed">
+                            Vibecoding is coding with AI assistants like Claude Code, Cursor, or v0! Kids learn to build amazing apps, games, and websites by describing what they want to create in plain language. It's like having a coding buddy that helps turn your ideas into reality! 💡
+                        </p>
+                    </div>
+
+                    <!-- Hero Image -->
+                    <div class="my-12">
+                        <img
+                            src="/kids-hackathon/Kids AI Coding.png"
+                            alt="Kids AI Coding Workshop"
+                            class="w-full rounded-2xl border-4 border-[#FDD835] shadow-2xl"
+                        />
+                    </div>
+
+                    <!-- What Kids Build -->
+                    <div class="bg-[#FDD835] rounded-2xl p-8">
+                        <h2 class="text-3xl font-bold text-black mb-6">What Will Kids Build? 🚀</h2>
+                        <div class="grid md:grid-cols-2 gap-6 text-black">
+                            <div class="bg-white/50 rounded-xl p-6">
+                                <div class="text-4xl mb-3">🎮</div>
+                                <h3 class="text-xl font-bold mb-2">Games</h3>
+                                <p class="text-black/80">Interactive games like Snake, Pong, or create their own adventures!</p>
+                            </div>
+                            <div class="bg-white/50 rounded-xl p-6">
+                                <div class="text-4xl mb-3">🎨</div>
+                                <h3 class="text-xl font-bold mb-2">Creative Apps</h3>
+                                <p class="text-black/80">Drawing tools, music makers, or animation projects!</p>
+                            </div>
+                            <div class="bg-white/50 rounded-xl p-6">
+                                <div class="text-4xl mb-3">🌐</div>
+                                <h3 class="text-xl font-bold mb-2">Websites</h3>
+                                <p class="text-black/80">Personal portfolio sites or fun interactive web pages!</p>
+                            </div>
+                            <div class="bg-white/50 rounded-xl p-6">
+                                <div class="text-4xl mb-3">🤖</div>
+                                <h3 class="text-xl font-bold mb-2">AI Experiments</h3>
+                                <p class="text-black/80">Chatbots, image generators, or AI-powered tools!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- United for Kids Logo -->
+                    <div class="my-12 text-center">
+                        <img
+                            src="/kids-hackathon/united_for_kids.png"
+                            alt="United for Kids Partnership"
+                            class="w-full max-w-md mx-auto"
+                        />
+                        <p class="text-sm text-black/60 mt-4 italic font-semibold">
+                            Part of the global United for Kids initiative 🌍
+                        </p>
+                    </div>
+
+                    <!-- Why Parents Love It -->
+                    <div class="space-y-4">
+                        <h2 class="text-3xl font-bold text-black border-b-4 border-[#FDD835] pb-2 inline-block">
+                            Why Parents Love It 💙
+                        </h2>
+                        <div class="space-y-4 text-lg text-black/80">
+                            <div class="flex items-start gap-4">
+                                <span class="text-3xl">✨</span>
+                                <div>
+                                    <strong>Creativity First:</strong> Kids express their ideas and imagination through technology
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <span class="text-3xl">🎓</span>
+                                <div>
+                                    <strong>Learn by Doing:</strong> Hands-on experience beats boring lectures every time
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <span class="text-3xl">👥</span>
+                                <div>
+                                    <strong>Make Friends:</strong> Connect with other young coders and tech enthusiasts
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <span class="text-3xl">🏆</span>
+                                <div>
+                                    <strong>Build Confidence:</strong> See their creations come to life and share with others
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Format -->
+                    <div class="bg-gradient-to-br from-[#84D7FE]/30 to-[#FDD835]/30 rounded-2xl p-8">
+                        <h2 class="text-3xl font-bold text-black mb-6">Event Format 📋</h2>
+                        <div class="space-y-4 text-lg text-black">
+                            <div class="flex items-center gap-4">
+                                <span class="bg-[#FDD835] text-black font-bold px-4 py-2 rounded-full">10:00</span>
+                                <span>Welcome & Ice Breakers 🎉</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-[#FDD835] text-black font-bold px-4 py-2 rounded-full">10:30</span>
+                                <span>Intro to AI Coding Tools 🤖</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-[#FDD835] text-black font-bold px-4 py-2 rounded-full">11:00</span>
+                                <span>Build Time! 💻</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-[#FDD835] text-black font-bold px-4 py-2 rounded-full">12:30</span>
+                                <span>Lunch Break 🍕</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-[#FDD835] text-black font-bold px-4 py-2 rounded-full">13:00</span>
+                                <span>Continue Building 🚀</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-[#FDD835] text-black font-bold px-4 py-2 rounded-full">13:45</span>
+                                <span>Show & Tell 🎤</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-[#FDD835] text-black font-bold px-4 py-2 rounded-full">14:00</span>
+                                <span>Awards & Celebration 🏆</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kids collage image -->
+                    <div class="my-12">
+                        <img
+                            src="/kids-hackathon/kids.png"
+                            alt="Kids coding together"
+                            class="w-full rounded-2xl border-4 border-[#84D7FE] shadow-2xl"
+                        />
+                    </div>
+
+                    <!-- What to Bring -->
+                    <div class="space-y-4">
+                        <h2 class="text-3xl font-bold text-black border-b-4 border-[#FDD835] pb-2 inline-block">
+                            What to Bring 🎒
+                        </h2>
+                        <ul class="space-y-3 text-lg text-black/80">
+                            <li>✅ <strong>Laptop:</strong> Fully charged (we'll have some extras, but bring yours if possible!)</li>
+                            <li>✅ <strong>Enthusiasm:</strong> Your imagination and creativity!</li>
+                            <li>✅ <strong>Questions:</strong> Curiosity is encouraged!</li>
+                            <li>✅ <strong>Parent/Guardian:</strong> Required for drop-off and pick-up</li>
+                        </ul>
+                        <p class="text-lg text-black/80 mt-4">
+                            <strong>We'll provide:</strong> Snacks, lunch, coding mentors, and all the AI tools needed! 🎁
+                        </p>
+                    </div>
+
+                    <!-- Registration CTA -->
+                    <div class="bg-gradient-to-r from-[#FDD835] to-[#FECA57] rounded-2xl p-8 text-center my-12 border-4 border-black/10">
+                        <h2 class="text-3xl font-bold text-black mb-4">Ready to Join? 🎉</h2>
+                        <p class="text-xl text-black/80 mb-6">
+                            Spots are limited! Reserve your child's place today.
+                        </p>
+                        <a
+                            href="https://tally.so/r/w7ypoa"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center px-10 py-5 text-xl font-bold bg-black text-[#FDD835] rounded-full hover:bg-black/90 transition-all duration-300 hover:scale-105 shadow-2xl"
+                        >
+                            Register Now →
+                        </a>
+                        <p class="text-sm text-black/70 mt-4">
+                            Free event • Ages 9-13 • No experience needed
+                        </p>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold text-black border-b-4 border-[#FDD835] pb-2 inline-block">
+                            Frequently Asked Questions ❓
+                        </h2>
+
+                        <div class="space-y-4">
+                            <div class="bg-[#84D7FE]/10 rounded-xl p-6">
+                                <h3 class="text-xl font-bold text-black mb-2">Do kids need coding experience?</h3>
+                                <p class="text-black/80">Not at all! This event is designed for beginners. Our mentors will guide them through everything.</p>
+                            </div>
+
+                            <div class="bg-[#84D7FE]/10 rounded-xl p-6">
+                                <h3 class="text-xl font-bold text-black mb-2">What if my child doesn't have a laptop?</h3>
+                                <p class="text-black/80">We have a limited number of laptops available. Please mention this in your registration form!</p>
+                            </div>
+
+                            <div class="bg-[#84D7FE]/10 rounded-xl p-6">
+                                <h3 class="text-xl font-bold text-black mb-2">Can parents stay during the event?</h3>
+                                <p class="text-black/80">Parents are welcome to stay or drop off. We'll have a parent lounge area available!</p>
+                            </div>
+
+                            <div class="bg-[#84D7FE]/10 rounded-xl p-6">
+                                <h3 class="text-xl font-bold text-black mb-2">Is food provided?</h3>
+                                <p class="text-black/80">Yes! We'll provide lunch and snacks throughout the day. Please mention any dietary restrictions in the registration form.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Section -->
+                    <div class="border-t-4 border-[#FDD835] pt-8 mt-12 text-center">
+                        <h2 class="text-2xl font-bold text-black mb-4">Questions?</h2>
+                        <p class="text-lg text-black/80 mb-6">
+                            Reach out to us anytime!
+                        </p>
+                        <div class="flex justify-center gap-6">
+                            <a href="https://www.instagram.com/northstaragi/" target="_blank" rel="noopener noreferrer" class="text-[#84D7FE] hover:text-black transition-colors">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                            <a href="https://discord.gg/m5Hknymurb" target="_blank" rel="noopener noreferrer" class="text-[#84D7FE] hover:text-black transition-colors">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </article>
+        </div>
     </section>
 
-    <section class="mb-12 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
-      <h2 class="text-2xl font-semibold mb-6 text-white">Our Partners</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div>
-          <h3 class="text-lg font-semibold mb-4 text-white">Belgian Organizations</h3>
-          <ul class="text-white/85 space-y-2">
-            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>North Star</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Nerdlab</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>iMagineLab - Technology Club @ FTI UAntwerp</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Commons Hub Brussels</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold mb-4 text-white">Global Partners</h3>
-          <ul class="text-white/85 space-y-2">
-            <li class="flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-3"></span>Kids AI Coding (Thomas Wolf & Robert Keus)</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-3"></span>Lovable</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-3"></span>Rosebud AI</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="text-center max-w-3xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-6 text-white">Join the Movement</h2>
-      <p class="text-white/85 mb-8 text-lg leading-relaxed">Whether you're a young coder ready to explore AI, a volunteer eager to mentor, or an organization looking to support the next generation, we invite you to be part of this historic event.</p>
-      <a
-        href="https://tally.so/r/w7ypoa"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-black bg-white rounded-full hover:bg-white/90 transition-colors duration-300 shadow-lg"
-      >
-        Register Now
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-      </a>
-    </section>
-  </main>
 </Layout>
+
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Custom styles for kids branding */
+    strong {
+        @apply text-black;
+    }
+</style>

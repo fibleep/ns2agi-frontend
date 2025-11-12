@@ -27,13 +27,15 @@ function getEventLink(eventId: string): string {
     "ai-hackathon-ii": "/events/ai-hackathon-ii",
     "ai-hackathon-iii": "/events/ai-hackathon-iii",
     "robotics-hackathon-i": "/events/robotics-hackathon-i",
+    "brucon": "https://www.brucon.org",
     "kids-ai-vibecoding-hackathon": "/events/kids-ai-vibecoding-hackathon",
     "future-in-bloom-pt1": "/events/future-in-bloom-pt1",
+    "tectonic": "https://tectonicconf.eu",
     "cassini-hackathon": "https://taikai.network/cassinihackathons/hackathons/eu-space-consumer-experience",
     "belgium-nlp-meetup-27": "https://www.meetup.com/belgium-nlp-meetup/events/311547373/",
     "stripe-hackathon": "https://luma.com/f7gs82fe?tk=wx4evx",
   };
-  return eventRoutes[eventId] || "/events";
+  return eventRoutes[eventId] || "/";
 }
 
 function getStatusStyles(status: Event["status"]) {
