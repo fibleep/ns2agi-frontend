@@ -39,8 +39,12 @@ function getEventLink(eventId: string): string {
     "robotics-hackathon-i": "/events/robotics-hackathon-i",
     "kids-ai-vibecoding-hackathon": "/events/kids-ai-vibecoding-hackathon",
     "future-in-bloom-pt1": "https://luma.com/vl1ksuok",
+    "tectonic": "https://tectonicconf.eu",
+    "cassini-hackathon": "https://www.cassini.eu/hackathons",
+    "belgium-nlp-meetup-27": "https://www.meetup.com/belgium-nlp-meetup/",
+    "stripe-hackathon": "https://lu.ma/agenticpayments",
   };
-  return eventRoutes[eventId] || "/events";
+  return eventRoutes[eventId] || "/";
 }
 
 function getStatusStyles(status: Event["status"]) {

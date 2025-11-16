@@ -90,6 +90,19 @@
                         </svg>
                     </a>
                 </div>
+
+                <!-- Action Buttons (visible for specific modes) -->
+                <div id="action-buttons" class="flex items-center gap-4 justify-center md:justify-start mt-8 hidden">
+                    <a
+                        href="https://nsrobotics.be"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="robotics-link text-2xl"
+                        style="font-family: 'VT323', monospace;"
+                    >
+                        Visit nsrobotics.be ->
+                    </a>
+                </div>
             </div>
 
         </div>
@@ -439,13 +452,19 @@
         color: #FFFFFF;
         transform: scale(1.1);
     }
+
+    /* Robotics link - simple VT323 text */
+    .robotics-link {
+        color: #000000;
+        text-decoration: none;
+    }
 </style>
 
 <script>
     const brandData = {
         northstar: {
             title: 'north star',
-            tagline: "AI & robotics education through hackathons and community events across Belgium",
+            tagline: "Hackathons, events, projects in AI & Robotics",
             className: '',
             backgroundColor: '#000000',
             useVideo: false,
@@ -455,7 +474,7 @@
         },
         kids: {
             title: 'north star kids',
-            tagline: 'Hands-on AI & robotics workshops for schools and youth hackathons',
+            tagline: 'AI & Robotics for kids, creating the North Star of tomorrow',
             className: 'kids',
             backgroundColor: '#84D7FE',
             useVideo: true,
@@ -582,13 +601,17 @@
                 }
             }
 
-            // Update action buttons styling
+            // Update action buttons styling and visibility
             if (actionButtons) {
                 actionButtons.classList.remove('kids', 'robotics');
-                if (brand === 'kids') {
-                    actionButtons.classList.add('kids');
-                } else if (brand === 'robotics') {
+                if (brand === 'robotics') {
                     actionButtons.classList.add('robotics');
+                    actionButtons.classList.remove('hidden');
+                } else if (brand === 'kids') {
+                    actionButtons.classList.add('kids');
+                    actionButtons.classList.add('hidden');
+                } else {
+                    actionButtons.classList.add('hidden');
                 }
             }
 
