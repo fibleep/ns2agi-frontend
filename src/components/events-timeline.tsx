@@ -23,6 +23,7 @@ interface Event {
   thumbnail: string;
   status: "completed" | "upcoming" | "coming-soon";
   organizationType?: "ORGANIZED" | "CONTRIBUTED";
+  link?: string;
 }
 
 interface EventsTimelineProps {
@@ -242,7 +243,7 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
                 {/* CTA Button */}
                 {event.status !== "coming-soon" ? (
                   <a
-                    href={getEventLink(event.id)}
+                    href={event.link || getEventLink(event.id)}
                     className={cn(
                       "inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm",
                       "bg-white text-black hover:bg-white/90",

@@ -14,7 +14,8 @@ const eventsData = [
     description: 'Our first AI hackathon - hosted at The Beacon with over 60 participants',
     thumbnail: '/ai-hackathon-i/winners.jpeg',
     status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const
+    organizationType: 'ORGANIZED' as const,
+    link: '/events/ai-hackathon-i'
   },
   {
     id: 'ai-hackathon-ii',
@@ -23,7 +24,8 @@ const eventsData = [
     description: 'The 2nd edition - bigger and better!',
     thumbnail: '/ai-hackathon-ii/winners.jpg',
     status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const
+    organizationType: 'ORGANIZED' as const,
+    link: '/events/ai-hackathon-ii'
   },
   {
     id: 'signal-i',
@@ -32,7 +34,8 @@ const eventsData = [
     description: 'Our first SIGNAL AI meetup featuring expert speakers from Bugify and imec, exploring the collapse of modern software development and social robotics.',
     thumbnail: '/signal-i/IMG_0331.jpg',
     status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const
+    organizationType: 'ORGANIZED' as const,
+    link: '/events/signal-i'
   },
   {
     id: 'robotics-hackathon-i',
@@ -41,7 +44,8 @@ const eventsData = [
     description: 'Our first 2-day hackathon co-organized with HuggingFace',
     thumbnail: '/robotics-i/LeRobot Hackathon June 14-15 2025 (1).JPG',
     status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const
+    organizationType: 'ORGANIZED' as const,
+    link: '/events/robotics-hackathon-i'
   },
   {
     id: 'signal-ii',
@@ -50,7 +54,8 @@ const eventsData = [
     description: 'Talks by AI and robotics experts, live demos, and networking with pizza & drinks at The Beacon.',
     thumbnail: '/signal-ii/signalii.png',
     status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const
+    organizationType: 'ORGANIZED' as const,
+    link: '/events/signal-ii'
   },
   {
     id: 'ai-hackathon-iii',
@@ -59,7 +64,8 @@ const eventsData = [
     description: '🚀 Over 400 man-hours of innovation packed into one weekend! Winners: Judges\' Favorite, AI\'s Choice, and Atlas categories.',
     thumbnail: '/ai-hackathon-iii/aihackathoniii.png',
     status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const
+    organizationType: 'ORGANIZED' as const,
+    link: '/events/ai-hackathon-iii'
   },
   {
     id: 'brucon',
@@ -68,7 +74,8 @@ const eventsData = [
     description: '🛡️ Belgium\'s premier security and hacker conference in Mechelen. World-class speakers, security challenges, and deep-technical training with 600+ cybersecurity professionals.',
     thumbnail: '/partnerships/logos/brucon.png',
     status: 'completed' as const,
-    organizationType: 'CONTRIBUTED' as const
+    organizationType: 'CONTRIBUTED' as const,
+    link: 'https://www.brucon.org/'
   },
   {
     id: 'kids-ai-vibecoding-hackathon',
@@ -77,7 +84,8 @@ const eventsData = [
     description: 'Belgian chapter of the Worldwide Kids AI Vibecoding Hackathon. Ages 9-13, 4-hour creative coding experience across multiple cities in Belgium.',
     thumbnail: '/kids-hackathon/kids.png',
     status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const
+    organizationType: 'ORGANIZED' as const,
+    link: '/events/kids-ai-vibecoding-hackathon'
   },
   {
     id: 'future-in-bloom-pt1',
@@ -86,7 +94,8 @@ const eventsData = [
     description: '🤖 A co-working, make-athon - 1st part of our FUTURE IN BLOOM series. Embodied AI is coming, and we need to be ready for it.',
     thumbnail: '/future-in-bloom/cover.jpg',
     status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const
+    organizationType: 'ORGANIZED' as const,
+    link: 'https://luma.com/vl1ksuok'
   },
   {
     id: 'tectonic',
@@ -95,7 +104,8 @@ const eventsData = [
     description: 'Europe\'s premier tech conference addressing AI\'s impact on work and society, geopolitics, and digital autonomy. Connecting startups, investors, and policymakers at Wintercircus, Ghent.',
     thumbnail: '/tectonic/tectonic.svg',
     status: 'completed' as const,
-    organizationType: 'CONTRIBUTED' as const
+    organizationType: 'CONTRIBUTED' as const,
+    link: 'https://tectonicconf.eu'
   },
   {
     id: 'cassini-hackathon',
@@ -104,7 +114,8 @@ const eventsData = [
     description: '🛰️ EU Space hackathon across 10 locations. BeCentral Brussels for Belgium. Gaming, sports, and travel challenges using Galileo, Copernicus & EGNOS data.',
     thumbnail: '/cassini-hackathon/cassini.png',
     status: 'upcoming' as const,
-    organizationType: 'CONTRIBUTED' as const
+    organizationType: 'CONTRIBUTED' as const,
+    link: 'https://www.cassini.eu/hackathons'
   },
   {
     id: 'belgium-nlp-meetup-27',
@@ -113,7 +124,8 @@ const eventsData = [
     description: 'AI and multi-agent systems meetup at The Beacon. From Monolith to Multi-Agent architectures, exploring production-ready AI systems.',
     thumbnail: '/belgium-nlp-meetup/belgiumnlpmeetup.avif',
     status: 'upcoming' as const,
-    organizationType: 'ORGANIZED' as const
+    organizationType: 'ORGANIZED' as const,
+    link: 'https://www.meetup.com/belgium-nlp-meetup/'
   },
   {
     id: 'stripe-hackathon',
@@ -122,7 +134,8 @@ const eventsData = [
     description: '💳 Hack, pilot and ship payment experiences using Stripe APIs. Build bold payment experiences with agents and automation at Commons Hub Brussels.',
     thumbnail: '/stripe-hackathon/stripe.avif',
     status: 'upcoming' as const,
-    organizationType: 'ORGANIZED' as const
+    organizationType: 'ORGANIZED' as const,
+    link: 'https://lu.ma/agenticpayments'
   },
   {
     id: 'robotics-for-good-belgium-2026',
@@ -131,7 +144,8 @@ const eventsData = [
     description: 'National championship for Belgium\'s official ITU Robotics for Good Youth Challenge. Winners represent Belgium at the AI for Good Global Summit in Geneva, Switzerland.',
     thumbnail: '/robotics-for-good/Robotics-for-Good-Youth-Challenge.png',
     status: 'upcoming' as const,
-    organizationType: 'ORGANIZED' as const
+    organizationType: 'ORGANIZED' as const,
+    link: '/kids/robotics-for-good'
   }
 ];
 ---

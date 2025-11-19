@@ -13,6 +13,7 @@ interface Event {
   thumbnail: string;
   status: "completed" | "upcoming" | "coming-soon";
   organizationType?: "ORGANIZED" | "CONTRIBUTED";
+  link?: string;
 }
 
 interface EventsViewToggleProps {
