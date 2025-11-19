@@ -13,6 +13,7 @@ interface Event {
   thumbnail: string;
   status: "completed" | "upcoming" | "coming-soon";
   organizationType?: "ORGANIZED" | "CONTRIBUTED";
+  link?: string;
 }
 
 interface HorizontalTimelineProps {
@@ -27,13 +28,13 @@ function getEventLink(eventId: string): string {
     "ai-hackathon-ii": "/events/ai-hackathon-ii",
     "ai-hackathon-iii": "/events/ai-hackathon-iii",
     "robotics-hackathon-i": "/events/robotics-hackathon-i",
-    "brucon": "https://www.brucon.org",
     "kids-ai-vibecoding-hackathon": "/events/kids-ai-vibecoding-hackathon",
-    "future-in-bloom-pt1": "/events/future-in-bloom-pt1",
+    "future-in-bloom-pt1": "https://luma.com/vl1ksuok",
     "tectonic": "https://tectonicconf.eu",
-    "cassini-hackathon": "https://taikai.network/cassinihackathons/hackathons/eu-space-consumer-experience",
-    "belgium-nlp-meetup-27": "https://www.meetup.com/belgium-nlp-meetup/events/311547373/",
-    "stripe-hackathon": "https://luma.com/f7gs82fe?tk=wx4evx",
+    "cassini-hackathon": "https://www.cassini.eu/hackathons",
+    "belgium-nlp-meetup-27": "https://www.meetup.com/belgium-nlp-meetup/",
+    "stripe-hackathon": "https://lu.ma/agenticpayments",
+    "robotics-for-good-belgium-2026": "/kids/robotics-for-good",
   };
   return eventRoutes[eventId] || "/";
 }
@@ -355,7 +356,7 @@ export default function HorizontalTimeline({ events }: HorizontalTimelineProps) 
                           {/* Button */}
                           {event.status !== "coming-soon" && (
                             <a
-                              href={getEventLink(event.id)}
+                              href={event.link || getEventLink(event.id)}
                               className={cn(
                                 "inline-flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full font-semibold text-xs md:text-sm",
                                 isKidsEvent ? "bg-purple-900 text-white hover:bg-purple-800" : isRoboticsEvent ? "bg-black text-white hover:bg-black/90" : "bg-white text-black hover:bg-white/90",
