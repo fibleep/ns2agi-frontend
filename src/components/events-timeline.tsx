@@ -43,6 +43,7 @@ function getEventLink(eventId: string): string {
     "cassini-hackathon": "https://www.cassini.eu/hackathons",
     "belgium-nlp-meetup-27": "https://www.meetup.com/belgium-nlp-meetup/",
     "stripe-hackathon": "https://lu.ma/agenticpayments",
+    "robotics-for-good-belgium-2026": "/kids/robotics-for-good",
   };
   return eventRoutes[eventId] || "/";
 }
