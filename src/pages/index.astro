@@ -1,214 +1,244 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import BlogShowcase from '../components/BlogShowcase.astro';
-import HeroScrolling from '../components/HeroScrolling.astro';
-import BottomShine from '../components/BottomShine.astro';
-import HorizontalTimeline from '../components/horizontal-timeline';
-import PartnersMarquee from '../components/PartnersMarquee';
+import Layout from "../layouts/Layout.astro";
+import BlogShowcase from "../components/BlogShowcase.astro";
+import HeroScrolling from "../components/HeroScrolling.astro";
+import BottomShine from "../components/BottomShine.astro";
+import HorizontalTimeline from "../components/horizontal-timeline";
+import PartnersMarquee from "../components/PartnersMarquee";
 
 const eventsData = [
   {
-    id: 'ai-hackathon-i',
-    title: 'AI Hackathon I',
-    date: 'March 8, 2025',
-    description: 'Our first AI hackathon - hosted at The Beacon with over 60 participants',
-    thumbnail: '/ai-hackathon-i/winners.jpeg',
-    status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: '/events/ai-hackathon-i'
+    id: "ai-hackathon-i",
+    title: "AI Hackathon I",
+    date: "March 8, 2025",
+    description:
+      "Our first AI hackathon - hosted at The Beacon with over 60 participants",
+    thumbnail: "/ai-hackathon-i/winners.jpeg",
+    status: "completed" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "/events/ai-hackathon-i",
   },
   {
-    id: 'ai-hackathon-ii',
-    title: 'AI Hackathon II',
-    date: 'May 10, 2025',
-    description: 'The 2nd edition - bigger and better!',
-    thumbnail: '/ai-hackathon-ii/winners.jpg',
-    status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: '/events/ai-hackathon-ii'
+    id: "ai-hackathon-ii",
+    title: "AI Hackathon II",
+    date: "May 10, 2025",
+    description: "The 2nd edition - bigger and better!",
+    thumbnail: "/ai-hackathon-ii/winners.jpg",
+    status: "completed" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "/events/ai-hackathon-ii",
   },
   {
-    id: 'signal-i',
-    title: 'SIGNAL I',
-    date: 'June 5, 2025',
-    description: 'Our first SIGNAL AI meetup featuring expert speakers from Bugify and imec, exploring the collapse of modern software development and social robotics.',
-    thumbnail: '/signal-i/IMG_0331.jpg',
-    status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: '/events/signal-i'
+    id: "signal-i",
+    title: "SIGNAL I",
+    date: "June 5, 2025",
+    description:
+      "Our first SIGNAL AI meetup featuring expert speakers from Bugify and imec, exploring the collapse of modern software development and social robotics.",
+    thumbnail: "/signal-i/IMG_0331.jpg",
+    status: "completed" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "/events/signal-i",
   },
   {
-    id: 'robotics-hackathon-i',
-    title: 'Robotics Hackathon I',
-    date: 'June 14, 2025',
-    description: 'Our first 2-day hackathon co-organized with HuggingFace',
-    thumbnail: '/robotics-i/LeRobot Hackathon June 14-15 2025 (1).JPG',
-    status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: '/events/robotics-hackathon-i'
+    id: "robotics-hackathon-i",
+    title: "Robotics Hackathon I",
+    date: "June 14, 2025",
+    description: "Our first 2-day hackathon co-organized with HuggingFace",
+    thumbnail: "/robotics-i/LeRobot Hackathon June 14-15 2025 (1).JPG",
+    status: "completed" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "/events/robotics-hackathon-i",
   },
   {
-    id: 'signal-ii',
-    title: 'SIGNAL II',
-    date: 'August 21, 2025',
-    description: 'Talks by AI and robotics experts, live demos, and networking with pizza & drinks at The Beacon.',
-    thumbnail: '/signal-ii/signalii.png',
-    status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: '/events/signal-ii'
+    id: "signal-ii",
+    title: "SIGNAL II",
+    date: "August 21, 2025",
+    description:
+      "Talks by AI and robotics experts, live demos, and networking with pizza & drinks at The Beacon.",
+    thumbnail: "/signal-ii/signalii.png",
+    status: "completed" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "/events/signal-ii",
   },
   {
-    id: 'ai-hackathon-iii',
-    title: 'AI Hackathon III',
-    date: 'August 30, 2025',
-    description: '🚀 Over 400 man-hours of innovation packed into one weekend! Winners: Judges\' Favorite, AI\'s Choice, and Atlas categories.',
-    thumbnail: '/ai-hackathon-iii/aihackathoniii.png',
-    status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: '/events/ai-hackathon-iii'
+    id: "ai-hackathon-iii",
+    title: "AI Hackathon III",
+    date: "August 30, 2025",
+    description:
+      "🚀 Over 400 man-hours of innovation packed into one weekend! Winners: Judges' Favorite, AI's Choice, and Atlas categories.",
+    thumbnail: "/ai-hackathon-iii/aihackathoniii.png",
+    status: "completed" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "/events/ai-hackathon-iii",
   },
   {
-    id: 'brucon',
-    title: 'BruCon Security Conference',
-    date: 'September 25, 2025',
-    description: '🛡️ Belgium\'s premier security and hacker conference in Mechelen. World-class speakers, security challenges, and deep-technical training with 600+ cybersecurity professionals.',
-    thumbnail: '/partnerships/logos/brucon.png',
-    status: 'completed' as const,
-    organizationType: 'CONTRIBUTED' as const,
-    link: 'https://www.brucon.org/'
+    id: "brucon",
+    title: "BruCon Security Conference",
+    date: "September 25, 2025",
+    description:
+      "🛡️ Belgium's premier security and hacker conference in Mechelen. World-class speakers, security challenges, and deep-technical training with 600+ cybersecurity professionals.",
+    thumbnail: "/partnerships/logos/brucon.png",
+    status: "completed" as const,
+    organizationType: "CONTRIBUTED" as const,
+    link: "https://www.brucon.org/",
   },
   {
-    id: 'kids-ai-vibecoding-hackathon',
-    title: 'Kids AI Vibecoding Hackathon ⭐️🧇',
-    date: 'October 11, 2025',
-    description: 'Belgian chapter of the Worldwide Kids AI Vibecoding Hackathon. Ages 9-13, 4-hour creative coding experience across multiple cities in Belgium.',
-    thumbnail: '/kids-hackathon/kids.png',
-    status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: '/events/kids-ai-vibecoding-hackathon'
+    id: "kids-ai-vibecoding-hackathon",
+    title: "Kids AI Vibecoding Hackathon ⭐️🧇",
+    date: "October 11, 2025",
+    description:
+      "Belgian chapter of the Worldwide Kids AI Vibecoding Hackathon. Ages 9-13, 4-hour creative coding experience across multiple cities in Belgium.",
+    thumbnail: "/kids-hackathon/kids.png",
+    status: "completed" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "/events/kids-ai-vibecoding-hackathon",
   },
   {
-    id: 'future-in-bloom-pt1',
-    title: 'FUTURE IN BLOOM PT1',
-    date: 'October 18, 2025',
-    description: '🤖 A co-working, make-athon - 1st part of our FUTURE IN BLOOM series. Embodied AI is coming, and we need to be ready for it.',
-    thumbnail: '/future-in-bloom/cover.jpg',
-    status: 'completed' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: 'https://luma.com/vl1ksuok'
+    id: "future-in-bloom-pt1",
+    title: "FUTURE IN BLOOM PT1",
+    date: "October 18, 2025",
+    description:
+      "🤖 A co-working, make-athon - 1st part of our FUTURE IN BLOOM series. Embodied AI is coming, and we need to be ready for it.",
+    thumbnail: "/future-in-bloom/cover.jpg",
+    status: "completed" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "https://luma.com/vl1ksuok",
   },
   {
-    id: 'tectonic',
-    title: 'Tectonic',
-    date: 'November 5, 2025',
-    description: 'Europe\'s premier tech conference addressing AI\'s impact on work and society, geopolitics, and digital autonomy. Connecting startups, investors, and policymakers at Wintercircus, Ghent.',
-    thumbnail: '/tectonic/tectonic.svg',
-    status: 'completed' as const,
-    organizationType: 'CONTRIBUTED' as const,
-    link: 'https://tectonicconf.eu'
+    id: "tectonic",
+    title: "Tectonic",
+    date: "November 5, 2025",
+    description:
+      "Europe's premier tech conference addressing AI's impact on work and society, geopolitics, and digital autonomy. Connecting startups, investors, and policymakers at Wintercircus, Ghent.",
+    thumbnail: "/tectonic/tectonic.svg",
+    status: "completed" as const,
+    organizationType: "CONTRIBUTED" as const,
+    link: "https://tectonicconf.eu",
   },
   {
-    id: 'cassini-hackathon',
-    title: 'Cassini Hackathon - Consumer Experience',
-    date: 'November 7, 2025',
-    description: '🛰️ EU Space hackathon across 10 locations. BeCentral Brussels for Belgium. Gaming, sports, and travel challenges using Galileo, Copernicus & EGNOS data.',
-    thumbnail: '/cassini-hackathon/cassini.png',
-    status: 'upcoming' as const,
-    organizationType: 'CONTRIBUTED' as const,
-    link: 'https://www.cassini.eu/hackathons'
+    id: "cassini-hackathon",
+    title: "Cassini Hackathon - Consumer Experience",
+    date: "November 7, 2025",
+    description:
+      "🛰️ EU Space hackathon across 10 locations. BeCentral Brussels for Belgium. Gaming, sports, and travel challenges using Galileo, Copernicus & EGNOS data.",
+    thumbnail: "/cassini-hackathon/cassini.png",
+    status: "upcoming" as const,
+    organizationType: "CONTRIBUTED" as const,
+    link: "https://www.cassini.eu/hackathons",
   },
   {
-    id: 'belgium-nlp-meetup-27',
-    title: '27th Belgium NLP Meetup',
-    date: 'November 20, 2025',
-    description: 'AI and multi-agent systems meetup at The Beacon. From Monolith to Multi-Agent architectures, exploring production-ready AI systems.',
-    thumbnail: '/belgium-nlp-meetup/belgiumnlpmeetup.avif',
-    status: 'upcoming' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: 'https://www.meetup.com/belgium-nlp-meetup/'
+    id: "belgium-nlp-meetup-27",
+    title: "27th Belgium NLP Meetup",
+    date: "November 20, 2025",
+    description:
+      "AI and multi-agent systems meetup at The Beacon. From Monolith to Multi-Agent architectures, exploring production-ready AI systems.",
+    thumbnail: "/belgium-nlp-meetup/belgiumnlpmeetup.avif",
+    status: "upcoming" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "https://www.meetup.com/belgium-nlp-meetup/",
   },
   {
-    id: 'stripe-hackathon',
-    title: 'Agentic Payments Hackathon with Stripe',
-    date: 'November 22, 2025',
-    description: '💳 Hack, pilot and ship payment experiences using Stripe APIs. Build bold payment experiences with agents and automation at Commons Hub Brussels.',
-    thumbnail: '/stripe-hackathon/stripe.avif',
-    status: 'upcoming' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: 'https://lu.ma/agenticpayments'
+    id: "stripe-hackathon",
+    title: "Agentic Payments Hackathon with Stripe",
+    date: "November 22, 2025",
+    description:
+      "💳 Hack, pilot and ship payment experiences using Stripe APIs. Build bold payment experiences with agents and automation at Commons Hub Brussels.",
+    thumbnail: "/stripe-hackathon/stripe.avif",
+    status: "upcoming" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "https://lu.ma/agenticpayments",
   },
   {
-    id: 'get-sip-done-antwerp',
-    title: 'Get Sip Done: Antwerp Kick-Off',
-    date: 'November 28, 2025',
-    description: 'Exclusive power breakfast networking with 50 founders, leaders, and investors from Antwerp\'s innovation ecosystem. Coffee, pastries, and high-quality connections at The Beacon.',
-    thumbnail: '/get-sip-done/cover.png',
-    status: 'upcoming' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: 'https://luma.com/k66z8htv'
+    id: "get-sip-done-antwerp",
+    title: "Get Sip Done: Antwerp Kick-Off",
+    date: "November 28, 2025",
+    description:
+      "Exclusive power breakfast networking with 50 founders, leaders, and investors from Antwerp's innovation ecosystem. Coffee, pastries, and high-quality connections at The Beacon.",
+    thumbnail: "/get-sip-done/cover.png",
+    status: "upcoming" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "https://luma.com/k66z8htv",
   },
   {
-    id: 'museum-night-wintercircus',
-    title: 'Museum Night: Lost in Diffusion',
-    date: 'December 4, 2025',
-    description: 'Algorave at Wintercircus with Design Museum Gent. Live-coded music and visuals generated from museum collection data. Preview of the new permanent collection through algorithmic visualization.',
-    thumbnail: '/museum-night/wintercircus-museum-night.jpg',
-    status: 'upcoming' as const,
-    organizationType: 'CONTRIBUTED' as const,
-    link: 'https://www.wintercircus.be/en/events/museum-night-with-design-museum-ghent'
+    id: "museum-night-wintercircus",
+    title: "Museum Night: Lost in Diffusion",
+    date: "December 4, 2025",
+    description:
+      "Algorave at Wintercircus with Design Museum Gent. Live-coded music and visuals generated from museum collection data. Preview of the new permanent collection through algorithmic visualization.",
+    thumbnail: "/museum-night/wintercircus-museum-night.jpg",
+    status: "upcoming" as const,
+    organizationType: "CONTRIBUTED" as const,
+    link: "https://www.wintercircus.be/en/events/museum-night-with-design-museum-ghent",
   },
   {
-    id: 'robotics-for-good-belgium-2026',
-    title: 'Robotics for Good Youth Challenge - Belgium Finals 🤖🌾',
-    date: 'March 21, 2026',
-    description: 'National championship for Belgium\'s official ITU Robotics for Good Youth Challenge. Winners represent Belgium at the AI for Good Global Summit in Geneva, Switzerland.',
-    thumbnail: '/robotics-for-good/Robotics-for-Good-Youth-Challenge.png',
-    status: 'upcoming' as const,
-    organizationType: 'ORGANIZED' as const,
-    link: '/kids/robotics-for-good'
-  }
+    id: "robotics-for-good-belgium-2026",
+    title: "Robotics for Good Youth Challenge - Belgium Finals 🤖🌾",
+    date: "March 21, 2026",
+    description:
+      "National championship for Belgium's official ITU Robotics for Good Youth Challenge. Winners represent Belgium at the AI for Good Global Summit in Geneva, Switzerland.",
+    thumbnail: "/robotics-for-good/Robotics-for-Good-Youth-Challenge.png",
+    status: "upcoming" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "/kids/robotics-for-good",
+  },
+  {
+    id: "elevenlabs-hackathon-ghent",
+    title: "ElevenLabs Worldwide Hackathon (Community Edition)",
+    date: "December 11, 2025",
+    description:
+      "ElevenLabs Worldwide Hackathon - $200K+ in total prizes. One Night. Thirty Cities. Building the Future of Conversation.",
+    thumbnail: "/elevenlabs/11.jpeg",
+    status: "upcoming" as const,
+    organizationType: "ORGANIZED" as const,
+    link: "https://ghent.aitinkerers.org/p/elevenlabs-global-hackathon-ghent",
+  },
 ];
 ---
 
 <Layout>
-    <HeroScrolling />
+  <HeroScrolling />
 
-    {/* Paths to North Star Section with Horizontal Timeline */}
-    <section class="py-20 bg-black">
-        <div class="container mx-auto px-4 max-w-7xl">
-            <div class="text-center mb-12">
-                <div class="mb-8">
-                    <img src="/rmshine.png" alt="North Star" class="w-24 h-24 mx-auto object-contain"/>
-                </div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Paths to North Star</h2>
-            </div>
-
-            {/* Horizontal Timeline */}
-            <HorizontalTimeline client:load events={eventsData} />
-
-            {/* Events Link Button */}
-            <div class="text-center mt-12">
-                <a
-                    href="https://belgiumtech.events"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex flex-col items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-full border-2 border-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-105"
-                >
-                    <span class="text-sm font-normal mb-1">Explore more events at our homecooked</span>
-                    <span class="text-lg font-bold">BELGIUMTECH.EVENTS</span>
-                </a>
-            </div>
+  {/* Paths to North Star Section with Horizontal Timeline */}
+  <section class="py-20 bg-black">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="text-center mb-12">
+        <div class="mb-8">
+          <img
+            src="/rmshine.png"
+            alt="North Star"
+            class="w-24 h-24 mx-auto object-contain"
+          />
         </div>
-    </section>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">
+          Paths to North Star
+        </h2>
+      </div>
 
-    <PartnersMarquee client:load />
+      {/* Horizontal Timeline */}
+      <HorizontalTimeline client:load events={eventsData} />
 
-    <BlogShowcase
-        showHeader={false}
-        limit={2}
-    />
+      {/* Events Link Button */}
+      <div class="text-center mt-12">
+        <a
+          href="https://belgiumtech.events"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex flex-col items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-full border-2 border-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-105"
+        >
+          <span class="text-sm font-normal mb-1"
+            >Explore more events at our homecooked</span
+          >
+          <span class="text-lg font-bold">BELGIUMTECH.EVENTS</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <BottomShine />
+  <PartnersMarquee client:load />
+
+  <BlogShowcase showHeader={false} limit={2} />
+
+  <BottomShine />
 </Layout>
 
 <style is:global>

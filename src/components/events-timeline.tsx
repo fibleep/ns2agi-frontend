@@ -1,75 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { TimelineLayout } from "@/components/ui/timeline-layout";
-import {
-  TimelineItem,
-  TimelineConnector,
-  TimelineHeader,
-  TimelineIcon,
-  TimelineTitle,
-  TimelineDescription,
-  TimelineContent,
-} from "@/components/ui/timeline";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
-
-interface Event {
-  id: string;
-  title: string;
-  date: string;
-  description: string;
-  thumbnail: string;
-  status: "completed" | "upcoming" | "coming-soon";
-  organizationType?: "ORGANIZED" | "CONTRIBUTED";
-  link?: string;
-}
+import { TimelineEventCard, type Event } from "./timeline-event-card";
 
 interface EventsTimelineProps {
   events: Event[];
-}
-
-function getEventLink(eventId: string): string {
-  const eventRoutes: Record<string, string> = {
-    "signal-i": "/events/signal-i",
-    "signal-ii": "/events/signal-ii",
-    "ai-hackathon-i": "/events/ai-hackathon-i",
-    "ai-hackathon-ii": "/events/ai-hackathon-ii",
-    "ai-hackathon-iii": "/events/ai-hackathon-iii",
-    "robotics-hackathon-i": "/events/robotics-hackathon-i",
-    "kids-ai-vibecoding-hackathon": "/events/kids-ai-vibecoding-hackathon",
-    "future-in-bloom-pt1": "https://luma.com/vl1ksuok",
-    "tectonic": "https://tectonicconf.eu",
-    "cassini-hackathon": "https://www.cassini.eu/hackathons",
-    "belgium-nlp-meetup-27": "https://www.meetup.com/belgium-nlp-meetup/",
-    "stripe-hackathon": "https://lu.ma/agenticpayments",
-    "robotics-for-good-belgium-2026": "/kids/robotics-for-good",
-  };
-  return eventRoutes[eventId] || "/";
-}
-
-function getStatusStyles(status: Event["status"]) {
-  switch (status) {
-    case "completed":
-      return {
-        badge: "bg-green-500/20 text-green-300 border-green-500/30",
-        card: "bg-green-500/5 hover:bg-green-500/10",
-        icon: "bg-green-500 text-white",
-      };
-    case "upcoming":
-      return {
-        badge: "bg-blue-500/20 text-blue-300 border-blue-500/30",
-        card: "bg-blue-500/5 hover:bg-blue-500/10",
-        icon: "bg-blue-500 text-white",
-      };
-    case "coming-soon":
-      return {
-        badge: "bg-gray-500/20 text-gray-300 border-gray-500/30",
-        card: "bg-gray-500/5 hover:bg-gray-500/10",
-        icon: "bg-gray-500 text-white",
-      };
-  }
 }
 
 export default function EventsTimeline({ events }: EventsTimelineProps) {
@@ -77,26 +13,33 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
     new Set()
   );
   const observerRef = React.useRef<IntersectionObserver | null>(null);
+  const itemRefs = React.useRef<Map<string, HTMLLIElement>>(new Map());
 
-  // Sort events by date (newest first)
+  // Sort events by date (newest first) and update status
   const sortedEvents = React.useMemo(() => {
     if (!events || events.length === 0) {
-      console.log("No events provided to timeline");
       return [];
     }
-    return [...events].sort((a, b) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
-      return dateB.getTime() - dateA.getTime();
-    });
+
+    const now = new Date();
+
+    return [...events]
+      .map((event) => {
+        const eventDate = new Date(event.date);
+        // Check if date is valid and in the past
+        if (!isNaN(eventDate.getTime()) && eventDate < now) {
+          return { ...event, status: "completed" as const };
+        }
+        return event;
+      })
+      .sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateB.getTime() - dateA.getTime();
+      });
   }, [events]);
 
-  // Make items visible immediately on mount
-  React.useEffect(() => {
-    const allIds = sortedEvents.map(e => e.id);
-    setVisibleItems(new Set(allIds));
-  }, [sortedEvents]);
-
+  // Initialize observer
   React.useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -104,7 +47,13 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
           if (entry.isIntersecting) {
             const id = entry.target.getAttribute("data-event-id");
             if (id) {
-              setVisibleItems((prev) => new Set(prev).add(id));
+              setVisibleItems((prev) => {
+                const newSet = new Set(prev);
+                newSet.add(id);
+                return newSet;
+              });
+              // Stop observing once visible
+              observerRef.current?.unobserve(entry.target);
             }
           }
         });
@@ -117,7 +66,21 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
     };
   }, []);
 
-  const itemRefs = React.useRef<Map<string, HTMLLIElement>>(new Map());
+  // Make items visible immediately on mount (SSR/initial render fallback)
+  React.useEffect(() => {
+    // Small delay to allow observer to catch initial items if needed,
+    // or just show them if JS loads late.
+    // Actually, let's just rely on the observer for animation trigger,
+    // but ensure we don't block content if observer fails.
+    const timer = setTimeout(() => {
+      if (visibleItems.size === 0 && sortedEvents.length > 0) {
+        const firstFew = sortedEvents.slice(0, 3).map(e => e.id);
+        setVisibleItems(new Set(firstFew));
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [sortedEvents, visibleItems.size]);
+
 
   const setItemRef = React.useCallback(
     (id: string) => (el: HTMLLIElement | null) => {
@@ -127,7 +90,8 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
       } else {
         const existing = itemRefs.current.get(id);
         if (existing) {
-          observerRef.current?.unobserve(existing);
+          // Don't unobserve here if we want to keep it visible,
+          // but we unobserve in the callback anyway.
           itemRefs.current.delete(id);
         }
       }
@@ -146,123 +110,15 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl bg-black min-h-screen">
       <TimelineLayout>
-        {sortedEvents.map((event, index) => {
-          const styles = getStatusStyles(event.status);
-          const isVisible = visibleItems.has(event.id);
-
-          return (
-            <TimelineItem
-              key={event.id}
-              ref={setItemRef(event.id)}
-              data-event-id={event.id}
-              className={cn(
-                "transition-all duration-700 ease-out",
-                isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-8"
-              )}
-              style={{
-                transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
-              }}
-            >
-              <TimelineConnector />
-
-              <TimelineHeader>
-                <TimelineIcon className={styles.icon}>
-                  <Calendar className="h-4 w-4" />
-                </TimelineIcon>
-
-                <div className="flex flex-col gap-1 flex-1">
-                  <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <TimelineTitle className="text-xl md:text-2xl">
-                      {event.title}
-                    </TimelineTitle>
-                    <Badge
-                      variant="outline"
-                      className={cn(
-                        "text-xs font-semibold uppercase tracking-wide border",
-                        styles.badge
-                      )}
-                    >
-                      {event.status.replace("-", " ")}
-                    </Badge>
-                  </div>
-
-                  {event.organizationType && (
-                    <div className="flex items-center gap-1 mb-1">
-                      {event.organizationType === "ORGANIZED" && (
-                        <span className="text-[10px]">⭐</span>
-                      )}
-                      <Badge
-                        variant="outline"
-                        className={cn(
-                          "text-[10px] font-bold uppercase tracking-wider border px-1.5 py-0",
-                          event.organizationType === "ORGANIZED"
-                            ? "bg-blue-500/20 text-blue-300 border-blue-500/40"
-                            : "bg-white/10 text-white/60 border-white/30"
-                        )}
-                      >
-                        {event.organizationType}
-                      </Badge>
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-2 text-sm text-white/60">
-                    <MapPin className="h-3 w-3" />
-                    <span>{event.date}</span>
-                  </div>
-                </div>
-              </TimelineHeader>
-
-              <TimelineContent className="ml-12">
-                {/* Thumbnail */}
-                {event.thumbnail && (
-                  <div className={cn(
-                    "relative h-48 rounded-xl overflow-hidden mb-4 group",
-                    event.thumbnail.endsWith('.svg') && "bg-white"
-                  )}>
-                    <img
-                      src={event.thumbnail}
-                      alt={event.title}
-                      className={cn(
-                        "w-full h-full transition-transform duration-300 group-hover:scale-105",
-                        event.thumbnail.endsWith('.svg') ? "object-contain p-4" : "object-cover"
-                      )}
-                    />
-                    {!event.thumbnail.endsWith('.svg') && (
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    )}
-                  </div>
-                )}
-
-                {/* Description */}
-                <TimelineDescription className="text-base leading-relaxed mb-4">
-                  {event.description}
-                </TimelineDescription>
-
-                {/* CTA Button */}
-                {event.status !== "coming-soon" ? (
-                  <a
-                    href={event.link || getEventLink(event.id)}
-                    className={cn(
-                      "inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm",
-                      "bg-white text-black hover:bg-white/90",
-                      "transition-all duration-300 hover:scale-105 hover:shadow-lg",
-                      "group"
-                    )}
-                  >
-                    View Details
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </a>
-                ) : (
-                  <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm bg-gray-600/20 text-gray-400 border border-gray-600/30 cursor-not-allowed">
-                    Coming Soon
-                  </div>
-                )}
-              </TimelineContent>
-            </TimelineItem>
-          );
-        })}
+        {sortedEvents.map((event, index) => (
+          <TimelineEventCard
+            key={event.id}
+            event={event}
+            isVisible={visibleItems.has(event.id)}
+            index={index}
+            ref={setItemRef(event.id)}
+          />
+        ))}
       </TimelineLayout>
     </div>
   );
