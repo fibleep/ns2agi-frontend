@@ -2,78 +2,49 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
-    
-    <section class="py-16 bg-black text-white relative">
-        <div class="container mx-auto px-6 max-w-7xl">
-            
-            <div class="text-center">
-                
-                <div class="relative mb-8">
-                    <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-4">
-                        <img src="/nslogo.svg" alt="North Star" class="w-full h-full object-contain filter drop-shadow-2xl"/>
-                    </div>
-                </div>
-
-                <h1 class="text-5xl md:text-6xl font-light mb-6 tracking-tight animate-fade-in">
-                    Join <span class="font-bold">North Star</span>
+<Layout title="Join | North Star">
+    <main class="relative min-h-screen pt-32 pb-24">
+        <!-- Hero -->
+        <section class="container mx-auto px-6 mb-16">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-semibold mb-8 text-white tracking-tight leading-[1.1]">
+                    Join North Star
                 </h1>
+                <p class="text-lg md:text-xl text-zinc-500 max-w-xl mx-auto leading-relaxed mb-12">
+                    Connect with builders, innovators, and dreamers shaping Europe's AI future.
+                </p>
+                <a
+                    href="https://discord.gg/m5Hknymurb"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-3 text-sm font-medium text-white bg-zinc-800 hover:bg-zinc-700 px-6 py-3 rounded-lg transition-colors"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
+                    </svg>
+                    Join our Discord
+                </a>
+            </div>
+        </section>
 
-                
-                <div class="animate-fade-in-delay-2">
-                    <a
-                        href="https://discord.gg/m5Hknymurb"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="inline-flex items-center justify-center px-8 py-4 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
-                        </svg>
-                        Join our Discord
-                    </a>
+        <!-- Form -->
+        <section class="container mx-auto px-6 mb-32">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-8 text-center">
+                    Or fill out the form
+                </h2>
+                <div class="rounded-2xl bg-zinc-900/30 overflow-hidden">
+                    <iframe
+                        src="https://beaded-pineapple-898.notion.site/ebd/22fd61b47ae280f7bff5c94e04537806"
+                        width="100%"
+                        height="700"
+                        frameborder="0"
+                        allowfullscreen
+                        class="w-full"
+                        title="Join Form"
+                    ></iframe>
                 </div>
             </div>
-        </div>
-    </section>
-
-    
-    <section class="py-16 bg-black text-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="bg-gradient-to-br from-zinc-900 to-black rounded-3xl p-8 border border-zinc-800/50 transition-all duration-700 hover:border-zinc-700/50">
-                <iframe 
-                    src="https://beaded-pineapple-898.notion.site/ebd/22fd61b47ae280f7bff5c94e04537806" 
-                    width="100%" 
-                    height="800" 
-                    allowfullscreen
-                    class="rounded-xl border-0"
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 </Layout>
-
-<style>
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .animate-fade-in { 
-        animation: fade-in 1s ease-out forwards; 
-    }
-    .animate-fade-in-delay-1 { 
-        animation: fade-in 1s ease-out 0.3s backwards; 
-    }
-    .animate-fade-in-delay-2 { 
-        animation: fade-in 1s ease-out 0.6s backwards; 
-    }
-</style>
-

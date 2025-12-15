@@ -11,8 +11,8 @@ import {
     TimelineDescription,
     TimelineContent,
 } from "@/components/ui/timeline";
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { getEventLink } from "@/lib/event-routes";
 
 export interface Event {
     id: string;
@@ -23,26 +23,6 @@ export interface Event {
     status: "completed" | "upcoming" | "coming-soon";
     organizationType?: "ORGANIZED" | "CONTRIBUTED";
     link?: string;
-}
-
-const EVENT_ROUTES: Record<string, string> = {
-    "signal-i": "/events/signal-i",
-    "signal-ii": "/events/signal-ii",
-    "ai-hackathon-i": "/events/ai-hackathon-i",
-    "ai-hackathon-ii": "/events/ai-hackathon-ii",
-    "ai-hackathon-iii": "/events/ai-hackathon-iii",
-    "robotics-hackathon-i": "/events/robotics-hackathon-i",
-    "kids-ai-vibecoding-hackathon": "/events/kids-ai-vibecoding-hackathon",
-    "future-in-bloom-pt1": "https://luma.com/vl1ksuok",
-    "tectonic": "https://tectonicconf.eu",
-    "cassini-hackathon": "https://www.cassini.eu/hackathons",
-    "belgium-nlp-meetup-27": "https://www.meetup.com/belgium-nlp-meetup/",
-    "stripe-hackathon": "https://lu.ma/agenticpayments",
-    "robotics-for-good-belgium-2026": "/kids/robotics-for-good",
-};
-
-function getEventLink(eventId: string): string {
-    return EVENT_ROUTES[eventId] || "/";
 }
 
 function getStatusStyles(status: Event["status"]) {
@@ -102,15 +82,14 @@ export const TimelineEventCard = React.forwardRef<HTMLLIElement, TimelineEventCa
                             <TimelineTitle className="text-xl md:text-2xl">
                                 {event.title}
                             </TimelineTitle>
-                            <Badge
-                                variant="outline"
+                            <span
                                 className={cn(
-                                    "text-xs font-semibold uppercase tracking-wide border",
+                                    "text-xs font-semibold uppercase tracking-wide border rounded-full px-2 py-0.5",
                                     styles.badge
                                 )}
                             >
                                 {event.status.replace("-", " ")}
-                            </Badge>
+                            </span>
                         </div>
 
                         {event.organizationType && (
@@ -118,17 +97,16 @@ export const TimelineEventCard = React.forwardRef<HTMLLIElement, TimelineEventCa
                                 {event.organizationType === "ORGANIZED" && (
                                     <span className="text-[10px]">⭐</span>
                                 )}
-                                <Badge
-                                    variant="outline"
+                                <span
                                     className={cn(
-                                        "text-[10px] font-bold uppercase tracking-wider border px-1.5 py-0",
+                                        "text-[10px] font-bold uppercase tracking-wider border rounded px-1.5 py-0",
                                         event.organizationType === "ORGANIZED"
                                             ? "bg-blue-500/20 text-blue-300 border-blue-500/40"
                                             : "bg-white/10 text-white/60 border-white/30"
                                     )}
                                 >
                                     {event.organizationType}
-                                </Badge>
+                                </span>
                             </div>
                         )}
 

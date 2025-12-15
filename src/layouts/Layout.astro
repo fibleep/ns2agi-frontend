@@ -1,186 +1,99 @@
 ---
-
-import Navbar from '../components/Navbar.astro'; 
+import Navbar from "../components/Navbar.astro";
 
 export interface Props {
     title?: string;
     backgroundImageUrl?: string;
 }
 
-const { title = 'North Star', backgroundImageUrl } = Astro.props;
+const { title = "North Star", backgroundImageUrl } = Astro.props;
 ---
+
 <!doctype html>
-<html lang="en" class="bg-black">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    
-    
-    <link rel="preload" as="image" href="/nslogo.svg" />
-    
-    
-    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable" />
-    <style define:vars={{ bgImageUrl: backgroundImageUrl ? `url(${backgroundImageUrl})` : 'none' }}>
-        
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-                transform: translateY(-10px); 
+<html lang="en" class="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+
+        <link rel="preload" as="image" href="/nslogo.svg" />
+
+        <meta
+            http-equiv="Cache-Control"
+            content="public, max-age=31536000, immutable"
+        />
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Amaranth:ital@1&family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <style
+            define:vars={{
+                bgImageUrl: backgroundImageUrl
+                    ? `url(${backgroundImageUrl})`
+                    : "none",
+            }}
+        >
+            html,
+            body {
+                margin: 0;
+                width: 100%;
+                min-height: 100%;
+                font-family: "Inter", sans-serif;
+                scroll-behavior: smooth;
+                background-color: #000;
+                color: #fff;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .layout-container {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                background-image: var(--bgImageUrl);
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
             }
-        }
 
-        .animate-fade-in {
-            animation: fade-in 1s ease-out forwards;
-        }
-        .animate-fade-in-delay-1 {
-            animation: fade-in 1s ease-out 0.3s backwards;
-        }
-        .animate-fade-in-delay-2 {
-            animation: fade-in 1s ease-out 0.6s backwards;
-        }
-        .animate-fade-in-delay-3 {
-            animation: fade-in 1s ease-out 0.9s backwards;
-        }
-        .animate-fade-in-delay-4 {
-            animation: fade-in 1s ease-out 1.2s backwards;
-        }
-        .animate-fade-in-delay-5 {
-             animation: fade-in 1s ease-out 1.5s backwards;
-        }
-
-
-        
-        @keyframes cross-vertical {
-            0%, 100% { height: 100%; }
-            50% { height: 70%; }
-        }
-        @keyframes cross-horizontal {
-            0%, 100% { width: 100%; }
-            50% { width: 70%; }
-        }
-
-        .animate-cross-vertical {
-            animation: cross-vertical 3s infinite;
-        }
-        .animate-cross-horizontal {
-            animation: cross-horizontal 3s infinite;
-        }
-
-        
-        
-        .glow {
-            box-shadow:
-                0 0 10px rgba(255,255,255,0.7),
-                0 0 20px rgba(255,255,255,0.5),
-                0 0 30px rgba(255,255,255,0.3),
-                0 0 40px rgba(255,255,255,0.2),
-                0 0 50px rgba(255,255,255,0.1);
-        }
-
-        
-        @keyframes glitch {
-          0% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
-          14% { text-shadow: 0.05em 0 0 #00fffc, -0.05em 0 0 #fc00ff; }
-          15% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #fc00ff; }
-          49% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #fc00ff; }
-          50% { text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #fc00ff; }
-          99% { text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #fc00ff; }
-          100% { text-shadow: -0.025em 0 0 #00fffc, -0.05em -0.025em 0 #fc00ff; }
-        }
-        .glitchy-text {
-            animation: glitch 1s infinite linear alternate-reverse;
-        }
-
-        
-        .animate-fade-in-delay-6 {
-            animation: fade-in 1s ease-out 1.8s backwards;
-        }
-        .animate-fade-in-delay-7 {
-            animation: fade-in 1s ease-out 2.1s backwards;
-        }
-
-        
-        @keyframes glitchy-text {
-          0%, 100% { 
-            text-shadow: 0 0 5px rgba(255,255,255,0.5);
-          }
-          25% { 
-            text-shadow: -2px 0 5px rgba(255,0,100,0.7), 2px 0 5px rgba(0,255,255,0.7);
-          }
-          50% { 
-            text-shadow: 2px 0 5px rgba(255,0,100,0.7), -2px 0 5px rgba(0,255,255,0.7);
-          }
-          75% { 
-            text-shadow: 0 0 5px rgba(255,255,255,0.5);
-          }
-        }
-        .glitchy-text-alt {
-            animation: glitchy-text 2s ease-in-out infinite;
-        }
-
-
-
-        html,
-        body {
-            margin: 0;
-            width: 100%;
-            min-height: 100%; 
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            scroll-behavior: smooth; 
-            background-color: #000; 
-            color: #fff; 
-        }
-
-        
-        .layout-container {
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            background-image: var(--bgImageUrl);
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; 
-        }
-
-        .main-content {
-            flex-grow: 1;
-        }
-
-        /* Darken background images on mobile for better text contrast */
-        @media (max-width: 768px) {
-            .mobile-bg-darken {
-                background-color: rgba(0, 0, 0, 0.85) !important;
+            .main-content {
+                flex-grow: 1;
             }
-        }
 
-    </style>
-</head>
-<body class="text-white">
-    <div class="layout-container relative">
-        <!-- <Navbar /> --> 
+            /* Darken background images on mobile for better text contrast */
+            @media (max-width: 768px) {
+                .mobile-bg-darken {
+                    background-color: rgba(0, 0, 0, 0.85) !important;
+                }
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background text-foreground antialiased selection:bg-white/20"
+    >
+        <div class="layout-container relative">
+            <Navbar />
+            {
+                backgroundImageUrl && (
+                    <div class="fixed inset-0 bg-black/80 backdrop-blur-[2px] pointer-events-none -z-10 mobile-bg-darken" />
+                )
+            }
 
+            <div
+                class="fixed inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent pointer-events-none -z-20"
+            >
+            </div>
 
-        {backgroundImageUrl && (
-            <div class="fixed inset-0 bg-black/75 md:bg-black/75 backdrop-blur-sm pointer-events-none -z-10 mobile-bg-darken"></div>
-        )}
-
-        
-        <div class="fixed inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)] pointer-events-none -z-20"></div>
-
-
-        <div class="main-content relative z-10">
-             <slot />
+            <div class="main-content relative z-10">
+                <slot />
+            </div>
         </div>
-
-        
-        
-    </div>
-</body>
+    </body>
 </html>

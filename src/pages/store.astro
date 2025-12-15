@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollectionProducts, formatPrice, getProductUrl } from "../lib/shopify";
+import { ShoppingCart } from "lucide-react";
+
+const productsResult = await getCollectionProducts("north-star-core", 20);
+const products = productsResult.ok ? productsResult.data : [];
+const error = !productsResult.ok ? productsResult.error : null;
+---
+
+<Layout title="Store | North Star">
+    <main class="relative min-h-screen pt-32 pb-24">
+        <!-- Hero -->
+        <section class="container mx-auto px-6 mb-16">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-semibold text-white tracking-tight">
+                    Store
+                </h1>
+            </div>
+        </section>
+
+        {error || products.length === 0 ? (
+            <section class="container mx-auto px-6">
+                <div class="max-w-2xl mx-auto text-center py-20">
+                    <ShoppingCart className="w-10 h-10 text-zinc-700 mx-auto mb-6" />
+                    <p class="text-zinc-500">No products available.</p>
+                </div>
+            </section>
+        ) : (
+            <section class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                        {products.map((product) => (
+                            <a
+                                href={getProductUrl(product.handle)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="group"
+                            >
+                                <div class="aspect-square bg-zinc-900 rounded-xl overflow-hidden mb-3">
+                                    {product.featuredImage ? (
+                                        <img
+                                            src={product.featuredImage.url}
+                                            alt={product.featuredImage.altText || product.title}
+                                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                            loading="lazy"
+                                        />
+                                    ) : (
+                                        <div class="w-full h-full flex items-center justify-center">
+                                            <ShoppingCart className="w-8 h-8 text-zinc-800" />
+                                        </div>
+                                    )}
+                                </div>
+                                <h3 class="text-sm font-medium text-white group-hover:text-zinc-300 transition-colors">
+                                    {product.title}
+                                </h3>
+                                <p class="text-sm text-zinc-500">
+                                    {formatPrice(
+                                        product.priceRange.minVariantPrice.amount,
+                                        product.priceRange.minVariantPrice.currencyCode
+                                    )}
+                                </p>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        )}
+    </main>
+</Layout>

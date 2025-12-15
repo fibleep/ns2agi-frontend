@@ -1,105 +1,185 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { ExternalLink } from 'lucide-react';
 ---
 
-<Layout title="About North Star">
-    <main class="pt-32 pb-20 px-6 bg-black text-white">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-bold text-white mb-12">About North Star</h1>
-            
-            <div class="space-y-12">
-                <div>
-                    <h2 class="text-2xl font-bold text-white mb-6">Organization</h2>
-                    <div class="space-y-4 text-white">
-                        <div><strong>Legal Name:</strong> North Star VZW</div>
-                        <div><strong>Type:</strong> Belgian Non-Profit (VZW/ASBL)</div>
-                        <div><strong>Enterprise Number:</strong> BE1025.122.625</div>
-                        <div><strong>Registry:</strong> <a href="https://www.companyweb.be/en/1025122625/north-star-agi" target="_blank" rel="noopener noreferrer" class="underline">View Official Registry</a></div>
+<Layout title="About | North Star">
+    <main class="relative min-h-screen pt-32 pb-24">
+        <!-- Vision -->
+        <section class="container mx-auto px-6 mb-24">
+            <div class="max-w-2xl mx-auto">
+                <p class="text-2xl md:text-3xl italic text-white leading-relaxed text-center mb-12" style="font-family: 'Georgia Pro', Georgia, serif;">
+                    To push the ecosystem forward in AI & Robotics.
+                </p>
+                <div class="space-y-6 text-zinc-400 text-lg leading-relaxed">
+                    <p>
+                        North Star is inherently a rebellion against how things are done. We started with a hackathon - to turn talk into action and to bridge the gap between talent and companies.
+                    </p>
+                    <p>
+                        The people willing to come on a sunny Saturday and build something in exchange for pizza are the ones that will be building the future. Our culture attracts outliers and people with conviction.
+                    </p>
+                    <p>
+                        In a collaborative "Let's build it together" spirit, we gather people around ideas and problems - that can't not be solved. Whether it is simply creating environments for talent to share knowledge, hosting kids hackathons with 100 attendees and 8 venues at the same time or pushing for bringing robotics into the mainstream.
+                    </p>
+                    <p>
+                        This only exists because of the people that believed in us at the start. With a strong pay-it-forward mentality, we support the future key players of the ecosystem.
+                    </p>
+                    <p>
+                        The spark of ambition burns in everyone. You don't realize just how much potential you have. Our goal is to give you that tiny push you need to get started.
+                    </p>
+                    <p>
+                        A community is its people. We need you.
+                    </p>
+                    <p>
+                        Europe's springtime is here. The ecosystem awakens. Urgency spreads.
+                    </p>
+                    <p class="text-2xl font-medium text-white pt-4">
+                        It's now or never.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section class="container mx-auto px-6 mb-24">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-8 text-center">
+                    Team
+                </h2>
+                <!-- Leadership -->
+                <div class="grid grid-cols-3 md:grid-cols-5 gap-6 mb-8">
+                    <div class="text-center group">
+                        <img src="/team/filip.jpg" alt="Filip" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover border border-white/10 group-hover:border-white/30 transition-colors" />
+                        <div class="text-white text-sm font-medium">Filip</div>
+                        <div class="text-zinc-500 text-xs">CEO</div>
+                    </div>
+                    <div class="text-center group">
+                        <img src="/team/oleksandr.jpg" alt="Oleksandr" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover border border-white/10 group-hover:border-white/30 transition-colors" />
+                        <div class="text-white text-sm font-medium">Oleksandr</div>
+                        <div class="text-zinc-500 text-xs">CPO</div>
+                    </div>
+                    <div class="text-center group">
+                        <img src="/team/vasiliki.jpeg" alt="Vasiliki" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover border border-white/10 group-hover:border-white/30 transition-colors" />
+                        <div class="text-white text-sm font-medium">Vasiliki</div>
+                        <div class="text-zinc-500 text-xs">NS Kids Lead</div>
+                    </div>
+                    <div class="text-center group">
+                        <img src="/team/seif.png" alt="Seif" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover border border-white/10 group-hover:border-white/30 transition-colors" />
+                        <div class="text-white text-sm font-medium">Seif</div>
+                        <div class="text-zinc-500 text-xs">Engineering Lead</div>
+                    </div>
+                    <div class="text-center group">
+                        <img src="/team/yehor.jpg" alt="Yehor" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover border border-white/10 group-hover:border-white/30 transition-colors" />
+                        <div class="text-white text-sm font-medium">Yehor</div>
+                        <div class="text-zinc-500 text-xs">Finance Lead</div>
+                    </div>
+                    <div class="text-center group">
+                        <img src="/team/teodor.png" alt="Teodor" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover border border-white/10 group-hover:border-white/30 transition-colors" />
+                        <div class="text-white text-sm font-medium">Teodor</div>
+                        <div class="text-zinc-500 text-xs">Robotics Lead</div>
                     </div>
                 </div>
+                <!-- Core -->
+                <div class="flex flex-wrap justify-center gap-6">
+                    <div class="text-center group">
+                        <img src="/team/alex.png" alt="Alex" class="w-14 h-14 rounded-full mx-auto mb-1 object-cover border border-white/5 group-hover:border-white/20 transition-colors" />
+                        <div class="text-white text-xs">Alex</div>
+                    </div>
+                    <div class="text-center group">
+                        <img src="/team/aya.png" alt="Aya" class="w-14 h-14 rounded-full mx-auto mb-1 object-cover border border-white/5 group-hover:border-white/20 transition-colors" />
+                        <div class="text-white text-xs">Aya</div>
+                    </div>
+                    <div class="text-center group">
+                        <img src="/team/daryna.png" alt="Daryna" class="w-14 h-14 rounded-full mx-auto mb-1 object-cover border border-white/5 group-hover:border-white/20 transition-colors" />
+                        <div class="text-white text-xs">Daryna</div>
+                    </div>
+                    <div class="text-center group">
+                        <img src="/team/nick.jpeg" alt="Nick" class="w-14 h-14 rounded-full mx-auto mb-1 object-cover border border-white/5 group-hover:border-white/20 transition-colors" />
+                        <div class="text-white text-xs">Nick</div>
+                    </div>
+                    <div class="text-center group">
+                        <img src="/team/pedro.jpg" alt="Pedro" class="w-14 h-14 rounded-full mx-auto mb-1 object-cover border border-white/5 group-hover:border-white/20 transition-colors" />
+                        <div class="text-white text-xs">Pedro</div>
+                    </div>
+                    <div class="text-center group">
+                        <img src="/team/shray.png" alt="Shray" class="w-14 h-14 rounded-full mx-auto mb-1 object-cover border border-white/5 group-hover:border-white/20 transition-colors" />
+                        <div class="text-white text-xs">Shray</div>
+                    </div>
+                                    </div>
+            </div>
+        </section>
 
-                <div>
-                    <h2 class="text-2xl font-bold text-white mb-6">Team</h2>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                        <div class="text-center">
-                            <img src="/team/alex.png" alt="Alex" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Alex</div>
+        <!-- Links & Legal -->
+        <section class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Social -->
+                    <div class="rounded-2xl bg-zinc-900/30 p-6">
+                        <h3 class="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-4">Links</h3>
+                        <div class="space-y-3 text-sm">
+                            <a href="https://x.com/ns2agi" target="_blank" rel="noopener noreferrer" class="flex justify-between text-zinc-400 hover:text-white transition-colors">
+                                <span>X</span>
+                                <span>@ns2agi</span>
+                            </a>
+                            <a href="https://www.linkedin.com/company/north-star-agi" target="_blank" rel="noopener noreferrer" class="flex justify-between text-zinc-400 hover:text-white transition-colors">
+                                <span>LinkedIn</span>
+                                <span>North Star</span>
+                            </a>
+                            <a href="https://github.com/North-Star-AGI" target="_blank" rel="noopener noreferrer" class="flex justify-between text-zinc-400 hover:text-white transition-colors">
+                                <span>GitHub</span>
+                                <span>North-Star-AGI</span>
+                            </a>
+                            <a href="https://discord.gg/m5Hknymurb" target="_blank" rel="noopener noreferrer" class="flex justify-between text-zinc-400 hover:text-white transition-colors">
+                                <span>Discord</span>
+                                <span>Join</span>
+                            </a>
                         </div>
-                        <div class="text-center">
-                            <img src="/team/alina.png" alt="Alina" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Alina</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/anna.png" alt="Anna" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Anna</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/aya.png" alt="Aya" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Aya</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/cedric.png" alt="Cedric" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Cedric</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/daryna.png" alt="Daryna" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Daryna</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/daniel.png" alt="Daniel" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Daniel</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/filip.jpg" alt="Filip" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Filip</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/luis.png" alt="Luis" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Luis</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/martyna.png" alt="Martyna" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Martyna</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/nick.jpeg" alt="Nick" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Nick</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/oleksandr.jpg" alt="Oleksandr" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Oleksandr</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/pedro.jpg" alt="Pedro" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Pedro</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/samuel.png" alt="Samuel" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Samuel</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/seif.png" alt="Seif" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Seif</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/shray.png" alt="Shray" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Shray</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/teodor.png" alt="Teodor" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Teodor</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/thibaud.png" alt="Thibaud" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Thibaud</div>
-                        </div>
-                        <div class="text-center">
-                            <img src="/team/yehor.jpg" alt="Yehor" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
-                            <div class="text-white">Yehor</div>
+                    </div>
+
+                    <!-- Legal -->
+                    <div class="rounded-2xl bg-zinc-900/30 p-6">
+                        <h3 class="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-4">Legal</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between text-zinc-400">
+                                <span>Name</span>
+                                <span class="text-white">North Star VZW</span>
+                            </div>
+                            <div class="flex justify-between text-zinc-400">
+                                <span>Type</span>
+                                <span class="text-white">Belgian Non-Profit</span>
+                            </div>
+                            <div class="flex justify-between text-zinc-400">
+                                <span>Enterprise #</span>
+                                <span class="text-white font-mono text-xs">BE1025.122.625</span>
+                            </div>
+                            <a href="https://www.companyweb.be/en/1025122625/north-star-agi" target="_blank" rel="noopener noreferrer" class="flex justify-between text-zinc-400 hover:text-white transition-colors">
+                                <span>Registry</span>
+                                <span class="inline-flex items-center gap-1">View <ExternalLink className="w-3 h-3" /></span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Join Form -->
+        <section class="container mx-auto px-6 mt-24">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-medium text-white mb-8 text-center">
+                    Join the team
+                </h2>
+                <div class="rounded-2xl bg-zinc-900/30 overflow-hidden">
+                    <iframe
+                        src="https://beaded-pineapple-898.notion.site/ebd/22fd61b47ae280f7bff5c94e04537806"
+                        width="100%"
+                        height="700"
+                        frameborder="0"
+                        allowfullscreen
+                        class="w-full"
+                        title="Join Form"
+                    ></iframe>
+                </div>
+            </div>
+        </section>
     </main>
 </Layout>

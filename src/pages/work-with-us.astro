@@ -1,0 +1,119 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { GlowingCard } from "../components/GlowingCard";
+import { WorkWithUsAccordion } from "../components/WorkWithUsAccordion";
+import { AnimatedCounter } from "../components/AnimatedCounter";
+import { ArrowRight } from "lucide-react";
+---
+
+<Layout title="Work With Us | North Star">
+    <main class="relative bg-black min-h-screen pt-24 pb-24">
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 max-w-7xl mb-16">
+            <div class="grid md:grid-cols-2 gap-6 min-h-[600px]">
+                <!-- Main Card -->
+                <GlowingCard client:load className="md:col-span-1 h-[400px] md:h-auto">
+                    <div class="absolute inset-0 overflow-hidden">
+                        <img
+                            src="/ai-hackathon-ii/winners.jpg"
+                            alt="Hackathon"
+                            class="w-full h-full object-cover opacity-40"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    </div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-8 md:p-10">
+                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[0.95] mb-4">
+                            Build with<br/>North Star
+                        </h1>
+                        <a
+                            href="#contact"
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform w-fit"
+                        >
+                            Let's Talk <ArrowRight className="w-4 h-4" />
+                        </a>
+                    </div>
+                </GlowingCard>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Events -->
+                    <GlowingCard client:load className="aspect-square group">
+                        <div class="absolute inset-0 flex flex-col justify-center items-center p-6 text-center">
+                            <p class="text-5xl md:text-7xl font-black text-white">
+                                <AnimatedCounter client:load end={12} duration={1500} />
+                            </p>
+                            <p class="text-zinc-500 text-sm mt-2">events in 2025</p>
+                        </div>
+                    </GlowingCard>
+
+                    <!-- Builders -->
+                    <GlowingCard client:load className="aspect-square group">
+                        <div class="absolute inset-0 flex flex-col justify-center items-center p-6 text-center">
+                            <p class="text-5xl md:text-7xl font-black text-white">
+                                <AnimatedCounter client:load end={800} duration={2000} suffix="+" />
+                            </p>
+                            <p class="text-zinc-500 text-sm mt-2">builders</p>
+                        </div>
+                    </GlowingCard>
+
+                    <!-- Hires -->
+                    <GlowingCard client:load className="aspect-square group">
+                        <div class="absolute inset-0 flex flex-col justify-center items-center p-6 text-center">
+                            <p class="text-5xl md:text-7xl font-black text-white">
+                                <AnimatedCounter client:load end={20} duration={1500} suffix="+" />
+                            </p>
+                            <p class="text-zinc-500 text-sm mt-2">hires made</p>
+                        </div>
+                    </GlowingCard>
+
+                    <!-- Cost -->
+                    <GlowingCard client:load className="aspect-square group">
+                        <div class="absolute inset-0 flex flex-col justify-center items-center p-6 text-center">
+                            <p class="text-5xl md:text-7xl font-black text-white">
+                                <AnimatedCounter client:load end={85} duration={1800} prefix="-" suffix="%" />
+                            </p>
+                            <p class="text-zinc-500 text-sm mt-2">cost per hire</p>
+                        </div>
+                    </GlowingCard>
+                </div>
+            </div>
+        </section>
+
+        <!-- I need to... -->
+        <section class="container mx-auto px-4 max-w-7xl mb-16">
+            <WorkWithUsAccordion client:load />
+        </section>
+
+        <!-- Companies We've Worked With -->
+        <section class="container mx-auto px-4 max-w-7xl mb-16">
+            <p class="text-zinc-500 text-sm uppercase tracking-widest text-center mb-8">Companies we've worked with</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                <img src="/partnerships/workedwith/Stripe_wordmark_White.svg" alt="Stripe" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/partnerships/workedwith/Hugging_Face.png" alt="Hugging Face" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/partnerships/workedwith/elevenlabs.svg" alt="ElevenLabs" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/partnerships/workedwith/the_beacon.png" alt="The Beacon" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/partnerships/workedwith/lovable_logo.svg" alt="Lovable" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/partnerships/workedwith/wintercircus.png" alt="Wintercircus" class="h-10 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/partnerships/workedwith/AP Hogeschool Logo.png" alt="AP Hogeschool" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/partnerships/workedwith/LeRobot Image.png" alt="LeRobot" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/partnerships/workedwith/rollo.png" alt="Rollo" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/partnerships/workedwith/wobby.png" alt="Wobby" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/partnerships/workedwith/dashdot.png" alt="Dashdot" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/partnerships/workedwith/faktion.webp" alt="Faktion" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="contact" class="container mx-auto px-4 max-w-4xl">
+            <iframe
+                src="https://beaded-pineapple-898.notion.site/ebd/274d61b47ae280be826fcc817dd3af2c"
+                width="100%"
+                height="700"
+                frameborder="0"
+                allowfullscreen
+                class="w-full rounded-xl"
+                title="Contact Form"
+            ></iframe>
+        </section>
+    </main>
+</Layout>

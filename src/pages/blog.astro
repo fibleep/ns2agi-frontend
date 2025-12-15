@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
+import { ArrowRight } from 'lucide-react';
 
 const blogPosts = [
   {
@@ -12,117 +12,86 @@ const blogPosts = [
     thumbnail: '/blogs/hackathon-winners/pizza.png',
     readTime: '8 min read',
     slug: 'hackathon-winners-playbook'
+  },
+  {
+    id: 'future-in-bloom',
+    title: 'Future in Bloom PT1',
+    date: 'October 18, 2025',
+    excerpt: 'A bunch of people gathered at Commons Hub Brussels to work together on robotics - assembling LeKiwi robots, working on Spot, VR teleop with LeRobot, and more.',
+    author: 'North Star Team',
+    thumbnail: '/future-in-bloom/20251018_110244.jpg',
+    readTime: '3 min read',
+    slug: 'future-in-bloom'
   }
 ];
 
-
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
 }
 ---
 
-<Layout title="Blog - North Star">
-    
-    <section class="py-20 bg-black">
-        <div class="container mx-auto px-4 max-w-6xl">
-            <div class="text-center mb-16">
-                <div class="mb-8">
-                    <img src="/nslogo.svg" alt="North Star" class="w-24 h-24 mx-auto object-contain animate-fade-in"/>
-                </div>
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white animate-fade-in-delay-1">
-                    Our Blog
+<Layout title="Blog | North Star">
+    <main class="relative min-h-screen pt-32 pb-24">
+        <!-- Hero -->
+        <section class="container mx-auto px-6 mb-32">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-semibold mb-8 text-white tracking-tight leading-[1.1]">
+                    Blog
                 </h1>
+                <p class="text-lg md:text-xl text-zinc-500 max-w-xl mx-auto leading-relaxed">
+                    Insights, stories, and lessons from our community.
+                </p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    
-    <section class="py-12 bg-black">
-        <div class="container mx-auto px-4 max-w-6xl">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                {blogPosts.map((post) => (
-                    <article class="group h-full">
-                        <div class="
-                            rounded-3xl overflow-hidden h-full flex flex-col
-                            backdrop-blur-sm border border-white/20 
-                            transition-all duration-300 hover:scale-[1.02] hover:border-white/40
-                            bg-slate-900/10 hover:bg-slate-900/20
-                        ">
-                            
-                            <div class="relative h-48 overflow-hidden flex-shrink-0">
+        <!-- Posts Grid -->
+        <section class="container mx-auto px-6 mb-32">
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-6">
+                    {blogPosts.map((post) => (
+                        <a href={`/blog/${post.slug}`} class="group rounded-2xl overflow-hidden bg-zinc-900/30 hover:bg-zinc-900/50 transition-all duration-300">
+                            <div class="aspect-video bg-zinc-800 overflow-hidden">
                                 {post.thumbnail ? (
-                                    <img 
-                                        src={post.thumbnail} 
+                                    <img
+                                        src={post.thumbnail}
                                         alt={post.title}
-                                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
                                 ) : (
-                                    <div class="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
-                                        <div class="text-center">
-                                            <svg class="w-16 h-16 text-white/30 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                            </svg>
-                                            <p class="text-white/50 text-sm font-medium">Blog Post</p>
-                                        </div>
+                                    <div class="w-full h-full flex items-center justify-center">
+                                        <span class="text-zinc-600">No Image</span>
                                     </div>
                                 )}
-                                
-                                
-                                <div class="absolute top-4 right-4">
-                                    <div class="
-                                        px-3 py-1 rounded-full text-xs font-semibold
-                                        backdrop-blur-sm border
-                                        bg-blue-500/20 text-blue-300 border-blue-500/30
-                                    ">
-                                        {post.readTime}
-                                    </div>
-                                </div>
                             </div>
-
-                            
-                            <div class="p-6 flex flex-col flex-1">
-                                
-                                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-white/90 transition-colors line-clamp-2">
-                                    {post.title}
-                                </h3>
-                                
-                                
-                                <div class="flex items-center text-white/60 text-sm mb-4 space-x-4">
-                                    <span class="font-medium">{post.author}</span>
+                            <div class="p-6">
+                                <div class="flex items-center gap-3 text-xs text-zinc-600 mb-3">
+                                    <span>{post.author}</span>
                                     <span>•</span>
                                     <time datetime={post.date}>{formatDate(post.date)}</time>
+                                    <span>•</span>
+                                    <span>{post.readTime}</span>
                                 </div>
-                                
-                                
-                                <p class="text-white/80 text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
+                                <h3 class="text-lg font-medium text-white mb-3 group-hover:text-zinc-300 transition-colors">
+                                    {post.title}
+                                </h3>
+                                <p class="text-zinc-500 text-sm leading-relaxed mb-4 line-clamp-2">
                                     {post.excerpt}
                                 </p>
-                                
-                                
-                                <div class="mt-auto">
-                                    <a 
-                                        href={`/blog/${post.slug}`}
-                                        class="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-semibold text-sm rounded-full 
-                                               hover:bg-white/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-                                    >
-                                        Read More
-                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                        </svg>
-                                    </a>
+                                <div class="flex items-center gap-2 text-sm text-zinc-400 group-hover:text-white transition-colors">
+                                    Read more <ArrowRight className="w-4 h-4" />
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                ))}
+                        </a>
+                    ))}
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 </Layout>
 
 <style>
@@ -132,40 +101,4 @@ function formatDate(dateString: string): string {
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-    
-    .line-clamp-3 {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
 </style>
-
-<script>
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        
-        const blogLinks = document.querySelectorAll('a[href^="/blog/"]');
-        blogLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                
-                const card = this.querySelector('div');
-                if (card) {
-                    card.style.opacity = '0.8';
-                    card.style.transform = 'scale(0.98)';
-                }
-            });
-        });
-        
-        
-        blogLinks.forEach(link => {
-            link.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.click();
-                }
-            });
-        });
-    });
-</script>
-

@@ -47,3 +47,34 @@ All commands are run from the root of the project, from a terminal:
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 # ns2agi-frontend
+
+
+
+Kids
+Building the north star of tomorrow
+Transforming the skills ecosystem - through hackathons, collaborations with insitutions and research 
+
+
+Kids vibecoding hackathon - a 100 kids, 8 venues, 6 cities
+Upcoming! United Nations Robotics for good challenge
+
+
+Robotics
+The future won't wait
+A space for people to see and work  on robots in real life
+Bringing and animating them on events
+Selling SO101s, giving lectures, hosting coworkings
+Future in Bloom, tectonic, brucon, odoo experience, museum nacht event and then i will upload a bunch of pictures of us with robots
+
+CORE
+Let's build it together
+Hackathons, events, community
+Pushing the ecosystem forward, starting with Belgium
+Show different pictures from our events
+THIS COULD BE YOU
+Join button, Company? Work with us
+
+and our subbranches
+Kids and Robotics
+
+
