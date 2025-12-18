@@ -3,9 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import { getCollectionProducts, formatPrice, getProductUrl } from "../lib/shopify";
 import { ShoppingCart } from "lucide-react";
 
-const productsResult = await getCollectionProducts("north-star-core", 20);
-const products = productsResult.ok ? productsResult.data : [];
-const error = !productsResult.ok ? productsResult.error : null;
+const [coreResult, roboticsResult] = await Promise.all([
+    getCollectionProducts("north-star-core", 20),
+    getCollectionProducts("north-star-robotics", 20),
+]);
+
+const coreProducts = coreResult.ok ? coreResult.data : [];
+const roboticsProducts = roboticsResult.ok ? roboticsResult.data : [];
+const products = [...coreProducts, ...roboticsProducts];
+const error = !coreResult.ok && !roboticsResult.ok ? "Failed to load products" : null;
 ---
 
 <Layout title="Store | North Star">
