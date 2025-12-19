@@ -247,6 +247,44 @@ const eventsData = [
     </div>
   </section>
 
+  {/* The Vessel CTA */}
+  <section class="relative overflow-hidden">
+    {/* Background image with transparency */}
+    <div class="absolute inset-0">
+      <img
+        src="/thevessel.png"
+        alt=""
+        class="w-full h-full object-cover opacity-20"
+      />
+    </div>
+    {/* Gradient overlay for transparent corners */}
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black"></div>
+    {/* Radial vignette */}
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,_transparent_0%,_black_100%)]"></div>
+
+    <div class="relative block">
+      <div class="py-28 md:py-36 px-6 text-center">
+        <h3 class="text-5xl md:text-7xl lg:text-8xl uppercase tracking-[0.15em] mb-6 text-white" style="font-family: 'Cormorant', serif;">
+          The Vessel
+        </h3>
+
+        <div class="flex items-center justify-center gap-2 mb-8">
+          <span class="text-[10px] text-white/40 uppercase tracking-[0.2em]">by</span>
+          <img src="/nslogo.svg" alt="North Star" class="h-3 w-auto opacity-40" />
+        </div>
+
+        <p class="text-white/60 text-lg md:text-xl mb-10 font-light">
+          An atelier for intelligent machines
+        </p>
+
+        <span class="text-white/60 text-sm font-medium">
+          Coming soon
+        </span>
+      </div>
+    </div>
+  </section>
+
   <PartnersMarquee client:load />
 </Layout>
 
