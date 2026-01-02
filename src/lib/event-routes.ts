@@ -1,6 +1,7 @@
 export const EVENT_ROUTES: Record<string, string> = {
     "signal-i": "/events/signal-i",
     "signal-ii": "/events/signal-ii",
+    "signal-iii": "https://etoile.events/events/ebffd051-6e3b-41e7-937f-6b5a68524cf0",
     "ai-hackathon-i": "/events/ai-hackathon-i",
     "ai-hackathon-ii": "/events/ai-hackathon-ii",
     "ai-hackathon-iii": "/events/ai-hackathon-iii",
