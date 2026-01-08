@@ -65,20 +65,20 @@ const hackathonImages = [
 ---
 
 <Layout>
-  <main class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-8 text-center animate-fade-in text-white">AI Hackathon II</h1>
-    <p class="text-center text-lg text-white/80 mb-12 animate-fade-in-delay-1">
+  <main class="container mx-auto px-4 pt-32 pb-24">
+    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-8 text-center animate-fade-in text-white">AI Hackathon II - Recap</h1>
+    <p class="text-center text-lg text-zinc-400 mb-12 animate-fade-in-delay-1">
       {originalEventDate} at <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] hover:underline">{originalEventLocation}</a>
     </p>
 
-    
+
     <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
-        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Competition Was Fierce!</h2>
-        <p class="text-lg mb-4 text-white/90 leading-relaxed">
-            The second North Star Agentic Hackathon was a massive success! The competition was fierce, and we had a lot of interesting solutions, all for the noble goal of augmenting Antwerp with AI. 🙌
+        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-zinc-800 pb-3">Augmenting Antwerp with AI 🤖</h2>
+        <p class="text-lg mb-4 text-zinc-400 leading-relaxed">
+            The second North Star Agentic Hackathon brought together developers and AI enthusiasts to explore how artificial intelligence can enhance urban experiences. Teams tackled the challenge of augmenting Antwerp with intelligent, location-aware applications that bridge the digital and physical worlds.
         </p>
-        <p class="text-lg text-white/90 leading-relaxed">
-            We're also proud to announce that we've met our pizza-box KPI, and the tower has grown significantly this time! 🍕
+        <p class="text-lg text-zinc-400 leading-relaxed">
+            Over the course of the hackathon, participants delivered creative solutions ranging from gamified city exploration to AI-powered tour guides. The energy was high, and by the end of the day, we had successfully depleted our pizza supplies—a reliable indicator of a well-attended event.
         </p>
     </section>
 
@@ -94,8 +94,8 @@ const hackathonImages = [
                 'bg-purple-500/10'  // AI
               } backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
               <h3 class="text-2xl font-bold mb-3 text-white glitchy-text" style={`animation-duration: ${1 + index * 0.2}s; animation-delay: ${index * 0.1}s`}>{winner.category}</h3>
-              <p class="text-lg font-semibold mb-2 text-white/95">{winner.team}</p>
-              <p class="text-white/80 flex-grow">{winner.project}</p>
+              <p class="text-lg font-semibold mb-2 text-white">{winner.team}</p>
+              <p class="text-zinc-400 flex-grow">{winner.project}</p>
             </div>
           ))}
         </div>
@@ -132,7 +132,7 @@ const hackathonImages = [
                 class="rounded-md mb-4 w-full h-48 object-cover bg-gray-700"
               />
               <h3 class="text-xl font-bold mb-2 text-white">{solution.team_name}</h3>
-              <p class="text-white/80 text-sm flex-grow line-clamp-3">{solution.eyecatcher || ''}</p>
+              <p class="text-zinc-400 text-sm flex-grow line-clamp-3">{solution.eyecatcher || ''}</p>
             </div>
           );
         })}
@@ -160,26 +160,22 @@ const hackathonImages = [
       </div>
     </div>
 
-    
+
     <section class="mb-12 animate-fade-in-delay-6 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Thank You! ❤️</h2>
-      <p class="text-lg mb-4 text-white/90 leading-relaxed">
-        A huge thank you to our sponsors <strong class="font-semibold text-pink-400">Dashdot</strong> and <strong class="font-semibold text-pink-400">Rollo</strong> for their generous support! ⭐️
+      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-zinc-800 pb-3">Acknowledgments ❤️</h2>
+      <p class="text-lg mb-4 text-zinc-400 leading-relaxed">
+        This event was made possible by the generous support of our sponsors <strong class="font-semibold text-white">Dashdot</strong> and <strong class="font-semibold text-white">Rollo</strong>, who enabled us to provide resources and prizes for all participants.
       </p>
-      <p class="text-lg mb-4 text-white/90 leading-relaxed">
-        And of course, a massive shout-out to everyone that helped make it happen: 
-        <strong class="font-semibold text-cyan-400">Filip, Oleksandr, Thibaud, Wim, Nathan, The Beacon, and Robin.</strong> Your contributions were invaluable!
-      </p>
-       <p class="text-lg text-white/90 leading-relaxed">
-        Thank you so much everyone! Until next time :)
+      <p class="text-lg text-zinc-400 leading-relaxed">
+        Special thanks to the organizing team and volunteers who contributed their time and expertise: Filip, Oleksandr, Thibaud, Wim, Nathan, Robin, and The Beacon for hosting us in their excellent venue.
       </p>
     </section>
 
-    
+
     <section class="text-center animate-fade-in-delay-7 max-w-4xl mx-auto">
-       <h2 class="text-3xl font-semibold mb-6 text-white">What's Next?</h2>
-       <p class="text-lg mb-4 text-white/90">
-         During the closing speech, participants saw the next steps for North Star. We will be progressively revealing more on LinkedIn - see you at 12!
+       <h2 class="text-3xl font-semibold mb-6 text-white">Stay Connected 📡</h2>
+       <p class="text-lg mb-4 text-zinc-400">
+         Don't miss future hackathons and community events. Follow us on LinkedIn for updates on upcoming North Star gatherings and announcements.
        </p>
        <a
          href="https://www.linkedin.com/company/north-star-agi/"
