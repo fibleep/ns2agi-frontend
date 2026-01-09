@@ -1,0 +1,205 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { GlowingCard } from "../components/GlowingCard";
+
+type ProjectType = "PROJECT" | "MEETUP" | "HACKATHON" | "CONFERENCE" | "INITIATIVE";
+
+interface Project {
+  name: string;
+  type: ProjectType;
+  timeCommitment: string;
+  skills: string[];
+  description: string;
+  date: string;
+  image?: string;
+}
+
+const projects: Project[] = [
+  {
+    name: "Aurora",
+    type: "CONFERENCE",
+    timeCommitment: "10-15 hrs/wk",
+    skills: ["Event Planning", "Community Building", "Production"],
+    description: "auroraconf.eu, a conference in AI/Robotics - combining the Launchathon, United Nations Robotics for good challenge and talks with high-profile speakers",
+    date: "Mar 2026",
+    image: "/projects/aurora.jpeg"
+  },
+  {
+    name: "ITU/United Nations Robotics For Good Challenge",
+    type: "HACKATHON",
+    timeCommitment: "5-10 hrs/wk",
+    skills: ["Partnership Development", "Project Management", "Technical Writing"],
+    description: "Organize a hackathon for youth - with the theme being robotics in food security",
+    date: "Mar 2026",
+    image: "/projects/Robotics-for-Good-Youth-Challenge.png"
+  },
+  {
+    name: "The Launchathon",
+    type: "HACKATHON",
+    timeCommitment: "5-10 hrs/wk",
+    skills: ["Event Production", "Sponsor Relations", "Logistics"],
+    description: "A different type of hackathon, 100 participants, early March, all leading to the grand finale at Aurora",
+    date: "Mar 2026",
+    image: "/projects/launchathon.png"
+  },
+  {
+    name: "Hackatrain",
+    type: "HACKATHON",
+    timeCommitment: "8-12 hrs/wk",
+    skills: ["Event Coordination", "Logistics", "Partnerships"],
+    description: "Organize a unique hackathon on a train. Coordinate with our European partners and work on making sure logistics run smoothly",
+    date: "Q3 2026",
+    image: "/projects/hackatrain.jpg"
+  },
+  {
+    name: "The Syzygy",
+    type: "HACKATHON",
+    timeCommitment: "15-25 hrs/wk",
+    skills: ["Strategic Planning", "Leadership", "Partnerships"],
+    description: "What if everything suddenly aligned? Shape the biggest hackathon Belgium has ever seen - connect the tech ecosystem, build something generational",
+    date: "Q4 2026",
+    image: "/projects/syzygy.png"
+  },
+  {
+    name: "Etoile",
+    type: "PROJECT",
+    timeCommitment: "15-20 hrs/wk",
+    skills: ["Full-Stack Development", "Product Design", "Growth"],
+    description: "Build the future of community-driven event platforms. Work with modern web technologies and scale infrastructure.",
+    date: "Ongoing",
+    image: "/projects/etoile.png"
+  },
+  {
+    name: "Robotics R&D",
+    type: "PROJECT",
+    timeCommitment: "10-20 hrs/wk",
+    skills: ["Robotics", "AI/ML", "Computer Vision", "Teamwork"],
+    description: "Research and development in embodied AI and robotics (VR Teleop, Open source, Entertainment, Education for kids, Logistics)",
+    date: "Ongoing",
+    image: "/projects/robotics.png"
+  },
+  {
+    name: "SimpleIdea",
+    type: "PROJECT",
+    timeCommitment: "15-20 hrs/wk",
+    skills: ["AI Engineering", "Full-Stack Development", "Project Management"],
+    description: "Create a stack for our kids hackathons - and a broader application for working with AI in education",
+    date: "Ongoing",
+    image: "/projects/simpleidea.png"
+  },
+  {
+    name: "SIGNAL",
+    type: "MEETUP",
+    timeCommitment: "5-8 hrs/wk",
+    skills: ["Community Building", "Speaker Coordination", "Event Planning"],
+    description: "Help us host regular bi-monthly meetups bringing together builders and experts. Coordinate speakers, manage logistics, and grow the community.",
+    date: "Ongoing",
+    image: "/signal-ii/signalii.png"
+  }
+];
+---
+
+<Layout title="Join a Project | North Star">
+  <main class="relative min-h-screen pt-32 pb-24">
+    <!-- Hero Section -->
+    <section class="container mx-auto px-6 mb-16">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-semibold mb-6 text-white tracking-tight leading-[1.1]">
+          Join a Project
+        </h1>
+        <p class="text-lg md:text-xl text-zinc-400 max-w-xl mx-auto leading-relaxed mb-8">
+          Volunteer, become a lead or sponsor an initiative - future is built through action
+        </p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <a
+            href="/join"
+            class="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-colors"
+          >
+            Join as LEAD
+          </a>
+          <a
+            href="/work-with-us"
+            class="inline-flex items-center justify-center px-6 py-3 border border-white/20 text-white font-medium rounded-full hover:bg-white/5 transition-colors"
+          >
+            Support OPERATIONS
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Gallery -->
+    <section class="container mx-auto px-6 mb-24">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <GlowingCard client:load className="group">
+              <div class="flex flex-col h-full">
+                <!-- Image/Gradient Background -->
+                <div class="relative aspect-[4/3] overflow-hidden rounded-t-3xl flex-shrink-0">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      class="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div class="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-900"></div>
+                  )}
+
+                  <!-- Subtle overlay -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10"></div>
+
+                  <!-- Type badge -->
+                  <div class="absolute top-4 left-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-white/60 font-bold px-2 py-1 bg-black/40 backdrop-blur-sm rounded" style="text-shadow: 0 1px 4px rgba(0,0,0,0.8)">
+                      {project.type}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Content -->
+                <div class="p-6 flex flex-col flex-grow">
+                  <!-- Project name and date -->
+                  <div class="mb-3">
+                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-white/90 transition-colors tracking-tight">
+                      {project.name}
+                    </h3>
+                    <div class="text-xs uppercase tracking-wider text-zinc-500 font-medium">
+                      {project.date}
+                    </div>
+                  </div>
+
+                  <p class="text-zinc-400 text-[13px] leading-relaxed mb-3 flex-grow">
+                    {project.description}
+                  </p>
+
+                  <!-- Skills -->
+                  <div class="flex flex-wrap items-center gap-2 text-[11px] text-zinc-500 mb-4">
+                    {project.skills.slice(0, 3).map((skill, index) => (
+                      <>
+                        <span>{skill}</span>
+                        {index < Math.min(project.skills.length, 3) - 1 && (
+                          <span class="text-zinc-700">•</span>
+                        )}
+                      </>
+                    ))}
+                  </div>
+
+                  <!-- Buttons -->
+                  <div class="flex gap-2">
+                    <a href="/join" class="inline-flex items-center justify-center flex-1 px-4 py-2.5 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-colors">
+                      JOIN
+                    </a>
+                    <a href="/work-with-us" class="inline-flex items-center justify-center flex-1 px-4 py-2.5 border border-white/20 text-white text-sm font-medium rounded-full hover:bg-white/5 transition-colors">
+                      SUPPORT
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </GlowingCard>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

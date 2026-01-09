@@ -31,7 +31,7 @@ export const GlowingCard = ({
                 inactiveZone={inactiveZone}
                 borderWidth={borderWidth}
             />
-            <div className="relative h-full rounded-3xl border-[0.75px] border-white/10 bg-zinc-900/50 backdrop-blur-sm overflow-hidden">
+            <div className="relative h-full rounded-3xl border-[0.75px] border-white/10 bg-black backdrop-blur-sm overflow-hidden">
                 {children}
             </div>
         </div>
