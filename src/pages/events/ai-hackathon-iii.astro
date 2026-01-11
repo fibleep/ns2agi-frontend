@@ -26,22 +26,22 @@ const hackathonImages = [
 ---
 
 <Layout>
-  <main class="container mx-auto px-4 py-12">
+  <main class="container mx-auto px-4 pt-32 pb-24">
     <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-8 text-center animate-fade-in text-white">AI Hackathon III - Recap</h1>
-    <p class="text-center text-lg text-white/80 mb-12 animate-fade-in-delay-1">
+    <p class="text-center text-lg text-zinc-400 mb-12 animate-fade-in-delay-1">
       {originalEventDate} at <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] hover:underline">{originalEventLocation.split(',')[0]}</a>
     </p>
 
     
     <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
-        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Change The Outcome - Mission Accomplished!</h2>
-        <p class="text-lg mb-4 text-white/90 leading-relaxed">
+        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-zinc-800 pb-3">Change The Outcome - Mission Accomplished!</h2>
+        <p class="text-lg mb-4 text-zinc-400 leading-relaxed">
             🚀 Over 400 man-hours of innovation packed into one weekend at The Beacon | Innovation Community! 
         </p>
-        <p class="text-lg mb-4 text-white/90 leading-relaxed">
+        <p class="text-lg mb-4 text-zinc-400 leading-relaxed">
             ⚡️ These hackathons are what change the outcome - it's the people with conviction to come together and build something meaningful, on a Saturday, during summer.
         </p>
-        <p class="text-lg text-white/90 leading-relaxed">
+        <p class="text-lg text-zinc-400 leading-relaxed">
             The energy, creativity, and technical excellence displayed throughout the weekend were truly inspiring. Thank you to everyone who participated and made this event unforgettable.
         </p>
     </section>
@@ -57,8 +57,8 @@ const hackathonImages = [
               'bg-yellow-500/10'
             } backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
             <h3 class="text-2xl font-bold mb-3 text-white glitchy-text" style={`animation-duration: ${1 + index * 0.2}s;`}>{winner.category}</h3>
-            <p class="text-lg font-semibold mb-2 text-white/95">{winner.team}</p>
-            <p class="text-white/80 flex-grow">{winner.project}</p>
+            <p class="text-lg font-semibold mb-2 text-white">{winner.team}</p>
+            <p class="text-zinc-400 flex-grow">{winner.project}</p>
           </div>
         ))}
       </div>
@@ -73,14 +73,14 @@ const hackathonImages = [
 
     
     <section class="mb-12 animate-fade-in-delay-5 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Acknowledgements</h2>
-      <p class="text-lg mb-4 text-white/90 leading-relaxed">
+      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-zinc-800 pb-3">Acknowledgements</h2>
+      <p class="text-lg mb-4 text-zinc-400 leading-relaxed">
         A heartfelt thank you to <a href="https://www.thebeacon.eu/" target="_blank" rel="noopener noreferrer" class="text-[#E36037] font-semibold hover:underline">The Beacon | Innovation Community</a> for providing an incredible venue that perfectly captured the spirit of innovation and collaboration.
       </p>
-      <p class="text-lg mb-4 text-white/90 leading-relaxed">
+      <p class="text-lg mb-4 text-zinc-400 leading-relaxed">
         Special recognition to our dedicated judges who carefully evaluated each project and provided valuable feedback to all participants.
       </p>
-       <p class="text-lg text-white/90 leading-relaxed">
+       <p class="text-lg text-zinc-400 leading-relaxed">
         And most importantly, thank you to all the hackers, mentors, and supporters who brought their passion and expertise to make this weekend truly special!
       </p>
     </section>
@@ -88,7 +88,7 @@ const hackathonImages = [
     
     <section class="text-center animate-fade-in-delay-6 max-w-4xl mx-auto">
        <h2 class="text-3xl font-semibold mb-6 text-white">What's Next?</h2>
-       <p class="text-lg mb-4 text-white/90">
+       <p class="text-lg mb-4 text-zinc-400">
          The innovation doesn't stop here! Join our community to stay connected and be the first to know about future hackathons.
        </p>
        <a

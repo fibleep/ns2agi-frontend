@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroScrolling from "../components/HeroScrolling.astro";
 import HorizontalTimeline from "../components/horizontal-timeline";
 import PartnersMarquee from "../components/PartnersMarquee";
+import { SignalPopup } from "../components/SignalPopup";
 
 const eventsData = [
   {
@@ -205,6 +206,7 @@ const eventsData = [
 ---
 
 <Layout>
+  <SignalPopup client:load eventUrl="https://etoile.events/events/ebffd051-6e3b-41e7-937f-6b5a68524cf0" />
   <HeroScrolling />
 
   <PartnersMarquee client:load />

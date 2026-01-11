@@ -29,19 +29,19 @@ const roboticsImages = [
 ---
 
 <Layout>
-  <main class="container mx-auto px-4 py-12">
+  <main class="container mx-auto px-4 pt-32 pb-24">
     <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-8 text-center animate-fade-in text-white">Robotics Hackathon I - Recap</h1>
-    <p class="text-center text-lg text-white/80 mb-12 animate-fade-in-delay-1">
+    <p class="text-center text-lg text-zinc-400 mb-12 animate-fade-in-delay-1">
       {originalEventDate} in {originalEventLocation}
     </p>
 
     
     <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
-        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">Our First 2-Day Hackathon! 🤖</h2>
-        <p class="text-lg mb-4 text-white/90 leading-relaxed">
+        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-zinc-800 pb-3">Our First 2-Day Hackathon! 🤖</h2>
+        <p class="text-lg mb-4 text-zinc-400 leading-relaxed">
             The first North Star Robotics Hackathon marked a significant milestone - our inaugural 2-day hackathon event! Over two intensive days, teams dove deep into the world of embodied AI and robotics.
         </p>
-        <p class="text-lg text-white/90 leading-relaxed">
+        <p class="text-lg text-zinc-400 leading-relaxed">
             The energy was incredible as participants bridged the gap between digital intelligence and physical interaction, creating innovative solutions that showcase the future of robotics.
         </p>
     </section>
@@ -55,8 +55,8 @@ const roboticsImages = [
               index === 0 ? 'bg-orange-500/10' : 'bg-blue-500/10'
             } backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
             <h3 class="text-2xl font-bold mb-3 text-white glitchy-text-alt" style={`animation-duration: ${1 + index * 0.2}s; animation-delay: ${index * 0.1}s`}>{winner.category}</h3>
-            <p class="text-lg font-semibold mb-2 text-white/95">{winner.team}</p>
-            <p class="text-white/80 flex-grow">{winner.project}</p>
+            <p class="text-lg font-semibold mb-2 text-white">{winner.team}</p>
+            <p class="text-zinc-400 flex-grow">{winner.project}</p>
           </div>
         ))}
       </div>
@@ -71,8 +71,8 @@ const roboticsImages = [
 
     
     <section class="mb-12 animate-fade-in-delay-5 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">All Submissions 📋</h2>
-      <p class="text-lg mb-4 text-white/90 leading-relaxed">
+      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-zinc-800 pb-3">All Submissions 📋</h2>
+      <p class="text-lg mb-4 text-zinc-400 leading-relaxed">
         Want to see all the incredible projects that were created during the hackathon? Check out the complete list of submissions and winners!
       </p>
       <div class="text-center">
@@ -92,14 +92,14 @@ const roboticsImages = [
 
     
     <section class="mb-12 animate-fade-in-delay-6 backdrop-blur-sm bg-white/5 rounded-lg p-6 md:p-8 shadow-lg max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-white/20 pb-3">What's Next? 🚀</h2>
-      <p class="text-lg mb-4 text-white/90 leading-relaxed">
+      <h2 class="text-3xl font-semibold mb-6 text-white border-b border-zinc-800 pb-3">What's Next? 🚀</h2>
+      <p class="text-lg mb-4 text-zinc-400 leading-relaxed">
         This hackathon is just the <strong class="font-semibold text-orange-400">beginning of something much bigger!</strong> We're committed to continuing our journey in the robotics space.
       </p>
-      <p class="text-lg mb-4 text-white/90 leading-relaxed">
+      <p class="text-lg mb-4 text-zinc-400 leading-relaxed">
         Get ready for more events covering topics adjacent to robotics - from embodied AI to hardware integration, and everything that bridges the digital and physical worlds.
       </p>
-      <p class="text-lg text-white/90 leading-relaxed">
+      <p class="text-lg text-zinc-400 leading-relaxed">
         <strong class="font-semibold text-blue-400">Stay tuned</strong> - we have exciting things in store for the future of robotics and AI! 🤖✨
       </p>
     </section>
