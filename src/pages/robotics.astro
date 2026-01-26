@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { RoboticsSplineScene } from "../components/RoboticsSplineScene";
 ---
 
 <Layout title="North Star Robotics | The Future Won't Wait">
@@ -21,30 +22,10 @@ import Layout from "../layouts/Layout.astro";
             </div>
         </section>
 
-        <!-- Banner -->
+        <!-- 3D Robot Scene -->
         <section class="container mx-auto px-6 mb-24">
             <div class="max-w-5xl mx-auto">
-                <img
-                    src="/nsrobotics-banner.png"
-                    alt="North Star Robotics"
-                    class="w-full h-auto rounded-2xl border border-white/10"
-                />
-            </div>
-        </section>
-
-        <!-- Events -->
-        <section class="container mx-auto px-6 mb-24">
-            <div class="max-w-4xl mx-auto">
-                <p class="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-8 text-center">
-                    Where we've been
-                </p>
-                <div class="flex flex-wrap justify-center gap-3">
-                    <span class="px-4 py-2 rounded-full bg-zinc-900/50 border border-zinc-800 text-zinc-300 text-sm">Future in Bloom</span>
-                    <span class="px-4 py-2 rounded-full bg-zinc-900/50 border border-zinc-800 text-zinc-300 text-sm">Tectonic</span>
-                    <span class="px-4 py-2 rounded-full bg-zinc-900/50 border border-zinc-800 text-zinc-300 text-sm">BruCON</span>
-                    <span class="px-4 py-2 rounded-full bg-zinc-900/50 border border-zinc-800 text-zinc-300 text-sm">Odoo Experience</span>
-                    <span class="px-4 py-2 rounded-full bg-zinc-900/50 border border-zinc-800 text-zinc-300 text-sm">Museum Nacht</span>
-                </div>
+                <RoboticsSplineScene client:load />
             </div>
         </section>
 
