@@ -1,0 +1,440 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="AI Community Journal Club #001 | AI Belgium x North Star">
+  <main class="paper-viewport">
+    <article class="paper">
+      <!-- Header -->
+      <header class="paper-header">
+        <div class="paper-meta">
+          <div class="paper-meta-left">
+            <span class="paper-id">ns2agi/journal-club-001</span>
+          </div>
+        </div>
+
+        <hr class="paper-rule" />
+
+        <h1 class="paper-title">AI Community Journal Club #001</h1>
+
+        <div class="paper-authors">
+          <p class="authors-names">AI Belgium x North Star</p>
+          <p class="authors-affiliation">Kaai 102, Port of Antwerp-Bruges</p>
+          <p class="authors-affiliation">(Near Kinepolis)</p>
+        </div>
+
+        <hr class="paper-rule" />
+      </header>
+
+      <!-- Body: two-column -->
+      <div class="paper-body">
+        <div class="paper-col paper-col-left">
+          <h2 class="paper-heading">Abstract</h2>
+          <p class="paper-text">
+            We are inviting AI builders and inquisitive minds from across the
+            Belgium AI community to this event series: the AI Community Journal
+            Club. Cutting through the hype is an increasingly hard job, and
+            testing out the latest vibe-coding tool can easily take precedence
+            over deep-diving into AI peer-reviewed papers. We want to help
+            foster a science-based AI development ecosystem where practitioners
+            are inspired by the latest ideas from scientific research, while
+            learning more about the methods and techniques to build solid AI.
+          </p>
+          <p class="paper-callout">No academic background required.</p>
+          <p class="paper-callout">Call for presenters is now open!</p>
+        </div>
+
+        <div class="paper-col paper-col-right">
+          <h2 class="paper-heading">Event Details</h2>
+          <dl class="paper-details">
+            <div class="paper-detail-row">
+              <dt>Date:</dt>
+              <dd>Thursday, 26 Feb 2026</dd>
+            </div>
+            <div class="paper-detail-row">
+              <dt>Time:</dt>
+              <dd>18:30 to 21:00 CET</dd>
+            </div>
+            <div class="paper-detail-row">
+              <dt>Venue:</dt>
+              <dd>Kaai 102, Port of Antwerp-Bruges</dd>
+            </div>
+            <div class="paper-detail-row">
+              <dt>Capacity:</dt>
+              <dd>20 participants</dd>
+            </div>
+            <div class="paper-detail-row">
+              <dt>RSVP:</dt>
+              <dd>
+                <a
+                  href="https://etoile.events/events/50077faf-b5fc-4d92-b602-e5f02ba2dd6f"
+                  class="paper-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  etoile.events
+                </a>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Section 1: Format -->
+      <section class="paper-section">
+        <h2 class="paper-heading">1&ensp;Format</h2>
+        <p class="paper-text">
+          At every event, one or more presenters each introduce a peer-reviewed
+          paper. Presentations last roughly 15 minutes, followed by 10 minutes
+          of questions and discussion. Papers may be trendy or hot off the
+          press, classic must-reads, or relevant applied AI work. All attendees
+          are encouraged to read the papers beforehand to enable a productive
+          discussion.
+        </p>
+      </section>
+
+      <!-- Section 2: Call for Presenters -->
+      <section class="paper-section">
+        <h2 class="paper-heading">2&ensp;Call for Presenters</h2>
+        <p class="paper-text">
+          If you would like to be featured as a presenter at a future Journal
+          Club, submit your proposal through the form below. Include the paper
+          you would like to present. We will get in touch to let you know if
+          your presentation has been selected.
+        </p>
+        <div class="paper-form-embed">
+          <iframe
+            data-tally-src="https://tally.so/embed/rjA7dl?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy"
+            width="100%"
+            height="664"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            title="Journal Club Registration"></iframe>
+          <script is:inline>
+            var d = document,
+              w = "https://tally.so/widgets/embed.js",
+              v = function () {
+                "undefined" != typeof Tally
+                  ? Tally.loadEmbeds()
+                  : d
+                      .querySelectorAll("iframe[data-tally-src]:not([src])")
+                      .forEach(function (e) {
+                        e.src = e.dataset.tallySrc;
+                      });
+              };
+            if ("undefined" != typeof Tally) v();
+            else if (d.querySelector('script[src="' + w + '"]') == null) {
+              var s = d.createElement("script");
+              ((s.src = w),
+                (s.onload = v),
+                (s.onerror = v),
+                d.body.appendChild(s));
+            }
+          </script>
+        </div>
+      </section>
+
+      <!-- Section 3: Venue -->
+      <section class="paper-section">
+        <h2 class="paper-heading">3&ensp;Venue</h2>
+        <p class="paper-text">
+          Sessions take place at Kaai 102, a hangar from the Port of Antwerp,
+          near Kinepolis.
+        </p>
+        <div class="paper-map-embed">
+          <iframe
+            src="https://www.google.com/maps?q=Kaai+102,+Antwerp,+Belgium&output=embed"
+            width="100%"
+            height="300"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Kaai 102, Port of Antwerp-Bruges"></iframe>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style is:global>
+  /* Override dark site styles for paper viewport */
+  .paper-viewport {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .paper-viewport {
+      padding: 4rem 2rem 6rem;
+    }
+  }
+
+  /* The paper itself */
+  .paper {
+    background: #fff;
+    color: #1a1a1a;
+    max-width: 52rem;
+    width: 100%;
+    padding: 3rem 2.5rem;
+    font-family: "Times New Roman", Times, Georgia, "Noto Serif", serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.12),
+      0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (min-width: 768px) {
+    .paper {
+      padding: 4rem 5rem;
+      font-size: 1.05rem;
+    }
+  }
+
+  /* Header meta */
+  .paper-header {
+    margin-bottom: 2rem;
+  }
+
+  .paper-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    gap: 1rem;
+  }
+
+  .paper-meta-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .paper-id {
+    font-family: "Space Mono", monospace;
+    font-size: 0.85rem;
+    color: #333;
+  }
+
+  .paper-date {
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  .paper-meta-right {
+    text-align: right;
+  }
+
+  .paper-org {
+    font-size: 0.9rem;
+    color: #8b1a1a;
+    font-weight: 400;
+  }
+
+  .paper-rule {
+    border: none;
+    border-top: 1px solid #1a1a1a;
+    margin: 0.75rem 0;
+  }
+
+  /* Title block */
+  .paper-title {
+    text-align: center;
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 2.5rem 0 1.5rem;
+    color: #000;
+    font-family: "Times New Roman", Times, Georgia, "Noto Serif", serif;
+  }
+
+  @media (min-width: 768px) {
+    .paper-title {
+      font-size: 2rem;
+    }
+  }
+
+  .paper-authors {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .authors-names {
+    font-size: 1.05rem;
+    margin: 0 0 0.5rem;
+    color: #1a1a1a;
+  }
+
+  .authors-affiliation {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #555;
+    margin: 0.125rem 0;
+  }
+
+  /* Two-column body */
+  .paper-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .paper-body {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  /* Section headings */
+  .paper-heading {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.75rem;
+    color: #000;
+    font-family: "Times New Roman", Times, Georgia, "Noto Serif", serif;
+  }
+
+  /* Body text */
+  .paper-text {
+    margin: 0 0 0.85rem;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .paper-callout {
+    font-weight: 700;
+    margin: 0 0 0.25rem;
+  }
+
+  .paper-keywords {
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .paper-keywords-label {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  /* Event details */
+  .paper-details {
+    margin: 0;
+    padding: 0;
+  }
+
+  .paper-detail-row {
+    display: flex;
+    gap: 0.35rem;
+    margin-bottom: 0.65rem;
+    flex-wrap: wrap;
+  }
+
+  .paper-detail-row dt {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .paper-detail-row dd {
+    margin: 0;
+  }
+
+  /* Sections */
+  .paper-section {
+    margin-bottom: 1.75rem;
+  }
+
+  .paper-section .paper-heading {
+    text-transform: none;
+    font-size: 1.1rem;
+    letter-spacing: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Lists */
+  .paper-list {
+    margin: 0 0 0.85rem;
+    padding-left: 1.5rem;
+  }
+
+  .paper-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* References */
+  .paper-references {
+    margin: 0;
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .paper-references li {
+    margin-bottom: 0.4rem;
+  }
+
+  /* Links */
+  .paper-link {
+    color: #8b1a1a;
+    text-decoration: none;
+  }
+
+  .paper-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Monospace inline */
+  .paper-mono {
+    font-family: "Space Mono", monospace;
+    font-size: 0.9em;
+    background: #f5f5f5;
+    padding: 0.1em 0.35em;
+    border-radius: 2px;
+  }
+
+  /* Map embed */
+  .paper-map-embed {
+    margin-top: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .paper-map-embed iframe {
+    display: block;
+    border: none;
+  }
+
+  /* Form embed */
+  .paper-form-embed {
+    margin-top: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .paper-form-embed iframe {
+    display: block;
+    border: none;
+  }
+
+  /* Footer */
+  .paper-footer {
+    margin-top: 2rem;
+  }
+
+  .paper-footer-text {
+    font-size: 0.8rem;
+    color: #888;
+    text-align: center;
+    margin-top: 0.75rem;
+  }
+</style>
