@@ -16,6 +16,7 @@ import Layout from "../layouts/Layout.astro";
         <hr class="paper-rule" />
 
         <h1 class="paper-title">AI Community Journal Club #001</h1>
+        <p class="paper-theme">THEME: AGENTS</p>
 
         <div class="paper-authors">
           <p class="authors-names">AI Belgium x North Star</p>
@@ -89,7 +90,7 @@ import Layout from "../layouts/Layout.astro";
           of questions and discussion. Papers may be trendy or hot off the
           press, classic must-reads, or relevant applied AI work. All attendees
           are encouraged to read the papers beforehand to enable a productive
-          discussion.
+          discussion. Each edition focuses on a different theme.
         </p>
       </section>
 
@@ -257,6 +258,16 @@ import Layout from "../layouts/Layout.astro";
     .paper-title {
       font-size: 2rem;
     }
+  }
+
+  .paper-theme {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #555;
+    margin: 0.5rem 0 1.5rem;
+    font-family: "Times New Roman", Times, Georgia, "Noto Serif", serif;
   }
 
   .paper-authors {
