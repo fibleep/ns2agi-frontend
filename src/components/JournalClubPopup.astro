@@ -1,0 +1,149 @@
+---
+
+---
+
+<div id="jc-popup-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+  <div id="jc-popup-content" class="relative max-w-lg w-full bg-white rounded-sm shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden">
+
+    <button
+      id="jc-popup-close"
+      class="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/10 hover:bg-black/20 rounded-full transition-all duration-300 hover:scale-110 cursor-pointer"
+      aria-label="Close popup"
+      type="button"
+    >
+      <svg class="w-5 h-5 text-black pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <div class="p-8 md:p-10" style="font-family: 'Times New Roman', Times, Georgia, serif;">
+      <p class="text-xs text-gray-400 mb-4" style="font-family: 'Courier New', monospace;">ns2agi/journal-club-001</p>
+      <hr class="border-t border-black mb-6" />
+
+      <h2 class="text-3xl md:text-4xl font-bold text-black text-center mb-2 leading-tight">
+        AI Community Journal Club #001
+      </h2>
+      <p class="text-center text-sm font-bold tracking-[0.2em] text-gray-500 mb-4">
+        THEME: AGENTS
+      </p>
+      <p class="text-center text-base text-black mb-1">AI Belgium x North Star</p>
+      <p class="text-center text-sm italic text-gray-500 mb-1">Kaai 102, Port of Antwerp-Bruges</p>
+      <p class="text-center text-sm italic text-gray-500 mb-6">(Near Kinepolis)</p>
+
+      <hr class="border-t border-black mb-6" />
+
+      <div class="text-sm text-gray-700 space-y-1 mb-6">
+        <p><strong>Date:</strong> Thursday, 26 Feb 2026</p>
+        <p><strong>Time:</strong> 18:30 to 20:00 CET</p>
+        <p><strong>Capacity:</strong> 25 participants</p>
+      </div>
+
+      <p class="text-sm text-gray-600 mb-8 leading-relaxed">
+        Presenters introduce peer-reviewed AI papers (~15 min + Q&A). Trending research, classic must-reads, or applied AI work. No academic background required.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a
+          href="/journal-club"
+          class="flex-1 inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-white bg-black hover:bg-gray-800 transition-colors duration-200 text-center"
+          style="font-family: 'Times New Roman', Times, Georgia, serif;"
+        >
+          Register Now
+        </a>
+        <button
+          id="jc-popup-dismiss"
+          class="flex-1 inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-black bg-white border border-black hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
+          style="font-family: 'Times New Roman', Times, Georgia, serif;"
+        >
+          Maybe Later
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #jc-popup-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #jc-popup-overlay.show #jc-popup-content {
+    transform: scale(1);
+  }
+
+  @media (max-width: 640px) {
+    #jc-popup-content {
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+  }
+</style>
+
+<script>
+  const POPUP_KEY = 'journal_club_001_popup_shown';
+  const POPUP_DELAY = 0;
+
+  function showPopup() {
+    const overlay = document.getElementById('jc-popup-overlay');
+    if (overlay) {
+      setTimeout(() => {
+        overlay.classList.add('show');
+      }, 100);
+    }
+  }
+
+  function hidePopup() {
+    const overlay = document.getElementById('jc-popup-overlay');
+    if (overlay) {
+      overlay.classList.remove('show');
+      sessionStorage.setItem(POPUP_KEY, 'true');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const alreadyShown = sessionStorage.getItem(POPUP_KEY);
+
+    if (!alreadyShown) {
+      setTimeout(() => {
+        showPopup();
+      }, POPUP_DELAY);
+    }
+
+    const closeButton = document.getElementById('jc-popup-close');
+    if (closeButton) {
+      closeButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        hidePopup();
+      });
+    }
+
+    const dismissButton = document.getElementById('jc-popup-dismiss');
+    if (dismissButton) {
+      dismissButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        hidePopup();
+      });
+    }
+
+    const overlay = document.getElementById('jc-popup-overlay');
+    if (overlay) {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          hidePopup();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const overlay = document.getElementById('jc-popup-overlay');
+        if (overlay && overlay.classList.contains('show')) {
+          hidePopup();
+        }
+      }
+    });
+  });
+</script>
