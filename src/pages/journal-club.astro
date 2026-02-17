@@ -64,20 +64,15 @@ import Layout from "../layouts/Layout.astro";
               <dt>Capacity:</dt>
               <dd>25 participants</dd>
             </div>
-            <div class="paper-detail-row">
-              <dt>RSVP:</dt>
-              <dd>
-                <a
-                  href="https://etoile.events/events/50077faf-b5fc-4d92-b602-e5f02ba2dd6f"
-                  class="paper-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  etoile.events
-                </a>
-              </dd>
-            </div>
           </dl>
+          <a
+            href="https://etoile.events/events/50077faf-b5fc-4d92-b602-e5f02ba2dd6f"
+            class="paper-register-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Register Now
+          </a>
         </div>
       </div>
 
@@ -408,6 +403,26 @@ import Layout from "../layouts/Layout.astro";
     background: #f5f5f5;
     padding: 0.1em 0.35em;
     border-radius: 2px;
+  }
+
+  /* Register button */
+  .paper-register-btn {
+    display: block;
+    margin-top: 1.5rem;
+    padding: 0.85rem 2rem;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: "Times New Roman", Times, Georgia, "Noto Serif", serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: background-color 0.15s ease;
+  }
+
+  .paper-register-btn:hover {
+    background: #333;
   }
 
   /* Map embed */
