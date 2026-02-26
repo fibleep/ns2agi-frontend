@@ -3,19 +3,21 @@ import Layout from "../layouts/Layout.astro";
 import HeroScrolling from "../components/HeroScrolling.astro";
 import HorizontalTimeline from "../components/horizontal-timeline";
 import PartnersMarquee from "../components/PartnersMarquee";
-import { ArrowRight } from 'lucide-react';
-import JournalClubPopup from '../components/JournalClubPopup.astro';
+import { ArrowRight } from "lucide-react";
+import JournalClubPopup from "../components/JournalClubPopup.astro";
 
 const blogPosts = [
   {
-    id: 'cost-of-connection',
-    title: 'The Cost of Connection',
-    date: 'December 31, 2025',
-    excerpt: 'Brain drain breaks the chain of people lifting other people up. How do we ignite Belgium\'s tech ecosystem?',
-    author: 'Filip Nowak',
-    thumbnail: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/0*BtDdP2mnKTCSqMjN',
-    readTime: '7 min read',
-    slug: 'cost-of-connection'
+    id: "cost-of-connection",
+    title: "The Cost of Connection",
+    date: "December 31, 2025",
+    excerpt:
+      "Brain drain breaks the chain of people lifting other people up. How do we ignite Belgium's tech ecosystem?",
+    author: "Filip Nowak",
+    thumbnail:
+      "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*BtDdP2mnKTCSqMjN",
+    readTime: "7 min read",
+    slug: "cost-of-connection",
   },
 ];
 
@@ -26,7 +28,7 @@ const eventsData = [
     date: "March 8, 2025",
     description:
       "Our first AI hackathon - hosted at The Beacon with over 60 participants",
-    thumbnail: "/ai-hackathon-i/winners.jpeg",
+    thumbnail: "/ai-hackathon-i/4.jpeg",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "/events/ai-hackathon-i",
@@ -36,7 +38,7 @@ const eventsData = [
     title: "AI Hackathon II",
     date: "May 10, 2025",
     description: "The 2nd edition - bigger and better!",
-    thumbnail: "/ai-hackathon-ii/winners.jpg",
+    thumbnail: "/ai-hackathon-ii/4.jpg",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "/events/ai-hackathon-ii",
@@ -47,7 +49,7 @@ const eventsData = [
     date: "June 5, 2025",
     description:
       "Our first SIGNAL AI meetup featuring expert speakers from Bugify and imec, exploring the collapse of modern software development and social robotics.",
-    thumbnail: "/signal-i/IMG_0331.jpg",
+    thumbnail: "/signal-i/4.jpg",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "/events/signal-i",
@@ -57,7 +59,7 @@ const eventsData = [
     title: "Robotics Hackathon I",
     date: "June 14, 2025",
     description: "Our first 2-day hackathon co-organized with HuggingFace",
-    thumbnail: "/robotics-i/LeRobot Hackathon June 14-15 2025 (1).JPG",
+    thumbnail: "/robotics-i/2.JPG",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "/events/robotics-hackathon-i",
@@ -68,7 +70,7 @@ const eventsData = [
     date: "August 21, 2025",
     description:
       "Talks by AI and robotics experts, live demos, and networking with pizza & drinks at The Beacon.",
-    thumbnail: "/signal-ii/signalii.png",
+    thumbnail: "/signal-ii/8.png",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "/events/signal-ii",
@@ -79,7 +81,7 @@ const eventsData = [
     date: "August 30, 2025",
     description:
       "🚀 Over 400 man-hours of innovation packed into one weekend! Winners: Judges' Favorite, AI's Choice, and Atlas categories.",
-    thumbnail: "/ai-hackathon-iii/aihackathoniii.png",
+    thumbnail: "/ai-hackathon-iii/11.jpg",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "/events/ai-hackathon-iii",
@@ -90,7 +92,7 @@ const eventsData = [
     date: "September 25, 2025",
     description:
       "🛡️ Belgium's premier security and hacker conference in Mechelen. World-class speakers, security challenges, and deep-technical training with 600+ cybersecurity professionals.",
-    thumbnail: "/partnerships/logos/brucon.png",
+    thumbnail: "/partnerships/logos/2.png",
     status: "completed" as const,
     organizationType: "CONTRIBUTED" as const,
     link: "https://www.brucon.org/",
@@ -101,7 +103,7 @@ const eventsData = [
     date: "October 11, 2025",
     description:
       "Belgian chapter of the Worldwide Kids AI Vibecoding Hackathon. Ages 9-13, 4-hour creative coding experience across multiple cities in Belgium.",
-    thumbnail: "/kids-hackathon/kids.png",
+    thumbnail: "/kids-hackathon/2.png",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "/events/kids-ai-vibecoding-hackathon",
@@ -112,7 +114,7 @@ const eventsData = [
     date: "October 18, 2025",
     description:
       "🤖 A co-working, make-athon - 1st part of our FUTURE IN BLOOM series. Embodied AI is coming, and we need to be ready for it.",
-    thumbnail: "/future-in-bloom/cover.jpg",
+    thumbnail: "/future-in-bloom/2.jpg",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "https://luma.com/vl1ksuok",
@@ -123,7 +125,7 @@ const eventsData = [
     date: "November 5, 2025",
     description:
       "Europe's premier tech conference addressing AI's impact on work and society, geopolitics, and digital autonomy. Connecting startups, investors, and policymakers at Wintercircus, Ghent.",
-    thumbnail: "/tectonic/tectonic.svg",
+    thumbnail: "/tectonic/1.svg",
     status: "completed" as const,
     organizationType: "CONTRIBUTED" as const,
     link: "https://tectonicconf.eu",
@@ -134,7 +136,7 @@ const eventsData = [
     date: "November 7, 2025",
     description:
       "🛰️ EU Space hackathon across 10 locations. BeCentral Brussels for Belgium. Gaming, sports, and travel challenges using Galileo, Copernicus & EGNOS data.",
-    thumbnail: "/cassini-hackathon/cassini.png",
+    thumbnail: "/cassini-hackathon/1.png",
     status: "upcoming" as const,
     organizationType: "CONTRIBUTED" as const,
     link: "https://www.cassini.eu/hackathons",
@@ -145,7 +147,7 @@ const eventsData = [
     date: "November 20, 2025",
     description:
       "AI and multi-agent systems meetup at The Beacon. From Monolith to Multi-Agent architectures, exploring production-ready AI systems.",
-    thumbnail: "/belgium-nlp-meetup/belgiumnlpmeetup.avif",
+    thumbnail: "/belgium-nlp-meetup/1.avif",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "https://www.meetup.com/belgium-nlp-meetup/",
@@ -156,7 +158,7 @@ const eventsData = [
     date: "November 22, 2025",
     description:
       "💳 Hack, pilot and ship payment experiences using Stripe APIs. Build bold payment experiences with agents and automation at Commons Hub Brussels.",
-    thumbnail: "/stripe-hackathon/stripebg.png",
+    thumbnail: "/stripe-hackathon/1.png",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "https://lu.ma/agenticpayments",
@@ -167,7 +169,7 @@ const eventsData = [
     date: "November 28, 2025",
     description:
       "Exclusive power breakfast networking with 50 founders, leaders, and investors from Antwerp's innovation ecosystem. Coffee, pastries, and high-quality connections at The Beacon.",
-    thumbnail: "/get-sip-done/cover.png",
+    thumbnail: "/get-sip-done/1.png",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "https://luma.com/k66z8htv",
@@ -178,7 +180,7 @@ const eventsData = [
     date: "December 4, 2025",
     description:
       "Algorave at Wintercircus with Design Museum Gent. Live-coded music and visuals generated from museum collection data. Preview of the new permanent collection through algorithmic visualization.",
-    thumbnail: "/museum-night/wintercircus-museum-night.jpg",
+    thumbnail: "/museum-night/1.jpg",
     status: "completed" as const,
     organizationType: "CONTRIBUTED" as const,
     link: "https://www.wintercircus.be/en/events/museum-night-with-design-museum-ghent",
@@ -189,7 +191,7 @@ const eventsData = [
     date: "December 11, 2025",
     description:
       "ElevenLabs Worldwide Hackathon - $200K+ in total prizes. One Night. Thirty Cities. Building the Future of Conversation.",
-    thumbnail: "/elevenlabs/11.jpeg",
+    thumbnail: "/elevenlabs/2.jpeg",
     status: "completed" as const,
     organizationType: "ORGANIZED" as const,
     link: "https://ghent.aitinkerers.org/p/elevenlabs-global-hackathon-ghent",
@@ -200,7 +202,7 @@ const eventsData = [
     date: "January 29, 2026",
     description:
       "A signal emerges. Our flagship meetup is back in 2026 🚀 Join us for another series of talks in AI at The Beacon.",
-    thumbnail: "/signal-iii/cover.png",
+    thumbnail: "/signal-iii/1.png",
     status: "upcoming" as const,
     organizationType: "ORGANIZED" as const,
     link: "https://etoile.events/events/ebffd051-6e3b-41e7-937f-6b5a68524cf0",
@@ -217,10 +219,136 @@ const eventsData = [
     link: "/journal-club",
   },
 ];
+
+const featuredSlides = [
+  {
+    src: "/conferences/IMG_8194.jpg",
+    title: "Conferences",
+    description:
+      "We show up where the ecosystem gathers: sharing our robots, ideas, and stories at Tectonic, Brucon, and Odoo Experience, with our own conference track coming soon.",
+    mosaicImages: [
+      "/conferences/IMG_8194.jpg",
+      "/conferences/photo_2026-02-26%2015.58.36.jpeg",
+      "/conferences/photo_2026-02-26%2015.58.15.jpeg",
+      "/conferences/photo_2026-02-26%2015.54.25.jpeg",
+    ],
+  },
+  {
+    src: "/signal-ii/4.jpg",
+    title: "Meetups",
+    description:
+      "Frequent meetups for builders, researchers, and operators to connect, learn fast, and keep momentum between big events.",
+    mosaicImages: [
+      "/signal-ii/4.jpg",
+      "/signal-i/11.jpg",
+      "/signal-i/23.jpg",
+      "/future-in-bloom/1.jpg",
+    ],
+  },
+  {
+    src: "/ai-hackathon-ii/4.jpg",
+    title: "Hackathons",
+    description:
+      "Where ideas turn into prototypes. Full-day, half-day, and weekend formats for students, professionals, kids, communities, and companies.",
+    mosaicImages: [
+      "/ai-hackathon-ii/4.jpg",
+      "/kids-hackathon/photo_2026-02-26 15.57.18.jpeg",
+      "/robotics-i/6.jpg",
+      "/elevenlabs/1.jpg",
+    ],
+  },
+  {
+    src: "/projects/photo_2026-02-26%2016.04.31.jpeg",
+    title: "Projects",
+    description:
+      "We build real products with community impact: Theater in Ghent (AI in Play), Etoile (unified event index + community management), and SimpleIdea (hackathon stack for kids).",
+    mosaicImages: [
+      "/projects/photo_2026-02-26%2016.04.31.jpeg",
+      "/projects/IMG_8785.jpg",
+      "/projects/20250819_171733.jpg",
+      "/projects/SCR-20260226-ogcq.jpeg",
+    ],
+  },
+];
 ---
 
 <Layout>
   <HeroScrolling />
+
+  <section class="py-14 md:py-20 bg-black">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="event-carousel" data-event-carousel>
+        <div class="event-carousel-dots" data-carousel-dots>
+          {
+            featuredSlides.map((_, index) => (
+              <button
+                class:list={["event-carousel-dot", index === 0 && "is-active"]}
+                type="button"
+                aria-label={`Go to slide ${index + 1}`}
+                data-carousel-dot
+                data-index={index}
+              />
+            ))
+          }
+        </div>
+
+        <div class="event-carousel-slides">
+          {
+            featuredSlides.map((slide, index) => (
+              <article
+                class:list={["event-slide", index === 0 && "is-active"]}
+                aria-hidden={index === 0 ? "false" : "true"}
+              >
+                <div
+                  class="event-slide-mosaic"
+                  aria-label={`${slide.title} photo mosaic`}
+                >
+                  {(
+                    slide.mosaicImages ?? [
+                      slide.src,
+                      slide.src,
+                      slide.src,
+                      slide.src,
+                    ]
+                  ).map((mosaicImage, mosaicIndex) => (
+                    <img
+                      src={mosaicImage}
+                      alt={`${slide.title} photo ${mosaicIndex + 1}`}
+                      class="event-slide-mosaic-image"
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                  ))}
+                </div>
+                <div class="event-slide-overlay">
+                  <div class="event-slide-copy">
+                    <h3 class="event-slide-title">{slide.title}</h3>
+                    <p class="event-slide-description">{slide.description}</p>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+
+        <button
+          class="event-carousel-arrow left"
+          type="button"
+          aria-label="Previous slide"
+          data-carousel-prev
+        >
+          &#10094;
+        </button>
+        <button
+          class="event-carousel-arrow right"
+          type="button"
+          aria-label="Next slide"
+          data-carousel-next
+        >
+          &#10095;
+        </button>
+      </div>
+    </div>
+  </section>
 
   <PartnersMarquee client:load />
 
@@ -242,8 +370,7 @@ const eventsData = [
 
       {/* Horizontal Timeline */}
       <HorizontalTimeline client:load events={eventsData} />
-
-      </div>
+    </div>
   </section>
 
   {/* Blog Section */}
@@ -256,63 +383,85 @@ const eventsData = [
       </div>
 
       <div class="grid md:grid-cols-2 gap-6">
-        {blogPosts.map((post) => (
-          <a href={`/blog/${post.slug}`} class="group rounded-2xl overflow-hidden bg-zinc-900/30 hover:bg-zinc-900/50 transition-all duration-300 border border-white/5 hover:border-white/10">
-            <div class="aspect-video bg-zinc-800 overflow-hidden">
-              {post.thumbnail ? (
-                <img
-                  src={post.thumbnail}
-                  alt={post.title}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              ) : (
-                <div class="w-full h-full flex items-center justify-center">
-                  <span class="text-zinc-600">No Image</span>
+        {
+          blogPosts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group rounded-2xl overflow-hidden bg-zinc-900/30 hover:bg-zinc-900/50 transition-all duration-300 border border-white/5 hover:border-white/10"
+            >
+              <div class="aspect-video bg-zinc-800 overflow-hidden">
+                {post.thumbnail ? (
+                  <img
+                    src={post.thumbnail}
+                    alt={post.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center">
+                    <span class="text-zinc-600">No Image</span>
+                  </div>
+                )}
+              </div>
+              <div class="p-6">
+                <div class="flex items-center gap-3 text-xs text-zinc-600 mb-3">
+                  <span>{post.author}</span>
+                  <span>•</span>
+                  <time>{post.date}</time>
+                  <span>•</span>
+                  <span>{post.readTime}</span>
                 </div>
-              )}
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-3 text-xs text-zinc-600 mb-3">
-                <span>{post.author}</span>
-                <span>•</span>
-                <time>{post.date}</time>
-                <span>•</span>
-                <span>{post.readTime}</span>
+                <h3 class="text-lg font-medium text-white mb-3 group-hover:text-zinc-300 transition-colors">
+                  {post.title}
+                </h3>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                  {post.excerpt}
+                </p>
+                <div class="flex items-center gap-2 text-sm text-zinc-400 group-hover:text-white transition-colors">
+                  Read more <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
-              <h3 class="text-lg font-medium text-white mb-3 group-hover:text-zinc-300 transition-colors">
-                {post.title}
-              </h3>
-              <p class="text-zinc-500 text-sm leading-relaxed mb-4 line-clamp-2">
-                {post.excerpt}
-              </p>
-              <div class="flex items-center gap-2 text-sm text-zinc-400 group-hover:text-white transition-colors">
-                Read more <ArrowRight className="w-4 h-4" />
-              </div>
-            </div>
-          </a>
-        ))}
+            </a>
+          ))
+        }
       </div>
-
     </div>
   </section>
 
   {/* Etoile CTA */}
   <section class="relative overflow-hidden">
     {/* Gradient that fades from black -> warm -> black */}
-    <div class="absolute inset-0 bg-gradient-to-b from-black via-[#1a0f08] to-black"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-black via-[#1a0f08] to-black"
+    >
+    </div>
     {/* Radial glow in center */}
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_50%,_rgba(254,119,67,0.12)_0%,_transparent_70%)]"></div>
+    <div
+      class="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_50%,_rgba(254,119,67,0.12)_0%,_transparent_70%)]"
+    >
+    </div>
 
     <div class="relative block">
       <div class="py-28 md:py-36 px-6 text-center">
-        <h3 class="text-6xl md:text-8xl lg:text-9xl italic mb-3" style="font-family: 'Amaranth', sans-serif; color: #FE7743;">
+        <h3
+          class="text-6xl md:text-8xl lg:text-9xl italic mb-3"
+          style="font-family: 'Amaranth', sans-serif; color: #FE7743;"
+        >
           etoile
         </h3>
 
         <div class="flex items-center justify-center gap-2 mb-4">
-          <span class="text-xs text-white/50 uppercase tracking-[0.15em]">by</span>
-          <img src="/nslogo.svg" alt="North Star" class="h-4 w-auto opacity-50" />
-          <span class="text-xs text-white/50 uppercase tracking-[0.15em] font-medium">North Star</span>
+          <span class="text-xs text-white/50 uppercase tracking-[0.15em]"
+            >by</span
+          >
+          <img
+            src="/nslogo.svg"
+            alt="North Star"
+            class="h-4 w-auto opacity-50"
+          />
+          <span
+            class="text-xs text-white/50 uppercase tracking-[0.15em] font-medium"
+            >North Star</span
+          >
         </div>
 
         <p class="text-white/60 text-lg md:text-xl mb-6 font-light">
@@ -342,27 +491,47 @@ const eventsData = [
       />
     </div>
     {/* Gradient overlay for transparent corners */}
-    <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black"
+    >
+    </div>
     {/* Radial vignette */}
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,_transparent_0%,_black_100%)]"></div>
+    <div
+      class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,_transparent_0%,_black_100%)]"
+    >
+    </div>
 
     <div class="relative block">
       <div class="py-28 md:py-36 px-6 text-center">
-        <h3 class="text-5xl md:text-7xl lg:text-8xl uppercase tracking-[0.15em] mb-3 text-white" style="font-family: 'Cormorant', serif;">
+        <h3
+          class="text-5xl md:text-7xl lg:text-8xl uppercase tracking-[0.15em] mb-3 text-white"
+          style="font-family: 'Cormorant', serif;"
+        >
           The Vessel
         </h3>
 
         <div class="flex items-center justify-center gap-2 mb-4">
-          <span class="text-xs text-white/50 uppercase tracking-[0.15em]">by</span>
-          <img src="/nslogo.svg" alt="North Star" class="h-4 w-auto opacity-50" />
-          <span class="text-xs text-white/50 uppercase tracking-[0.15em] font-medium">North Star</span>
+          <span class="text-xs text-white/50 uppercase tracking-[0.15em]"
+            >by</span
+          >
+          <img
+            src="/nslogo.svg"
+            alt="North Star"
+            class="h-4 w-auto opacity-50"
+          />
+          <span
+            class="text-xs text-white/50 uppercase tracking-[0.15em] font-medium"
+            >North Star</span
+          >
         </div>
 
         <p class="text-white/60 text-lg md:text-xl mb-6 font-light">
           An atelier for intelligent machines
         </p>
-
       </div>
     </div>
   </section>
@@ -376,24 +545,94 @@ const eventsData = [
         </h3>
       </div>
       <div class="w-full flex justify-center px-4 md:px-8">
-        <div class="w-full max-w-4xl rounded-2xl bg-zinc-900/30 p-12 text-center">
+        <div
+          class="w-full max-w-4xl rounded-2xl bg-zinc-900/30 p-12 text-center"
+        >
           <p class="text-zinc-400 text-lg mb-4">Reach out to us at</p>
-          <a href="mailto:filip@ns2agi.com" class="text-2xl md:text-3xl font-medium text-white hover:text-zinc-300 transition-colors">
+          <a
+            href="mailto:filip@ns2agi.com"
+            class="text-2xl md:text-3xl font-medium text-white hover:text-zinc-300 transition-colors"
+          >
             filip@ns2agi.com
           </a>
         </div>
-        {/* <iframe
+        {
+          /* <iframe
           src="https://beaded-pineapple-898.notion.site/ebd/274d61b47ae280be826fcc817dd3af2c"
           class="w-full max-w-4xl h-[700px] rounded-2xl border border-white/20"
           style="background: transparent;"
           title="Partner With Us Form"
-        ></iframe> */}
+        ></iframe> */
+        }
       </div>
     </div>
   </section>
 
   <JournalClubPopup />
 </Layout>
+
+<script is:inline>
+  const carousel = document.querySelector("[data-event-carousel]");
+
+  if (carousel) {
+    const slides = Array.from(carousel.querySelectorAll(".event-slide"));
+    const dots = Array.from(carousel.querySelectorAll("[data-carousel-dot]"));
+    const prevBtn = carousel.querySelector("[data-carousel-prev]");
+    const nextBtn = carousel.querySelector("[data-carousel-next]");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    let activeIndex = 0;
+    let timerId;
+
+    const setActiveSlide = (index) => {
+      activeIndex = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        const isActive = i === activeIndex;
+        slide.classList.toggle("is-active", isActive);
+        slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === activeIndex);
+      });
+    };
+
+    const goNext = () => setActiveSlide(activeIndex + 1);
+    const goPrev = () => setActiveSlide(activeIndex - 1);
+
+    const startAutoplay = () => {
+      if (prefersReducedMotion || slides.length <= 1) return;
+      clearInterval(timerId);
+      timerId = window.setInterval(goNext, 5500);
+    };
+
+    const stopAutoplay = () => {
+      clearInterval(timerId);
+    };
+
+    prevBtn?.addEventListener("click", () => {
+      goPrev();
+      startAutoplay();
+    });
+    nextBtn?.addEventListener("click", () => {
+      goNext();
+      startAutoplay();
+    });
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        setActiveSlide(index);
+        startAutoplay();
+      });
+    });
+
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+
+    setActiveSlide(0);
+    startAutoplay();
+  }
+</script>
 
 <style is:global>
   /* Custom scrollbar for horizontal timeline */
@@ -418,5 +657,197 @@ const eventsData = [
   .horizontal-timeline-scroll {
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  .event-carousel {
+    position: relative;
+    width: 100%;
+    height: min(82vh, 860px);
+    min-height: 420px;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #050505;
+  }
+
+  .event-carousel-dots {
+    position: absolute;
+    top: 0.9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    z-index: 3;
+  }
+
+  .event-carousel-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition:
+      transform 180ms ease,
+      background-color 180ms ease;
+  }
+
+  .event-carousel-dot.is-active {
+    background: rgba(255, 255, 255, 0.95);
+    transform: scale(1.08);
+  }
+
+  .event-carousel-slides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .event-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 400ms ease;
+    pointer-events: none;
+  }
+
+  .event-slide.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .event-slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .event-slide-mosaic {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem;
+    background: #000;
+    padding: 0.35rem;
+  }
+
+  .event-slide-mosaic-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.5rem;
+  }
+
+  .event-slide-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.94) 0%,
+      rgba(0, 0, 0, 0.55) 45%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+  }
+
+  .event-slide-copy {
+    width: 100%;
+    max-width: 860px;
+    padding: 1.2rem 1.2rem 1.6rem;
+    background: rgba(0, 0, 0, 0.58);
+    backdrop-filter: blur(2px);
+    border-top-right-radius: 0.65rem;
+  }
+
+  .event-slide-title {
+    margin: 0 0 0.45rem;
+    color: #fff;
+    font-size: clamp(1.35rem, 3vw, 2.4rem);
+    line-height: 1.1;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  .event-slide-description {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: clamp(0.92rem, 1.5vw, 1.1rem);
+    line-height: 1.45;
+    max-width: 70ch;
+  }
+
+  .event-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.82);
+    color: #fff;
+    font-size: 1.4rem;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease;
+    z-index: 3;
+  }
+
+  .event-carousel-arrow.left {
+    left: 1rem;
+  }
+
+  .event-carousel-arrow.right {
+    right: 1rem;
+  }
+
+  .event-carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.92);
+    border-color: rgba(255, 255, 255, 0.62);
+  }
+
+  @media (max-width: 768px) {
+    .event-carousel {
+      height: 66vh;
+      min-height: 360px;
+    }
+
+    .event-slide-copy {
+      padding: 1rem 0.9rem 1.2rem;
+    }
+
+    .event-slide-description {
+      max-width: 100%;
+    }
+
+    .event-carousel-arrow {
+      width: 2.3rem;
+      height: 2.3rem;
+      font-size: 1.2rem;
+    }
+
+    .event-carousel-arrow.left {
+      left: 0.6rem;
+    }
+
+    .event-carousel-arrow.right {
+      right: 0.6rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .event-slide {
+      transition: none;
+    }
   }
 </style>
