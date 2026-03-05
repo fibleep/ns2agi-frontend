@@ -29,7 +29,7 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Space+Mono:wght@400;700&display=swap"
             rel="stylesheet"
         />
 
@@ -40,6 +40,10 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
                     : "none",
             }}
         >
+            :root {
+                --offblack: #0a0a0a;
+            }
+
             html,
             body {
                 margin: 0;
@@ -47,10 +51,34 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
                 min-height: 100%;
                 font-family: "Space Mono", monospace;
                 scroll-behavior: smooth;
-                background-color: #000;
+                background-color: var(--offblack);
                 color: #fff;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
+            }
+
+            /* Keep existing Tailwind black utilities slightly off-black site-wide. */
+            .bg-black {
+                background-color: var(--offblack) !important;
+            }
+
+            .from-black {
+                --tw-gradient-from: rgb(10 10 10 / var(--tw-gradient-from-opacity, 1))
+                    var(--tw-gradient-from-position) !important;
+                --tw-gradient-to: rgb(10 10 10 / 0) var(--tw-gradient-to-position) !important;
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+            }
+
+            .via-black {
+                --tw-gradient-via: rgb(10 10 10 / var(--tw-gradient-via-opacity, 1))
+                    var(--tw-gradient-via-position) !important;
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via),
+                    var(--tw-gradient-to) !important;
+            }
+
+            .to-black {
+                --tw-gradient-to: rgb(10 10 10 / var(--tw-gradient-to-opacity, 1))
+                    var(--tw-gradient-to-position) !important;
             }
 
             .layout-container {
@@ -65,6 +93,13 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
 
             .main-content {
                 flex-grow: 1;
+                padding-bottom: calc(env(safe-area-inset-bottom) + 5.5rem);
+            }
+
+            @media (min-width: 1024px) {
+                .main-content {
+                    padding-bottom: 0;
+                }
             }
 
             /* Darken background images on mobile for better text contrast */

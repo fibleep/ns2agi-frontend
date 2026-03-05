@@ -1,20 +1,46 @@
 ---
-import { Image } from "astro:assets";
-import ns2agiLogo from "../assets/ns2agi-logo.svg";
-import { Menu, X, ChevronDown } from "lucide-react";
+import {
+    Briefcase,
+    Heart,
+    Info,
+    Mail,
+} from "lucide-react";
 
-const navLinks = [
+const currentPath = Astro.url.pathname;
+
+const desktopNavLinks = [
     {
         name: "DONATE",
         href: "https://weglow.world/o/northstaragi/c/VRN975Y6",
         external: true,
     },
-    // { name: "PROJECTS", href: "/projects" },
-    { name: "WORK WITH US", href: "/work-with-us" },
-    // { name: "STORE", href: "/store" },
+    { name: "COLLABORATE", href: "/work-with-us" },
     { name: "ABOUT", href: "/about" },
     { name: "CONTACT", href: "/contact" },
 ];
+
+const mobileNavLinks = [
+    {
+        name: "Donate",
+        href: "https://weglow.world/o/northstaragi/c/VRN975Y6",
+        icon: Heart,
+        external: true,
+    },
+    {
+        name: "Collaborate",
+        href: "/work-with-us",
+        icon: Briefcase,
+        external: false,
+    },
+    { name: "About", href: "/about", icon: Info, external: false },
+    { name: "Contact", href: "/contact", icon: Mail, external: false },
+];
+
+const isActivePath = (href: string) => {
+    if (href === "/") return currentPath === "/";
+    return currentPath === href || currentPath.startsWith(`${href}/`);
+};
+
 ---
 
 <header
@@ -44,155 +70,54 @@ const navLinks = [
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center gap-8">
                 {
-                    navLinks.map((link) => (
-                        <div class="relative group">
-                            <a
-                                href={link.href}
-                                target={link.external ? "_blank" : "_self"}
-                                rel={link.external ? "noopener noreferrer" : ""}
-                                class="flex items-center gap-1 text-sm font-medium text-white/80 hover:text-white transition-colors tracking-wide py-2"
-                            >
-                                {link.name}
-                                {link.dropdown && (
-                                    <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
-                                )}
-                            </a>
-
-                            {/* Dropdown Menu */}
-                            {link.dropdown && (
-                                <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
-                                    <div class="bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl p-2 min-w-[160px] shadow-2xl">
-                                        {link.dropdown.map((item) => (
-                                            <a
-                                                href={item.href}
-                                                target={
-                                                    item.external
-                                                        ? "_blank"
-                                                        : "_self"
-                                                }
-                                                rel={
-                                                    item.external
-                                                        ? "noopener noreferrer"
-                                                        : ""
-                                                }
-                                                class="flex items-center gap-3 px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-all"
-                                            >
-                                                {item.icon && (
-                                                    <img src={item.icon} alt="" class="w-5 h-5 object-contain" />
-                                                )}
-                                                {item.name}
-                                            </a>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
+                    desktopNavLinks.map((link) => (
+                        <a
+                            href={link.href}
+                            target={link.external ? "_blank" : "_self"}
+                            rel={link.external ? "noopener noreferrer" : ""}
+                            class="text-sm font-medium text-white/80 hover:text-white transition-colors tracking-wide py-2"
+                        >
+                            {link.name}
+                        </a>
                     ))
                 }
             </nav>
 
-            <!-- Mobile Menu Toggle -->
-            <button
-                id="mobile-menu-toggle"
-                class="lg:hidden text-white hover:text-white/80 transition-colors"
-            >
-                <Menu className="w-6 h-6" />
-            </button>
-        </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div
-        id="mobile-menu"
-        class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 pt-24 px-6 lg:hidden opacity-0 invisible transition-all duration-300 transform translate-x-full"
-    >
-        <button
-            id="mobile-menu-close"
-            class="absolute top-6 right-6 text-white hover:text-white/80 transition-colors"
-        >
-            <X className="w-6 h-6" />
-        </button>
-
-        <div class="flex flex-col space-y-6">
-            {
-                navLinks.map((link) => (
-                    <div>
-                        {link.dropdown ? (
-                            <div class="space-y-2">
-                                <div class="text-lg font-bold text-white tracking-wide border-b border-white/10 pb-2 mb-2">
-                                    {link.name}
-                                </div>
-                                <div class="pl-4 flex flex-col space-y-3">
-                                    {link.dropdown.map((item) => (
-                                        <a
-                                            href={item.href}
-                                            target={
-                                                item.external
-                                                    ? "_blank"
-                                                    : "_self"
-                                            }
-                                            rel={
-                                                item.external
-                                                    ? "noopener noreferrer"
-                                                    : ""
-                                            }
-                                            class="flex items-center gap-3 text-base text-white/70 hover:text-white transition-colors"
-                                        >
-                                            {item.icon && (
-                                                <img src={item.icon} alt="" class="w-5 h-5 object-contain" />
-                                            )}
-                                            {item.name}
-                                        </a>
-                                    ))}
-                                </div>
-                            </div>
-                        ) : (
-                            <a
-                                href={link.href}
-                                target={link.external ? "_blank" : "_self"}
-                                rel={link.external ? "noopener noreferrer" : ""}
-                                class="block text-lg font-bold text-white tracking-wide hover:text-white/80 transition-colors"
-                            >
-                                {link.name}
-                            </a>
-                        )}
-                    </div>
-                ))
-            }
+            <div class="w-6 h-6 lg:hidden" aria-hidden="true"></div>
         </div>
     </div>
 </header>
 
-<script>
-    const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
-    const mobileMenuClose = document.getElementById("mobile-menu-close");
-    const mobileMenu = document.getElementById("mobile-menu");
+<div class="fixed bottom-0 left-0 right-0 z-50 lg:hidden pointer-events-none">
+    <div
+        class="pointer-events-auto mobile-bottom-nav relative mx-2 mb-2 rounded-2xl border border-white/10 bg-black/90 backdrop-blur-xl shadow-[0_-8px_32px_rgba(0,0,0,0.35)]"
+    >
+        <nav
+            class="grid grid-cols-4 gap-1 px-2 pt-2"
+            style="padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem);"
+        >
+            {
+                mobileNavLinks.map((link) => {
+                    const Icon = link.icon;
+                    const isActive = isActivePath(link.href);
 
-    function toggleMenu(show: boolean) {
-        if (!mobileMenu) return;
-        if (show) {
-            mobileMenu.classList.remove(
-                "opacity-0",
-                "invisible",
-                "translate-x-full",
-            );
-            mobileMenu.classList.add("opacity-100", "visible", "translate-x-0");
-            document.body.style.overflow = "hidden";
-        } else {
-            mobileMenu.classList.add(
-                "opacity-0",
-                "invisible",
-                "translate-x-full",
-            );
-            mobileMenu.classList.remove(
-                "opacity-100",
-                "visible",
-                "translate-x-0",
-            );
-            document.body.style.overflow = "";
-        }
-    }
-
-    mobileMenuToggle?.addEventListener("click", () => toggleMenu(true));
-    mobileMenuClose?.addEventListener("click", () => toggleMenu(false));
-</script>
+                    return (
+                        <a
+                            href={link.href}
+                            target={link.external ? "_blank" : "_self"}
+                            rel={link.external ? "noopener noreferrer" : ""}
+                            class={`flex flex-col items-center justify-center gap-1 rounded-xl px-2 py-2 text-[10px] leading-tight font-semibold tracking-wide text-center transition-colors ${
+                                isActive
+                                    ? "bg-white/10 text-white"
+                                    : "text-white/55 hover:text-white/80 hover:bg-white/5"
+                            }`}
+                        >
+                            <Icon className="w-5 h-5" />
+                            <span>{link.name}</span>
+                        </a>
+                    );
+                })
+            }
+        </nav>
+    </div>
+</div>
