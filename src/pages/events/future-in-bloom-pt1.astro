@@ -1,0 +1,19 @@
+---
+import EventLayout from "../../components/EventLayout.astro";
+
+const images = [
+  { src: "/future-in-bloom/1.jpg", alt: "Future In Bloom" },
+];
+---
+
+<EventLayout
+  title="Future In Bloom Pt. I"
+  date="October 18, 2025"
+  location="Belgium"
+  type="Coworking"
+  description="Embodied AI coworking and build sessions pushing practical robotics work forward."
+  images={images}
+>
+  <p>Future In Bloom is our coworking format - no talks, no structure, just builders in a room working on embodied AI projects together. The first edition focused on practical robotics: training models, debugging hardware, and sharing what works.</p>
+  <p>The kind of session where someone across the table solves a problem you've been stuck on for a week, and you return the favor an hour later.</p>
+</EventLayout>

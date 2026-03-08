@@ -1,0 +1,73 @@
+---
+import CommitmentsPageLayout from "../../components/CommitmentsPageLayout.astro";
+import { ArrowRight } from "lucide-react";
+---
+
+<CommitmentsPageLayout currentId="events" title="Events">
+  <p class="cp-eyebrow">01 · Events</p>
+  <h1 class="cp-headline">Creating environments<br/>for connections</h1>
+  <p class="cp-lead">
+    We started North Star because as engineers, there was nothing to do in Belgium and nowhere to find technical people. Events are our bread and butter — we create environments where people meet to discuss tech, find co-founders, and learn something new.
+  </p>
+
+  <div class="cp-stats">
+    <div class="cp-stat">
+      <p class="cp-stat-number">12</p>
+      <p class="cp-stat-label">Events in<br/>year one</p>
+    </div>
+    <div class="cp-stat">
+      <p class="cp-stat-number">800+</p>
+      <p class="cp-stat-label">Builders<br/>in the room</p>
+    </div>
+    <div class="cp-stat">
+      <p class="cp-stat-number">20+</p>
+      <p class="cp-stat-label">Hires<br/>through NS</p>
+    </div>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-body">
+      Read why we do it in <a href="/blog/cost-of-connection" class="cp-link">Cost of Connection</a> — a story about brain drain, density, and why hosting rooms that bring technical people together is one of the highest-leverage things a community can do.
+    </p>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-section-label">Formats</p>
+    <div class="cp-format-rows">
+      <div class="cp-format-row">
+        <span class="cp-format-cat">Hackathons</span>
+        <span class="cp-format-items">Full-day · Half-day · 2-day</span>
+      </div>
+      <div class="cp-format-row">
+        <span class="cp-format-cat">Meetups</span>
+        <span class="cp-format-items">SIGNAL — AI & Robotics · Journal Club</span>
+      </div>
+      <div class="cp-format-row">
+        <span class="cp-format-cat">Workshops</span>
+        <span class="cp-format-items">OpenClaw · AI Adoption · Robotics</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-section-label">Gallery</p>
+    <div class="cp-gallery">
+      <img src="/ai-hackathon-ii/4.jpg" alt="AI Hackathon II" class="cp-gallery-img" loading="lazy" />
+      <img src="/signal-i/1.jpg" alt="SIGNAL I" class="cp-gallery-img" loading="lazy" />
+      <img src="/robotics-i/3.jpg" alt="Robotics Hackathon" class="cp-gallery-img" loading="lazy" />
+      <img src="/ai-hackathon-iii/10.jpg" alt="AI Hackathon III" class="cp-gallery-img" loading="lazy" />
+    </div>
+  </div>
+
+  <div class="cp-cta-row">
+    <a href="https://www.linkedin.com/company/north-star-agi" target="_blank" rel="noopener noreferrer" class="cp-cta-primary">
+      Follow on LinkedIn <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+    <a href="https://discord.gg/m5Hknymurb" target="_blank" rel="noopener noreferrer" class="cp-cta-secondary">
+      Join Discord <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+    <a href="/work-with-us" class="cp-cta-secondary">
+      Host or sponsor a format <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+  </div>
+</CommitmentsPageLayout>

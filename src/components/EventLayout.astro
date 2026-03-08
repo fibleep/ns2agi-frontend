@@ -1,0 +1,187 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+export interface Props {
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  type?: string;
+  images?: GalleryImage[];
+}
+
+const { title, date, location, description, type = "Event", images = [] } = Astro.props;
+---
+
+<Layout title={`${title} | North Star`}>
+  <main class="ev-detail">
+
+    <header class="ev-detail-header">
+      <a href="/commitments#events" class="ev-detail-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Events
+      </a>
+      <p class="ev-detail-meta">{type} &middot; {date} &middot; {location}</p>
+      <h1 class="ev-detail-title">{title}</h1>
+      <p class="ev-detail-desc">{description}</p>
+    </header>
+
+    {images.length > 0 && (
+      <section class="ev-detail-gallery">
+        {images.map((img) => (
+          <figure class="ev-detail-fig">
+            <img src={img.src} alt={img.alt} loading="lazy" />
+          </figure>
+        ))}
+      </section>
+    )}
+
+    <div class="ev-detail-body">
+      <slot />
+    </div>
+
+  </main>
+</Layout>
+
+<style is:global>
+  .ev-detail {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 5vw, 3rem);
+  }
+
+  .ev-detail-header {
+    padding: clamp(8rem, 18vh, 14rem) 0 clamp(2rem, 4vh, 3rem);
+  }
+
+  .ev-detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: "Space Mono", monospace;
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    transition: color 200ms ease;
+  }
+
+  .ev-detail-back:hover {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .ev-detail-meta {
+    margin: 0 0 0.8rem;
+    font-family: "Space Mono", monospace;
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.06em;
+  }
+
+  .ev-detail-title {
+    margin: 0 0 1rem;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.1;
+  }
+
+  .ev-detail-desc {
+    margin: 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(0.88rem, 1.1vw, 1rem);
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.7;
+    max-width: 55ch;
+  }
+
+  /* Gallery */
+  .ev-detail-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35rem;
+    margin-bottom: clamp(2rem, 4vh, 3rem);
+  }
+
+  .ev-detail-fig {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0.4rem;
+    aspect-ratio: 3 / 2;
+  }
+
+  .ev-detail-fig:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* orphan last image spans full width */
+  .ev-detail-fig:last-child:nth-child(even) {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
+  }
+
+  .ev-detail-fig img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.82) saturate(0.8);
+    transition: filter 400ms ease;
+  }
+
+  .ev-detail-fig:hover img {
+    filter: brightness(1) saturate(1);
+  }
+
+  @media (max-width: 520px) {
+    .ev-detail-gallery {
+      grid-template-columns: 1fr;
+    }
+    .ev-detail-fig {
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  /* Body content (slot) */
+  .ev-detail-body {
+    padding-bottom: clamp(3rem, 6vh, 5rem);
+  }
+
+  .ev-detail-body p {
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.48);
+    margin: 0 0 1.2rem;
+    max-width: 60ch;
+  }
+
+  .ev-detail-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ev-detail-body strong {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+  }
+
+  .ev-detail-body a {
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+
+  .ev-detail-body a:hover {
+    color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(255, 255, 255, 0.45);
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+import EventLayout from "../../components/EventLayout.astro";
+
+const images = [
+  { src: "/journal-club-1/photo_2026-03-08 19.28.17.jpeg", alt: "AI Community Journal Club" },
+];
+---
+
+<EventLayout
+  title="AI Community Journal Club #001"
+  date="February 26, 2026"
+  location="Belgium"
+  type="Journal Club"
+  description="A recurring paper-reading evening by AI Belgium and North Star - bringing research out of the lab and into the community."
+  images={images}
+>
+  <p>The first edition of a recurring format co-organized with AI Belgium. A paper-reading evening where researchers and practitioners sit in the same room, discuss the same paper, and bridge the gap between what gets published and what gets built.</p>
+  <p>Research doesn't compound if it stays in the lab. These evenings are how we make sure it doesn't.</p>
+</EventLayout>

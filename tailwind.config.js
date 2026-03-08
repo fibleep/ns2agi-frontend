@@ -5,8 +5,8 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['"Space Mono"', 'monospace'],
-				mono: ['"Space Mono"', 'monospace'],
+				sans: ['"Geist"', 'sans-serif'],
+				mono: ['"Geist"', 'sans-serif'],
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

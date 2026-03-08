@@ -1,0 +1,19 @@
+---
+import EventLayout from "../../components/EventLayout.astro";
+
+const images = [
+  { src: "/openclaw-meetup/photo_2026-03-08 19.28.34.jpeg", alt: "OpenClaw Meetup" },
+];
+---
+
+<EventLayout
+  title="OpenClaw Deep Dive"
+  date="February 25, 2026"
+  location="Ghent, Belgium"
+  type="Meetup"
+  description="An open evening for builders in collaboration with ICP Belgium, featuring a talk and live stations on OpenClaw AI agents."
+  images={images}
+>
+  <p>A collaborative evening with ICP Belgium diving deep into OpenClaw - an open-source framework for AI agents. The format combined a technical talk with live demo stations where builders could get hands-on with the tooling.</p>
+  <p>The kind of event where you show up curious about a framework and leave with a running prototype.</p>
+</EventLayout>

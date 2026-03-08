@@ -1,0 +1,89 @@
+---
+import CommitmentsPageLayout from "../../components/CommitmentsPageLayout.astro";
+import { ArrowRight } from "lucide-react";
+---
+
+<CommitmentsPageLayout currentId="engineering" title="Engineering">
+  <p class="cp-eyebrow">03 · Engineering</p>
+  <h1 class="cp-headline">Products that come from<br/>community friction</h1>
+  <p class="cp-lead">
+    Every tool we build started as a problem we hit running North Star. We weren't looking to start a product studio — we were trying to solve our own operational pain. That constraint produces software that's specific, opinionated, and actually used.
+  </p>
+
+  <div class="cp-stats">
+    <div class="cp-stat">
+      <p class="cp-stat-number">4</p>
+      <p class="cp-stat-label">Active projects</p>
+    </div>
+    <div class="cp-stat">
+      <p class="cp-stat-number">2</p>
+      <p class="cp-stat-label">Live products</p>
+    </div>
+    <div class="cp-stat">
+      <p class="cp-stat-number">1</p>
+      <p class="cp-stat-label">R&amp;D residency format</p>
+    </div>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-section-label">Projects</p>
+    <div class="cp-projects-grid">
+      <a href="https://etoile.events" target="_blank" rel="noopener noreferrer" class="cp-project-card">
+        <p class="cp-project-name">Étoile</p>
+        <p class="cp-project-desc">Index of AI & tech events across Belgium. AI-native community management — scraping, deduplication, and curation in one tool. Born out of the pain of maintaining a manual event calendar.</p>
+      </a>
+      <a href="https://thevessel.be" target="_blank" rel="noopener noreferrer" class="cp-project-card">
+        <p class="cp-project-name">The Vessel</p>
+        <p class="cp-project-desc">An atelier for intelligent machines in Antwerp. Not just a space — a product for community-as-infrastructure. Open Thursdays, workshops, and residencies.</p>
+      </a>
+      <div class="cp-project-card">
+        <p class="cp-project-name">SimpleIdea</p>
+        <p class="cp-project-desc">Infrastructure for the kids hackathon and a broader stack for AI in education. Lets 8-year-olds ship working projects in an afternoon without barriers.</p>
+      </div>
+      <div class="cp-project-card">
+        <p class="cp-project-name">Aegis</p>
+        <p class="cp-project-desc">Internal operations layer for North Star. Volunteer coordination, event logistics, sponsor management. We dogfood our own tools before we ship them.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-section-label">How we build</p>
+    <div class="cp-pillars">
+      <div class="cp-pillar">
+        <p class="cp-pillar-title">Hackathon-to-product pipeline</p>
+        <p class="cp-pillar-body">Prototypes that solve real problems get continued post-event. Étoile's event scraping engine was a winning submission at AI Hackathon III. That team is now part of the North Star engineering orbit.</p>
+      </div>
+      <div class="cp-pillar">
+        <p class="cp-pillar-title">R&D Residencies</p>
+        <p class="cp-pillar-body">Short-form collaborative research sprints at The Vessel. Engineers from the community come together for 1–2 weeks to explore a specific technical question — robotics, multi-agent systems, applied AI. Output: prototypes, working code, and new collaborations.</p>
+      </div>
+      <div class="cp-pillar">
+        <p class="cp-pillar-title">Community feedback loops</p>
+        <p class="cp-pillar-body">We see where organizers lose time, where builders miss opportunities, where education needs better tools. That repeated contact with reality is a better product brief than any strategy deck.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-section-label">Gallery</p>
+    <div class="cp-gallery">
+      <img src="/ai-hackathon-iii/4.jpg" alt="AI Hackathon III" class="cp-gallery-img" loading="lazy" />
+      <img src="/robotics-i/3.jpg" alt="Robotics Hackathon" class="cp-gallery-img" loading="lazy" />
+      <img src="/future-in-bloom/2.jpg" alt="Future in Bloom" class="cp-gallery-img" loading="lazy" />
+      <img src="/stripe-hackathon/1.png" alt="Stripe Hackathon" class="cp-gallery-img" loading="lazy" />
+    </div>
+  </div>
+
+  <div class="cp-cta-row">
+    <a href="https://etoile.events" target="_blank" rel="noopener noreferrer" class="cp-cta-primary">
+      Visit Étoile <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+    <a href="https://thevessel.be" target="_blank" rel="noopener noreferrer" class="cp-cta-secondary">
+      The Vessel <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+    <a href="/work-with-us" class="cp-cta-secondary">
+      Build with us <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+  </div>
+</CommitmentsPageLayout>

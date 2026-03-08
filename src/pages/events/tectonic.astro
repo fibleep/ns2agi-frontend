@@ -1,0 +1,20 @@
+---
+import EventLayout from "../../components/EventLayout.astro";
+
+const images = [
+  { src: "/tectonic/tectonic.jpeg", alt: "Tectonic Conference" },
+  { src: "/tectonic/SCR-20260308-stdv.jpeg", alt: "Tectonic Conference" },
+];
+---
+
+<EventLayout
+  title="Tectonic"
+  date="November 5, 2025"
+  location="Belgium"
+  type="Conference"
+  description="Major Belgian tech conference - North Star brought a humanoid, a robot dog, SO-101 arms, and animated a KUKA industrial arm live on the floor."
+  images={images}
+>
+  <p>Tectonic is one of Belgium's biggest tech conferences, and we turned our stand into a robotics playground. We animated a KUKA industrial arm, brought a humanoid and a robot dog to entertain the crowds, and demonstrated our SO-101 arms to anyone who stopped by.</p>
+  <p>The goal was simple: make robotics tangible. Not slides about the future - actual machines moving, responding, and surprising people who thought this tech was still years away.</p>
+</EventLayout>

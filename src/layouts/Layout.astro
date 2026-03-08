@@ -1,5 +1,6 @@
 ---
 import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 export interface Props {
     title?: string;
@@ -14,7 +15,7 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
 
@@ -29,7 +30,7 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Space+Mono:wght@400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Amaranth&family=Cormorant:wght@500;600&family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&display=swap"
             rel="stylesheet"
         />
 
@@ -41,7 +42,7 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
             }}
         >
             :root {
-                --offblack: #0a0a0a;
+                --offblack: #0f0e0c;
             }
 
             html,
@@ -49,7 +50,7 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
                 margin: 0;
                 width: 100%;
                 min-height: 100%;
-                font-family: "Space Mono", monospace;
+                font-family: "Geist", sans-serif;
                 scroll-behavior: smooth;
                 background-color: var(--offblack);
                 color: #fff;
@@ -81,6 +82,19 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
                     var(--tw-gradient-to-position) !important;
             }
 
+            /* Paper grain overlay */
+            body::after {
+                content: '';
+                position: fixed;
+                inset: 0;
+                pointer-events: none;
+                z-index: 9999;
+                opacity: 0.038;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+                background-size: 160px;
+                background-repeat: repeat;
+            }
+
             .layout-container {
                 min-height: 100vh;
                 display: flex;
@@ -93,12 +107,17 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
 
             .main-content {
                 flex-grow: 1;
-                padding-bottom: calc(env(safe-area-inset-bottom) + 5.5rem);
+                padding-top: calc(env(safe-area-inset-top) + 0.5rem);
             }
 
             @media (min-width: 1024px) {
                 .main-content {
-                    padding-bottom: 0;
+                    padding-top: 5.5rem;
+                }
+
+                section[id],
+                div[id] {
+                    scroll-margin-top: 5.5rem;
                 }
             }
 
@@ -113,6 +132,17 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
     <body
         class="bg-background text-foreground antialiased selection:bg-white/20"
     >
+        <div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;width:0%;background:rgba(255,255,255,0.45);z-index:99999;pointer-events:none;"></div>
+        <script is:inline>
+          (function() {
+            var bar = document.getElementById('scroll-progress');
+            window.addEventListener('scroll', function() {
+              var scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+              var total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+              bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+            }, { passive: true });
+          })();
+        </script>
         <div class="layout-container relative">
             <Navbar />
             {
@@ -121,14 +151,10 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
                 )
             }
 
-            <div
-                class="fixed inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent pointer-events-none -z-20"
-            >
-            </div>
-
             <div class="main-content relative z-10">
                 <slot />
             </div>
+            <Footer />
         </div>
     </body>
 </html>

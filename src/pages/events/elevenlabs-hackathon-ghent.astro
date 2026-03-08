@@ -1,0 +1,23 @@
+---
+import EventLayout from "../../components/EventLayout.astro";
+
+const images = [
+  { src: "/elevenlabs/1.jpg", alt: "ElevenLabs Hackathon" },
+  { src: "/elevenlabs/2.jpeg", alt: "ElevenLabs Hackathon" },
+  { src: "/elevenlabs/3.jpg", alt: "ElevenLabs Hackathon" },
+  { src: "/elevenlabs/5.jpg", alt: "ElevenLabs Hackathon" },
+];
+---
+
+<EventLayout
+  title="ElevenLabs Worldwide Hackathon"
+  date="December 11, 2025"
+  location="Wintercircus, Ghent"
+  type="Hackathon"
+  description="Community edition of the ElevenLabs global hackathon - 40 builders in Ghent, part of a simultaneous event across 30 cities worldwide."
+  images={images}
+>
+  <p>The ElevenLabs Worldwide Hackathon ran simultaneously across 30 cities. Our Ghent edition, hosted at the Wintercircus in collaboration with ElevenLabs, brought together 40 builders for an evening of conversational AI development.</p>
+  <p>The theme was conversational agents - how cutting-edge AI systems can communicate, collaborate, and co-create. Teams of up to four had four hours to build and present, competing for a share of ElevenLabs' global prize pool.</p>
+  <p>CTOs, AI engineers, and deep learning specialists from across Belgium showed up to build. The kind of density you need for real collisions to happen.</p>
+</EventLayout>

@@ -1,0 +1,19 @@
+---
+import EventLayout from "../../components/EventLayout.astro";
+
+const images = [
+  { src: "/stripe-hackathon/1.png", alt: "Agentic Payments Hackathon with Stripe" },
+];
+---
+
+<EventLayout
+  title="Agentic Payments Hackathon with Stripe"
+  date="November 22, 2025"
+  location="Antwerp, Belgium"
+  type="Hackathon"
+  description="A payments-focused hackathon in partnership with Stripe - 30 builders exploring what happens when AI agents handle money."
+  images={images}
+>
+  <p>When AI agents start making purchases, processing refunds, and managing subscriptions autonomously, payments infrastructure needs to keep up. This hackathon, in partnership with Stripe, brought together 30 builders to explore that frontier.</p>
+  <p>Teams built agentic checkout flows, automated payment reconciliation systems, and experiments in autonomous financial operations. The kind of builds that sit at the intersection of AI capability and real-world money movement.</p>
+</EventLayout>

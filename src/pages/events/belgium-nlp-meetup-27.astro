@@ -1,0 +1,19 @@
+---
+import EventLayout from "../../components/EventLayout.astro";
+
+const images = [
+  { src: "/belgium-nlp-meetup/1.avif", alt: "27th Belgium NLP Meetup" },
+];
+---
+
+<EventLayout
+  title="27th Belgium NLP Meetup"
+  date="November 20, 2025"
+  location="Belgium"
+  type="Meetup"
+  description="AI and multi-agent systems meetup centered on production-ready systems and real-world demos."
+  images={images}
+>
+  <p>The 27th edition of the Belgium NLP Meetup focused on what it takes to move AI systems from research to production. Multi-agent architectures, real-world deployment challenges, and live demos of systems actually running in the wild.</p>
+  <p>A gathering for the people who care less about benchmarks and more about whether the thing actually works when you ship it.</p>
+</EventLayout>

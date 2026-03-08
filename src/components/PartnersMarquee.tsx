@@ -153,7 +153,7 @@ const PartnersMarquee = () => {
     { src: '/partnerships/workedwith/26.png', alt: 'Young Engineers Liège', url: 'https://liegeville.youngengineers.org/' },
     { src: '/partnerships/workedwith/27.png', alt: 'European AI Office', url: 'https://digital-strategy.ec.europa.eu/en/policies/ai-office' },
     { src: '/partnerships/workedwith/28.png', alt: 'La Grand Poste', url: 'https://www.lagrandposte.be/' },
-    { src: '/partnerships/workedwith/20.svg', alt: 'Tectonic Conf', url: 'https://tectonicconf.eu/' },
+    { src: '/tectonic/tectonic.jpeg', alt: 'Tectonic Conf', url: 'https://tectonicconf.eu/' },
     { src: '/partnerships/workedwith/5.png', alt: 'Campus 19 (42) Belgium', url: 'https://campus19.be/' },
     { src: '/partnerships/workedwith/9.png', alt: 'E6K Kortrijk', url: 'https://www.e6k.be/' },
     { src: '/partnerships/workedwith/22.png', alt: 'WAT', url: 'https://www.wat.com/' }

@@ -1,108 +1,25 @@
 ---
-import ImageGallery from '../../components/ImageGallery.astro';
-import Layout from '../../layouts/Layout.astro';
+import EventLayout from "../../components/EventLayout.astro";
 
-const speakers = [
-  {
-    name: "Daria Matviichuk & Samuel Berton",
-    company: "Bugify",
-    topic: "Collapse of modern software development",
-    description: "With an explosion of code, an explosion of bugs is sure to follow - how can we handle this? This team is one of the winners of our first hackathon - home raised ✌️",
-    emoji: "🪲"
-  },
-  {
-    name: "Thomas Huybrechts",
-    company: "Researcher @ imec",
-    topic: "Social Robotics + animatronic parrot demo!",
-    description: "An exciting exploration into social robotics with live demonstrations featuring an animatronic parrot.",
-    emoji: "🤖"
-  }
-];
-
-
-const signalImages = [
-  { src: "/signal-i/29.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/28.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/27.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/26.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/25.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/24.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/23.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/22.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/21.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/20.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/19.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/18.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/17.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/16.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/15.jpg", alt: "SIGNAL I Event" },
-  { src: "/signal-i/14.jpg", alt: "SIGNAL I Event" }
+const images = [
+  { src: "/signal-i/1.jpg", alt: "SIGNAL I" },
+  { src: "/signal-i/8.jpg", alt: "SIGNAL I" },
+  { src: "/signal-i/12.jpg", alt: "SIGNAL I" },
+  { src: "/signal-i/15.jpg", alt: "SIGNAL I" },
+  { src: "/signal-i/20.jpg", alt: "SIGNAL I" },
 ];
 ---
 
-<Layout>
-  <main class="container mx-auto px-4 pt-32 pb-24">
-    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-8 text-center animate-fade-in text-white">SIGNAL I - Recap</h1>
-    <p class="text-center text-lg text-zinc-400 mb-12 animate-fade-in-delay-1">
-      June 5, 2025 in Antwerp, Belgium
-    </p>
-
-    
-    <section class="mb-12 animate-fade-in-delay-2 backdrop-blur-sm bg-white/5 rounded-3xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto border border-white/10">
-        <h2 class="text-3xl font-semibold mb-6 text-white border-b border-zinc-800 pb-3">Our First SIGNAL Event! 📡</h2>
-        <p class="text-lg mb-4 text-zinc-400 leading-relaxed">
-            Our first SIGNAL event brought together AI enthusiasts, researchers, and builders to explore the cutting edge of technology. An amazing evening of insights and connections!
-        </p>
-        <p class="text-lg text-zinc-400 leading-relaxed">
-            From the collapse of modern software development to social robotics demonstrations, we covered fascinating topics that sparked engaging discussions throughout the evening.
-        </p>
-    </section>
-
-    
-    <section class="mb-12 animate-fade-in-delay-3 max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-8 text-white text-center">Featured Speakers 🎤</h2>
-      <div class="grid md:grid-cols-2 gap-6 md:gap-8">
-        {speakers.map((speaker, index) => (
-          <div class={`${
-              index === 0 ? 'bg-blue-500/10' : 'bg-green-500/10'
-            } backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/10 flex flex-col h-full`}>
-            <div class="text-center mb-4">
-              <div class="text-3xl mb-2">{speaker.emoji}</div>
-              <h3 class="text-xl font-bold mb-2 text-white">{speaker.name}</h3>
-              <p class="text-white/70 font-medium mb-2">{speaker.company}</p>
-              <h4 class="text-lg font-semibold text-white/90 mb-3">{speaker.topic}</h4>
-            </div>
-            <p class="text-zinc-400 flex-grow text-center">{speaker.description}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-
-     
-     <ImageGallery
-        images={signalImages}
-        title="Event Highlights"
-        class="mb-12 animate-fade-in-delay-4"
-      />
-
-    
-    <section class="text-center animate-fade-in-delay-5 max-w-4xl mx-auto">
-       <h2 class="text-3xl font-semibold mb-6 text-white">What's Next?</h2>
-       <p class="text-lg mb-4 text-zinc-400">
-         Don't miss future SIGNAL events and other exciting gatherings. Connect with us and be part of North Star's growing community.
-       </p>
-       <a
-         href="https://discord.gg/m5Hknymurb"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-[#5462EB] rounded-full hover:bg-[#4754c4] transition-colors duration-300 shadow-md"
-       >
-         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-             <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
-         </svg>
-         Join Discord & Share Feedback
-       </a>
-    </section>
-
-  </main>
-</Layout>
+<EventLayout
+  title="SIGNAL I"
+  date="June 5, 2025"
+  location="Antwerp, Belgium"
+  type="Meetup"
+  description="The first SIGNAL meetup - 50 people, demos instead of slides, and conversations that make you want to rewrite your roadmap."
+  images={images}
+>
+  <p>SIGNAL is North Star's flagship AI and Robotics meetup. Not a conference. A room for people who build with intelligence. Fifty people showed up for the first edition.</p>
+  <p>Thomas Huybrechts from imec opened with a live animatronics demo - a social robotics parrot that turned the room into a mix of fascination and nervous laughter. The kind of demo you don't forget.</p>
+  <p>Samuel Berton and Daria Matviichuk, winners of our first hackathon, followed with a talk on their project Bugify and how vibecoding is eating the software industry. Two builders who shipped something real, standing on stage weeks later explaining why it matters.</p>
+  <p>The kind of evening where you walk in with one idea and leave with three.</p>
+</EventLayout>

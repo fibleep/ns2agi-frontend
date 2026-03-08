@@ -1,8 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { ExternalLink } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { getEventLink } from "@/lib/event-routes";
 
 interface Event {
@@ -18,190 +16,263 @@ interface Event {
 
 interface HorizontalTimelineProps {
   events: Event[];
+  compact?: boolean;
+  initialScrollTarget?: "start" | "end";
 }
 
-export default function HorizontalTimeline({ events }: HorizontalTimelineProps) {
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function formatDate(raw: string): string {
+  const d = new Date(raw);
+  if (isNaN(d.getTime())) return raw;
+  return `${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+export default function HorizontalTimeline({ events, initialScrollTarget = "start" }: HorizontalTimelineProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = React.useState(false);
+  const thumbRef = React.useRef<HTMLDivElement>(null);
 
-  // Detect mobile viewport
-  React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Responsive sizing constants
-  const cardWidth = isMobile ? 280 : 320;
-  const gap = isMobile ? 24 : 48;
-
-  // Sort events by date (newest first for a better "timeline" feel in this context, or keep oldest first? 
-  // Actually, usually timelines go left to right, oldest to newest. Let's keep that.)
   const sortedEvents = React.useMemo(() => {
-    if (!events || events.length === 0) {
-      return [];
-    }
-    return [...events].sort((a, b) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
-      return dateA.getTime() - dateB.getTime();
-    });
+    if (!events || events.length === 0) return [];
+    return [...events].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
   }, [events]);
 
-  // Find the index of the first upcoming event (today's position)
-  const todayIndex = React.useMemo(() => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    for (let i = 0; i < sortedEvents.length; i++) {
-      const eventDate = new Date(sortedEvents[i].date);
-      eventDate.setHours(0, 0, 0, 0);
-
-      if (eventDate >= today) {
-        return i;
-      }
-    }
-    return sortedEvents.length;
-  }, [sortedEvents]);
-
-  // Auto-scroll to TODAY marker on mount
   React.useEffect(() => {
     const container = containerRef.current;
-    if (!container || todayIndex === 0 || todayIndex >= sortedEvents.length) return;
+    if (!container) return;
+    if (initialScrollTarget === "end") {
+      const scroll = () => { container.scrollLeft = container.scrollWidth - container.clientWidth; };
+      scroll();
+      const raf = requestAnimationFrame(scroll);
+      return () => cancelAnimationFrame(raf);
+    }
+  }, [sortedEvents, initialScrollTarget]);
 
-    const timer = setTimeout(() => {
-      const leftPadding = isMobile ? (window.innerWidth / 2) - (cardWidth / 2) : 100;
-      const todayPos = todayIndex * (cardWidth + gap);
-      const scrollPosition = todayPos - (container.clientWidth / 2) + (cardWidth / 2);
+  React.useEffect(() => {
+    const container = containerRef.current;
+    const thumb = thumbRef.current;
+    if (!container || !thumb) return;
+    const update = () => {
+      const max = container.scrollWidth - container.clientWidth;
+      if (max <= 0) { thumb.style.display = "none"; return; }
+      const pct = container.scrollLeft / max;
+      thumb.style.left = `${pct * 60}%`;
+    };
+    update();
+    container.addEventListener("scroll", update, { passive: true });
+    return () => container.removeEventListener("scroll", update);
+  }, [sortedEvents]);
 
-      container.scrollTo({
-        left: Math.max(0, scrollPosition),
-        behavior: 'smooth'
-      });
-    }, 500);
+  if (!events || events.length === 0) return null;
 
-    return () => clearTimeout(timer);
-  }, [todayIndex, sortedEvents.length, cardWidth, gap, isMobile]);
-
-  if (!events || events.length === 0) {
-    return (
-      <div className="text-center py-12">
-        <p className="text-muted-foreground">No events to display</p>
-      </div>
-    );
-  }
+  const today = new Date();
 
   return (
-    <div className="relative w-full group">
-      {/* Scrollable timeline container */}
+    <div style={{ position: "relative", width: "100%" }}>
       <div
         ref={containerRef}
-        className="overflow-x-auto overflow-y-hidden pb-12 horizontal-timeline-scroll snap-x snap-mandatory md:snap-none hide-scrollbar"
-        style={{ WebkitOverflowScrolling: 'touch' }}
+        className="horizontal-timeline-scroll"
+        style={{
+          overflowX: "auto",
+          overflowY: "hidden",
+          scrollBehavior: "auto",
+          paddingBottom: "1rem",
+          msOverflowStyle: "none",
+          scrollbarWidth: "none",
+        }}
       >
         <div
-          className="relative flex px-6 md:px-24 py-8"
-          style={{ gap: `${gap}px` }}
+          style={{
+            display: "flex",
+            gap: "clamp(1rem, 2.5vw, 1.8rem)",
+            padding: "0.5rem clamp(1rem, 4vw, 3rem) 0.5rem",
+            width: "max-content",
+          }}
         >
-          {sortedEvents.map((event, index) => {
+          {sortedEvents.map((event) => {
             const eventDate = new Date(event.date);
-            eventDate.setHours(23, 59, 59, 999);
-            const today = new Date();
             const isPast = eventDate < today;
-            const isUpcoming = !isPast;
-            const isToday = index === todayIndex;
+            const href = event.link || getEventLink(event.id);
 
             return (
-              <div
+              <a
                 key={event.id}
-                className={cn(
-                  "relative flex flex-col snap-center shrink-0 transition-opacity duration-500",
-                  isPast ? "opacity-60 hover:opacity-100" : "opacity-100"
-                )}
-                style={{ width: `${cardWidth}px` }}
+                href={href}
+                className="ht-card"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.75rem",
+                  width: "clamp(200px, 22vw, 290px)",
+                  flexShrink: 0,
+                  textDecoration: "none",
+                  opacity: isPast ? 0.7 : 1,
+                  transition: "opacity 300ms ease",
+                }}
               >
-                {/* Date Marker Line */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div className={cn(
-                    "h-[1px] w-full",
-                    isToday ? "bg-white" : "bg-zinc-800"
-                  )}></div>
-                  <span className={cn(
-                    "text-xs font-mono whitespace-nowrap",
-                    isToday ? "text-white font-bold" : "text-zinc-600"
-                  )}>
-                    {event.date}
+                {/* Date */}
+                <span style={{
+                  fontFamily: '"Geist", sans-serif',
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.28)",
+                  lineHeight: 1,
+                }}>
+                  {formatDate(event.date)}
+                </span>
+
+                {/* Image */}
+                <div className="ht-img-wrap" style={{
+                  position: "relative",
+                  aspectRatio: "4 / 3",
+                  overflow: "hidden",
+                  borderRadius: "0.6rem",
+                  background: "rgba(255,255,255,0.03)",
+                }}>
+                  {event.thumbnail ? (
+                    <img
+                      src={event.thumbnail}
+                      alt=""
+                      className="ht-img"
+                      loading="lazy"
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: event.thumbnail.endsWith(".svg") ? "contain" : "cover",
+                        padding: event.thumbnail.endsWith(".svg") ? "1.5rem" : 0,
+                        filter: "brightness(0.42) saturate(0.55)",
+                        transform: "scale(1.04)",
+                        transition: "transform 500ms cubic-bezier(0.2, 0.85, 0.25, 1), filter 400ms ease",
+                      }}
+                    />
+                  ) : (
+                    <div style={{ width: "100%", height: "100%", background: "rgba(255,255,255,0.02)" }} />
+                  )}
+                  <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)",
+                    pointerEvents: "none",
+                  }} />
+                  <span style={{
+                    position: "absolute",
+                    top: "0.6rem",
+                    right: "0.6rem",
+                    fontFamily: '"Geist", sans-serif',
+                    fontSize: "0.65rem",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: isPast ? "rgba(255,255,255,0.38)" : "rgba(255,255,255,0.82)",
+                    background: isPast ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.08)",
+                    backdropFilter: "blur(8px)",
+                    padding: "0.25rem 0.5rem",
+                    borderRadius: "9999px",
+                    border: isPast ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(255,255,255,0.18)",
+                  }}>
+                    {isPast ? "Past" : "Upcoming"}
                   </span>
                 </div>
 
-                {/* Card */}
-                <a
-                  href={event.link || getEventLink(event.id)}
-                  className="group/card block h-full"
-                >
-                  <div className="relative aspect-video overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800 transition-all duration-300 group-hover/card:border-zinc-700">
-                    {event.thumbnail ? (
-                      <img
-                        src={event.thumbnail}
-                        alt={event.title}
-                        className={cn(
-                          "w-full h-full transition-transform duration-500 group-hover/card:scale-105",
-                          event.thumbnail.endsWith('.svg')
-                            ? "p-10 object-contain"
-                            : "object-cover"
-                        )}
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <span className="text-zinc-600">No Image</span>
-                      </div>
-                    )}
-
-                    {/* Status Badge Overlay */}
-                    {isUpcoming && (
-                      <div className="absolute top-3 right-3">
-                        <span className="bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded-full">
-                          Upcoming
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="mt-4 flex flex-col h-[120px]">
-                    <div className="flex items-start justify-between gap-2">
-                      <h3 className="text-base font-medium leading-tight text-white group-hover/card:text-zinc-300 transition-colors line-clamp-2">
-                        {event.title}
-                      </h3>
-                      <ExternalLink className="w-4 h-4 text-zinc-600 shrink-0 opacity-0 group-hover/card:opacity-100 transition-opacity" />
-                    </div>
-
-                    <p className="text-sm text-zinc-500 line-clamp-2 leading-relaxed mt-2">
-                      {event.description}
-                    </p>
-
-                    <div className="mt-auto pt-2">
-                      {event.organizationType && (
-                        <span className="text-[10px] font-medium uppercase tracking-wider text-zinc-600">
-                          {event.organizationType}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </a>
-              </div>
+                {/* Text */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem", flex: 1 }}>
+                  <h3 style={{
+                    margin: 0,
+                    fontFamily: '"Instrument Serif", serif',
+                    fontStyle: "italic",
+                    fontSize: "clamp(1rem, 1.6vw, 1.25rem)",
+                    fontWeight: 400,
+                    color: "rgba(255,255,255,0.88)",
+                    lineHeight: 1.15,
+                  }}>
+                    {event.title}
+                  </h3>
+                  <p style={{
+                    margin: 0,
+                    fontFamily: '"Geist", sans-serif',
+                    fontSize: "0.78rem",
+                    lineHeight: 1.6,
+                    color: "rgba(255,255,255,0.35)",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                    flex: 1,
+                  }}>
+                    {event.description}
+                  </p>
+                  {event.organizationType && (
+                    <span style={{
+                      marginTop: "auto",
+                      paddingTop: "0.3rem",
+                      fontFamily: '"Geist", sans-serif',
+                      fontSize: "0.65rem",
+                      letterSpacing: "0.16em",
+                      textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.2)",
+                    }}>
+                      {event.organizationType}
+                    </span>
+                  )}
+                </div>
+              </a>
             );
           })}
         </div>
       </div>
 
-      {/* Fade gradients for scroll indication */}
-      <div className="absolute top-0 bottom-0 left-0 w-12 md:w-24 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
-      <div className="absolute top-0 bottom-0 right-0 w-12 md:w-24 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+      {/* Fade edges */}
+      <div style={{
+        position: "absolute", top: 0, bottom: 0, left: 0,
+        width: "clamp(3rem, 8vw, 6rem)",
+        background: "linear-gradient(to right, #0f0e0c, transparent)",
+        pointerEvents: "none", zIndex: 2,
+      }} />
+      <div style={{
+        position: "absolute", top: 0, bottom: 0, right: 0,
+        width: "clamp(3rem, 8vw, 6rem)",
+        background: "linear-gradient(to left, #0f0e0c, transparent)",
+        pointerEvents: "none", zIndex: 2,
+      }} />
+
+      {/* Scroll progress track */}
+      <div className="ht-scrollbar-track">
+        <div className="ht-scrollbar-thumb" ref={thumbRef} />
+      </div>
+
+      <style>{`
+        .ht-card:hover .ht-img {
+          transform: scale(1) !important;
+          filter: brightness(0.62) saturate(0.75) !important;
+        }
+        .ht-card:hover {
+          opacity: 1 !important;
+        }
+        .horizontal-timeline-scroll::-webkit-scrollbar {
+          display: none;
+        }
+        .ht-scrollbar-track {
+          width: clamp(60px, 12vw, 120px);
+          height: 2px;
+          background: rgba(255,255,255,0.08);
+          border-radius: 1px;
+          margin: 1rem auto 0;
+          position: relative;
+          overflow: hidden;
+        }
+        .ht-scrollbar-thumb {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 40%;
+          background: rgba(255,255,255,0.28);
+          border-radius: 1px;
+          transition: left 100ms ease-out;
+        }
+      `}</style>
     </div>
   );
 }

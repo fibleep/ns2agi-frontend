@@ -1,0 +1,103 @@
+---
+import CommitmentsPageLayout from "../../components/CommitmentsPageLayout.astro";
+import { ArrowRight } from "lucide-react";
+---
+
+<CommitmentsPageLayout currentId="education" title="Education">
+  <p class="cp-eyebrow">02 · Education</p>
+  <h1 class="cp-headline">Do you remember the moment<br/>you knew what you wanted?</h1>
+  <p class="cp-lead">
+    That moment is what we're trying to create — for kids, for students, for professionals who never got the chance. Education at North Star isn't a side project. It's a bet that getting more people to build, earlier, compounds into a stronger ecosystem for everyone.
+  </p>
+
+  <div class="cp-stats">
+    <div class="cp-stat">
+      <p class="cp-stat-number">8</p>
+      <p class="cp-stat-label">Venues in one day</p>
+    </div>
+    <div class="cp-stat">
+      <p class="cp-stat-number">6</p>
+      <p class="cp-stat-label">Cities across Belgium</p>
+    </div>
+    <div class="cp-stat">
+      <p class="cp-stat-number">100+</p>
+      <p class="cp-stat-label">Kids in the room</p>
+    </div>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-body">
+      The Kids AI Vibecoding Hackathon was the biggest edition of its kind in the world. 80 volunteers, 8 parallel venues, 100 kids aged 8–16 shipping their first AI-powered projects in a single day. We partnered with schools and sponsors to make it free to attend.
+    </p>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-section-label">Why it matters</p>
+    <div class="cp-pillars">
+      <div class="cp-pillar">
+        <p class="cp-pillar-title">The velocity gap</p>
+        <p class="cp-pillar-body">AI is moving faster than traditional curricula. Kids who graduate without building anything real are entering a market that moved on without them. We run hands-on sessions because abstract lectures don't close the gap.</p>
+      </div>
+      <div class="cp-pillar">
+        <p class="cp-pillar-title">Belgium runs on consultants</p>
+        <p class="cp-pillar-body">Most Belgian professionals are in SMEs or consultancies with no dedicated AI budget or time. Our workshops meet people where they are — practical, condensed, and ready to apply on Monday morning.</p>
+      </div>
+      <div class="cp-pillar">
+        <p class="cp-pillar-title">Robotics as a catalyst</p>
+        <p class="cp-pillar-body">Physical robots make AI tangible for young people in ways that software doesn't. When a 10-year-old controls a robot arm they helped program, the abstraction disappears. That's the identity shift we're after.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-section-label">Formats</p>
+    <div class="cp-formats-grid">
+      <div class="cp-format-card">
+        <p class="cp-format-title">North Star Kids</p>
+        <ul class="cp-format-list">
+          <li>Vibecoding hackathons</li>
+          <li>Ages 8–16</li>
+          <li>Multi-venue, single day</li>
+        </ul>
+      </div>
+      <div class="cp-format-card">
+        <p class="cp-format-title">Journal Club</p>
+        <ul class="cp-format-list">
+          <li>Open paper-reading nights</li>
+          <li>Frontier research, no jargon</li>
+          <li>Monthly</li>
+        </ul>
+      </div>
+      <div class="cp-format-card">
+        <p class="cp-format-title">Workshops & Talks</p>
+        <ul class="cp-format-list">
+          <li>For students & professionals</li>
+          <li>Half-day or full-day</li>
+          <li>Custom curriculum</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-section-label">Gallery</p>
+    <div class="cp-gallery">
+      <img src="/kids-hackathon/1.png" alt="Kids AI Hackathon" class="cp-gallery-img" loading="lazy" />
+      <img src="/kids-hackathon/2.png" alt="Kids collaborating" class="cp-gallery-img" loading="lazy" />
+      <img src="/future-in-bloom/2.jpg" alt="Future in Bloom" class="cp-gallery-img" loading="lazy" />
+      <img src="/elevenlabs/2.jpeg" alt="ElevenLabs workshop" class="cp-gallery-img" loading="lazy" />
+    </div>
+  </div>
+
+  <div class="cp-cta-row">
+    <a href="/events/kids-ai-vibecoding-hackathon" class="cp-cta-primary">
+      View the kids hackathon <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+    <a href="/work-with-us" class="cp-cta-secondary">
+      Sponsor or host a session <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+    <a href="https://discord.gg/m5Hknymurb" target="_blank" rel="noopener noreferrer" class="cp-cta-secondary">
+      Join Discord <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+  </div>
+</CommitmentsPageLayout>

@@ -1,0 +1,145 @@
+---
+const year = new Date().getFullYear();
+
+const links = [
+  { label: "About", href: "/about" },
+  { label: "Events", href: "/commitments#events" },
+  { label: "Blog", href: "/blog" },
+  { label: "Collaborate", href: "/work-with-us" },
+];
+
+const socials = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/north-star-agi" },
+  { label: "X", href: "https://x.com/ns2agi" },
+  { label: "Discord", href: "https://discord.gg/m5Hknymurb" },
+  { label: "Instagram", href: "https://www.instagram.com/northstaragi/" },
+];
+---
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-top">
+      <a href="/" class="site-footer-brand">
+        <img src="/nsstar-clean.svg" alt="" class="site-footer-star" />
+        <span class="site-footer-name">North Star</span>
+      </a>
+
+      <nav class="site-footer-links" aria-label="Footer navigation">
+        {links.map((l) => (
+          <a href={l.href}>{l.label}</a>
+        ))}
+      </nav>
+
+      <nav class="site-footer-socials" aria-label="Social links">
+        {socials.map((s) => (
+          <a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="site-footer-bottom">
+      <span class="site-footer-legal">North Star VZW &middot; BE1025.122.625</span>
+      <span class="site-footer-copy">&copy; {year}</span>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  .site-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: clamp(3rem, 6vh, 4.5rem) clamp(1.5rem, 5vw, 3rem) clamp(2rem, 4vh, 3rem);
+  }
+
+  .site-footer-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .site-footer-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: clamp(2rem, 4vh, 3rem);
+  }
+
+  .site-footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .site-footer-star {
+    width: 18px;
+    height: auto;
+    opacity: 0.6;
+    transition: opacity 200ms ease;
+  }
+
+  .site-footer-brand:hover .site-footer-star {
+    opacity: 0.9;
+  }
+
+  .site-footer-name {
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.04em;
+    transition: color 200ms ease;
+  }
+
+  .site-footer-brand:hover .site-footer-name {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .site-footer-links,
+  .site-footer-socials {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .site-footer-links a,
+  .site-footer-socials a {
+    font-family: "Space Mono", monospace;
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.28);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .site-footer-links a:hover,
+  .site-footer-socials a:hover {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .site-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: clamp(1.2rem, 2vh, 1.8rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .site-footer-legal,
+  .site-footer-copy {
+    font-family: "Space Mono", monospace;
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.18);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 640px) {
+    .site-footer-top {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .site-footer-socials {
+      gap: 0.8rem 1rem;
+    }
+  }
+</style>

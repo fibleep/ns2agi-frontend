@@ -1,0 +1,344 @@
+---
+const tabs = [
+  {
+    id: "events",
+    index: "01",
+    label: "Events",
+    image: "/ai-hackathon-ii/4.jpg",
+    href: "/commitments#events",
+    headline: "Creating environments for connections",
+    lead: "We started North Star because there was nowhere to find technical people in Belgium. Events are our bread and butter — rooms where people meet, find co-founders, and learn something new.",
+    stats: [
+      { value: "12", label: "Events in year one" },
+      { value: "800+", label: "Builders in the room" },
+      { value: "20+", label: "Hires through NS" },
+    ],
+    items: [
+      { title: "Hackathons", body: "Full-day, half-day, and 2-day formats with 50–150 builders competing on real use cases." },
+      { title: "SIGNAL Meetups", body: "Recurring AI & Robotics nights with speakers, demos, and open networking." },
+      { title: "Workshops", body: "Hands-on OpenClaw, AI adoption, and robotics sessions for practitioners." },
+    ],
+    photos: ["/ai-hackathon-ii/4.jpg", "/signal-i/1.jpg"],
+    cta: { label: "See all events", href: "/commitments#events" },
+  },
+  {
+    id: "education",
+    index: "02",
+    label: "Education",
+    image: "/kids-hackathon/1.png",
+    href: "/commitments#education",
+    headline: "The moment you knew what you wanted to do",
+    lead: "That moment is what we're trying to create — for kids, for students, for professionals who never got the chance. Education at North Star is a bet that getting more people to build, earlier, compounds for everyone.",
+    stats: [
+      { value: "8", label: "Venues in one day" },
+      { value: "6", label: "Cities across Belgium" },
+      { value: "100+", label: "Kids in the room" },
+    ],
+    items: [
+      { title: "North Star Kids", body: "Vibecoding hackathons for ages 8–16. The biggest edition of its kind in the world." },
+      { title: "Journal Club", body: "Open paper-reading nights that make frontier research accessible without academic theater." },
+      { title: "Workshops & Talks", body: "Hands-on sessions for students and professionals who need a practical on-ramp." },
+    ],
+    photos: ["/kids-hackathon/1.png", "/kids-hackathon/2.png"],
+    cta: { label: "Education commitment", href: "/commitments#education" },
+  },
+  {
+    id: "engineering",
+    index: "03",
+    label: "Engineering",
+    image: "/robotics-i/3.jpg",
+    href: "/commitments#engineering",
+    headline: "Products that come from community friction",
+    lead: "Every tool we build started as a problem we hit running North Star. That constraint produces software that's specific, opinionated, and actually used.",
+    stats: [
+      { value: "4", label: "Active projects" },
+      { value: "2", label: "Live products" },
+      { value: "1", label: "R&D residency format" },
+    ],
+    items: [
+      { title: "Étoile", body: "AI-native event index for Belgium. Born from the pain of maintaining a manual calendar." },
+      { title: "SimpleIdea", body: "Infrastructure for the kids hackathon — lets 8-year-olds ship working projects in an afternoon." },
+      { title: "R&D Residencies", body: "1–2 week sprints at The Vessel. Engineers explore robotics and multi-agent systems together." },
+    ],
+    photos: ["/robotics-i/3.jpg", "/ai-hackathon-iii/4.jpg"],
+    cta: { label: "Engineering commitment", href: "/commitments#engineering" },
+  },
+  {
+    id: "ecosystem",
+    index: "04",
+    label: "Ecosystem",
+    image: "/stripe-hackathon/1.png",
+    href: "/commitments#ecosystem",
+    headline: "Dots don't compound. Lines do.",
+    lead: "North Star is a non-profit. We run on sponsorships, partnerships, and people who believe the Belgian tech ecosystem is worth building. The ecosystem commitment is the relationships that make everything else durable.",
+    stats: [
+      { value: "20+", label: "Partner orgs" },
+      { value: "6", label: "Cities in Belgium" },
+      { value: "EU", label: "Network reach" },
+    ],
+    items: [
+      { title: "Partner orgs", body: "Universities, venues, labs, and local communities that create density across Belgium." },
+      { title: "European network", body: "Cross-border trips and collaborations with peer communities in London, Berlin, Paris, and Amsterdam." },
+      { title: "Long-term trust", body: "The real asset is the network of people willing to build together again. Every handshake is infrastructure." },
+    ],
+    photos: ["/stripe-hackathon/1.png", "/signal-i/12.jpg"],
+    cta: { label: "Ecosystem commitment", href: "/commitments#ecosystem" },
+  },
+];
+---
+
+<div class="cs-root">
+
+  <!-- Tab bar -->
+  <div class="cs-tabs" role="tablist">
+    {tabs.map((tab, i) => (
+      <button
+        class={`cs-tab${i === 0 ? " cs-tab-active" : ""}`}
+        data-tab-id={tab.id}
+        role="tab"
+        aria-selected={i === 0 ? "true" : "false"}
+        aria-controls={`cs-panel-${tab.id}`}
+        type="button"
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+
+  <!-- Content panels -->
+  {tabs.map((tab, i) => (
+    <div
+      id={`cs-panel-${tab.id}`}
+      class={`cs-panel${i === 0 ? " cs-panel-active" : ""}`}
+      role="tabpanel"
+    >
+      <div class="cs-panel-inner">
+        <!-- Left: text -->
+        <div class="cs-panel-text">
+          <h2 class="cs-headline">{tab.headline}</h2>
+          <p class="cs-lead">{tab.lead}</p>
+          <div class="cs-items">
+            {tab.items.map((item) => (
+              <div class="cs-item">
+                <span class="cs-item-title">{item.title}</span>
+                <span class="cs-item-sep">—</span>
+                <span class="cs-item-body">{item.body}</span>
+              </div>
+            ))}
+          </div>
+          <a href={tab.cta.href} class="cs-cta">
+            {tab.cta.label}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Right: photo + stats -->
+        <div class="cs-panel-right">
+          <img src={tab.photos[0]} alt="" class="cs-photo" loading="lazy" />
+          <div class="cs-stats">
+            {tab.stats.map((s) => (
+              <div class="cs-stat">
+                <p class="cs-stat-value">{s.value}</p>
+                <p class="cs-stat-label">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+
+</div>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLElement>(".cs-tab");
+  const panels = document.querySelectorAll<HTMLElement>(".cs-panel");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const id = tab.dataset.tabId;
+      tabs.forEach((t) => {
+        t.classList.remove("cs-tab-active");
+        t.setAttribute("aria-selected", "false");
+      });
+      panels.forEach((p) => p.classList.remove("cs-panel-active"));
+      tab.classList.add("cs-tab-active");
+      tab.setAttribute("aria-selected", "true");
+      document.getElementById(`cs-panel-${id}`)?.classList.add("cs-panel-active");
+    });
+  });
+</script>
+
+<style>
+  .cs-root {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── Tabs ── */
+  .cs-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 2.8rem;
+  }
+
+  .cs-tab {
+    font-family: "Geist", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.28);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.75rem 1.4rem 0.75rem 0;
+    margin-bottom: -1px;
+    cursor: pointer;
+    transition: color 200ms ease;
+  }
+
+  .cs-tab:hover { color: rgba(255,255,255,0.58); }
+
+  .cs-tab-active {
+    color: rgba(255,255,255,0.88);
+    border-bottom-color: rgba(255,255,255,0.55);
+  }
+
+  /* ── Panels ── */
+  .cs-panel { display: none; }
+  .cs-panel-active {
+    display: block;
+    animation: cs-in 200ms ease forwards;
+  }
+
+  @keyframes cs-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .cs-panel-inner {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* Text side */
+  .cs-headline {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.45rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.14;
+    color: rgba(255,255,255,0.88);
+    margin: 0 0 1rem;
+  }
+
+  .cs-lead {
+    font-family: "Geist", sans-serif;
+    font-size: 0.78rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.44);
+    margin: 0 0 1.8rem;
+    max-width: 52ch;
+  }
+
+  .cs-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-bottom: 2rem;
+  }
+
+  .cs-item {
+    font-family: "Geist", sans-serif;
+    font-size: 0.7rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.36);
+  }
+
+  .cs-item-title {
+    color: rgba(255,255,255,0.62);
+    font-weight: 700;
+  }
+
+  .cs-item-sep {
+    color: rgba(255,255,255,0.18);
+    margin: 0 0.35rem;
+  }
+
+  .cs-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.42);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+  .cs-cta:hover { color: rgba(255,255,255,0.82); }
+
+  /* Right side */
+  .cs-panel-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cs-photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 0.6rem;
+    display: block;
+    filter: brightness(0.7) saturate(0.6);
+  }
+
+  .cs-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 1rem;
+  }
+
+  .cs-stat { padding: 0 0.5rem 0 0; }
+
+  .cs-stat-value {
+    font-family: "Geist", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.82);
+    margin: 0 0 0.2rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .cs-stat-label {
+    font-family: "Geist", sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.24);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .cs-tab { font-size: 0.76rem; padding-right: 1rem; }
+    .cs-panel-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .cs-panel-right { flex-direction: row; flex-wrap: wrap; }
+    .cs-photo { flex: 1 1 100%; }
+    .cs-stats { flex: 1 1 100%; }
+  }
+</style>

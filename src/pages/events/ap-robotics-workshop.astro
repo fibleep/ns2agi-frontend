@@ -1,0 +1,19 @@
+---
+import EventLayout from "../../components/EventLayout.astro";
+
+const images = [
+  { src: "/ap-workshop/photo_2026-03-08 19.50.40.jpeg", alt: "University Robotics Workshop" },
+];
+---
+
+<EventLayout
+  title="University Robotics Workshop"
+  date="February 10, 2026"
+  location="AP Hogeschool, Antwerp"
+  type="Workshop"
+  description="Hands-on SO-101 robotics workshop at AP Hogeschool covering the LeRobot ecosystem, VLAs, and imitation learning workflows."
+  images={images}
+>
+  <p>A hands-on workshop at AP Hogeschool Antwerpen where students got their first exposure to the LeRobot ecosystem. We covered SO-101 arms, vision-language-action models (VLAs), and the imitation learning workflows that make modern robotics accessible.</p>
+  <p>Education is one of our core commitments. Bringing robotics directly into university classrooms bridges the gap between what students learn and what the industry actually needs.</p>
+</EventLayout>

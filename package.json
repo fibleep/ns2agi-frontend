@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/react": "^4.3.0",
     "@astrojs/tailwind": "^5.1.4",
+    "@fontsource/geist-sans": "^5.2.5",
     "@splinetool/react-spline": "^4.1.0",
     "@splinetool/runtime": "^1.12.39",
     "@types/react": "^19.1.8",

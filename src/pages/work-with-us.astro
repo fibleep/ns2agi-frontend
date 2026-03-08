@@ -1,127 +1,394 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { GlowingCard } from "../components/GlowingCard";
-import { WorkWithUsAccordion } from "../components/WorkWithUsAccordion";
-import { AnimatedCounter } from "../components/AnimatedCounter";
-import { ArrowRight } from "lucide-react";
+import { EditorialProse } from "../components/EditorialProse";
+const team = [
+  { name: "Filip", img: "/team/7.jpg" },
+  { name: "Oleksandr", img: "/team/9.jpg" },
+  { name: "Vasiliki", img: "/team/3.jpeg" },
+  { name: "Polaris", img: "/team/polaris.png" },
+];
 ---
 
-<Layout title="Work With Us | North Star">
-    <main class="relative bg-black min-h-screen pt-24 pb-24">
-        <!-- Hero Section -->
-        <section class="container mx-auto px-4 max-w-7xl mb-16">
-            <div class="grid md:grid-cols-2 gap-6 min-h-[600px]">
-                <!-- Main Card -->
-                <GlowingCard client:load className="md:col-span-1 h-[400px] md:h-auto">
-                    <div class="absolute inset-0 overflow-hidden">
-                        <img
-                            src="/ai-hackathon-ii/4.jpg"
-                            alt="Hackathon"
-                            class="w-full h-full object-cover opacity-40"
-                        />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                    </div>
-                    <div class="absolute inset-0 flex flex-col justify-end p-8 md:p-10">
-                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[0.95] mb-4">
-                            Build with<br/>North Star
-                        </h1>
-                        <div class="flex flex-wrap gap-3">
-                            <a
-                                href="#contact"
-                                class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform w-fit"
-                            >
-                                Let's Talk <ArrowRight className="w-4 h-4" />
-                            </a>
-                        </div>
-                    </div>
-                </GlowingCard>
+<Layout title="Collaborate | North Star">
 
-                <!-- Stats Grid -->
-                <div class="grid grid-cols-2 gap-4">
-                    <!-- Events -->
-                    <GlowingCard client:load className="aspect-square group">
-                        <div class="absolute inset-0 flex flex-col justify-center items-center p-6 text-center">
-                            <p class="text-5xl md:text-7xl font-black text-white">
-                                <AnimatedCounter client:load end={12} duration={1500} />
-                            </p>
-                            <p class="text-zinc-500 text-sm mt-2">events in 2025</p>
-                        </div>
-                    </GlowingCard>
+  <EditorialProse client:load team={team} />
 
-                    <!-- Builders -->
-                    <GlowingCard client:load className="aspect-square group">
-                        <div class="absolute inset-0 flex flex-col justify-center items-center p-6 text-center">
-                            <p class="text-5xl md:text-7xl font-black text-white">
-                                <AnimatedCounter client:load end={800} duration={2000} suffix="+" />
-                            </p>
-                            <p class="text-zinc-500 text-sm mt-2">builders</p>
-                        </div>
-                    </GlowingCard>
+  <!-- Contact form -->
+  <section class="collab-form-section" id="contact">
+    <div class="collab-form-wrap">
+      <iframe
+        data-tally-src="https://tally.so/embed/0QMBQ6?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy"
+        width="100%"
+        height="877"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Work with North Star"
+      ></iframe>
+    </div>
+  </section>
 
-                    <!-- Hires -->
-                    <GlowingCard client:load className="aspect-square group">
-                        <div class="absolute inset-0 flex flex-col justify-center items-center p-6 text-center">
-                            <p class="text-5xl md:text-7xl font-black text-white">
-                                <AnimatedCounter client:load end={20} duration={1500} suffix="+" />
-                            </p>
-                            <p class="text-zinc-500 text-sm mt-2">hires made</p>
-                        </div>
-                    </GlowingCard>
+  <script is:inline>
+    var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+  </script>
 
-                    <!-- Cost -->
-                    <GlowingCard client:load className="aspect-square group">
-                        <div class="absolute inset-0 flex flex-col justify-center items-center p-6 text-center">
-                            <p class="text-5xl md:text-7xl font-black text-white">
-                                <AnimatedCounter client:load end={85} duration={1800} prefix="-" suffix="%" />
-                            </p>
-                            <p class="text-zinc-500 text-sm mt-2">cost per hire</p>
-                        </div>
-                    </GlowingCard>
-                </div>
-            </div>
-        </section>
-
-        <!-- I need to... -->
-        <section class="container mx-auto px-4 max-w-7xl mb-16">
-            <WorkWithUsAccordion client:load />
-        </section>
-
-        <!-- Companies We've Worked With -->
-        <section class="container mx-auto px-4 max-w-7xl mb-16">
-            <p class="text-zinc-500 text-sm uppercase tracking-widest text-center mb-8">Companies we've worked with</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-                <img src="/partnerships/workedwith/32.svg" alt="Stripe" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/partnerships/workedwith/29.png" alt="Hugging Face" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/partnerships/workedwith/10.svg" alt="ElevenLabs" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/partnerships/workedwith/21.png" alt="The Beacon" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/partnerships/workedwith/15.svg" alt="Lovable" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/partnerships/workedwith/24.png" alt="Wintercircus" class="h-10 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/partnerships/workedwith/12.png" alt="AP Hogeschool" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/partnerships/workedwith/30.png" alt="LeRobot" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/partnerships/workedwith/18.png" alt="Rollo" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/partnerships/workedwith/25.png" alt="Wobby" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/partnerships/workedwith/6.png" alt="Dashdot" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/partnerships/workedwith/11.webp" alt="Faktion" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" />
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="container mx-auto px-4 max-w-4xl">
-            <div class="rounded-2xl bg-zinc-900/30 p-12 text-center">
-                <p class="text-zinc-400 text-lg mb-4">Reach out to us at</p>
-                <a href="mailto:filip@ns2agi.com" class="text-2xl md:text-3xl font-medium text-white hover:text-zinc-300 transition-colors">
-                    filip@ns2agi.com
-                </a>
-            </div>
-            <!-- <iframe
-                src="https://beaded-pineapple-898.notion.site/ebd/274d61b47ae280be826fcc817dd3af2c"
-                width="100%"
-                height="700"
-                frameborder="0"
-                allowfullscreen
-                class="w-full rounded-xl"
-                title="Contact Form"
-            ></iframe> -->
-        </section>
-    </main>
 </Layout>
+
+<style is:global>
+
+  /* ══════════════════════════════════
+     PAGE CONTAINER
+     ══════════════════════════════════ */
+  .cp { width: 100%; }
+
+  .cp-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(8rem, 18vh, 14rem) clamp(1.5rem, 5vw, 3rem) 0;
+  }
+
+  /* ══════════════════════════════════
+     STAGGER ANIMATION (matches index id-fade-up)
+     ══════════════════════════════════ */
+  @keyframes cp-fade-up {
+    from { opacity: 0; transform: translateY(20px); filter: blur(4px); }
+    to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+
+  .cp-stagger {
+    opacity: 0;
+    animation: cp-fade-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(0.25s + var(--stagger, 0) * 0.18s);
+  }
+
+  /* ══════════════════════════════════
+     PROSE — the large flowing text
+     ══════════════════════════════════ */
+  .cp-prose {
+    margin: 0 0 clamp(1.6rem, 4vh, 2.8rem);
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(1.05rem, 2vw, 1.45rem);
+    font-weight: 450;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.6;
+    letter-spacing: -0.015em;
+  }
+
+  .cp-prose strong {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  /* Curvy accent (Instrument Serif) */
+  .cp-curvy {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  /* ══════════════════════════════════
+     NS LOGO INLINE
+     ══════════════════════════════════ */
+  .cp-ns-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    vertical-align: middle;
+    margin: 0 0.05em;
+    cursor: default;
+    position: relative;
+    top: -0.08em;
+  }
+
+  .cp-ns-inline-star {
+    width: 1.1em;
+    height: auto;
+    opacity: 0.92;
+  }
+
+  .cp-ns-inline-text {
+    font-family: "Geist", sans-serif;
+    font-style: normal;
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1;
+  }
+
+  /* ══════════════════════════════════
+     FLAG BADGES
+     ══════════════════════════════════ */
+  .cp-flag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin: 0 0.05em;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+    cursor: default;
+    position: relative;
+    top: -0.06em;
+  }
+
+  .cp-flag svg {
+    display: block;
+  }
+
+  /* ══════════════════════════════════
+     INLINE COMPANY LOGOS
+     ══════════════════════════════════ */
+  .cp-company-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin: 0 0.2em;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    cursor: default;
+    box-shadow: none;
+    position: relative;
+    top: -0.08em;
+  }
+
+  .cp-company-logo img {
+    height: 0.75em;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0.9);
+    opacity: 0.75;
+    transition: opacity 200ms ease, filter 200ms ease;
+  }
+
+  .cp-company-logo:hover img {
+    opacity: 1;
+    filter: brightness(1);
+  }
+
+  /* ══════════════════════════════════
+     INLINE TEAM AVATARS
+     ══════════════════════════════════ */
+  .cp-avatars {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0 0.3em;
+  }
+
+  .cp-av {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -10px;
+    cursor: default;
+  }
+
+  .cp-av:first-child { margin-left: 0; }
+
+  .cp-av-more-circle {
+    width: clamp(30px, 3.5vw, 40px);
+    height: clamp(30px, 3.5vw, 40px);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2.5px solid var(--offblack);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 3px;
+  }
+
+  .cp-av-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .cp-av img {
+    width: clamp(30px, 3.5vw, 40px);
+    height: clamp(30px, 3.5vw, 40px);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2.5px solid var(--offblack);
+    display: block;
+    filter: brightness(0.85) saturate(0.9);
+    transition: filter 300ms ease;
+  }
+
+  .cp-av:hover img {
+    filter: brightness(1) saturate(1);
+  }
+
+  .cp-av-tip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    font-family: "Geist", sans-serif;
+    font-style: normal;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+    white-space: nowrap;
+    background: rgba(22, 21, 19, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.22rem 0.45rem;
+    border-radius: 0.4rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease, transform 180ms ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .cp-av:hover .cp-av-tip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ══════════════════════════════════
+     INLINE COMMITMENTS QUAD
+     ══════════════════════════════════ */
+  .cp-quad-wrap {
+    display: block;
+    margin: -1rem 0 0.5rem;
+  }
+
+  .cp-quad {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.9rem;
+    overflow: hidden;
+    width: clamp(260px, 40vw, 360px);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.06) inset,
+      0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+      0 16px 40px -8px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .cp-q {
+    background: rgba(15, 14, 12, 0.7);
+    padding: clamp(0.75rem, 1.2vw, 1rem) clamp(0.75rem, 1vw, 1rem);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    border: 0.5px solid rgba(255, 255, 255, 0.04);
+    transition: background 180ms ease;
+  }
+
+  .cp-q-num {
+    font-family: "Geist", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.22);
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
+
+  .cp-q-label {
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(0.78rem, 1vw, 0.9rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.62);
+    line-height: 1;
+  }
+
+  /* ══════════════════════════════════
+     CONTACT
+     ══════════════════════════════════ */
+  .collab-form-section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 5vw, 3rem) clamp(5rem, 10vh, 8rem);
+  }
+  .collab-form-wrap {
+    width: 100%;
+    max-width: 640px;
+  }
+  .collab-form-wrap iframe {
+    width: 100%;
+    border: none;
+  }
+
+  /* ══════════════════════════════════
+     SECTION REVEALS (non-React)
+     ══════════════════════════════════ */
+  [data-cp] {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+    transition:
+      opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  [data-cp].is-v {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  /* ══════════════════════════════════
+     MOBILE
+     ══════════════════════════════════ */
+  @media (max-width: 768px) {
+    .cp-prose {
+      font-size: clamp(0.92rem, 3.6vw, 1.05rem);
+      line-height: 1.6;
+    }
+    .cp-quad { width: clamp(220px, 70vw, 300px); }
+    .cp-av img { width: 28px; height: 28px; }
+    .cp-av { margin-left: -6px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cp-stagger {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+  }
+
+</style>
+
+<script is:inline>
+  /* Section reveal — runs once then re-scans after React hydrates */
+  function initCpReveal() {
+    var obs = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-v");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll("[data-cp]:not(.is-v)").forEach(function (el) {
+      obs.observe(el);
+    });
+  }
+  initCpReveal();
+  /* Re-scan after React hydration adds data-cp elements */
+  setTimeout(initCpReveal, 200);
+  setTimeout(initCpReveal, 600);
+</script>

@@ -7,33 +7,74 @@ import Layout from "../layouts/Layout.astro";
         <!-- Hero -->
         <section class="container mx-auto px-6 mb-16">
             <div class="max-w-3xl mx-auto text-center">
-                <h1 class="text-4xl md:text-6xl font-semibold mb-8 text-white tracking-tight leading-[1.1]">
-                    Get in Touch
-                </h1>
+                <h1 class="ct-title">Get in Touch</h1>
             </div>
         </section>
 
         <!-- Contact -->
         <section class="container mx-auto px-6 mb-32">
             <div class="max-w-3xl mx-auto">
-                <div class="rounded-2xl bg-zinc-900/30 p-12 text-center">
-                    <p class="text-zinc-400 text-lg mb-4">Reach out to us at</p>
-                    <a href="mailto:filip@ns2agi.com" class="text-2xl md:text-3xl font-medium text-white hover:text-zinc-300 transition-colors">
+                <div class="rounded-2xl bg-zinc-900/30 overflow-hidden">
+                    <iframe
+                        data-tally-src="https://tally.so/embed/0QMBQ6?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                        loading="lazy"
+                        width="100%"
+                        height="300"
+                        frameborder="0"
+                        title="Contact Form"
+                    ></iframe>
+                </div>
+
+                <script is:inline>
+                    var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+                </script>
+
+                <div class="ct-email">
+                    <span class="ct-email-label">or email directly</span>
+                    <a href="mailto:filip@ns2agi.com" class="ct-email-link">
                         filip@ns2agi.com
                     </a>
                 </div>
-                <!-- <div class="rounded-2xl bg-zinc-900/30 overflow-hidden">
-                    <iframe
-                        src="https://beaded-pineapple-898.notion.site/ebd/22fd61b47ae280f7bff5c94e04537806"
-                        width="100%"
-                        height="600"
-                        frameborder="0"
-                        allowfullscreen
-                        class="w-full"
-                        title="Contact Form"
-                    ></iframe>
-                </div> -->
             </div>
         </section>
     </main>
 </Layout>
+
+<style is:global>
+    .ct-title {
+        margin: 0;
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 400;
+        color: rgba(255,255,255,0.88);
+        line-height: 1.1;
+    }
+    .ct-email {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 2.5rem;
+        padding-top: 2.5rem;
+        border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .ct-email-label {
+        font-family: "Geist", sans-serif;
+        font-size: 0.76rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.28);
+    }
+    .ct-email-link {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        color: rgba(255,255,255,0.82);
+        text-decoration: none;
+        transition: color 200ms ease;
+    }
+    .ct-email-link:hover {
+        color: rgba(255,255,255,1);
+    }
+</style>

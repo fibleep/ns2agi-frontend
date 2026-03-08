@@ -1,149 +1,380 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { ExternalLink } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
+
+const team = [
+    { name: "Filip", role: "Executive & Technology", img: "/team/7.jpg", linkedin: "https://www.linkedin.com/in/fibleep/" },
+    { name: "Oleksandr", role: "Partnerships & People", img: "/team/9.jpg", linkedin: "https://www.linkedin.com/in/oleksandrkuzmenko/" },
+    { name: "Vasiliki", role: "Operations", img: "/team/3.jpeg", linkedin: "https://www.linkedin.com/in/education-and-advocacy-advisor/" },
+];
 ---
 
 <Layout title="About | North Star">
-    <main class="relative min-h-screen pt-32 pb-24">
+    <main class="about-page">
+
         <!-- Vision -->
-        <section class="container mx-auto px-6 mb-24">
-            <div class="max-w-2xl mx-auto">
-                <p class="text-2xl md:text-3xl italic text-white leading-relaxed text-center mb-12" style="font-family: 'Georgia Pro', Georgia, serif;">
-                    To push the ecosystem forward in AI & Robotics.
-                </p>
-                <div class="space-y-6 text-zinc-400 text-lg leading-relaxed">
-                    <p>
-                        North Star is inherently a rebellion against how things are done. We started with a hackathon - to turn talk into action and to bridge the gap between talent and companies.
-                    </p>
-                    <p>
-                        The people willing to come on a sunny Saturday and build something in exchange for pizza are the ones that will be building the future. Our culture attracts outliers and people with conviction.
-                    </p>
-                    <p>
-                        In a collaborative "Let's build it together" spirit, we gather people around ideas and problems - that can't not be solved. Whether it is simply creating environments for talent to share knowledge, hosting kids hackathons with 100 attendees and 8 venues at the same time or pushing for bringing robotics into the mainstream.
-                    </p>
-                    <p>
-                        This only exists because of the people that believed in us at the start. With a strong pay-it-forward mentality, we support the future key players of the ecosystem.
-                    </p>
-                    <p>
-                        The spark of ambition burns in everyone. You don't realize just how much potential you have. Our goal is to give you that tiny push you need to get started.
-                    </p>
-                    <p>
-                        A community is its people. We need you.
-                    </p>
-                    <p>
-                        Europe's springtime is here. The ecosystem awakens. Urgency spreads.
-                    </p>
-                    <p class="text-2xl font-medium text-white pt-4">
-                        It's now or never.
-                    </p>
-                </div>
+        <section class="about-hero" data-reveal>
+            <p class="about-quote">To push the ecosystem forward in AI &amp; Robotics.</p>
+        </section>
+
+        <section class="about-body" data-reveal>
+            <div class="about-prose">
+                <p>We started with a hackathon. The people willing to come on a sunny Saturday and build something in exchange for pizza turned out to be the same people willing to build everything that came after. We are on the lookout for people with conviction and an immense fire within.</p>
+                <p>In a collaborative &ldquo;let&rsquo;s build it together&rdquo; spirit, we gather people around ideas and problems. Whether it is creating environments for talent to share knowledge, working on education for kids and students or pushing for bringing robotics into the mainstream.</p>
+                <p>This only exists because of the people that believed in us at the start. With a strong pay-it-forward mentality, we support the future key players of the ecosystem.</p>
+                <p>The spark of ambition burns in everyone. You don&rsquo;t realize just how much potential you have. Our goal is to give you that tiny push you need to get started.</p>
+                <p class="about-closer">Realize the potential that has been in you all along.</p>
             </div>
         </section>
 
         <!-- Team -->
-        <section class="container mx-auto px-6 mb-24">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-8 text-center">
-                    Team
-                </h2>
-                <!-- Leadership -->
-                <div class="grid grid-cols-3 md:grid-cols-5 gap-6 mb-8">
-                    <div class="text-center group">
-                        <img src="/team/7.jpg" alt="Filip" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover border border-white/10 group-hover:border-white/30 transition-colors" />
-                        <div class="text-white text-sm font-medium">Filip</div>
-                        <div class="text-zinc-500 text-xs">CEO/CTO</div>
+        <section class="about-team" data-reveal>
+            <h2 class="about-section-title">The people behind the star</h2>
+
+            <div class="team-grid">
+                {team.map((member) => (
+                    <div class="team-card">
+                        <div class="team-img-wrap">
+                            <img src={member.img} alt={member.name} loading="lazy" class="team-img" />
+                        </div>
+                        <div class="team-info">
+                            <span class="team-name">{member.name}</span>
+                            <span class="team-role">{member.role}</span>
+                            {member.linkedin && (
+                                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" class="team-link">
+                                    LinkedIn <ArrowRight className="w-3 h-3" />
+                                </a>
+                            )}
+                        </div>
                     </div>
-                    <div class="text-center group">
-                        <img src="/team/9.jpg" alt="Oleksandr" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover border border-white/10 group-hover:border-white/30 transition-colors" />
-                        <div class="text-white text-sm font-medium">Oleksandr</div>
-                        <div class="text-zinc-500 text-xs">CPO</div>
-                    </div>
-                    <div class="text-center group">
-                        <img src="/team/3.jpeg" alt="Vasiliki" class="w-20 h-20 rounded-full mx-auto mb-2 object-cover border border-white/10 group-hover:border-white/30 transition-colors" />
-                        <div class="text-white text-sm font-medium">Vasiliki</div>
-                        <div class="text-zinc-500 text-xs">COO</div>
-                    </div>
-                </div>
+                ))}
             </div>
         </section>
 
         <!-- Links & Legal -->
-        <section class="container mx-auto px-6">
-            <div class="max-w-2xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Social -->
-                    <div class="rounded-2xl bg-zinc-900/30 p-6">
-                        <h3 class="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-4">Links</h3>
-                        <div class="space-y-3 text-sm">
-                            <a href="https://x.com/ns2agi" target="_blank" rel="noopener noreferrer" class="flex justify-between text-zinc-400 hover:text-white transition-colors">
-                                <span>X</span>
-                                <span>@ns2agi</span>
-                            </a>
-                            <a href="https://www.linkedin.com/company/north-star-agi" target="_blank" rel="noopener noreferrer" class="flex justify-between text-zinc-400 hover:text-white transition-colors">
-                                <span>LinkedIn</span>
-                                <span>North Star</span>
-                            </a>
-                            <a href="https://github.com/North-Star-AGI" target="_blank" rel="noopener noreferrer" class="flex justify-between text-zinc-400 hover:text-white transition-colors">
-                                <span>GitHub</span>
-                                <span>North-Star-AGI</span>
-                            </a>
-                            <a href="https://discord.gg/m5Hknymurb" target="_blank" rel="noopener noreferrer" class="flex justify-between text-zinc-400 hover:text-white transition-colors">
-                                <span>Discord</span>
-                                <span>Join</span>
-                            </a>
-                        </div>
+        <section class="about-info" data-reveal>
+            <div class="about-info-grid">
+                <div class="about-info-block">
+                    <span class="about-info-label">Links</span>
+                    <div class="about-info-list">
+                        <a href="https://x.com/ns2agi" target="_blank" rel="noopener noreferrer" class="about-info-row">
+                            <span>X</span><span>@ns2agi</span>
+                        </a>
+                        <a href="https://www.linkedin.com/company/north-star-agi" target="_blank" rel="noopener noreferrer" class="about-info-row">
+                            <span>LinkedIn</span><span>North Star</span>
+                        </a>
+                        <a href="https://github.com/North-Star-AGI" target="_blank" rel="noopener noreferrer" class="about-info-row">
+                            <span>GitHub</span><span>North-Star-AGI</span>
+                        </a>
+                        <a href="https://discord.gg/m5Hknymurb" target="_blank" rel="noopener noreferrer" class="about-info-row">
+                            <span>Discord</span><span>Join</span>
+                        </a>
                     </div>
-
-                    <!-- Legal -->
-                    <div class="rounded-2xl bg-zinc-900/30 p-6">
-                        <h3 class="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-4">Legal</h3>
-                        <div class="space-y-3 text-sm">
-                            <div class="flex justify-between text-zinc-400">
-                                <span>Name</span>
-                                <span class="text-white">North Star VZW</span>
-                            </div>
-                            <div class="flex justify-between text-zinc-400">
-                                <span>Type</span>
-                                <span class="text-white">Belgian Non-Profit</span>
-                            </div>
-                            <div class="flex justify-between text-zinc-400">
-                                <span>Enterprise #</span>
-                                <span class="text-white font-mono text-xs">BE1025.122.625</span>
-                            </div>
-                            <a href="https://www.companyweb.be/en/1025122625/north-star-agi" target="_blank" rel="noopener noreferrer" class="flex justify-between text-zinc-400 hover:text-white transition-colors">
-                                <span>Registry</span>
-                                <span class="inline-flex items-center gap-1">View <ExternalLink className="w-3 h-3" /></span>
-                            </a>
+                </div>
+                <div class="about-info-block">
+                    <span class="about-info-label">Legal</span>
+                    <div class="about-info-list">
+                        <div class="about-info-row">
+                            <span>Name</span><span class="about-info-value">North Star VZW</span>
                         </div>
+                        <div class="about-info-row">
+                            <span>Type</span><span class="about-info-value">Belgian Non-Profit</span>
+                        </div>
+                        <div class="about-info-row">
+                            <span>Enterprise #</span><span class="about-info-value about-info-mono">BE1025.122.625</span>
+                        </div>
+                        <a href="https://www.companyweb.be/en/1025122625/north-star-agi" target="_blank" rel="noopener noreferrer" class="about-info-row">
+                            <span>Registry</span>
+                            <span class="about-info-ext">View <ExternalLink className="w-3 h-3" /></span>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact -->
-        <section class="container mx-auto px-6 mt-24">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-medium text-white mb-8 text-center">
-                    Join the team
-                </h2>
-                <div class="rounded-2xl bg-zinc-900/30 p-12 text-center">
-                    <p class="text-zinc-400 text-lg mb-4">Reach out to us at</p>
-                    <a href="mailto:filip@ns2agi.com" class="text-2xl md:text-3xl font-medium text-white hover:text-zinc-300 transition-colors">
-                        filip@ns2agi.com
-                    </a>
-                </div>
-                <!-- <div class="rounded-2xl bg-zinc-900/30 overflow-hidden">
-                    <iframe
-                        src="https://beaded-pineapple-898.notion.site/ebd/22fd61b47ae280f7bff5c94e04537806"
-                        width="100%"
-                        height="700"
-                        frameborder="0"
-                        allowfullscreen
-                        class="w-full"
-                        title="Join Form"
-                    ></iframe>
-                </div> -->
+        <!-- Join -->
+        <section class="about-join" data-reveal>
+            <h2 class="about-join-title">Join the team</h2>
+            <div class="about-tally-wrap">
+                <iframe
+                    data-tally-src="https://tally.so/embed/0QMBQ6?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                    loading="lazy"
+                    width="100%"
+                    height="877"
+                    frameborder="0"
+                    marginheight="0"
+                    marginwidth="0"
+                    title="Join the North Star team"
+                ></iframe>
             </div>
         </section>
+
+        <script is:inline>
+            var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+        </script>
+
     </main>
 </Layout>
+
+<style is:global>
+    .about-page {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    /* ── Reveal ── */
+    [data-reveal] {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    [data-reveal].revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ── Hero quote ── */
+    .about-hero {
+        padding: clamp(8rem, 16vh, 12rem) 0 clamp(3rem, 6vh, 5rem);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .about-quote {
+        margin: 0;
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 400;
+        color: rgba(255,255,255,0.88);
+        line-height: 1.25;
+        text-align: center;
+    }
+
+    /* ── Body prose ── */
+    .about-body {
+        padding: clamp(3rem, 6vh, 5rem) 0;
+    }
+    .about-prose {
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+    }
+    .about-prose p {
+        margin: 0;
+        font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+        line-height: 1.8;
+        color: rgba(255,255,255,0.5);
+        font-weight: 400;
+    }
+    .about-closer {
+        font-family: "Instrument Serif", serif !important;
+        font-style: italic;
+        font-size: clamp(1.4rem, 2.5vw, 1.8rem) !important;
+        color: rgba(255,255,255,0.85) !important;
+        line-height: 1.2 !important;
+        margin-top: 0.8rem !important;
+    }
+
+    /* ── Section headers ── */
+    .about-section-eyebrow {
+        display: block;
+        font-family: "Geist", sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.25);
+        margin-bottom: 0.6rem;
+        text-align: center;
+    }
+    .about-section-title {
+        margin: 0 0 clamp(2.5rem, 5vh, 4rem);
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 400;
+        color: rgba(255,255,255,0.82);
+        line-height: 1.15;
+        text-align: center;
+    }
+
+    /* ── Team ── */
+    .about-team {
+        padding: clamp(4rem, 8vh, 6rem) 0;
+        border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .team-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.8rem;
+    }
+    .team-img-wrap {
+        width: clamp(80px, 12vw, 120px);
+        height: clamp(80px, 12vw, 120px);
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.06);
+        transition: border-color 300ms ease;
+    }
+    .team-card:hover .team-img-wrap {
+        border-color: rgba(255,255,255,0.15);
+    }
+    .team-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(30%) brightness(0.9);
+        transition: filter 400ms ease;
+    }
+    .team-card:hover .team-img {
+        filter: grayscale(0%) brightness(1);
+    }
+    .team-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.15rem;
+    }
+    .team-name {
+        font-family: "Geist", sans-serif;
+        font-size: clamp(1rem, 1.4vw, 1.2rem);
+        font-weight: 700;
+        color: rgba(255,255,255,0.82);
+        letter-spacing: 0.02em;
+    }
+    .team-role {
+        font-family: "Geist", sans-serif;
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        color: rgba(255,255,255,0.32);
+        text-transform: uppercase;
+    }
+    .team-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        margin-top: 0.3rem;
+        font-family: "Geist", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        color: rgba(255,255,255,0.28);
+        text-decoration: none;
+        transition: color 200ms ease, gap 200ms ease;
+    }
+    .team-link:hover {
+        color: rgba(255,255,255,0.6);
+        gap: 0.45rem;
+    }
+
+    @media (max-width: 480px) {
+        .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+    }
+
+    /* ── Info blocks ── */
+    .about-info {
+        padding: clamp(3rem, 6vh, 5rem) 0;
+        border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .about-info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+    }
+    @media (max-width: 540px) {
+        .about-info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    .about-info-block {
+        padding: clamp(1.2rem, 2vw, 1.8rem);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 0.75rem;
+    }
+    .about-info-label {
+        display: block;
+        font-family: "Geist", sans-serif;
+        font-size: 0.82rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.25);
+        margin-bottom: 1rem;
+    }
+    .about-info-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    .about-info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "Geist", sans-serif;
+        font-size: 0.72rem;
+        color: rgba(255,255,255,0.35);
+        text-decoration: none;
+        transition: color 200ms ease;
+    }
+    a.about-info-row:hover {
+        color: rgba(255,255,255,0.7);
+    }
+    .about-info-value {
+        color: rgba(255,255,255,0.7);
+    }
+    .about-info-mono {
+        font-variant-numeric: tabular-nums;
+        font-size: 0.78rem;
+    }
+    .about-info-ext {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+
+    /* ── Join ── */
+    .about-join {
+        padding: clamp(4rem, 8vh, 6rem) 0 clamp(5rem, 10vh, 8rem);
+        border-top: 1px solid rgba(255,255,255,0.06);
+        text-align: center;
+    }
+    .about-join-title {
+        margin: 0 0 0.8rem;
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 400;
+        color: rgba(255,255,255,0.82);
+        line-height: 1.15;
+    }
+    .about-tally-wrap {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .about-tally-wrap iframe {
+        border: none;
+        width: 100%;
+    }
+</style>
+
+<script is:inline>
+    (function () {
+        const els = document.querySelectorAll("[data-reveal]");
+        if (!els.length) return;
+        const io = new IntersectionObserver(
+            (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("revealed"); io.unobserve(e.target); } }),
+            { threshold: 0.12 }
+        );
+        els.forEach((el) => io.observe(el));
+    })();
+</script>

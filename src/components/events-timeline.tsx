@@ -9,9 +9,13 @@ interface EventsTimelineProps {
 }
 
 export default function EventsTimeline({ events }: EventsTimelineProps) {
-  const [visibleItems, setVisibleItems] = React.useState<Set<string>>(
-    new Set()
-  );
+  const initialIds = React.useMemo(() => {
+    if (!events || events.length === 0) return new Set<string>();
+    const sorted = [...events].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return new Set(sorted.slice(0, 5).map(e => e.id));
+  }, [events]);
+
+  const [visibleItems, setVisibleItems] = React.useState<Set<string>>(initialIds);
   const observerRef = React.useRef<IntersectionObserver | null>(null);
   const itemRefs = React.useRef<Map<string, HTMLLIElement>>(new Map());
 
@@ -66,20 +70,6 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
     };
   }, []);
 
-  // Make items visible immediately on mount (SSR/initial render fallback)
-  React.useEffect(() => {
-    // Small delay to allow observer to catch initial items if needed,
-    // or just show them if JS loads late.
-    // Actually, let's just rely on the observer for animation trigger,
-    // but ensure we don't block content if observer fails.
-    const timer = setTimeout(() => {
-      if (visibleItems.size === 0 && sortedEvents.length > 0) {
-        const firstFew = sortedEvents.slice(0, 3).map(e => e.id);
-        setVisibleItems(new Set(firstFew));
-      }
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [sortedEvents, visibleItems.size]);
 
 
   const setItemRef = React.useCallback(
@@ -108,7 +98,7 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl bg-black min-h-screen">
+    <div className="container mx-auto px-4 py-4 max-w-4xl">
       <TimelineLayout>
         {sortedEvents.map((event, index) => (
           <TimelineEventCard

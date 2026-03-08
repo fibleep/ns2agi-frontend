@@ -1,0 +1,77 @@
+---
+import CommitmentsPageLayout from "../../components/CommitmentsPageLayout.astro";
+import { ArrowRight } from "lucide-react";
+---
+
+<CommitmentsPageLayout currentId="ecosystem" title="Ecosystem">
+  <p class="cp-eyebrow">04 · Ecosystem</p>
+  <h1 class="cp-headline">Dots don't compound.<br/>Lines do.</h1>
+  <p class="cp-lead">
+    North Star is a non-profit. We run on sponsorships, partnerships, and people who believe the Belgium tech ecosystem is worth building. The ecosystem commitment is about the relationships that make everything else durable — not just one event, not just one cohort.
+  </p>
+
+  <div class="cp-stats">
+    <div class="cp-stat">
+      <p class="cp-stat-number">20+</p>
+      <p class="cp-stat-label">Partner orgs</p>
+    </div>
+    <div class="cp-stat">
+      <p class="cp-stat-number">6</p>
+      <p class="cp-stat-label">Cities in Belgium</p>
+    </div>
+    <div class="cp-stat">
+      <p class="cp-stat-number">EU</p>
+      <p class="cp-stat-label">Network reach</p>
+    </div>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-body">
+      An event is a dot. A community is a line. A healthy ecosystem is a network of lines strong enough to outlast any single cycle. We're building the infrastructure for that network — across universities, companies, venues, and peer communities across Europe.
+    </p>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-section-label">How the network works</p>
+    <div class="cp-pillars">
+      <div class="cp-pillar">
+        <p class="cp-pillar-title">Supporters</p>
+        <p class="cp-pillar-body">People and organizations who believed early enough to put fuel into the engine before it looked inevitable. They don't just sponsor — they co-create. Their use cases become hackathon challenges; their teams become mentors.</p>
+      </div>
+      <div class="cp-pillar">
+        <p class="cp-pillar-title">Partner organizations</p>
+        <p class="cp-pillar-body">Universities, venues, labs, and local communities that help us create density across Belgium. We don't try to own every city — we co-produce with the organizers already there.</p>
+      </div>
+      <div class="cp-pillar">
+        <p class="cp-pillar-title">European communities</p>
+        <p class="cp-pillar-body">Brain drain is real. We run cross-border trips and collaborations with peer communities in London, Berlin, Paris, and Amsterdam to give Belgian builders a wider reference point — and bring that energy back home.</p>
+      </div>
+      <div class="cp-pillar">
+        <p class="cp-pillar-title">Long-term trust</p>
+        <p class="cp-pillar-body">The real asset is not a single event or a single sponsor. It is the network of people willing to build together again. Every handshake is infrastructure.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cp-section">
+    <p class="cp-section-label">Partners & supporters</p>
+    <div class="cp-gallery">
+      <img src="/stripe-hackathon/1.png" alt="Stripe partnership" class="cp-gallery-img" loading="lazy" />
+      <img src="/robotics-i/3.jpg" alt="Hugging Face collaboration" class="cp-gallery-img" loading="lazy" />
+      <img src="/signal-i/12.jpg" alt="SIGNAL community" class="cp-gallery-img" loading="lazy" />
+      <img src="/ai-hackathon-ii/4.jpg" alt="City of Antwerp" class="cp-gallery-img" loading="lazy" />
+    </div>
+  </div>
+
+  <div class="cp-cta-row">
+    <a href="/work-with-us" class="cp-cta-primary">
+      Partner with us <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+    <a href="https://www.linkedin.com/company/north-star-agi" target="_blank" rel="noopener noreferrer" class="cp-cta-secondary">
+      Follow on LinkedIn <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+    <a href="https://discord.gg/m5Hknymurb" target="_blank" rel="noopener noreferrer" class="cp-cta-secondary">
+      Join Discord <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+  </div>
+</CommitmentsPageLayout>

@@ -1,123 +1,482 @@
 ---
-import {
-    Briefcase,
-    Heart,
-    Info,
-    Mail,
-} from "lucide-react";
-
 const currentPath = Astro.url.pathname;
+const isHomePage = currentPath === "/";
 
-const desktopNavLinks = [
-    {
-        name: "DONATE",
-        href: "https://weglow.world/o/northstaragi/c/VRN975Y6",
-        external: true,
-    },
-    { name: "COLLABORATE", href: "/work-with-us" },
-    { name: "ABOUT", href: "/about" },
-    { name: "CONTACT", href: "/contact" },
+const commitmentLinks = [
+    { name: "Events", href: "/commitments#events" },
+    { name: "Education", href: "/commitments#education" },
+    { name: "Engineering", href: "/commitments#engineering" },
+    { name: "Ecosystem", href: "/commitments#ecosystem" },
 ];
 
-const mobileNavLinks = [
-    {
-        name: "Donate",
-        href: "https://weglow.world/o/northstaragi/c/VRN975Y6",
-        icon: Heart,
-        external: true,
-    },
-    {
-        name: "Collaborate",
-        href: "/work-with-us",
-        icon: Briefcase,
-        external: false,
-    },
-    { name: "About", href: "/about", icon: Info, external: false },
-    { name: "Contact", href: "/contact", icon: Mail, external: false },
+const mainLinks = [
+    { name: "Collaborate", href: "/work-with-us" },
+    { name: "Core", href: "/about" },
+    { name: "Contact", href: "/contact" },
 ];
 
-const isActivePath = (href: string) => {
+const isActive = (href: string) => {
+    const [path] = href.split("#");
     if (href === "/") return currentPath === "/";
-    return currentPath === href || currentPath.startsWith(`${href}/`);
+    return currentPath === path || currentPath.startsWith(`${path}/`);
 };
-
 ---
 
-<header
-    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent"
-    id="main-header"
->
-    <div
-        class="absolute inset-0 bg-black/50 backdrop-blur-xl transition-opacity duration-300"
-        id="header-bg"
+<!-- Desktop floating nav -->
+<header class={`ns-nav ${isHomePage ? "is-homepage" : ""}`} id="ns-nav">
+    <a
+        href="/"
+        class={`ns-nav-logo ${isHomePage ? "logo-hidden" : ""}`}
+        id="ns-nav-logo"
+        aria-label="North Star home"
     >
-    </div>
-    <div class="container mx-auto px-6 h-20 relative z-10">
-        <div class="flex items-center justify-between h-full">
-            <!-- Logo -->
-            <a href="/" class="flex items-center gap-2 group">
-                <img
-                    src="/nslogo.svg"
-                    alt="North Star AGI"
-                    class="h-10 w-auto"
-                />
-                <span
-                    class="font-bold text-white tracking-wider group-hover:text-white/80 transition-colors"
-                    >NORTH STAR</span
-                >
-            </a>
-
-            <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center gap-8">
-                {
-                    desktopNavLinks.map((link) => (
-                        <a
-                            href={link.href}
-                            target={link.external ? "_blank" : "_self"}
-                            rel={link.external ? "noopener noreferrer" : ""}
-                            class="text-sm font-medium text-white/80 hover:text-white transition-colors tracking-wide py-2"
-                        >
-                            {link.name}
-                        </a>
-                    ))
-                }
-            </nav>
-
-            <div class="w-6 h-6 lg:hidden" aria-hidden="true"></div>
-        </div>
-    </div>
+        <img src="/nsstar-clean.svg" alt="" width="18" height="18" />
+        <span>NORTH&nbsp;STAR</span>
+    </a>
+    <div class={`ns-nav-sep ${isHomePage ? "sep-hidden" : ""}`} id="ns-nav-sep" aria-hidden="true"></div>
+    <a
+        href="/commitments"
+        class={`ns-nav-link ${currentPath.startsWith("/commitments") ? "is-active" : ""}`}
+    >
+        Commitments
+    </a>
+    {mainLinks.map((link) => (
+        <a
+            href={link.href}
+            class={`ns-nav-link ${isActive(link.href) ? "is-active" : ""}`}
+        >
+            {link.name}
+        </a>
+    ))}
 </header>
 
-<div class="fixed bottom-0 left-0 right-0 z-50 lg:hidden pointer-events-none">
-    <div
-        class="pointer-events-auto mobile-bottom-nav relative mx-2 mb-2 rounded-2xl border border-white/10 bg-black/90 backdrop-blur-xl shadow-[0_-8px_32px_rgba(0,0,0,0.35)]"
-    >
-        <nav
-            class="grid grid-cols-4 gap-1 px-2 pt-2"
-            style="padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem);"
-        >
-            {
-                mobileNavLinks.map((link) => {
-                    const Icon = link.icon;
-                    const isActive = isActivePath(link.href);
-
-                    return (
-                        <a
-                            href={link.href}
-                            target={link.external ? "_blank" : "_self"}
-                            rel={link.external ? "noopener noreferrer" : ""}
-                            class={`flex flex-col items-center justify-center gap-1 rounded-xl px-2 py-2 text-[10px] leading-tight font-semibold tracking-wide text-center transition-colors ${
-                                isActive
-                                    ? "bg-white/10 text-white"
-                                    : "text-white/55 hover:text-white/80 hover:bg-white/5"
-                            }`}
-                        >
-                            <Icon className="w-5 h-5" />
-                            <span>{link.name}</span>
-                        </a>
-                    );
-                })
-            }
-        </nav>
-    </div>
+<!-- Mobile: floating pill with star + burger -->
+<div class={`ns-mobile-pill ${isHomePage ? "is-homepage" : ""}`} id="ns-mobile-pill">
+    <a href="/" class={`ns-mp-logo ${isHomePage ? "mp-logo-hidden" : ""}`} id="ns-mp-logo" aria-label="North Star home">
+        <img src="/nsstar-clean.svg" alt="" width="16" height="16" />
+        <span class="ns-mp-wordmark">NORTH&nbsp;STAR</span>
+    </a>
+    <button class="ns-mp-burger" id="ns-burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <line class="ns-burger-top" x1="3" y1="5.5" x2="15" y2="5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <line class="ns-burger-bot" x1="3" y1="12.5" x2="15" y2="12.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+    </button>
 </div>
+
+<!-- Mobile fullscreen overlay -->
+<div class="ns-mobile-overlay" id="ns-mobile-overlay" aria-hidden="true">
+    <nav class="ns-mo-nav" aria-label="Mobile navigation">
+        <p class="ns-mo-section-label">Commitments</p>
+        {commitmentLinks.map((link) => (
+            <a href={link.href} class={`ns-mo-link ${isActive(link.href) ? "is-active" : ""}`}>
+                {link.name}
+            </a>
+        ))}
+        <div class="ns-mo-sep"></div>
+        {mainLinks.map((link) => (
+            <a href={link.href} class={`ns-mo-link ${isActive(link.href) ? "is-active" : ""}`}>
+                {link.name}
+            </a>
+        ))}
+    </nav>
+</div>
+
+<style>
+    /* ══════════════════════════════════
+       DESKTOP — Floating pill nav
+       ══════════════════════════════════ */
+    .ns-nav {
+        position: fixed;
+        top: 1.1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 50;
+        display: none;
+        align-items: center;
+        gap: 0.2rem;
+        padding: 0.42rem 0.62rem;
+        border-radius: 9999px;
+        background: rgba(15, 14, 12, 0.52);
+        backdrop-filter: blur(28px) saturate(160%);
+        -webkit-backdrop-filter: blur(28px) saturate(160%);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.04) inset,
+            0 8px 32px rgba(0, 0, 0, 0.45),
+            0 2px 8px rgba(0, 0, 0, 0.3);
+        white-space: nowrap;
+    }
+
+    @media (min-width: 1024px) {
+        .ns-nav { display: flex; }
+    }
+
+    .ns-nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.88);
+        font-family: "Geist", sans-serif;
+        font-size: 0.82rem;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        padding: 0.3rem 0.55rem;
+        border-radius: 9999px;
+        transition:
+            opacity 0.45s cubic-bezier(0.2, 0.85, 0.25, 1),
+            transform 0.45s cubic-bezier(0.2, 0.85, 0.25, 1),
+            max-width 0.45s cubic-bezier(0.2, 0.85, 0.25, 1);
+        overflow: hidden;
+        max-width: 200px;
+        opacity: 1;
+    }
+
+    .ns-nav-logo img {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+        opacity: 0.82;
+    }
+
+    .ns-nav-logo:hover {
+        color: rgba(255, 255, 255, 1);
+    }
+
+    .ns-nav-logo.logo-hidden {
+        opacity: 0;
+        transform: translateX(-6px);
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        pointer-events: none;
+    }
+
+    .ns-nav-sep {
+        width: 1px;
+        height: 16px;
+        background: rgba(255, 255, 255, 0.1);
+        flex-shrink: 0;
+        margin: 0 0.15rem;
+        transition:
+            opacity 0.45s cubic-bezier(0.2, 0.85, 0.25, 1),
+            transform 0.45s cubic-bezier(0.2, 0.85, 0.25, 1);
+    }
+
+    .ns-nav-sep.sep-hidden {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    .ns-nav-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.38rem 0.7rem;
+        border-radius: 9999px;
+        font-family: "Geist", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        letter-spacing: 0.01em;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: color 200ms ease, background 200ms ease;
+    }
+
+    .ns-nav-link:hover,
+    .ns-nav-link.is-active {
+        color: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.07);
+    }
+
+    /* ══════════════════════════════════
+       MOBILE — Floating pill + overlay
+       ══════════════════════════════════ */
+    .ns-mobile-pill {
+        position: fixed;
+        top: calc(env(safe-area-inset-top) + 0.75rem);
+        right: 0.75rem;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        gap: 0.15rem;
+        padding: 0.35rem 0.5rem;
+        border-radius: 9999px;
+        background: rgba(15, 14, 12, 0.52);
+        backdrop-filter: blur(28px) saturate(160%);
+        -webkit-backdrop-filter: blur(28px) saturate(160%);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.04) inset,
+            0 8px 32px rgba(0, 0, 0, 0.45),
+            0 2px 8px rgba(0, 0, 0, 0.3);
+        white-space: nowrap;
+    }
+
+    @media (min-width: 1024px) {
+        .ns-mobile-pill { display: none; }
+    }
+
+    .ns-mp-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.2rem 0.4rem;
+        border-radius: 9999px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.88);
+    }
+
+    .ns-mp-logo img {
+        width: 18px;
+        height: 18px;
+        opacity: 0.82;
+        flex-shrink: 0;
+    }
+
+    .ns-mp-wordmark {
+        font-family: "Geist", sans-serif;
+        font-size: 0.76rem;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.88);
+    }
+
+    /* Homepage: hide logo + wordmark until star scrolls past */
+    .ns-mp-logo.mp-logo-hidden {
+        opacity: 0;
+        max-width: 0;
+        padding: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .ns-mp-logo {
+        transition:
+            opacity 0.45s cubic-bezier(0.2, 0.85, 0.25, 1),
+            max-width 0.45s cubic-bezier(0.2, 0.85, 0.25, 1),
+            padding 0.45s cubic-bezier(0.2, 0.85, 0.25, 1);
+        max-width: 200px;
+    }
+
+    .ns-mp-burger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 9999px;
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        padding: 0;
+        transition: color 180ms ease, background 180ms ease;
+        touch-action: manipulation;
+    }
+
+    .ns-mp-burger:hover {
+        color: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.07);
+    }
+
+    /* Burger → X animation */
+    .ns-burger-top, .ns-burger-bot {
+        transition: transform 280ms cubic-bezier(0.2, 0.85, 0.25, 1);
+        transform-origin: center;
+    }
+
+    .ns-mobile-pill.is-open .ns-burger-top {
+        transform: translateY(3.5px) rotate(45deg);
+    }
+    .ns-mobile-pill.is-open .ns-burger-bot {
+        transform: translateY(-3.5px) rotate(-45deg);
+    }
+    .ns-mobile-pill.is-open .ns-mp-burger {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* ── Fullscreen overlay ── */
+    .ns-mobile-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 49;
+        background: rgba(15, 14, 12, 0.96);
+        backdrop-filter: blur(40px) saturate(120%);
+        -webkit-backdrop-filter: blur(40px) saturate(120%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s cubic-bezier(0.2, 0.85, 0.25, 1);
+    }
+
+    @media (min-width: 1024px) {
+        .ns-mobile-overlay { display: none; }
+    }
+
+    .ns-mobile-overlay.is-open {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .ns-mo-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.15rem;
+    }
+
+    .ns-mo-section-label {
+        font-family: "Geist", sans-serif;
+        font-size: 0.82rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.2);
+        margin: 0 0 0.4rem;
+    }
+
+    .ns-mo-link {
+        display: block;
+        padding: 0.65rem 2rem;
+        border-radius: 0.75rem;
+        font-family: "Geist", sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        text-align: center;
+        letter-spacing: 0.01em;
+        transition: color 180ms ease, background 180ms ease;
+        transform: translateY(8px);
+        opacity: 0;
+    }
+
+    .ns-mobile-overlay.is-open .ns-mo-link {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+            color 180ms ease,
+            background 180ms ease,
+            opacity 0.35s cubic-bezier(0.2, 0.85, 0.25, 1),
+            transform 0.35s cubic-bezier(0.2, 0.85, 0.25, 1);
+    }
+
+    /* Stagger the link reveals */
+    .ns-mobile-overlay.is-open .ns-mo-link:nth-child(2) { transition-delay: 40ms; }
+    .ns-mobile-overlay.is-open .ns-mo-link:nth-child(3) { transition-delay: 80ms; }
+    .ns-mobile-overlay.is-open .ns-mo-link:nth-child(4) { transition-delay: 120ms; }
+    .ns-mobile-overlay.is-open .ns-mo-link:nth-child(5) { transition-delay: 160ms; }
+    .ns-mobile-overlay.is-open .ns-mo-link:nth-child(6) { transition-delay: 200ms; }
+    .ns-mobile-overlay.is-open .ns-mo-link:nth-child(7) { transition-delay: 240ms; }
+    .ns-mobile-overlay.is-open .ns-mo-link:nth-child(8) { transition-delay: 280ms; }
+
+    .ns-mo-section-label {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    .ns-mobile-overlay.is-open .ns-mo-section-label {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+            opacity 0.35s cubic-bezier(0.2, 0.85, 0.25, 1),
+            transform 0.35s cubic-bezier(0.2, 0.85, 0.25, 1);
+    }
+
+    .ns-mo-link:hover,
+    .ns-mo-link.is-active {
+        color: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .ns-mo-sep {
+        width: 1px;
+        height: 16px;
+        background: rgba(255, 255, 255, 0.08);
+        margin: 0.4rem 0;
+        opacity: 0;
+    }
+    .ns-mobile-overlay.is-open .ns-mo-sep {
+        opacity: 1;
+        transition: opacity 0.35s cubic-bezier(0.2, 0.85, 0.25, 1) 160ms;
+    }
+</style>
+
+<script is:inline>
+    (function () {
+        const nav = document.getElementById("ns-nav");
+        const logo = document.getElementById("ns-nav-logo");
+        const sep = document.getElementById("ns-nav-sep");
+        if (!nav) return;
+
+        // ── Logo dock on scroll (homepage only) ──
+        if (logo && nav.classList.contains("is-homepage")) {
+            window.addEventListener("ns:star-dock", (e) => {
+                const docked = e.detail && e.detail.docked;
+                if (docked) {
+                    logo.classList.remove("logo-hidden");
+                    if (sep) sep.classList.remove("sep-hidden");
+                } else {
+                    logo.classList.add("logo-hidden");
+                    if (sep) sep.classList.add("sep-hidden");
+                }
+            });
+        }
+
+        // ── Mobile logo dock on scroll (homepage only) ──
+        const mpLogo = document.getElementById("ns-mp-logo");
+        const mobilePillEl = document.getElementById("ns-mobile-pill");
+        if (mpLogo && mobilePillEl && mobilePillEl.classList.contains("is-homepage")) {
+            window.addEventListener("ns:star-dock", (e) => {
+                const docked = e.detail && e.detail.docked;
+                if (docked) {
+                    mpLogo.classList.remove("mp-logo-hidden");
+                } else {
+                    mpLogo.classList.add("mp-logo-hidden");
+                }
+            });
+        }
+
+        // ── Mobile burger menu ──
+        const pill = document.getElementById("ns-mobile-pill");
+        const burger = document.getElementById("ns-burger");
+        const overlay = document.getElementById("ns-mobile-overlay");
+
+        if (burger && overlay && pill) {
+            const openMenu = () => {
+                pill.classList.add("is-open");
+                overlay.classList.add("is-open");
+                overlay.setAttribute("aria-hidden", "false");
+                burger.setAttribute("aria-expanded", "true");
+                document.body.style.overflow = "hidden";
+            };
+            const closeMenu = () => {
+                pill.classList.remove("is-open");
+                overlay.classList.remove("is-open");
+                overlay.setAttribute("aria-hidden", "true");
+                burger.setAttribute("aria-expanded", "false");
+                document.body.style.overflow = "";
+            };
+
+            burger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                overlay.classList.contains("is-open") ? closeMenu() : openMenu();
+            });
+
+            // Close on link click
+            overlay.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", closeMenu);
+            });
+
+            // Close on Escape
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeMenu();
+            });
+        }
+    })();
+</script>

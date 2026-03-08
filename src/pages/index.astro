@@ -1,820 +1,794 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import HeroScrolling from "../components/HeroScrolling.astro";
 import HorizontalTimeline from "../components/horizontal-timeline";
-import PartnersMarquee from "../components/PartnersMarquee";
+import PartnersGrid from "../components/PartnersGrid.astro";
+import { completedEvents } from "../lib/events";
+import { blogPosts } from "../lib/blog-posts";
 import { ArrowRight } from "lucide-react";
 
-const blogPosts = [
+const commitments = [
   {
-    id: "cost-of-connection",
-    title: "The Cost of Connection",
-    date: "December 31, 2025",
-    excerpt:
-      "Brain drain breaks the chain of people lifting other people up. How do we ignite Belgium's tech ecosystem?",
-    author: "Filip Nowak",
-    thumbnail:
-      "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*BtDdP2mnKTCSqMjN",
-    readTime: "7 min read",
-    slug: "cost-of-connection",
-  },
-];
-
-const eventsData = [
-  {
-    id: "ai-hackathon-i",
-    title: "AI Hackathon I",
-    date: "March 8, 2025",
-    description:
-      "Our first AI hackathon - hosted at The Beacon with over 60 participants",
-    thumbnail: "/ai-hackathon-i/4.jpeg",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "/events/ai-hackathon-i",
+    id: "events",
+    label: "Events",
+    sub: "Hackathons & meetups",
+    href: "/commitments#events",
+    image: "/ai-hackathon-ii/4.jpg",
   },
   {
-    id: "ai-hackathon-ii",
-    title: "AI Hackathon II",
-    date: "May 10, 2025",
-    description: "The 2nd edition - bigger and better!",
-    thumbnail: "/ai-hackathon-ii/4.jpg",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "/events/ai-hackathon-ii",
+    id: "education",
+    label: "Education",
+    sub: "Workshops & lectures",
+    href: "/commitments#education",
+    image: "/kids-hackathon/1.png",
   },
   {
-    id: "signal-i",
-    title: "SIGNAL I",
-    date: "June 5, 2025",
-    description:
-      "Our first SIGNAL AI meetup featuring expert speakers from Bugify and imec, exploring the collapse of modern software development and social robotics.",
-    thumbnail: "/signal-i/4.jpg",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "/events/signal-i",
+    id: "engineering",
+    label: "Engineering",
+    sub: "Projects & products",
+    href: "/commitments#engineering",
+    image: "/misc/photo_2026-03-08 22.06.11.jpeg",
   },
   {
-    id: "robotics-hackathon-i",
-    title: "Robotics Hackathon I",
-    date: "June 14, 2025",
-    description: "Our first 2-day hackathon co-organized with HuggingFace",
-    thumbnail: "/robotics-i/2.JPG",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "/events/robotics-hackathon-i",
-  },
-  {
-    id: "signal-ii",
-    title: "SIGNAL II",
-    date: "August 21, 2025",
-    description:
-      "Talks by AI and robotics experts, live demos, and networking with pizza & drinks at The Beacon.",
-    thumbnail: "/signal-ii/8.png",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "/events/signal-ii",
-  },
-  {
-    id: "ai-hackathon-iii",
-    title: "AI Hackathon III",
-    date: "August 30, 2025",
-    description:
-      "🚀 Over 400 man-hours of innovation packed into one weekend! Winners: Judges' Favorite, AI's Choice, and Atlas categories.",
-    thumbnail: "/ai-hackathon-iii/11.jpg",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "/events/ai-hackathon-iii",
-  },
-  {
-    id: "brucon",
-    title: "BruCon Security Conference",
-    date: "September 25, 2025",
-    description:
-      "🛡️ Belgium's premier security and hacker conference in Mechelen. World-class speakers, security challenges, and deep-technical training with 600+ cybersecurity professionals.",
-    thumbnail: "/partnerships/logos/2.png",
-    status: "completed" as const,
-    organizationType: "CONTRIBUTED" as const,
-    link: "https://www.brucon.org/",
-  },
-  {
-    id: "kids-ai-vibecoding-hackathon",
-    title: "Kids AI Vibecoding Hackathon ⭐️🧇",
-    date: "October 11, 2025",
-    description:
-      "Belgian chapter of the Worldwide Kids AI Vibecoding Hackathon. Ages 9-13, 4-hour creative coding experience across multiple cities in Belgium.",
-    thumbnail: "/kids-hackathon/2.png",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "/events/kids-ai-vibecoding-hackathon",
-  },
-  {
-    id: "future-in-bloom-pt1",
-    title: "FUTURE IN BLOOM PT1",
-    date: "October 18, 2025",
-    description:
-      "🤖 A co-working, make-athon - 1st part of our FUTURE IN BLOOM series. Embodied AI is coming, and we need to be ready for it.",
-    thumbnail: "/future-in-bloom/2.jpg",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "https://luma.com/vl1ksuok",
-  },
-  {
-    id: "tectonic",
-    title: "Tectonic",
-    date: "November 5, 2025",
-    description:
-      "Europe's premier tech conference addressing AI's impact on work and society, geopolitics, and digital autonomy. Connecting startups, investors, and policymakers at Wintercircus, Ghent.",
-    thumbnail: "/tectonic/1.svg",
-    status: "completed" as const,
-    organizationType: "CONTRIBUTED" as const,
-    link: "https://tectonicconf.eu",
-  },
-  {
-    id: "cassini-hackathon",
-    title: "Cassini Hackathon - Consumer Experience",
-    date: "November 7, 2025",
-    description:
-      "🛰️ EU Space hackathon across 10 locations. BeCentral Brussels for Belgium. Gaming, sports, and travel challenges using Galileo, Copernicus & EGNOS data.",
-    thumbnail: "/cassini-hackathon/1.png",
-    status: "upcoming" as const,
-    organizationType: "CONTRIBUTED" as const,
-    link: "https://www.cassini.eu/hackathons",
-  },
-  {
-    id: "belgium-nlp-meetup-27",
-    title: "27th Belgium NLP Meetup",
-    date: "November 20, 2025",
-    description:
-      "AI and multi-agent systems meetup at The Beacon. From Monolith to Multi-Agent architectures, exploring production-ready AI systems.",
-    thumbnail: "/belgium-nlp-meetup/1.avif",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "https://www.meetup.com/belgium-nlp-meetup/",
-  },
-  {
-    id: "stripe-hackathon",
-    title: "Agentic Payments Hackathon with Stripe",
-    date: "November 22, 2025",
-    description:
-      "💳 Hack, pilot and ship payment experiences using Stripe APIs. Build bold payment experiences with agents and automation in Brussels.",
-    thumbnail: "/stripe-hackathon/1.png",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "https://lu.ma/agenticpayments",
-  },
-  {
-    id: "get-sip-done-antwerp",
-    title: "Get Sip Done: Antwerp Kick-Off",
-    date: "November 28, 2025",
-    description:
-      "Exclusive power breakfast networking with 50 founders, leaders, and investors from Antwerp's innovation ecosystem. Coffee, pastries, and high-quality connections at The Beacon.",
-    thumbnail: "/get-sip-done/1.png",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "https://luma.com/k66z8htv",
-  },
-  {
-    id: "museum-night-wintercircus",
-    title: "Museum Night: Lost in Diffusion",
-    date: "December 4, 2025",
-    description:
-      "Algorave at Wintercircus with Design Museum Gent. Live-coded music and visuals generated from museum collection data. Preview of the new permanent collection through algorithmic visualization.",
-    thumbnail: "/museum-night/1.jpg",
-    status: "completed" as const,
-    organizationType: "CONTRIBUTED" as const,
-    link: "https://www.wintercircus.be/en/events/museum-night-with-design-museum-ghent",
-  },
-  {
-    id: "elevenlabs-hackathon-ghent",
-    title: "ElevenLabs Worldwide Hackathon (Community Edition)",
-    date: "December 11, 2025",
-    description:
-      "ElevenLabs Worldwide Hackathon - $200K+ in total prizes. One Night. Thirty Cities. Building the Future of Conversation.",
-    thumbnail: "/elevenlabs/2.jpeg",
-    status: "completed" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "https://ghent.aitinkerers.org/p/elevenlabs-global-hackathon-ghent",
-  },
-  {
-    id: "signal-iii",
-    title: "SIGNAL III",
-    date: "January 29, 2026",
-    description:
-      "A signal emerges. Our flagship meetup is back in 2026 🚀 Join us for another series of talks in AI at The Beacon.",
-    thumbnail: "/signal-iii/1.png",
-    status: "upcoming" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "https://etoile.events/events/ebffd051-6e3b-41e7-937f-6b5a68524cf0",
-  },
-  {
-    id: "journal-club-001",
-    title: "AI Community Journal Club #001",
-    date: "February 26, 2026",
-    description:
-      "A recurring event series by AI Belgium and North Star. Presenters introduce peer-reviewed AI papers covering trending research, classic must-reads, or applied AI work. No academic background required.",
-    thumbnail: "/journal-club-001-thumb.png",
-    status: "upcoming" as const,
-    organizationType: "ORGANIZED" as const,
-    link: "/journal-club",
-  },
-];
-
-const featuredSlides = [
-  {
-    src: "/conferences/IMG_8194.jpg",
-    title: "Conferences",
-    description:
-      "We show up where the ecosystem gathers: sharing our robots, ideas, and stories at Tectonic, Brucon, and Odoo Experience, with our own conference track coming soon.",
-    mosaicImages: [
-      "/conferences/IMG_8194.jpg",
-      "/conferences/photo_2026-02-26%2015.58.36.jpeg",
-      "/conferences/photo_2026-02-26%2015.58.15.jpeg",
-      "/conferences/photo_2026-02-26%2015.54.25.jpeg",
-    ],
-  },
-  {
-    src: "/signal-ii/4.jpg",
-    title: "Meetups",
-    description:
-      "Frequent meetups for builders, researchers, and operators to connect, learn fast, and keep momentum between big events.",
-    mosaicImages: [
-      "/signal-ii/4.jpg",
-      "/signal-i/11.jpg",
-      "/signal-i/23.jpg",
-      "/future-in-bloom/1.jpg",
-    ],
-  },
-  {
-    src: "/ai-hackathon-ii/4.jpg",
-    title: "Hackathons",
-    description:
-      "Where ideas turn into prototypes. Full-day, half-day, and weekend formats for students, professionals, kids, communities, and companies.",
-    mosaicImages: [
-      "/ai-hackathon-ii/4.jpg",
-      "/kids-hackathon/photo_2026-02-26 15.57.18.jpeg",
-      "/robotics-i/6.jpg",
-      "/elevenlabs/1.jpg",
-    ],
-  },
-  {
-    src: "/projects/photo_2026-02-26%2016.04.31.jpeg",
-    title: "Projects",
-    description:
-      "We build real products with community impact: Theater in Ghent (AI in Play), Etoile (unified event index + community management), and SimpleIdea (hackathon stack for kids).",
-    mosaicImages: [
-      "/projects/photo_2026-02-26%2016.04.31.jpeg",
-      "/projects/IMG_8785.jpg",
-      "/projects/20250819_171733.jpg",
-      "/projects/SCR-20260226-ogcq.jpeg",
-    ],
+    id: "ecosystem",
+    label: "Ecosystem",
+    sub: "Partners & connections",
+    href: "/commitments#ecosystem",
+    image: "/elevenlabs/1.jpg",
   },
 ];
 ---
 
 <Layout>
-  <HeroScrolling />
 
-  <section class="py-14 md:py-20 bg-black">
-    <div class="container mx-auto px-4 max-w-7xl">
-      <div class="event-carousel" data-event-carousel>
-        <div class="event-carousel-dots" data-carousel-dots>
-          {
-            featuredSlides.map((_, index) => (
-              <button
-                class:list={["event-carousel-dot", index === 0 && "is-active"]}
-                type="button"
-                aria-label={`Go to slide ${index + 1}`}
-                data-carousel-dot
-                data-index={index}
-              />
-            ))
-          }
+  <!-- Identity block — compact -->
+  <section class="id-hero">
+    <img src="/nsstar-clean.svg" alt="North Star" class="id-star" data-id-star />
+    <p class="id-wordmark">NORTH&nbsp;STAR</p>
+    <p class="id-tagline">Building Belgium's AI &amp; Robotics Future</p>
+  </section>
+
+  <!-- 2×2 commitment grid -->
+  <div class="cp-grid">
+    {commitments.map((c, i) => (
+      <a href={c.href} class={`cp-panel cp-panel-${c.id}`} style={`--panel-i: ${i}`}>
+        <img src={c.image} alt="" loading="lazy" class="cp-img" />
+        <div class="cp-shade"></div>
+        <div class="cp-text">
+          <p class="cp-label">{c.label}</p>
+          <p class="cp-sub">{c.sub}</p>
         </div>
+      </a>
+    ))}
+  </div>
 
-        <div class="event-carousel-slides">
-          {
-            featuredSlides.map((slide, index) => (
-              <article
-                class:list={["event-slide", index === 0 && "is-active"]}
-                aria-hidden={index === 0 ? "false" : "true"}
-              >
-                <div
-                  class="event-slide-mosaic"
-                  aria-label={`${slide.title} photo mosaic`}
-                >
-                  {(
-                    slide.mosaicImages ?? [
-                      slide.src,
-                      slide.src,
-                      slide.src,
-                      slide.src,
-                    ]
-                  ).map((mosaicImage, mosaicIndex) => (
-                    <img
-                      src={mosaicImage}
-                      alt={`${slide.title} photo ${mosaicIndex + 1}`}
-                      class="event-slide-mosaic-image"
-                      loading={index === 0 ? "eager" : "lazy"}
-                    />
-                  ))}
-                </div>
-                <div class="event-slide-overlay">
-                  <div class="event-slide-copy">
-                    <h3 class="event-slide-title">{slide.title}</h3>
-                    <p class="event-slide-description">{slide.description}</p>
-                  </div>
-                </div>
-              </article>
-            ))
-          }
-        </div>
+  <!-- Our Events timeline -->
+  <section class="timeline-endcap" data-reveal>
+    <p class="timeline-endcap-label">Our events</p>
+    <div class="timeline-endcap-scroll">
+      <HorizontalTimeline client:load events={completedEvents} initialScrollTarget="end" compact />
+    </div>
+  </section>
 
-        <button
-          class="event-carousel-arrow left"
-          type="button"
-          aria-label="Previous slide"
-          data-carousel-prev
+  <!-- Scene: Flagship Initiatives -->
+  <div class="flagship-header" data-reveal>
+    <span class="flagship-eyebrow">Flagship Initiatives</span>
+  </div>
+
+  <!-- The Vessel -->
+  <section class="vessel-section" data-reveal>
+    <div class="vessel-bg" aria-hidden="true">
+      <img src="/thevessel.png" alt="" loading="lazy" />
+    </div>
+    <div class="vessel-gradient-b" aria-hidden="true"></div>
+    <div class="vessel-gradient-r" aria-hidden="true"></div>
+    <div class="vessel-vignette" aria-hidden="true"></div>
+    <a href="https://thevessel.be" target="_blank" rel="noopener noreferrer" class="vessel-content">
+      <h3 class="vessel-title">The Vessel</h3>
+      <p class="vessel-desc">An atelier for intelligent machines</p>
+      <span class="vessel-cta">Visit <ArrowRight className="w-3 h-3" /></span>
+      <div class="vessel-supporter">
+        <span class="vessel-supporter-label">Supported by</span>
+        <img src="/partnerships/workedwith/17.png" alt="Port of Antwerp-Bruges" class="vessel-supporter-logo" />
+      </div>
+    </a>
+  </section>
+
+  <!-- Etoile -->
+  <section class="etoile-section" data-reveal>
+    <div class="etoile-glow" aria-hidden="true"></div>
+    <a href="https://etoile.events" target="_blank" rel="noopener noreferrer" class="etoile-content">
+      <h3 class="etoile-title">etoile</h3>
+      <p class="etoile-desc">Community management and event platform</p>
+      <span class="etoile-cta">Explore <ArrowRight className="w-3 h-3" /></span>
+    </a>
+  </section>
+
+  <!-- Scene 5: Stories -->
+  <section class="stories-section">
+    <div class="stories-header" data-reveal>
+      <h2 class="stories-title">Stories</h2>
+    </div>
+    <div class="stories-list">
+      {blogPosts.filter(p => p.id === "cost-of-connection").map((post, i) => (
+        <a
+          href={`/blog/${post.slug}`}
+          class="story-card"
+          data-reveal
+          data-reveal-delay={String(i + 1)}
         >
-          &#10094;
-        </button>
-        <button
-          class="event-carousel-arrow right"
-          type="button"
-          aria-label="Next slide"
-          data-carousel-next
-        >
-          &#10095;
-        </button>
-      </div>
+          <div class="story-card-inner">
+            <div class="story-card-text">
+              <p class="story-card-meta">
+                {post.author}&nbsp;&middot;&nbsp;{post.date}&nbsp;&middot;&nbsp;{post.readTime}
+              </p>
+              <h3 class="story-card-title">{post.title}</h3>
+              <p class="story-card-excerpt">{post.excerpt}</p>
+              <span class="story-card-cta">
+                Read <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </div>
+            <div class="story-card-image-wrap">
+              <img src={post.thumbnail} alt="" class="story-card-image" loading="lazy" />
+            </div>
+          </div>
+        </a>
+      ))}
     </div>
   </section>
 
-  <PartnersMarquee client:load />
+  <PartnersGrid />
 
-  {/* Paths to North Star Section with Horizontal Timeline */}
-  <section class="py-20 bg-black">
-    <div class="container mx-auto px-4 max-w-7xl">
-      <div class="text-center mb-12">
-        <div class="mb-8">
-          <img
-            src="/nslogo.svg"
-            alt="North Star"
-            class="w-24 h-24 mx-auto object-contain"
-          />
-        </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">
-          Paths to North Star
-        </h2>
-      </div>
-
-      {/* Horizontal Timeline */}
-      <HorizontalTimeline client:load events={eventsData} />
-    </div>
-  </section>
-
-  {/* Blog Section */}
-  <section class="py-20 bg-black">
-    <div class="container mx-auto px-4 max-w-5xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
-          Our Stories
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        {
-          blogPosts.map((post) => (
-            <a
-              href={`/blog/${post.slug}`}
-              class="group rounded-2xl overflow-hidden bg-zinc-900/30 hover:bg-zinc-900/50 transition-all duration-300 border border-white/5 hover:border-white/10"
-            >
-              <div class="aspect-video bg-zinc-800 overflow-hidden">
-                {post.thumbnail ? (
-                  <img
-                    src={post.thumbnail}
-                    alt={post.title}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                ) : (
-                  <div class="w-full h-full flex items-center justify-center">
-                    <span class="text-zinc-600">No Image</span>
-                  </div>
-                )}
-              </div>
-              <div class="p-6">
-                <div class="flex items-center gap-3 text-xs text-zinc-600 mb-3">
-                  <span>{post.author}</span>
-                  <span>•</span>
-                  <time>{post.date}</time>
-                  <span>•</span>
-                  <span>{post.readTime}</span>
-                </div>
-                <h3 class="text-lg font-medium text-white mb-3 group-hover:text-zinc-300 transition-colors">
-                  {post.title}
-                </h3>
-                <p class="text-zinc-500 text-sm leading-relaxed mb-4 line-clamp-2">
-                  {post.excerpt}
-                </p>
-                <div class="flex items-center gap-2 text-sm text-zinc-400 group-hover:text-white transition-colors">
-                  Read more <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  {/* The Vessel CTA */}
-  <section class="relative overflow-hidden">
-    {/* Background image with transparency */}
-    <div class="absolute inset-0">
-      <img
-        src="/thevessel.png"
-        alt=""
-        class="w-full h-full object-cover opacity-40"
-      />
-    </div>
-    {/* Gradient overlay for transparent corners */}
-    <div
-      class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"
-    >
-    </div>
-    <div
-      class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black"
-    >
-    </div>
-    {/* Radial vignette */}
-    <div
-      class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,_transparent_0%,_black_100%)]"
-    >
-    </div>
-
-    <div class="relative block">
-      <div class="py-24 md:py-32 px-6 text-center">
-        <div class="flex items-center justify-center gap-4 mb-6 text-white/90">
-          <img
-            src="/nsstar-transparent.png"
-            alt="North Star star"
-            class="h-10 md:h-11 w-auto opacity-90"
-          />
-          <span
-            class="uppercase tracking-[0.18em] text-sm md:text-2xl font-bold"
-            style="font-family: 'Space Mono', monospace;"
-            >North Star</span
-          >
-        </div>
-
-        <h3
-          class="text-[clamp(3rem,10vw,8.75rem)] uppercase tracking-[0.03em] leading-[0.9] mb-0 text-white"
-          style="font-family: 'Cormorant', serif; font-weight: 500;"
-        >
-          The Vessel
-        </h3>
-
-        <div class="flex items-center justify-center gap-3 mt-6 text-white/70">
-          <span class="uppercase tracking-[0.14em] text-[10px] md:text-xs"
-            >Supported by</span
-          >
-          <img
-            src="/partnerships/workedwith/17.png"
-            alt="Port of Antwerp-Bruges logo"
-            class="h-6 md:h-7 w-auto opacity-90"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* Etoile Embed */}
-  <section class="py-12 md:py-16 bg-black">
-    <div class="container mx-auto px-4 max-w-7xl">
-      <div class="max-w-3xl mx-auto">
-        <iframe
-          src="https://etoile.events/embed?country=be"
-          width="100%"
-          height="800"
-          frameborder="0"
-          loading="lazy"
-          title="Events Calendar"
-          class="w-full rounded-xl"
-        ></iframe>
-      </div>
-    </div>
-  </section>
-
-  {/* Partner With Us */}
-  <section class="py-20 bg-black">
-    <div class="container mx-auto px-4 max-w-7xl">
-      <div class="text-center mb-8">
-        <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">
-          Partner With Us
-        </h3>
-      </div>
-      <div class="w-full flex justify-center px-4 md:px-8">
-        <div
-          class="w-full max-w-4xl rounded-2xl bg-zinc-900/30 p-12 text-center"
-        >
-          <p class="text-zinc-400 text-lg mb-4">Reach out to us at</p>
-          <a
-            href="mailto:filip@ns2agi.com"
-            class="text-2xl md:text-3xl font-medium text-white hover:text-zinc-300 transition-colors"
-          >
-            filip@ns2agi.com
-          </a>
-        </div>
-        {
-          /* <iframe
-          src="https://beaded-pineapple-898.notion.site/ebd/274d61b47ae280be826fcc817dd3af2c"
-          class="w-full max-w-4xl h-[700px] rounded-2xl border border-white/20"
-          style="background: transparent;"
-          title="Partner With Us Form"
-        ></iframe> */
-        }
-      </div>
-    </div>
+  <!-- Scene 7: Close -->
+  <section class="home-close" data-reveal>
+    <img src="/nsstar-clean.svg" alt="" class="home-close-star" />
+    <p class="home-close-cta">Let's build it together</p>
+    <nav class="home-close-socials" aria-label="Social links">
+      <a href="https://www.linkedin.com/company/north-star-agi" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://x.com/ns2agi" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://discord.gg/m5Hknymurb" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="https://www.instagram.com/northstaragi/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </nav>
   </section>
 
 </Layout>
 
 <script is:inline>
-  const carousel = document.querySelector("[data-event-carousel]");
-
-  if (carousel) {
-    const slides = Array.from(carousel.querySelectorAll(".event-slide"));
-    const dots = Array.from(carousel.querySelectorAll("[data-carousel-dot]"));
-    const prevBtn = carousel.querySelector("[data-carousel-prev]");
-    const nextBtn = carousel.querySelector("[data-carousel-next]");
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    let activeIndex = 0;
-    let timerId;
-
-    const setActiveSlide = (index) => {
-      activeIndex = (index + slides.length) % slides.length;
-      slides.forEach((slide, i) => {
-        const isActive = i === activeIndex;
-        slide.classList.toggle("is-active", isActive);
-        slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+  /* Scroll reveal */
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+          revealObserver.unobserve(entry.target);
+        }
       });
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("is-active", i === activeIndex);
-      });
+    },
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll("[data-reveal]").forEach((el) => {
+    revealObserver.observe(el);
+  });
+
+  /* Dock nav logo once the hero star scrolls out of view */
+  const idStar = document.querySelector("[data-id-star]");
+  if (idStar) {
+    let docked = false;
+    const sync = (d) => {
+      if (docked === d) return;
+      docked = d;
+      window.dispatchEvent(new CustomEvent("ns:star-dock", { detail: { docked: d } }));
     };
-
-    const goNext = () => setActiveSlide(activeIndex + 1);
-    const goPrev = () => setActiveSlide(activeIndex - 1);
-
-    const startAutoplay = () => {
-      if (prefersReducedMotion || slides.length <= 1) return;
-      clearInterval(timerId);
-      timerId = window.setInterval(goNext, 5500);
-    };
-
-    const stopAutoplay = () => {
-      clearInterval(timerId);
-    };
-
-    prevBtn?.addEventListener("click", () => {
-      goPrev();
-      startAutoplay();
-    });
-    nextBtn?.addEventListener("click", () => {
-      goNext();
-      startAutoplay();
-    });
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => {
-        setActiveSlide(index);
-        startAutoplay();
-      });
-    });
-
-    carousel.addEventListener("mouseenter", stopAutoplay);
-    carousel.addEventListener("mouseleave", startAutoplay);
-
-    setActiveSlide(0);
-    startAutoplay();
+    new IntersectionObserver(
+      ([e]) => sync(!e.isIntersecting),
+      { threshold: 0, rootMargin: "-56px 0px 0px 0px" }
+    ).observe(idStar);
   }
+
+  /* Timeline: always start scrolled to newest (rightmost) end */
+  function scrollTimelineToEnd() {
+    var c = document.querySelector('.horizontal-timeline-scroll');
+    if (c && c.scrollWidth > c.clientWidth) {
+      c.scrollLeft = c.scrollWidth - c.clientWidth;
+    }
+  }
+  scrollTimelineToEnd();
+  requestAnimationFrame(scrollTimelineToEnd);
+  setTimeout(scrollTimelineToEnd, 300);
 </script>
 
 <style is:global>
-  /* Custom scrollbar for horizontal timeline */
-  .horizontal-timeline-scroll::-webkit-scrollbar {
-    height: 8px;
+  /* ── Identity block ── */
+  .id-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: clamp(2rem, 5vh, 3.5rem) 1.5rem clamp(0.5rem, 1vh, 1rem);
   }
 
-  .horizontal-timeline-scroll::-webkit-scrollbar-track {
-    background: transparent;
+  @media (max-width: 520px) {
+    .id-hero {
+      min-height: 40vh;
+    }
   }
 
-  .horizontal-timeline-scroll::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+  .id-star {
+    width: clamp(44px, 7vw, 64px);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.12));
+    opacity: 0;
+    animation: id-star-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
   }
 
-  .horizontal-timeline-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
+  @keyframes id-star-in {
+    from { opacity: 0; transform: scale(0.5) rotate(-45deg); }
+    to   { opacity: 0.82; transform: scale(1) rotate(0deg); }
   }
 
-  /* Firefox scrollbar */
-  .horizontal-timeline-scroll {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  .id-wordmark {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: clamp(1.1rem, 2.8vw, 2rem);
+    letter-spacing: 0.38em;
+    font-weight: 700;
+    color: rgba(255,255,255,0.62);
+    line-height: 1;
+    opacity: 0;
+    animation: id-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
   }
 
-  .event-carousel {
+  .id-tagline {
+    margin: 0;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.05rem, 3vw, 1.4rem);
+    color: rgba(255,255,255,0.3);
+    line-height: 1;
+    opacity: 0;
+    animation: id-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+  }
+
+  @keyframes id-fade-up {
+    from { opacity: 0; transform: translateY(16px); filter: blur(4px); }
+    to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+
+  /* ── 2×2 commitment grid ── */
+  .cp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+    padding: 0 clamp(1rem, 4vw, 3rem);
+    max-width: 820px;
+    margin: 0 auto clamp(4rem, 8vh, 6rem);
+  }
+
+  .cp-panel {
     position: relative;
-    width: 100%;
-    height: min(82vh, 860px);
-    min-height: 420px;
+    aspect-ratio: 4/3;
     overflow: hidden;
-    border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: #050505;
+    border-radius: 0.6rem;
+    text-decoration: none;
+    display: block;
+    opacity: 0;
+    animation: cp-panel-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(0.65s + var(--panel-i, 0) * 0.1s);
   }
 
-  .event-carousel-dots {
+  @keyframes cp-panel-in {
+    from { opacity: 0; transform: translateY(28px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .cp-img {
     position: absolute;
-    top: 0.9rem;
-    left: 50%;
-    transform: translateX(-50%);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.38) saturate(0.55);
+    transform: scale(1.04);
+    transition: transform 500ms cubic-bezier(0.2, 0.85, 0.25, 1), filter 400ms ease;
+  }
+
+  .cp-panel:hover .cp-img {
+    transform: scale(1);
+    filter: brightness(0.52) saturate(0.75);
+  }
+
+  .cp-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+  }
+
+  .cp-text {
+    position: absolute;
+    bottom: 0.9rem;
+    left: 1rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .cp-label {
+    margin: 0;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 3.2vw, 2.8rem);
+    color: rgba(255,255,255,0.88);
+    line-height: 1;
+  }
+
+  .cp-sub {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.72rem, 1.2vw, 0.9rem);
+    color: rgba(255,255,255,0.48);
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+
+  @media (max-width: 520px) {
+    .cp-grid { gap: 0.3rem; padding: 0 0.5rem; }
+    .cp-label { font-size: clamp(1.2rem, 6vw, 1.8rem); }
+  }
+
+  /* ── Proof bar ── */
+  .proof-bar {
     display: flex;
     align-items: center;
-    gap: 0.45rem;
-    z-index: 3;
-  }
-
-  .event-carousel-dot {
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    background: rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-    transition:
-      transform 180ms ease,
-      background-color 180ms ease;
-  }
-
-  .event-carousel-dot.is-active {
-    background: rgba(255, 255, 255, 0.95);
-    transform: scale(1.08);
-  }
-
-  .event-carousel-slides {
+    justify-content: center;
+    gap: 0;
+    padding: clamp(2.5rem, 5vh, 4rem) clamp(1.5rem, 4vw, 3rem);
+    max-width: 860px;
+    margin: 0 auto;
     width: 100%;
-    height: 100%;
-    position: relative;
   }
 
-  .event-slide {
+  .proof-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    flex: 1;
+    text-align: center;
+  }
+
+  .proof-val {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: rgba(255,255,255,0.82);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .proof-key {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.68rem, 1vw, 0.78rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.26);
+    line-height: 1.4;
+  }
+
+  .proof-sep {
+    width: 1px;
+    height: 2.5rem;
+    background: rgba(255,255,255,0.08);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 480px) {
+    .proof-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 0;
+    }
+    .proof-sep {
+      display: none;
+    }
+  }
+
+  /* ── Scroll reveal ── */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.75s cubic-bezier(0.2, 0.85, 0.25, 1),
+      transform 0.75s cubic-bezier(0.2, 0.85, 0.25, 1);
+  }
+  [data-reveal].is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  [data-reveal][data-reveal-delay="1"] { transition-delay: 0.12s; }
+  [data-reveal][data-reveal-delay="2"] { transition-delay: 0.24s; }
+  [data-reveal][data-reveal-delay="3"] { transition-delay: 0.36s; }
+  [data-reveal][data-reveal-delay="4"] { transition-delay: 0.48s; }
+  [data-reveal][data-reveal-delay="5"] { transition-delay: 0.6s; }
+
+  /* ── Hero scroll pulse ── */
+  @keyframes hero-scroll-pulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.7; transform: scaleY(1.3); transform-origin: top; }
+  }
+
+  /* ── Flagship header ── */
+  .flagship-header {
+    text-align: center;
+    padding: clamp(3rem, 6vh, 5rem) 1.5rem 0;
+  }
+  .flagship-eyebrow {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: rgba(255,255,255,0.72);
+  }
+
+  /* ── The Vessel ── */
+  .vessel-section {
+    position: relative;
+    overflow: hidden;
+    min-height: clamp(280px, 42vh, 420px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .vessel-bg {
     position: absolute;
     inset: 0;
-    opacity: 0;
-    transition: opacity 400ms ease;
+  }
+  .vessel-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.18;
+  }
+  .vessel-gradient-b {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, var(--offblack) 0%, transparent 30%, transparent 70%, var(--offblack) 100%);
     pointer-events: none;
   }
-
-  .event-slide.is-active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .event-slide-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .event-slide-mosaic {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-    gap: 0.35rem;
-    background: #000;
-    padding: 0.35rem;
-  }
-
-  .event-slide-mosaic-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 0.5rem;
-  }
-
-  .event-slide-overlay {
+  .vessel-gradient-r {
     position: absolute;
     inset: 0;
-    display: flex;
-    align-items: flex-end;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.94) 0%,
-      rgba(0, 0, 0, 0.55) 45%,
-      rgba(0, 0, 0, 0.2) 100%
-    );
+    background: linear-gradient(to right, var(--offblack) 0%, transparent 30%, transparent 70%, var(--offblack) 100%);
+    pointer-events: none;
   }
-
-  .event-slide-copy {
-    width: 100%;
-    max-width: 860px;
-    padding: 1.2rem 1.2rem 1.6rem;
-    background: rgba(0, 0, 0, 0.58);
-    backdrop-filter: blur(2px);
-    border-top-right-radius: 0.65rem;
-  }
-
-  .event-slide-title {
-    margin: 0 0 0.45rem;
-    color: #fff;
-    font-size: clamp(1.35rem, 3vw, 2.4rem);
-    line-height: 1.1;
-    font-weight: 700;
-    text-wrap: balance;
-  }
-
-  .event-slide-description {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.82);
-    font-size: clamp(0.92rem, 1.5vw, 1.1rem);
-    line-height: 1.45;
-    max-width: 70ch;
-  }
-
-  .event-carousel-arrow {
+  .vessel-vignette {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2.7rem;
-    height: 2.7rem;
-    border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background: rgba(0, 0, 0, 0.82);
-    color: #fff;
-    font-size: 1.4rem;
+    inset: 0;
+    background: radial-gradient(ellipse 35% 35% at 50% 40%, transparent 0%, var(--offblack) 100%);
+    pointer-events: none;
+  }
+  .vessel-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    padding: clamp(3rem, 6vh, 5rem) 1.5rem;
+    gap: 0.6rem;
+  }
+  .vessel-title {
+    margin: 0;
+    font-family: "Cormorant", serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.9);
     line-height: 1;
+  }
+  .vessel-desc {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.82rem, 1.2vw, 0.96rem);
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+  }
+  .vessel-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    transition: color 250ms ease, gap 250ms ease;
+  }
+  .vessel-content:hover .vessel-cta {
+    color: rgba(255,255,255,0.65);
+    gap: 0.5rem;
+  }
+  .vessel-content:hover .vessel-title {
+    color: rgba(255,255,255,1);
+  }
+  .vessel-supporter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .vessel-supporter-label {
+    font-family: "Geist", sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+  .vessel-supporter-logo {
+    height: clamp(1.6rem, 3vw, 2.2rem);
+    width: auto;
+    object-fit: contain;
+    opacity: 0.45;
+    filter: grayscale(100%) brightness(0.8);
+  }
+
+  /* ── Etoile ── */
+  .etoile-section {
+    position: relative;
+    overflow: hidden;
+    min-height: clamp(280px, 42vh, 420px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .etoile-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 45% at 50% 50%, rgba(254,119,67,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .etoile-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    padding: clamp(3rem, 6vh, 5rem) 1.5rem;
+    gap: 0.6rem;
+  }
+  .etoile-title {
+    margin: 0;
+    font-family: "Amaranth", sans-serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 400;
+    color: #FE7743;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .etoile-desc {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.82rem, 1.2vw, 0.96rem);
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+  }
+  .etoile-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(254,119,67,0.45);
+    transition: color 250ms ease, gap 250ms ease;
+  }
+  .etoile-content:hover .etoile-cta {
+    color: rgba(254,119,67,0.8);
+    gap: 0.5rem;
+  }
+
+  /* ── Stories ── */
+  .stories-section {
+    padding: clamp(3rem, 8vh, 7rem) 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .stories-header {
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+  .stories-title {
+    margin: 0;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.1;
+  }
+  .story-card {
+    display: block;
+    text-decoration: none;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem 0;
+    transition: border-color 300ms ease;
+  }
+  .story-card:last-child {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .story-card:hover {
+    border-color: rgba(255,255,255,0.14);
+  }
+  .story-card-inner {
     display: grid;
-    place-items: center;
-    cursor: pointer;
-    transition:
-      background-color 180ms ease,
-      border-color 180ms ease;
-    z-index: 3;
+    grid-template-columns: 1fr 36%;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .story-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .story-card-meta {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.36);
+    text-transform: uppercase;
+  }
+  .story-card-title {
+    margin: 0;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: rgba(255,255,255,0.88);
+    transition: color 240ms ease;
+  }
+  .story-card:hover .story-card-title {
+    color: rgba(255,255,255,1);
+  }
+  .story-card-excerpt {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.82rem, 2vw, 0.96rem);
+    line-height: 1.7;
+    color: rgba(255,255,255,0.42);
+    max-width: 50ch;
+  }
+  .story-card-cta {
+    margin-top: 0.35rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.42);
+    transition: color 240ms ease, gap 240ms ease;
+  }
+  .story-card:hover .story-card-cta {
+    color: rgba(255,255,255,0.72);
+    gap: 0.6rem;
+  }
+  .story-card-image-wrap {
+    overflow: hidden;
+    border-radius: 0.5rem;
+    aspect-ratio: 16 / 9;
+  }
+  .story-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(40%) brightness(0.72);
+    transform: scale(1.04);
+    transition: transform 600ms cubic-bezier(0.2, 0.85, 0.25, 1), filter 400ms ease;
+  }
+  .story-card:hover .story-card-image {
+    transform: scale(1);
+    filter: grayscale(0%) brightness(0.88);
+  }
+  @media (max-width: 640px) {
+    .story-card-inner {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    .story-card-image-wrap {
+      order: -1;
+    }
   }
 
-  .event-carousel-arrow.left {
-    left: 1rem;
+  /* ── Timeline endcap ── */
+  .timeline-endcap {
+    padding: clamp(2.5rem, 6vh, 5rem) 0;
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .timeline-endcap-label {
+    display: block;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 1.5rem;
+    text-align: center;
+    line-height: 1.1;
+  }
+  .timeline-endcap-scroll {
+    width: min(920px, calc(100vw - 2rem));
+    margin: 0 auto;
+  }
+  .timeline-endcap-scroll .horizontal-timeline-scroll {
+    padding-bottom: 0.5rem;
   }
 
-  .event-carousel-arrow.right {
-    right: 1rem;
+  /* ── Close ── */
+  .home-close {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(3rem, 8vh, 8rem) 1.5rem clamp(4rem, 10vh, 8rem);
+    gap: 1.2rem;
+  }
+  .home-close-star {
+    width: clamp(40px, 6vw, 72px);
+    height: auto;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.12));
+  }
+  .home-close-cta {
+    margin: 0;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    color: rgba(255,255,255,0.82);
+    line-height: 1.2;
+    font-weight: 400;
+  }
+  .home-close-socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.2rem 0.8rem;
+    margin-top: 0.5rem;
+  }
+  .home-close-socials a {
+    font-family: "Geist", sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.32);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+  .home-close-socials a:hover {
+    color: rgba(255,255,255,0.72);
   }
 
-  .event-carousel-arrow:hover {
-    background: rgba(0, 0, 0, 0.92);
-    border-color: rgba(255, 255, 255, 0.62);
-  }
-
-  @media (max-width: 768px) {
-    .event-carousel {
-      height: 66vh;
-      min-height: 360px;
-    }
-
-    .event-slide-copy {
-      padding: 1rem 0.9rem 1.2rem;
-    }
-
-    .event-slide-description {
-      max-width: 100%;
-    }
-
-    .event-carousel-arrow {
-      width: 2.3rem;
-      height: 2.3rem;
-      font-size: 1.2rem;
-    }
-
-    .event-carousel-arrow.left {
-      left: 0.6rem;
-    }
-
-    .event-carousel-arrow.right {
-      right: 0.6rem;
-    }
-  }
-
+  /* Respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    .event-slide {
-      transition: none;
+    .id-star, .id-wordmark, .id-tagline, .cp-panel, .home-close-star {
+      animation: none !important;
+      opacity: 1 !important;
     }
+    .id-star { opacity: 0.82 !important; }
   }
 </style>

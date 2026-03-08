@@ -1,0 +1,19 @@
+---
+import EventLayout from "../../components/EventLayout.astro";
+
+const images = [
+  { src: "/partnerships/logos/2.png", alt: "BruCon Security Conference" },
+];
+---
+
+<EventLayout
+  title="BruCon Security Conference"
+  date="September 25, 2025"
+  location="Belgium"
+  type="Conference"
+  description="Belgium's premier security conference - North Star brought robots and a capture-the-flag challenge where attendees hacked a virtual robot factory."
+  images={images}
+>
+  <p>BruCon is Belgium's leading security conference, and we showed up with hardware. Our booth featured SO-101 arms and robots from our partner Dwengo - a live demonstration of what happens when robotics meets the security community.</p>
+  <p>We hosted a capture-the-flag challenge where attendees could hack a virtual robot factory. Security researchers stress-testing robotic systems is exactly the kind of cross-pollination we want to see more of.</p>
+</EventLayout>

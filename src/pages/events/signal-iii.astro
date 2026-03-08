@@ -1,0 +1,20 @@
+---
+import EventLayout from "../../components/EventLayout.astro";
+
+const images = [
+  { src: "/signal-iii/1.png", alt: "SIGNAL III" },
+];
+---
+
+<EventLayout
+  title="SIGNAL III"
+  date="January 29, 2026"
+  location="Antwerp, Belgium"
+  type="Meetup"
+  description="60 people. Two speakers from Hugging Face and Collibra. The third SIGNAL - where agents met enterprise data."
+  images={images}
+>
+  <p>Niels Rogge, engineer at ML6 and Hugging Face, opened with a talk on building effective agents - the practical side of what works and what doesn't when you move from demos to production.</p>
+  <p>Stijn Christiaens, co-founder of Collibra, followed with a deep dive into agents and their data - the infrastructure layer that determines whether your agent actually works at scale or hallucinates its way through a pipeline.</p>
+  <p>Sixty people showed up for an evening of high-signal talks and the kind of hallway conversations that only happen when builders and founders are in the same room.</p>
+</EventLayout>
