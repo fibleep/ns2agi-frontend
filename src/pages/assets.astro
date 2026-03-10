@@ -1,0 +1,155 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const base = "/assets/logos";
+
+const items = [
+  { label: "Main Logo", file: `${base}/nslogo.svg`, type: "SVG" },
+  { label: "Star", file: `${base}/star-only-white.svg`, type: "SVG" },
+  { label: "Horizontal", file: `${base}/logo-horizontal-white.svg`, type: "SVG" },
+  { label: "Stacked", file: `${base}/logo-stacked-white.svg`, type: "SVG" },
+];
+---
+
+<Layout title="Assets | North Star">
+  <main class="as-page">
+
+    <header class="as-header">
+      <h1 class="as-title">Assets</h1>
+    </header>
+
+    <section class="as-section">
+      <div class="as-grid">
+        {items.map((a) => (
+          <a href={a.file} download class="as-card">
+            <div class="as-preview">
+              <img src={a.file} alt={a.label} loading="lazy" />
+            </div>
+            <div class="as-meta">
+              <span class="as-label">{a.label}</span>
+              <span class="as-type">{a.type}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="as-usage">
+      <p class="as-usage-text">These assets are provided for press, partners, and community use. Keep clear space around the mark. Do not stretch, recolor, or add effects.</p>
+    </section>
+
+  </main>
+</Layout>
+
+<style is:global>
+  .as-page {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .as-header {
+    padding: clamp(8rem, 16vh, 12rem) 0 clamp(2rem, 4vh, 3rem);
+  }
+
+  .as-title {
+    margin: 0;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.1;
+  }
+
+  .as-section {
+    padding-bottom: clamp(3rem, 6vh, 5rem);
+  }
+
+  .as-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .as-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: border-color 200ms ease;
+  }
+
+  .as-card:hover {
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  .as-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 3 / 2;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.02);
+    transition: background 200ms ease;
+  }
+
+  .as-card:hover .as-preview {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .as-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: brightness(0.85);
+    transition: filter 200ms ease;
+  }
+
+  .as-card:hover .as-preview img {
+    filter: brightness(1);
+  }
+
+  .as-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.65rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .as-label {
+    font-family: "Geist", sans-serif;
+    font-size: 0.66rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 500;
+  }
+
+  .as-type {
+    font-family: "Geist", sans-serif;
+    font-size: 0.56rem;
+    color: rgba(255, 255, 255, 0.18);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .as-usage {
+    padding-bottom: clamp(5rem, 10vh, 8rem);
+  }
+
+  .as-usage-text {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.25);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 400px) {
+    .as-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
