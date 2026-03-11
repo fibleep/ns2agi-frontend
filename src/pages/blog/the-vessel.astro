@@ -15,6 +15,12 @@ import Layout from '../../layouts/Layout.astro';
 
         <div class="blog-body">
 
+            <figure class="blog-figure vessel-video-wrap">
+                <video controls preload="metadata" playsinline class="vessel-video">
+                    <source src="/blogs/the-vessel/the-vessel.mp4" type="video/mp4" />
+                </video>
+            </figure>
+
             <div class="vessel-definition">
                 <p class="vessel-word">vessel <span class="vessel-phonetic">/&#x02C8;ves.&#x0259;l/</span></p>
                 <ol class="vessel-meanings">
@@ -235,6 +241,18 @@ import Layout from '../../layouts/Layout.astro';
     .blog-body a:focus-visible {
         outline: 1px solid rgba(255,255,255,0.5);
         outline-offset: 2px;
+    }
+
+    /* ── Video ── */
+    .vessel-video-wrap {
+        margin: 0 0 clamp(2.5rem, 5vh, 4rem);
+    }
+
+    .vessel-video {
+        display: block;
+        width: 100%;
+        border-radius: 0.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     /* ── Vessel-specific ── */

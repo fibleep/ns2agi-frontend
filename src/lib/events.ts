@@ -172,6 +172,16 @@ export const allEvents: EventItem[] = [
     status: "completed",
     organizationType: "ORGANIZED",
   },
+  {
+    id: "openlab-vessel-1",
+    title: "OpenLab @ The Vessel",
+    date: "2026-03-19",
+    description: "First Open Lab Thursday at our new AI & Robotics lab in the Antwerp port area.",
+    thumbnail: "/blogs/the-vessel/2026-03-10 16.58.10.jpg",
+    status: "upcoming" as const,
+    organizationType: "ORGANIZED",
+    link: "https://etoile.events/events/3ec37af2-d267-4031-bf8f-9cb69d89dbee",
+  },
 ];
 
 export const completedEvents = allEvents.filter((event) => event.status === "completed");
