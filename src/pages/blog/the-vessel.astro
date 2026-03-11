@@ -1,0 +1,298 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="The Vessel - North Star Blog">
+
+    <article class="blog-article">
+        <header class="blog-header">
+            <a href="/blog" class="blog-back">Back</a>
+            <time class="blog-date">Mar 11, 2026</time>
+            <h1 class="blog-title">First open AI &amp; Robotics Lab in Belgium</h1>
+            <p class="blog-subtitle">The Vessel</p>
+            <p class="blog-meta">Filip Nowak &middot; 4 min read</p>
+        </header>
+
+        <div class="blog-body">
+
+            <div class="vessel-definition">
+                <p class="vessel-word">vessel <span class="vessel-phonetic">/&#x02C8;ves.&#x0259;l/</span></p>
+                <ol class="vessel-meanings">
+                    <li><strong>A container.</strong> Something that holds things.</li>
+                    <li><strong>A ship.</strong> A way to get somewhere.</li>
+                    <li><strong>A carrier.</strong> Something that moves more than itself.</li>
+                </ol>
+            </div>
+
+            <p>The Vessel is an open robotics and AI lab in the Antwerp port area, supported by Port of Antwerp-Bruges. It&rsquo;s the start of North Star&rsquo;s next chapter.</p>
+
+            <p>Think of it as a &ldquo;forever hackathon&rdquo;: something that runs continuously, projects rotate, people come and go, but the knowledge compounds.</p>
+
+            <figure class="blog-figure">
+                <img src="/blogs/the-vessel/SCR-20260310-ozkx.jpeg" alt="The Vessel at Port of Antwerp-Bruges" loading="lazy" />
+                <figcaption>The Vessel, Port of Antwerp-Bruges</figcaption>
+            </figure>
+
+            <p>Belgium has the infrastructure to become a robotics powerhouse. Port infrastructure, university density, logistics networks, proximity to all major European ecosystems.</p>
+
+            <p>In our first year we built the largest AI and robotics community in Belgium: 800+ builders, 18 events, 20+ hires through our ecosystem, active across six cities. The Vessel is the next step. Instead of one-off events, builders now get sustained access to hardware, industrial context, and real challenges.</p>
+
+            <p>The Port of Antwerp-Bruges provides the space and operational context. For them, it&rsquo;s a new model for engaging emerging technical talent. For us, it&rsquo;s building where the problems are.</p>
+
+            <figure class="blog-figure">
+                <img src="/blogs/the-vessel/2026-03-10 16.58.10.jpg" alt="Inside the lab space" loading="lazy" />
+                <figcaption>Inside the lab</figcaption>
+            </figure>
+
+            <p>During the founding period (through August 2026), we run two core programs. <strong>Open Lab Thursdays</strong> are weekly coworking days starting March 19th open to anyone who builds. <strong>Future in Bloom</strong> is a hackathon series where teams spend a day building around challenges in robotics, AI, and automation.</p>
+
+            <figure class="blog-figure">
+                <img src="/blogs/the-vessel/2026-03-10 16.56.25.jpg" alt="Open Lab session" loading="lazy" />
+                <figcaption>An event at The Vessel</figcaption>
+            </figure>
+
+            <p class="vessel-closer">A vessel has a destination. This is the start of our journey.</p>
+
+            <p>We&rsquo;re open for partnerships. Whether you want to sponsor what we&rsquo;re building, bring a real AI or robotics challenge to the lab, or help shape the skills pipeline so the talent matches what you need, reach out: <a href="mailto:filip@ns2agi.com">filip@ns2agi.com</a></p>
+
+            <p>Or fill out the below form:</p>
+
+            <div class="vessel-tally-wrap">
+                <iframe
+                    data-tally-src="https://tally.so/embed/0QMBQ6?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                    loading="lazy"
+                    width="100%"
+                    height="1200"
+                    frameborder="0"
+                    marginheight="0"
+                    marginwidth="0"
+                    title="Get in touch"
+                ></iframe>
+            </div>
+
+            <script is:inline>
+                var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+            </script>
+
+        </div>
+    </article>
+
+</Layout>
+
+<style is:global>
+    /* ── Blog article shell ── */
+    .blog-article {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .blog-header {
+        padding: clamp(6rem, 12vh, 10rem) 0 clamp(3rem, 6vh, 5rem);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        margin-bottom: clamp(2.5rem, 5vh, 4rem);
+    }
+
+    .blog-back {
+        display: inline-block;
+        font-family: "Geist", sans-serif;
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.36);
+        text-decoration: none;
+        margin-bottom: 2.5rem;
+        transition: color 200ms ease;
+    }
+
+    .blog-back:hover {
+        color: rgba(255,255,255,0.7);
+    }
+
+    .blog-date {
+        display: block;
+        font-family: "Geist", sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.3);
+        margin-bottom: 1.5rem;
+    }
+
+    .blog-title {
+        margin: 0 0 1rem;
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 400;
+        color: rgba(255,255,255,0.92);
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+    }
+
+    .blog-subtitle {
+        margin: 0 0 1.5rem;
+        font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: clamp(1rem, 1.3vw, 1.15rem);
+        line-height: 1.6;
+        color: rgba(255,255,255,0.45);
+        max-width: 48ch;
+        font-weight: 400;
+    }
+
+    .blog-meta {
+        margin: 0;
+        font-family: "Geist", sans-serif;
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        color: rgba(255,255,255,0.3);
+    }
+
+    .blog-body {
+        padding-bottom: clamp(4rem, 8vh, 6rem);
+    }
+
+    .blog-body p {
+        margin: 0 0 1.6rem;
+        font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: clamp(0.95rem, 1.15vw, 1.08rem);
+        line-height: 1.8;
+        color: rgba(255,255,255,0.62);
+        font-weight: 400;
+    }
+
+    .blog-body strong {
+        color: rgba(255,255,255,0.88);
+        font-weight: 700;
+    }
+
+    .blog-body h2 {
+        margin: clamp(3rem, 6vh, 4.5rem) 0 1.5rem;
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(1.4rem, 2.8vw, 2rem);
+        font-weight: 400;
+        color: rgba(255,255,255,0.85);
+        line-height: 1.15;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .blog-body a {
+        color: rgba(255,255,255,0.7);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-color: rgba(255,255,255,0.2);
+        transition: color 200ms ease, text-decoration-color 200ms ease;
+    }
+
+    .blog-body a:hover {
+        color: rgba(255,255,255,0.95);
+        text-decoration-color: rgba(255,255,255,0.5);
+    }
+
+    .blog-body blockquote {
+        margin: clamp(2rem, 4vh, 3rem) 0;
+        padding: 1.5rem 0 1.5rem 1.5rem;
+        border-left: 2px solid rgba(255,255,255,0.12);
+    }
+
+    .blog-body blockquote,
+    .blog-body blockquote p {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+        line-height: 1.5;
+        color: rgba(255,255,255,0.72);
+        margin-bottom: 0;
+    }
+
+    .blog-figure {
+        margin: clamp(2rem, 4vh, 3rem) 0;
+    }
+
+    .blog-figure img {
+        display: block;
+        width: 100%;
+        border-radius: 0.5rem;
+        border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .blog-figure figcaption {
+        margin-top: 0.6rem;
+        font-family: "Geist", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        color: rgba(255,255,255,0.25);
+        text-align: center;
+        font-style: italic;
+    }
+
+    .blog-body a:focus-visible {
+        outline: 1px solid rgba(255,255,255,0.5);
+        outline-offset: 2px;
+    }
+
+    /* ── Vessel-specific ── */
+    .vessel-definition {
+        margin: 0 0 clamp(2.5rem, 5vh, 4rem);
+        padding: 1.5rem 0 1.5rem 1.5rem;
+        border-left: 2px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .vessel-word {
+        margin: 0 0 0.8rem;
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(1.3rem, 2vw, 1.6rem);
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1;
+    }
+
+    .vessel-phonetic {
+        font-family: "Geist", sans-serif;
+        font-style: normal;
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.3);
+        margin-left: 0.4rem;
+    }
+
+    .vessel-meanings {
+        margin: 0;
+        padding-left: 1.2rem;
+        list-style: decimal;
+    }
+
+    .vessel-meanings li {
+        font-family: "Geist", sans-serif;
+        font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 0.25rem;
+    }
+
+    .vessel-meanings li strong {
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 600;
+    }
+
+    .vessel-closer {
+        font-family: "Instrument Serif", serif !important;
+        font-style: italic;
+        font-size: clamp(1.3rem, 2.5vw, 1.8rem) !important;
+        color: rgba(255,255,255,0.82) !important;
+        line-height: 1.3 !important;
+        margin: clamp(2rem, 4vh, 3rem) 0 !important;
+        text-align: center;
+    }
+
+    .vessel-tally-wrap {
+        max-width: 600px;
+        margin-top: 1rem;
+    }
+
+    .vessel-tally-wrap iframe {
+        border: none;
+        width: 100%;
+    }
+</style>

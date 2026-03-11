@@ -11,6 +11,17 @@ export interface BlogPostPreview {
 
 export const blogPosts: BlogPostPreview[] = [
   {
+    id: "the-vessel",
+    title: "First open AI & Robotics Lab in Belgium",
+    date: "March 11, 2026",
+    excerpt:
+      "The Vessel is an open robotics and AI lab in the Antwerp port area. Think of it as a forever hackathon.",
+    author: "Filip Nowak",
+    thumbnail: "/blogs/the-vessel/vessel.png",
+    readTime: "4 min read",
+    slug: "the-vessel",
+  },
+  {
     id: "cost-of-connection",
     title: "The Cost of Connection",
     date: "December 31, 2025",

@@ -109,7 +109,7 @@ const commitments = [
       <h2 class="stories-title">Stories</h2>
     </div>
     <div class="stories-list">
-      {blogPosts.filter(p => p.id === "cost-of-connection").map((post, i) => (
+      {blogPosts.map((post, i) => (
         <a
           href={`/blog/${post.slug}`}
           class="story-card"
