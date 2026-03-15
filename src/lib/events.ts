@@ -180,7 +180,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/blogs/the-vessel/2026-03-10 16.58.10.jpg",
     status: "upcoming" as const,
     organizationType: "ORGANIZED",
-    link: "https://etoile.events/events/3ec37af2-d267-4031-bf8f-9cb69d89dbee",
+    link: "/blog/the-vessel",
   },
 ];
 
