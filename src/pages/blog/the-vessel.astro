@@ -15,12 +15,6 @@ import Layout from '../../layouts/Layout.astro';
 
         <div class="blog-body">
 
-            <figure class="blog-figure vessel-video-wrap">
-                <video controls preload="metadata" playsinline class="vessel-video">
-                    <source src="/blogs/the-vessel/the-vessel.mp4" type="video/mp4" />
-                </video>
-            </figure>
-
             <div class="vessel-definition">
                 <p class="vessel-word">vessel <span class="vessel-phonetic">/&#x02C8;ves.&#x0259;l/</span></p>
                 <ol class="vessel-meanings">
@@ -53,6 +47,12 @@ import Layout from '../../layouts/Layout.astro';
             <figure class="blog-figure">
                 <img src="/blogs/the-vessel/2026-03-10 16.56.25.jpg" alt="Open Lab session" loading="lazy" />
                 <figcaption>An event at The Vessel</figcaption>
+            </figure>
+
+            <figure class="blog-figure vessel-video-wrap">
+                <video controls preload="metadata" playsinline class="vessel-video">
+                    <source src="/blogs/the-vessel/the-vessel.mp4" type="video/mp4" />
+                </video>
             </figure>
 
             <p class="vessel-closer">A vessel has a destination. This is the start of our journey.</p>
@@ -245,7 +245,7 @@ import Layout from '../../layouts/Layout.astro';
 
     /* ── Video ── */
     .vessel-video-wrap {
-        margin: 0 0 clamp(2.5rem, 5vh, 4rem);
+        margin: clamp(2rem, 4vh, 3rem) 0;
     }
 
     .vessel-video {
