@@ -65,6 +65,14 @@ const commitments = [
     ))}
   </div>
 
+  <!-- Donate strip -->
+  <div class="donate-strip" data-reveal>
+    <a href="https://www.weglow.world/o/northstaragi/donate" target="_blank" rel="noopener noreferrer" class="donate-link">
+      Support our mission
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
   <!-- Our Events timeline -->
   <section class="timeline-endcap" data-reveal>
     <p class="timeline-endcap-label">Our events</p>
@@ -455,6 +463,34 @@ const commitments = [
       border-radius: 0.75rem;
     }
     .cp-label { font-size: clamp(1.3rem, 6vw, 1.8rem); }
+  }
+
+  /* ── Donate strip ── */
+  .donate-strip {
+    text-align: center;
+    padding: clamp(1.5rem, 3vh, 2.5rem) 1.5rem;
+  }
+
+  .donate-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.28);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 9999px;
+    transition: color 250ms ease, border-color 250ms ease, gap 250ms ease;
+  }
+
+  .donate-link:hover {
+    color: rgba(255,255,255,0.62);
+    border-color: rgba(255,255,255,0.18);
+    gap: 0.55rem;
   }
 
   /* ── Proof bar ── */
