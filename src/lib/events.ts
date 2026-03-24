@@ -182,6 +182,16 @@ export const allEvents: EventItem[] = [
     organizationType: "ORGANIZED",
     link: "/blog/the-vessel",
   },
+  {
+    id: "ai-community-journal-club-002",
+    title: "AI Community Journal Club #002",
+    date: "2026-03-30",
+    description: "Second edition of the recurring paper-reading evening by AI Belgium and North Star. Presenters introduce peer-reviewed AI papers with Q&A.",
+    thumbnail: "/journal-club-1/photo_2026-03-08 19.28.17.jpeg",
+    status: "upcoming" as const,
+    organizationType: "ORGANIZED",
+    link: "https://etoile.events/events/15826288-4f22-43d3-b0ab-7ac24d7758be",
+  },
 ];
 
 export const completedEvents = allEvents.filter((event) => event.status === "completed");
