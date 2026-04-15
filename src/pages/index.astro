@@ -73,6 +73,12 @@ const commitments = [
     </a>
   </div>
 
+  <!-- Newsletter signup -->
+  <section class="newsletter-section" data-reveal>
+    <h2 class="newsletter-title">Join the newsletter</h2>
+    <script src="https://etoile.events/embed/newsletter-widget?org=north-star&color=%23000000&placeholder=polaris%40ns2agi.com&button=Subscribe" async></script>
+  </section>
+
   <!-- Our Events timeline -->
   <section class="timeline-endcap" data-reveal>
     <p class="timeline-endcap-label">Our events</p>
@@ -491,6 +497,25 @@ const commitments = [
     color: rgba(255,255,255,0.62);
     border-color: rgba(255,255,255,0.18);
     gap: 0.55rem;
+  }
+
+  /* ── Newsletter signup ── */
+  .newsletter-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(2rem, 4vh, 3rem) 1.5rem;
+    margin-top: 0.5rem;
+  }
+  .newsletter-title {
+    margin: 0 0 1.25rem;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.1;
   }
 
   /* ── Proof bar ── */
