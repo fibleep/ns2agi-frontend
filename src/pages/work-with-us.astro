@@ -313,6 +313,213 @@ const team = [
   }
 
   /* ══════════════════════════════════
+     OFFERINGS — SCROLL-DRIVEN REVEAL
+     ══════════════════════════════════ */
+
+  /* Tall scroll region — creates the "pause" */
+  .cp-off-region {
+    height: 180vh;
+    position: relative;
+  }
+
+  /* Sticky container — pins the UI while user scrolls */
+  .cp-off-sticky {
+    position: sticky;
+    top: 28vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .cp-off-item {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: clamp(0.8rem, 1.8vw, 1.4rem);
+    padding: clamp(1rem, 1.6vw, 1.3rem) clamp(0.8rem, 1.5vw, 1.2rem);
+    border-radius: 0.75rem;
+    cursor: default;
+    isolation: isolate;
+  }
+
+  /* Warm radial glow — appears on focused item */
+  .cp-off-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    background: radial-gradient(
+      ellipse 80% 100% at 15% 50%,
+      rgba(255, 200, 120, 0.04) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
+      transparent 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 8px 32px -6px rgba(0, 0, 0, 0.4);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Large index number */
+  .cp-off-num {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    flex-shrink: 0;
+    min-width: 2ch;
+    user-select: none;
+    position: relative;
+    top: -0.04em;
+  }
+
+  .cp-off-label {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+    font-weight: 400;
+    line-height: 1.15;
+    display: block;
+  }
+
+  /* Text column — grid rows for smooth collapse */
+  .cp-off-text {
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    grid-template-rows: auto 0fr;
+    transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cp-off-text[data-open] {
+    grid-template-rows: auto 1fr;
+  }
+
+  /* Collapsible reveal — always in DOM, height driven by grid */
+  .cp-off-reveal {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .cp-off-reveal-inner {
+    padding-top: 0.35rem;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+      opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cp-off-text[data-open] .cp-off-reveal-inner {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .cp-off-desc {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.78rem, 1.1vw, 0.88rem);
+    color: rgba(255, 255, 255, 0.42);
+    line-height: 1.6;
+    max-width: 48ch;
+  }
+
+  .cp-off-details {
+    margin: 0.45rem 0 0;
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.72rem, 0.95vw, 0.8rem);
+    color: rgba(255, 255, 255, 0.22);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
+  /* CTA */
+  .cp-off-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    padding: 0.45rem 1rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    transition:
+      color 200ms ease,
+      border-color 200ms ease,
+      gap 200ms ease,
+      background 200ms ease;
+  }
+
+  .cp-off-cta:hover {
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.04);
+    gap: 0.55rem;
+  }
+
+  .cp-off-cta:active {
+    transform: scale(0.98);
+  }
+
+  /* Image */
+  .cp-off-img-wrap {
+    margin-top: 0.65rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    height: clamp(100px, 14vw, 160px);
+    max-width: 380px;
+  }
+
+  .cp-off-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7) saturate(0.8);
+    transition: filter 400ms ease;
+  }
+
+  .cp-off-item:hover .cp-off-img {
+    filter: brightness(0.85) saturate(0.95);
+  }
+
+  /* Separator lines */
+  .cp-off-item + .cp-off-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: clamp(0.8rem, 1.5vw, 1.2rem);
+    right: clamp(0.8rem, 1.5vw, 1.2rem);
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+  }
+
+  /* ── Mobile tweaks (scroll behavior same, just tighter spacing) ── */
+  @media (max-width: 768px) {
+    .cp-off-sticky {
+      top: 20vh;
+    }
+    .cp-off-item {
+      gap: 0.7rem;
+      padding: 0.9rem 0.6rem;
+    }
+    .cp-off-num {
+      font-size: 1.3rem;
+      min-width: 1.6ch;
+    }
+    .cp-off-img-wrap {
+      max-width: 100%;
+    }
+  }
+
+  /* ══════════════════════════════════
      CONTACT
      ══════════════════════════════════ */
   .collab-form-section {

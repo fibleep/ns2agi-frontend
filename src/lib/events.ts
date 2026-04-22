@@ -178,7 +178,7 @@ export const allEvents: EventItem[] = [
     date: "2026-03-19",
     description: "First Open Lab Thursday at our new AI & Robotics lab in the Antwerp port area.",
     thumbnail: "/blogs/the-vessel/2026-03-10 16.58.10.jpg",
-    status: "upcoming" as const,
+    status: "completed",
     organizationType: "ORGANIZED",
     link: "/blog/the-vessel",
   },
@@ -188,10 +188,21 @@ export const allEvents: EventItem[] = [
     date: "2026-03-30",
     description: "Second edition of the recurring paper-reading evening by AI Belgium and North Star. Presenters introduce peer-reviewed AI papers with Q&A.",
     thumbnail: "/journal-club-1/photo_2026-03-08 19.28.17.jpeg",
-    status: "upcoming" as const,
+    status: "completed",
     organizationType: "ORGANIZED",
     link: "https://etoile.events/events/15826288-4f22-43d3-b0ab-7ac24d7758be",
+  },
+  {
+    id: "benelux-robotics-meetup",
+    title: "Benelux Robotics Meetup",
+    date: "2026-05-11",
+    description: "Uniting the robotics and AI communities across the Netherlands, Belgium, and Luxembourg. Keynote, panel, demos, and networking at Eindhoven University of Technology.",
+    thumbnail: "/benelux-robotics/cover.png",
+    status: "upcoming",
+    organizationType: "ORGANIZED",
+    link: "https://luma.com/qktkm9tw",
   },
 ];
 
 export const completedEvents = allEvents.filter((event) => event.status === "completed");
+export const upcomingEvents = allEvents.filter((event) => event.status === "upcoming");

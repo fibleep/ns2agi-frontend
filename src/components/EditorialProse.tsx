@@ -1,5 +1,10 @@
-import { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { useRef, useState } from "react";
+import {
+  motion,
+  useInView,
+  useScroll,
+  useMotionValueEvent,
+} from "motion/react";
 
 /* ─── Types ─── */
 interface TeamMember {
@@ -44,6 +49,34 @@ const COMMITMENTS = [
   { label: "Ecosystem", href: "/commitments#ecosystem", icon: "04" },
 ];
 
+/* ─── Offerings ─── */
+const OFFERINGS = [
+  {
+    label: "Hackathons",
+    desc: "A full-day or multi-day build sprint. Your challenge, our community. 50\u2013150+ vetted builders compete to solve it in real time. You walk away with working prototypes, a shortlist of top performers, and content for your employer brand.",
+    details: "Evening, full-day, or weekend formats. 8\u201312 weeks lead time.",
+    img: "/ai-hackathon-iii/4.jpg",
+  },
+  {
+    label: "Family days",
+    desc: "A day where kids get to be the engineers. We bring the robots, the laptops, and the challenges\u00a0\u2014\u00a0they bring the curiosity. No screens-only experience: real hardware, real code, real pride when it works.",
+    details: "Half-day or full-day. Works for company family events, schools, or public festivals.",
+    img: "/kids-hackathon/photo_2026-02-26 15.57.18.jpeg",
+  },
+  {
+    label: "Consulting",
+    desc: "We sit with your team, understand the problem, and build the first version together. Whether it\u2019s figuring out where AI fits, prototyping a solution, or getting something into production.",
+    details: "Ongoing engagement or scoped sprints. Starts with a discovery call.",
+    img: "/misc/photo_2026-03-08 22.06.11.jpeg",
+  },
+  {
+    label: "Workshops",
+    desc: "Hands-on sessions tailored to your team\u2019s level. We cover the latest in AI, robotics, and emerging tech\u00a0\u2014\u00a0we spend way too much time online so you don\u2019t have to. Your team leaves with working code and real understanding.",
+    details: "Half-day to multi-day. Custom curriculum matched to your stack and goals.",
+    img: "/ap-workshop/photo_2026-03-08 19.50.40.jpeg",
+  },
+];
+
 function CommitmentsQuad() {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -8% 0px" });
@@ -79,6 +112,110 @@ function CommitmentsQuad() {
         ))}
       </span>
     </motion.span>
+  );
+}
+
+/* ─── Offerings — scroll-driven reveal ─── */
+function OfferingsDrawers() {
+  const regionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: regionRef,
+    offset: ["start 0.55", "end 0.45"],
+  });
+
+  const [scrollIdx, setScrollIdx] = useState(-1);
+  const [scrollDone, setScrollDone] = useState(false);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (v < 0.08) { setScrollIdx(-1); setScrollDone(false); }
+    else if (v < 0.25) { setScrollIdx(0); setScrollDone(false); }
+    else if (v < 0.45) { setScrollIdx(1); setScrollDone(false); }
+    else if (v < 0.65) { setScrollIdx(2); setScrollDone(false); }
+    else { setScrollIdx(3); if (v > 0.82) setScrollDone(true); }
+  });
+
+  /* After all items revealed via scroll, hover takes over */
+  const focusIdx = scrollDone && hoveredIdx !== null ? hoveredIdx : scrollIdx;
+
+  return (
+    <div ref={regionRef} className="cp-off-region">
+      <div
+        className="cp-off-sticky"
+        onMouseLeave={() => setHoveredIdx(null)}
+      >
+        {OFFERINGS.map((o, i) => {
+          const isFocused = i === focusIdx;
+          const num = String(i + 1).padStart(2, "0");
+
+          return (
+            <motion.div
+              key={o.label}
+              className="cp-off-item"
+              onMouseEnter={() => scrollDone && setHoveredIdx(i)}
+              animate={{ opacity: isFocused ? 1 : scrollIdx >= 0 ? 0.25 : 0.15 }}
+              transition={{ opacity: { duration: 0.35, ease: "easeOut" } }}
+            >
+              {/* Warm glow */}
+              <motion.div
+                className="cp-off-glow"
+                animate={{
+                  opacity: isFocused ? 1 : 0,
+                  scale: isFocused ? 1 : 0.92,
+                }}
+                transition={{ duration: 0.4, ease: [0.2, 0.85, 0.25, 1] }}
+                aria-hidden="true"
+              />
+
+              {/* Number */}
+              <motion.span
+                className="cp-off-num"
+                animate={{
+                  color: isFocused
+                    ? "rgba(255, 255, 255, 0.5)"
+                    : "rgba(255, 255, 255, 0.06)",
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                {num}
+              </motion.span>
+
+              {/* Text */}
+              <div className="cp-off-text" data-open={isFocused || undefined}>
+                <motion.span
+                  className="cp-off-label"
+                  animate={{
+                    letterSpacing: isFocused ? "0.04em" : "0em",
+                    color: isFocused
+                      ? "rgba(255, 255, 255, 0.95)"
+                      : "rgba(255, 255, 255, 0.4)",
+                  }}
+                  transition={{ type: "spring", stiffness: 250, damping: 26 }}
+                >
+                  {o.label}
+                </motion.span>
+
+                <div className="cp-off-reveal">
+                  <div className="cp-off-reveal-inner">
+                    <p className="cp-off-desc">{o.desc}</p>
+                    <p className="cp-off-details">{o.details}</p>
+                    <div className="cp-off-img-wrap">
+                      <img src={o.img} alt="" className="cp-off-img" loading="lazy" />
+                    </div>
+                    <a href="#contact" className="cp-off-cta">
+                      Run it with us
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
@@ -185,7 +322,11 @@ export function EditorialProse({ team }: EditorialProseProps) {
           {" "}{"\ud83d\udee0\ufe0f"}{"\u00a0"}upskill their team or {"\u26a1"}{"\u00a0"}prototype{"\u00a0"}solutions.
         </p>
 
-        <p className="cp-prose cp-stagger" style={{ "--stagger": 5 } as React.CSSProperties}>
+        <div className="cp-stagger" style={{ "--stagger": 4.5 } as React.CSSProperties}>
+          <OfferingsDrawers />
+        </div>
+
+        <p className="cp-prose cp-stagger" style={{ "--stagger": 5.5 } as React.CSSProperties}>
           We{"\u2019"}ve worked with companies such as{" "}
           <CompanyLogo src="/partnerships/workedwith/10.svg" alt="ElevenLabs" />{" "}
           <CompanyLogo src="/partnerships/workedwith/15.svg" alt="Lovable" />{" "}
@@ -193,7 +334,7 @@ export function EditorialProse({ team }: EditorialProseProps) {
           or <CompanyLogo src="/partnerships/workedwith/29.png" alt="Hugging Face" />.
         </p>
 
-        <p className="cp-prose cp-stagger" style={{ "--stagger": 6 } as React.CSSProperties}>
+        <p className="cp-prose cp-stagger" style={{ "--stagger": 6.5 } as React.CSSProperties}>
           Interested in collaborating?{" "}
           <span className="cp-curvy">Let{"\u2019"}s build it{"\u00a0"}together.</span>
         </p>

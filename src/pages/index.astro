@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import HorizontalTimeline from "../components/horizontal-timeline";
 import PartnersGrid from "../components/PartnersGrid.astro";
-import { allEvents } from "../lib/events";
 import { blogPosts } from "../lib/blog-posts";
 import { ArrowRight } from "lucide-react";
 
@@ -44,7 +42,7 @@ const commitments = [
   <section class="id-hero">
     <img src="/nsstar-clean.svg" alt="North Star" class="id-star" data-id-star />
     <p class="id-wordmark">NORTH&nbsp;STAR</p>
-    <p class="id-tagline">Building Belgium's AI &amp; Robotics Future</p>
+
   </section>
 
   <!-- Asymmetric commitment bento -->
@@ -79,11 +77,53 @@ const commitments = [
     <script src="https://etoile.events/embed/newsletter-widget?org=north-star&color=%23000000&placeholder=polaris%40ns2agi.com&button=Subscribe" async></script>
   </section>
 
-  <!-- Our Events timeline -->
-  <section class="timeline-endcap" data-reveal>
-    <p class="timeline-endcap-label">Our events</p>
-    <div class="timeline-endcap-scroll">
-      <HorizontalTimeline client:load events={allEvents} initialScrollTarget="end" compact />
+  <!-- Highlighted Events -->
+  <section class="hi-events" data-reveal>
+    <p class="hi-events-label">Our events</p>
+    <div class="hi-events-grid">
+      <a href="/commitments#events" class="hi-ev hi-ev-large">
+        <div class="hi-ev-img-wrap">
+          <img src="/kids-hackathon/1.png" alt="" loading="lazy" class="hi-ev-img" />
+        </div>
+        <div class="hi-ev-text">
+          <span class="hi-ev-title">Kids Hackathon</span>
+          <span class="hi-ev-sub">Introducing the next generation to AI and robotics</span>
+        </div>
+      </a>
+      <a href="/commitments#events" class="hi-ev hi-ev-large">
+        <div class="hi-ev-img-wrap">
+          <img src="/elevenlabs/5.jpg" alt="" loading="lazy" class="hi-ev-img" />
+        </div>
+        <div class="hi-ev-text">
+          <span class="hi-ev-title">ElevenLabs Hackathon</span>
+          <span class="hi-ev-sub">One of our many hackathons, this time with <img src="/partnerships/workedwith/10.svg" alt="ElevenLabs" class="hi-ev-inline-logo" /></span>
+        </div>
+      </a>
+      <a href="/blog/the-vessel" class="hi-ev hi-ev-large">
+        <div class="hi-ev-img-wrap">
+          <img src="/blogs/the-vessel/2026-03-10 16.58.10.jpg" alt="" loading="lazy" class="hi-ev-img" />
+          <span class="hi-ev-badge">Every Thursday</span>
+        </div>
+        <div class="hi-ev-text">
+          <span class="hi-ev-title">OpenLab @ The Vessel</span>
+          <span class="hi-ev-sub">Visit our open robotics/AI lab</span>
+        </div>
+      </a>
+      <a href="/commitments#events" class="hi-ev hi-ev-large">
+        <div class="hi-ev-img-wrap">
+          <img src="/conferences/photo_2026-02-26 15.58.36.jpeg" alt="" loading="lazy" class="hi-ev-img" />
+        </div>
+        <div class="hi-ev-text">
+          <span class="hi-ev-title">Conferences</span>
+          <span class="hi-ev-sub">If you saw a robot at a conference in Belgium, there's a non-zero chance it's through us</span>
+        </div>
+      </a>
+    </div>
+    <div class="hi-events-more">
+      <a href="/commitments#events" class="hi-events-more-link">
+        Show all events
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </section>
 
@@ -92,34 +132,36 @@ const commitments = [
     <span class="flagship-eyebrow">Flagship Initiatives</span>
   </div>
 
-  <!-- The Vessel -->
-  <section class="vessel-section" data-reveal>
-    <div class="vessel-bg" aria-hidden="true">
-      <img src="/thevessel.png" alt="" loading="lazy" />
-    </div>
-    <div class="vessel-gradient-b" aria-hidden="true"></div>
-    <div class="vessel-gradient-r" aria-hidden="true"></div>
-    <div class="vessel-vignette" aria-hidden="true"></div>
-    <a href="/blog/the-vessel" class="vessel-content">
-      <h3 class="vessel-title">The Vessel</h3>
-      <p class="vessel-desc">An atelier for intelligent machines</p>
-      <span class="vessel-cta">Visit <ArrowRight className="w-3 h-3" /></span>
-      <div class="vessel-supporter">
-        <span class="vessel-supporter-label">Supported by</span>
-        <img src="/partnerships/workedwith/17.png" alt="Port of Antwerp-Bruges" class="vessel-supporter-logo" />
+  <div class="flagship-grid">
+    <!-- The Vessel -->
+    <section class="vessel-section" data-reveal>
+      <div class="vessel-bg" aria-hidden="true">
+        <img src="/thevessel.png" alt="" loading="lazy" />
       </div>
-    </a>
-  </section>
+      <div class="vessel-gradient-b" aria-hidden="true"></div>
+      <div class="vessel-gradient-r" aria-hidden="true"></div>
+      <div class="vessel-vignette" aria-hidden="true"></div>
+      <a href="/blog/the-vessel" class="vessel-content">
+        <h3 class="vessel-title">The Vessel</h3>
+        <p class="vessel-desc">An atelier for intelligent machines</p>
+        <span class="vessel-cta">Visit <ArrowRight className="w-3 h-3" /></span>
+        <div class="vessel-supporter">
+          <span class="vessel-supporter-label">Supported by</span>
+          <img src="/partnerships/workedwith/17.png" alt="Port of Antwerp-Bruges" class="vessel-supporter-logo" />
+        </div>
+      </a>
+    </section>
 
-  <!-- Etoile -->
-  <section class="etoile-section" data-reveal>
-    <div class="etoile-glow" aria-hidden="true"></div>
-    <a href="https://etoile.events" target="_blank" rel="noopener noreferrer" class="etoile-content">
-      <h3 class="etoile-title">etoile</h3>
-      <p class="etoile-desc">Community management and event platform</p>
-      <span class="etoile-cta">Explore <ArrowRight className="w-3 h-3" /></span>
-    </a>
-  </section>
+    <!-- Etoile -->
+    <section class="etoile-section" data-reveal>
+      <div class="etoile-glow" aria-hidden="true"></div>
+      <a href="https://etoile.events" target="_blank" rel="noopener noreferrer" class="etoile-content">
+        <h3 class="etoile-title">etoile</h3>
+        <p class="etoile-desc">Community management and event platform</p>
+        <span class="etoile-cta">Explore <ArrowRight className="w-3 h-3" /></span>
+      </a>
+    </section>
+  </div>
 
   <!-- Scene 5: Stories -->
   <section class="stories-section">
@@ -202,16 +244,6 @@ const commitments = [
     ).observe(idStar);
   }
 
-  /* Timeline: always start scrolled to newest (rightmost) end */
-  function scrollTimelineToEnd() {
-    var c = document.querySelector('.horizontal-timeline-scroll');
-    if (c && c.scrollWidth > c.clientWidth) {
-      c.scrollLeft = c.scrollWidth - c.clientWidth;
-    }
-  }
-  scrollTimelineToEnd();
-  requestAnimationFrame(scrollTimelineToEnd);
-  setTimeout(scrollTimelineToEnd, 300);
 </script>
 
 <style is:global>
@@ -613,6 +645,23 @@ const commitments = [
     color: rgba(255,255,255,0.72);
   }
 
+  /* ── Flagship grid ── */
+  .flagship-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .flagship-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
+  }
+
   /* ── The Vessel ── */
   .vessel-section {
     position: relative;
@@ -621,6 +670,12 @@ const commitments = [
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0;
+  }
+  @media (min-width: 768px) {
+    .vessel-section {
+      border-radius: 1rem;
+    }
   }
   .vessel-bg {
     position: absolute;
@@ -664,7 +719,7 @@ const commitments = [
   .vessel-title {
     margin: 0;
     font-family: "Cormorant", serif;
-    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -727,6 +782,12 @@ const commitments = [
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0;
+  }
+  @media (min-width: 768px) {
+    .etoile-section {
+      border-radius: 1rem;
+    }
   }
   .etoile-glow {
     position: absolute;
@@ -748,7 +809,7 @@ const commitments = [
   .etoile-title {
     margin: 0;
     font-family: "Amaranth", sans-serif;
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
     font-weight: 400;
     color: #FE7743;
     line-height: 1;
@@ -893,14 +954,15 @@ const commitments = [
     }
   }
 
-  /* ── Timeline endcap ── */
-  .timeline-endcap {
-    padding: clamp(2.5rem, 6vh, 5rem) 0;
+  /* ── Highlighted Events ── */
+  .hi-events {
+    padding: clamp(2.5rem, 6vh, 5rem) clamp(1rem, 4vw, 3rem);
     max-width: 960px;
     margin: 0 auto;
     width: 100%;
   }
-  .timeline-endcap-label {
+
+  .hi-events-label {
     display: block;
     font-family: "Instrument Serif", serif;
     font-style: italic;
@@ -911,12 +973,141 @@ const commitments = [
     text-align: center;
     line-height: 1.1;
   }
-  .timeline-endcap-scroll {
-    width: min(920px, calc(100vw - 2rem));
-    margin: 0 auto;
+
+  .hi-events-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
   }
-  .timeline-endcap-scroll .horizontal-timeline-scroll {
-    padding-bottom: 0.5rem;
+
+  .hi-ev {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    min-height: clamp(200px, 28vw, 300px);
+  }
+
+  .hi-ev-img-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .hi-ev-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45) saturate(0.7);
+    transform: scale(1.06);
+    transition: transform 600ms cubic-bezier(0.2, 0.85, 0.25, 1), filter 500ms ease;
+  }
+
+  .hi-ev:hover .hi-ev-img {
+    transform: scale(1);
+    filter: brightness(0.6) saturate(0.85);
+  }
+
+  .hi-ev-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.22rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    z-index: 2;
+  }
+
+  .hi-ev-text {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+  }
+
+  .hi-ev-title {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+    font-weight: 400;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.15;
+    transition: color 250ms ease;
+  }
+
+  .hi-ev:hover .hi-ev-title {
+    color: rgba(255,255,255,1);
+  }
+
+  .hi-ev-sub {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.72rem, 1vw, 0.82rem);
+    color: rgba(255,255,255,0.4);
+    line-height: 1.4;
+    transition: color 250ms ease;
+  }
+
+  .hi-ev:hover .hi-ev-sub {
+    color: rgba(255,255,255,0.55);
+  }
+
+  .hi-ev-inline-logo {
+    display: inline;
+    height: 0.85em;
+    width: auto;
+    vertical-align: middle;
+    margin-left: 0.1em;
+    opacity: 0.7;
+    position: relative;
+    top: -0.05em;
+  }
+
+  /* Show more */
+  .hi-events-more {
+    text-align: center;
+    margin-top: 1.2rem;
+  }
+
+  .hi-events-more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.28);
+    text-decoration: none;
+    transition: color 200ms ease, gap 200ms ease;
+  }
+
+  .hi-events-more-link:hover {
+    color: rgba(255,255,255,0.6);
+    gap: 0.55rem;
+  }
+
+  @media (max-width: 600px) {
+    .hi-events-grid {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+    .hi-ev {
+      min-height: 200px;
+    }
   }
 
   /* ── Close ── */
