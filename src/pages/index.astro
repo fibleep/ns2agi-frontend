@@ -23,10 +23,11 @@ const eventHref = (e: typeof allEvents[number]) => e.link ?? getEventLink(e.id, 
 const isExternal = (href: string) => href.startsWith("http");
 
 type TileSize = "default" | "feature" | "tall";
-const getTileSize = (i: number): TileSize => {
-  if (i === 0) return "feature";
-  if (i === 5) return "tall";
-  if (i === 8) return "feature";
+const FEATURE_IDS = new Set(["elevenlabs-hackathon-ghent", "signal-ii"]);
+const TALL_IDS = new Set(["kids-ai-vibecoding-hackathon"]);
+const getTileSize = (e: typeof allEvents[number]): TileSize => {
+  if (FEATURE_IDS.has(e.id)) return "feature";
+  if (TALL_IDS.has(e.id)) return "tall";
   return "default";
 };
 
@@ -141,10 +142,10 @@ const commitments = [
     </div>
     <div class="past-bento-wrap">
       <div class="past-bento">
-        {featuredPast.map((event, i) => {
+        {featuredPast.map((event) => {
           const href = eventHref(event);
           const ext = isExternal(href);
-          const size = getTileSize(i);
+          const size = getTileSize(event);
           return (
             <a
               href={href}

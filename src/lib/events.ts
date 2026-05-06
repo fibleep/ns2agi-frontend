@@ -154,7 +154,7 @@ export const allEvents: EventItem[] = [
     title: "SIGNAL III",
     date: "2026-01-29",
     description: "Flagship SIGNAL meetup featuring high-signal talks and demos.",
-    thumbnail: "/signal-iii/1.png",
+    thumbnail: "/signal.jpeg",
     status: "completed",
     organizationType: "ORGANIZED",
     featured: true,
