@@ -7,6 +7,7 @@ export interface EventItem {
   status: "completed" | "upcoming" | "coming-soon";
   organizationType?: "ORGANIZED" | "CONTRIBUTED";
   link?: string;
+  featured?: boolean;
 }
 
 export const allEvents: EventItem[] = [
@@ -18,6 +19,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/ai-hackathon-i/1.png",
     status: "completed",
     organizationType: "ORGANIZED",
+    featured: true,
   },
   {
     id: "ai-hackathon-ii",
@@ -27,6 +29,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/ai-hackathon-ii/2.jpg",
     status: "completed",
     organizationType: "ORGANIZED",
+    featured: true,
   },
   {
     id: "signal-i",
@@ -36,6 +39,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/signal-i/1.jpg",
     status: "completed",
     organizationType: "ORGANIZED",
+    featured: true,
   },
   {
     id: "robotics-hackathon-i",
@@ -45,6 +49,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/robotics-i/1.jpg",
     status: "completed",
     organizationType: "ORGANIZED",
+    featured: true,
   },
   {
     id: "signal-ii",
@@ -54,6 +59,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/signal-ii/1.png",
     status: "completed",
     organizationType: "ORGANIZED",
+    featured: true,
   },
   {
     id: "ai-hackathon-iii",
@@ -63,6 +69,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/ai-hackathon-iii/10.jpg",
     status: "completed",
     organizationType: "ORGANIZED",
+    featured: true,
   },
   {
     id: "brucon",
@@ -72,6 +79,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/partnerships/logos/2.png",
     status: "completed",
     organizationType: "CONTRIBUTED",
+    featured: true,
   },
   {
     id: "kids-ai-vibecoding-hackathon",
@@ -81,6 +89,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/kids-hackathon/1.png",
     status: "completed",
     organizationType: "ORGANIZED",
+    featured: true,
   },
   {
     id: "future-in-bloom-pt1",
@@ -90,6 +99,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/future-in-bloom/1.jpg",
     status: "completed",
     organizationType: "ORGANIZED",
+    featured: true,
   },
   {
     id: "tectonic",
@@ -99,6 +109,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/tectonic/tectonic.jpeg",
     status: "completed",
     organizationType: "CONTRIBUTED",
+    featured: true,
   },
   {
     id: "belgium-nlp-meetup-27",
@@ -117,6 +128,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/stripe-hackathon/1.png",
     status: "completed",
     organizationType: "ORGANIZED",
+    featured: true,
   },
   {
     id: "get-sip-done-antwerp",
@@ -135,6 +147,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/elevenlabs/1.jpg",
     status: "completed",
     organizationType: "ORGANIZED",
+    featured: true,
   },
   {
     id: "signal-iii",
@@ -144,6 +157,7 @@ export const allEvents: EventItem[] = [
     thumbnail: "/signal-iii/1.png",
     status: "completed",
     organizationType: "ORGANIZED",
+    featured: true,
   },
   {
     id: "ap-robotics-workshop",
@@ -201,6 +215,16 @@ export const allEvents: EventItem[] = [
     status: "upcoming",
     organizationType: "ORGANIZED",
     link: "https://luma.com/qktkm9tw",
+  },
+  {
+    id: "techxperience-openclaw-workshop",
+    title: "TechXperience: OpenClaw Workshop",
+    date: "2026-05-21",
+    description: "Lunch workshop at The Beacon: a hands-on OpenClaw session by North Star covering AI agent architecture, memory, failure modes, and practical automation workflows.",
+    thumbnail: "/techxperience/cover.jpg",
+    status: "upcoming",
+    organizationType: "ORGANIZED",
+    link: "https://www.eventbrite.be/e/techxperience-battle-of-the-ais-openclaw-tickets-1985714555690",
   },
 ];
 

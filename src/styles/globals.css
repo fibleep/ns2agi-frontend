@@ -477,7 +477,6 @@
 
 .split-panel:hover .split-panel-bg img {
 	filter: brightness(0.4) saturate(0.7);
-	transform: scale(1.03);
 }
 
 .split-panel-gradient {
@@ -692,12 +691,10 @@
 	height: 100%;
 	object-fit: cover;
 	filter: grayscale(40%) brightness(0.72);
-	transform: scale(1.04);
-	transition: transform 600ms cubic-bezier(0.2, 0.85, 0.25, 1), filter 400ms ease;
+	transition: filter 400ms ease;
 }
 
 .story-card:hover .story-card-image {
-	transform: scale(1);
 	filter: grayscale(0%) brightness(0.88);
 }
 

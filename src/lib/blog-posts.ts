@@ -12,7 +12,7 @@ export interface BlogPostPreview {
 export const blogPosts: BlogPostPreview[] = [
   {
     id: "the-vessel",
-    title: "First open AI & Robotics Lab in Belgium",
+    title: "First open Robotics and AI Lab in Belgium",
     date: "March 11, 2026",
     excerpt:
       "The Vessel is an open robotics and AI lab in the Antwerp port area. Think of it as a forever hackathon.",

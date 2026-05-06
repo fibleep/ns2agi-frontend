@@ -1,0 +1,341 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { allEvents } from "../lib/events";
+import { getEventLink } from "../lib/event-routes";
+
+const upcoming = allEvents
+  .filter((e) => e.status === "upcoming")
+  .sort((a, b) => a.date.localeCompare(b.date));
+
+const past = allEvents
+  .filter((e) => e.status === "completed")
+  .sort((a, b) => b.date.localeCompare(a.date));
+
+type EventKind = "hackathon" | "conference" | "meetup" | "workshop";
+
+const KIND_OVERRIDES: Record<string, EventKind> = {
+  tectonic: "conference",
+  brucon: "conference",
+  "future-in-bloom-pt1": "hackathon",
+  "openlab-vessel-1": "meetup",
+  "get-sip-done-antwerp": "meetup",
+};
+
+const getKind = (e: typeof allEvents[number]): EventKind => {
+  if (KIND_OVERRIDES[e.id]) return KIND_OVERRIDES[e.id];
+  const t = e.title.toLowerCase();
+  if (t.includes("hackathon")) return "hackathon";
+  if (t.includes("workshop")) return "workshop";
+  if (t.includes("conference")) return "conference";
+  return "meetup";
+};
+
+const KIND_LABEL: Record<EventKind, string> = {
+  hackathon: "Hackathon",
+  conference: "Conference",
+  meetup: "Meetup",
+  workshop: "Workshop",
+};
+
+const fmtFullDate = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+const eventHref = (e: typeof allEvents[number]) => e.link ?? getEventLink(e.id, "/events");
+const isExternal = (href: string) => href.startsWith("http");
+
+const groupByYear = <T extends { date: string }>(events: T[]) => {
+  const groups: Record<string, T[]> = {};
+  for (const e of events) {
+    const year = new Date(e.date).getFullYear().toString();
+    if (!groups[year]) groups[year] = [];
+    groups[year].push(e);
+  }
+  return Object.entries(groups).sort((a, b) => Number(b[0]) - Number(a[0]));
+};
+
+const pastByYear = groupByYear(past);
+---
+
+<Layout title="Events | North Star">
+  <main class="ev-page">
+    <header class="ev-header">
+      <p class="ev-eyebrow">Archive</p>
+      <h1 class="ev-title">Events</h1>
+      <p class="ev-sub">Every room we&rsquo;ve built &mdash; and the ones still ahead.</p>
+    </header>
+
+    {upcoming.length > 0 && (
+      <section class="ev-section">
+        <h2 class="ev-section-title">Upcoming</h2>
+        <ol class="ev-list">
+          {upcoming.map((event) => {
+            const href = eventHref(event);
+            const ext = isExternal(href);
+            const kind = getKind(event);
+            return (
+              <li class="ev-row ev-row-upcoming">
+                <a
+                  href={href}
+                  class="ev-row-link"
+                  target={ext ? "_blank" : undefined}
+                  rel={ext ? "noopener noreferrer" : undefined}
+                >
+                  <div class="ev-thumb">
+                    <img src={event.thumbnail} alt="" loading="lazy" />
+                  </div>
+                  <div class="ev-row-meta">
+                    <span class="ev-row-date">{fmtFullDate(event.date)}</span>
+                    <span class="ev-row-kind">{KIND_LABEL[kind]}</span>
+                  </div>
+                  <div class="ev-row-body">
+                    <h3 class="ev-row-title">{event.title}</h3>
+                    <p class="ev-row-desc">{event.description}</p>
+                  </div>
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+    )}
+
+    <section class="ev-section">
+      <h2 class="ev-section-title">Past events</h2>
+      {pastByYear.map(([year, events]) => (
+        <div class="ev-year-group">
+          <p class="ev-year">{year}</p>
+          <ol class="ev-list">
+            {events.map((event) => {
+              const href = eventHref(event);
+              const ext = isExternal(href);
+              const kind = getKind(event);
+              return (
+                <li class="ev-row">
+                  <a
+                    href={href}
+                    class="ev-row-link"
+                    target={ext ? "_blank" : undefined}
+                    rel={ext ? "noopener noreferrer" : undefined}
+                  >
+                    <div class="ev-thumb">
+                      <img src={event.thumbnail} alt="" loading="lazy" />
+                    </div>
+                    <div class="ev-row-meta">
+                      <span class="ev-row-date">{fmtFullDate(event.date)}</span>
+                      <span class="ev-row-kind">{KIND_LABEL[kind]}</span>
+                    </div>
+                    <div class="ev-row-body">
+                      <h3 class="ev-row-title">{event.title}</h3>
+                      <p class="ev-row-desc">{event.description}</p>
+                    </div>
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      ))}
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .ev-page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: clamp(5rem, 12vh, 8rem) clamp(1rem, 4vw, 2.5rem) clamp(4rem, 8vh, 6rem);
+    color: rgba(255,255,255,0.92);
+  }
+
+  .ev-header {
+    padding-bottom: clamp(2rem, 5vh, 4rem);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: clamp(2rem, 5vh, 3.5rem);
+  }
+  .ev-eyebrow {
+    margin: 0 0 0.7rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .ev-title {
+    margin: 0 0 0.6rem;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: rgba(255,255,255,0.96);
+  }
+  .ev-sub {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.55);
+    max-width: 50ch;
+  }
+
+  .ev-section {
+    margin-bottom: clamp(2.5rem, 6vh, 4.5rem);
+  }
+  .ev-section-title {
+    margin: 0 0 1.4rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.42);
+  }
+
+  .ev-year-group {
+    margin-bottom: 2.4rem;
+  }
+  .ev-year {
+    margin: 0 0 0.4rem;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.4);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ev-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .ev-row {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .ev-row-link {
+    display: grid;
+    grid-template-columns: 88px 180px 1fr;
+    gap: 1.4rem;
+    align-items: center;
+    padding: 1rem 0.4rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background 200ms ease;
+  }
+  .ev-row-link:hover,
+  .ev-row-link:focus-visible {
+    background: rgba(255,255,255,0.025);
+  }
+
+  .ev-thumb {
+    width: 88px;
+    height: 64px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: var(--offblack);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .ev-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ev-row-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-family: "Geist", sans-serif;
+    font-variant-numeric: tabular-nums;
+  }
+  .ev-row-date {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.78);
+  }
+  .ev-row-kind {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+  }
+
+  .ev-row-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+  .ev-row-title {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: 1.02rem;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    color: rgba(255,255,255,0.96);
+    transition: color 200ms ease;
+  }
+  .ev-row-link:hover .ev-row-title {
+    color: rgba(255,255,255,1);
+  }
+  .ev-row-desc {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: 0.86rem;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.5);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ev-row-upcoming .ev-row-date {
+    color: rgba(255,255,255,0.95);
+  }
+  .ev-row-upcoming .ev-row-kind {
+    color: rgba(255,255,255,0.55);
+  }
+
+  @media (max-width: 720px) {
+    .ev-row-link {
+      grid-template-columns: 64px 1fr;
+      gap: 0.9rem;
+      padding: 0.9rem 0.2rem;
+    }
+    .ev-thumb {
+      width: 64px;
+      height: 48px;
+    }
+    .ev-row-meta {
+      grid-column: 2;
+      grid-row: 1;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .ev-row-body {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    .ev-row-date {
+      font-size: 0.7rem;
+    }
+    .ev-row-kind {
+      font-size: 0.58rem;
+    }
+    .ev-row-title {
+      font-size: 0.95rem;
+    }
+    .ev-row-desc {
+      font-size: 0.8rem;
+      -webkit-line-clamp: 2;
+    }
+  }
+</style>

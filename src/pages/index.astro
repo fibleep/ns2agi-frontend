@@ -2,7 +2,33 @@
 import Layout from "../layouts/Layout.astro";
 import PartnersGrid from "../components/PartnersGrid.astro";
 import { blogPosts } from "../lib/blog-posts";
+import { allEvents, upcomingEvents, completedEvents } from "../lib/events";
+import { getEventLink } from "../lib/event-routes";
 import { ArrowRight } from "lucide-react";
+
+const upcoming = [...upcomingEvents].sort((a, b) => a.date.localeCompare(b.date));
+const past = [...completedEvents].sort((a, b) => b.date.localeCompare(a.date));
+const featuredPast = past.filter((e) => e.featured);
+
+const totalEventCount = allEvents.length;
+
+const fmtMonthYear = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", { month: "short", year: "numeric" });
+
+const fmtUpcoming = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+
+const eventHref = (e: typeof allEvents[number]) => e.link ?? getEventLink(e.id, "/commitments#events");
+
+const isExternal = (href: string) => href.startsWith("http");
+
+type TileSize = "default" | "feature" | "tall";
+const getTileSize = (i: number): TileSize => {
+  if (i === 0) return "feature";
+  if (i === 5) return "tall";
+  if (i === 8) return "feature";
+  return "default";
+};
 
 const commitments = [
   {
@@ -42,7 +68,7 @@ const commitments = [
   <section class="id-hero">
     <img src="/nsstar-clean.svg" alt="North Star" class="id-star" data-id-star />
     <p class="id-wordmark">NORTH&nbsp;STAR</p>
-
+    <p class="id-tagline">Building Belgium's AI &amp; Robotics future</p>
   </section>
 
   <!-- Asymmetric commitment bento -->
@@ -52,7 +78,6 @@ const commitments = [
         <img src={c.image} alt="" loading="lazy" class="cp-img" />
         <div class="cp-shade"></div>
         <div class="cp-text">
-          <span class="cp-index">0{i + 1}</span>
           <p class="cp-label">{c.label}</p>
           <p class="cp-sub">{c.sub}</p>
         </div>
@@ -63,66 +88,85 @@ const commitments = [
     ))}
   </div>
 
-  <!-- Donate strip -->
-  <div class="donate-strip" data-reveal>
-    <a href="https://www.weglow.world/o/northstaragi/donate" target="_blank" rel="noopener noreferrer" class="donate-link">
-      Support our mission
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </div>
-
   <!-- Newsletter signup -->
   <section class="newsletter-section" data-reveal>
     <h2 class="newsletter-title">Join the newsletter</h2>
     <script src="https://etoile.events/embed/newsletter-widget?org=north-star&color=%23000000&placeholder=polaris%40ns2agi.com&button=Subscribe" async></script>
   </section>
 
-  <!-- Highlighted Events -->
-  <section class="hi-events" data-reveal>
-    <p class="hi-events-label">Our events</p>
-    <div class="hi-events-grid">
-      <a href="/commitments#events" class="hi-ev hi-ev-large">
-        <div class="hi-ev-img-wrap">
-          <img src="/kids-hackathon/1.png" alt="" loading="lazy" class="hi-ev-img" />
-        </div>
-        <div class="hi-ev-text">
-          <span class="hi-ev-title">Kids Hackathon</span>
-          <span class="hi-ev-sub">Introducing the next generation to AI and robotics</span>
-        </div>
-      </a>
-      <a href="/commitments#events" class="hi-ev hi-ev-large">
-        <div class="hi-ev-img-wrap">
-          <img src="/elevenlabs/5.jpg" alt="" loading="lazy" class="hi-ev-img" />
-        </div>
-        <div class="hi-ev-text">
-          <span class="hi-ev-title">ElevenLabs Hackathon</span>
-          <span class="hi-ev-sub">One of our many hackathons, this time with <img src="/partnerships/workedwith/10.svg" alt="ElevenLabs" class="hi-ev-inline-logo" /></span>
-        </div>
-      </a>
-      <a href="/blog/the-vessel" class="hi-ev hi-ev-large">
-        <div class="hi-ev-img-wrap">
-          <img src="/blogs/the-vessel/2026-03-10 16.58.10.jpg" alt="" loading="lazy" class="hi-ev-img" />
-          <span class="hi-ev-badge">Every Thursday</span>
-        </div>
-        <div class="hi-ev-text">
-          <span class="hi-ev-title">OpenLab @ The Vessel</span>
-          <span class="hi-ev-sub">Visit our open robotics/AI lab</span>
-        </div>
-      </a>
-      <a href="/commitments#events" class="hi-ev hi-ev-large">
-        <div class="hi-ev-img-wrap">
-          <img src="/conferences/photo_2026-02-26 15.58.36.jpeg" alt="" loading="lazy" class="hi-ev-img" />
-        </div>
-        <div class="hi-ev-text">
-          <span class="hi-ev-title">Conferences</span>
-          <span class="hi-ev-sub">If you saw a robot at a conference in Belgium, there's a non-zero chance it's through us</span>
-        </div>
-      </a>
+  <!-- Upcoming events -->
+  <section class="up-section" data-reveal>
+    <div class="up-head">
+      <h2 class="up-title">Upcoming</h2>
     </div>
-    <div class="hi-events-more">
-      <a href="/commitments#events" class="hi-events-more-link">
-        Show all events
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="up-grid">
+      <a href="/vessel" class="up-card">
+        <div class="up-thumb">
+          <img src="/blogs/the-vessel/2026-03-10 16.58.10.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="up-body">
+          <span class="up-date">Every Thu &amp; Sat &middot; Open Lab</span>
+          <h3 class="up-card-title">OpenLab @ The Vessel</h3>
+          <p class="up-desc">Visit our open lab in AI &amp; Robotics, build your own project or help us with our engineering initiatives.</p>
+        </div>
+      </a>
+      {upcoming.map((event) => {
+        const href = eventHref(event);
+        const ext = isExternal(href);
+        return (
+          <a
+            href={href}
+            class="up-card"
+            target={ext ? "_blank" : undefined}
+            rel={ext ? "noopener noreferrer" : undefined}
+          >
+            <div class="up-thumb">
+              <img src={event.thumbnail} alt="" loading="lazy" />
+            </div>
+            <div class="up-body">
+              <span class="up-date">{fmtUpcoming(event.date)}</span>
+              <h3 class="up-card-title">{event.title}</h3>
+              <p class="up-desc">{event.description}</p>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Past events bento -->
+  <section class="past-section" data-reveal>
+    <div class="past-head">
+      <h2 class="past-title">Where we&rsquo;ve been</h2>
+    </div>
+    <div class="past-bento-wrap">
+      <div class="past-bento">
+        {featuredPast.map((event, i) => {
+          const href = eventHref(event);
+          const ext = isExternal(href);
+          const size = getTileSize(i);
+          return (
+            <a
+              href={href}
+              class={`past-tile size-${size}`}
+              target={ext ? "_blank" : undefined}
+              rel={ext ? "noopener noreferrer" : undefined}
+            >
+              <img src={event.thumbnail} alt="" loading="lazy" />
+              <div class="past-tile-shade"></div>
+              <div class="past-tile-info">
+                <span class="past-tile-date">{fmtMonthYear(event.date)}</span>
+                <h3 class="past-tile-name">{event.title}</h3>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+      <div class="past-fade" aria-hidden="true"></div>
+    </div>
+    <div class="past-cta-wrap">
+      <a href="/events" class="past-cta">
+        Show all {totalEventCount} events <ArrowRight className="past-cta-arrow" />
       </a>
     </div>
   </section>
@@ -141,7 +185,7 @@ const commitments = [
       <div class="vessel-gradient-b" aria-hidden="true"></div>
       <div class="vessel-gradient-r" aria-hidden="true"></div>
       <div class="vessel-vignette" aria-hidden="true"></div>
-      <a href="/blog/the-vessel" class="vessel-content">
+      <a href="/vessel" class="vessel-content">
         <h3 class="vessel-title">The Vessel</h3>
         <p class="vessel-desc">An atelier for intelligent machines</p>
         <span class="vessel-cta">Visit <ArrowRight className="w-3 h-3" /></span>
@@ -379,12 +423,10 @@ const commitments = [
     height: 100%;
     object-fit: cover;
     filter: brightness(0.58) saturate(0.75);
-    transform: scale(1.06);
-    transition: transform 600ms cubic-bezier(0.2, 0.85, 0.25, 1), filter 500ms ease;
+    transition: filter 500ms ease;
   }
 
   .cp-panel:hover .cp-img {
-    transform: scale(1);
     filter: brightness(0.72) saturate(0.88);
   }
 
@@ -501,34 +543,6 @@ const commitments = [
       border-radius: 0.75rem;
     }
     .cp-label { font-size: clamp(1.3rem, 6vw, 1.8rem); }
-  }
-
-  /* ── Donate strip ── */
-  .donate-strip {
-    text-align: center;
-    padding: clamp(1.5rem, 3vh, 2.5rem) 1.5rem;
-  }
-
-  .donate-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: "Geist", sans-serif;
-    font-size: 0.82rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.28);
-    text-decoration: none;
-    padding: 0.6rem 1.2rem;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 9999px;
-    transition: color 250ms ease, border-color 250ms ease, gap 250ms ease;
-  }
-
-  .donate-link:hover {
-    color: rgba(255,255,255,0.62);
-    border-color: rgba(255,255,255,0.18);
-    gap: 0.55rem;
   }
 
   /* ── Newsletter signup ── */
@@ -937,11 +951,9 @@ const commitments = [
     height: 100%;
     object-fit: cover;
     filter: grayscale(40%) brightness(0.72);
-    transform: scale(1.04);
-    transition: transform 600ms cubic-bezier(0.2, 0.85, 0.25, 1), filter 400ms ease;
+    transition: filter 400ms ease;
   }
   .story-card:hover .story-card-image {
-    transform: scale(1);
     filter: grayscale(0%) brightness(0.88);
   }
   @media (max-width: 640px) {
@@ -954,159 +966,276 @@ const commitments = [
     }
   }
 
-  /* ── Highlighted Events ── */
-  .hi-events {
-    padding: clamp(2.5rem, 6vh, 5rem) clamp(1rem, 4vw, 3rem);
-    max-width: 960px;
+  /* ── Upcoming events ── */
+  .up-section {
+    padding: clamp(3rem, 7vh, 5.5rem) clamp(1rem, 4vw, 3rem) clamp(1rem, 2vh, 2rem);
+    max-width: 1240px;
     margin: 0 auto;
     width: 100%;
   }
-
-  .hi-events-label {
-    display: block;
+  .up-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: clamp(1.4rem, 3vh, 2.2rem);
+    flex-wrap: wrap;
+  }
+  .up-title {
+    margin: 0;
     font-family: "Instrument Serif", serif;
     font-style: italic;
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
     font-weight: 400;
-    color: rgba(255,255,255,0.72);
-    margin: 0 0 1.5rem;
-    text-align: center;
-    line-height: 1.1;
+    line-height: 1;
+    color: rgba(255,255,255,0.92);
   }
-
-  .hi-events-grid {
+  .up-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.6rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
   }
-
-  .hi-ev {
+  .up-card {
     position: relative;
     display: flex;
     flex-direction: column;
+    gap: 1.1rem;
     text-decoration: none;
-    border-radius: 1rem;
-    overflow: hidden;
-    min-height: clamp(200px, 28vw, 300px);
+    color: inherit;
   }
-
-  .hi-ev-img-wrap {
-    position: absolute;
-    inset: 0;
+  .up-thumb {
+    aspect-ratio: 4 / 3;
     overflow: hidden;
+    border-radius: 0.85rem;
+    background: var(--offblack);
+    border: 1px solid rgba(255,255,255,0.05);
   }
-
-  .hi-ev-img {
+  .up-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.45) saturate(0.7);
-    transform: scale(1.06);
-    transition: transform 600ms cubic-bezier(0.2, 0.85, 0.25, 1), filter 500ms ease;
   }
-
-  .hi-ev:hover .hi-ev-img {
-    transform: scale(1);
-    filter: brightness(0.6) saturate(0.85);
+  .up-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 0.15rem;
   }
-
-  .hi-ev-badge {
-    position: absolute;
-    top: 0.75rem;
-    left: 0.75rem;
+  .up-date {
     font-family: "Geist", sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.9);
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 0.22rem 0.6rem;
-    border-radius: 9999px;
-    border: 1px solid rgba(255,255,255,0.12);
-    z-index: 2;
+    color: rgba(255,255,255,0.5);
+    font-variant-numeric: tabular-nums;
+  }
+  .up-card-title {
+    margin: 0;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 1.55rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    color: rgba(255,255,255,0.96);
+    transition: color 250ms ease;
+  }
+  .up-card:hover .up-card-title,
+  .up-card:focus-visible .up-card-title {
+    color: rgba(255,255,255,1);
+  }
+  .up-desc {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.55);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .hi-ev-text {
+  /* ── Past events bento ── */
+  .past-section {
+    padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 4vw, 3rem) 0;
+    max-width: 1180px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .past-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: clamp(1.4rem, 3vh, 2.2rem);
+    flex-wrap: wrap;
+  }
+  .past-title {
+    margin: 0;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1;
+    color: rgba(255,255,255,0.92);
+  }
+  .past-bento-wrap {
     position: relative;
+  }
+  .past-bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    grid-auto-flow: dense;
+    gap: 0.4rem;
+  }
+  .past-tile {
+    position: relative;
+    grid-column: span 1;
+    grid-row: span 1;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background: var(--offblack);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: border-color 400ms ease;
+  }
+  .past-tile:hover,
+  .past-tile:focus-visible {
+    border-color: rgba(255,255,255,0.12);
+  }
+  .past-tile.size-feature {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .past-tile.size-tall {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  .past-tile img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6) saturate(0.9);
+    transition: filter 500ms ease;
+  }
+  .past-tile:hover img {
+    filter: brightness(0.8) saturate(1);
+  }
+  .past-tile-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(8,7,6,0.96) 0%, rgba(8,7,6,0.78) 28%, rgba(8,7,6,0.4) 55%, transparent 88%);
     z-index: 1;
-    margin-top: auto;
-    padding: 1.2rem;
+    pointer-events: none;
+  }
+  .past-tile-info {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.95rem;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+    pointer-events: none;
   }
-
-  .hi-ev-title {
+  .past-tile-date {
+    font-family: "Geist", sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    font-variant-numeric: tabular-nums;
+  }
+  .past-tile-name {
+    margin: 0;
+    font-family: "Geist", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    color: rgba(255,255,255,0.96);
+  }
+  .past-tile.size-feature .past-tile-name {
     font-family: "Instrument Serif", serif;
     font-style: italic;
-    font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+    font-size: 1.7rem;
     font-weight: 400;
-    color: rgba(255,255,255,0.92);
-    line-height: 1.15;
-    transition: color 250ms ease;
+    line-height: 1.1;
   }
-
-  .hi-ev:hover .hi-ev-title {
-    color: rgba(255,255,255,1);
+  .past-tile.size-tall .past-tile-name {
+    font-size: 1.15rem;
   }
-
-  .hi-ev-sub {
-    font-family: "Geist", sans-serif;
-    font-size: clamp(0.72rem, 1vw, 0.82rem);
-    color: rgba(255,255,255,0.4);
-    line-height: 1.4;
-    transition: color 250ms ease;
+  .past-fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 220px;
+    background: linear-gradient(to bottom, transparent 0%, var(--offblack, #0f0e0c) 85%);
+    pointer-events: none;
+    z-index: 5;
   }
-
-  .hi-ev:hover .hi-ev-sub {
-    color: rgba(255,255,255,0.55);
-  }
-
-  .hi-ev-inline-logo {
-    display: inline;
-    height: 0.85em;
-    width: auto;
-    vertical-align: middle;
-    margin-left: 0.1em;
-    opacity: 0.7;
+  .past-cta-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: -2rem;
+    padding-bottom: clamp(2rem, 5vh, 4rem);
     position: relative;
-    top: -0.05em;
+    z-index: 6;
   }
-
-  /* Show more */
-  .hi-events-more {
-    text-align: center;
-    margin-top: 1.2rem;
-  }
-
-  .hi-events-more-link {
+  .past-cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    font-family: "Geist", sans-serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.28);
-    text-decoration: none;
-    transition: color 200ms ease, gap 200ms ease;
-  }
-
-  .hi-events-more-link:hover {
-    color: rgba(255,255,255,0.6);
     gap: 0.55rem;
+    padding: 0.85rem 1.4rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-family: "Geist", sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.88);
+    text-decoration: none;
+    transition: border-color 280ms ease, background 280ms ease;
+  }
+  .past-cta:hover,
+  .past-cta:focus-visible {
+    border-color: rgba(255,255,255,0.24);
+    background: rgba(255,255,255,0.06);
+  }
+  .past-cta-arrow {
+    width: 14px;
+    height: 14px;
   }
 
-  @media (max-width: 600px) {
-    .hi-events-grid {
-      grid-template-columns: 1fr;
-      gap: 0.4rem;
+  /* Mobile bento collapses to 2 columns, all tiles 1×1 (with feature spanning 2) */
+  @media (max-width: 720px) {
+    .past-bento {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 140px;
+      gap: 0.35rem;
     }
-    .hi-ev {
-      min-height: 200px;
+    .past-tile,
+    .past-tile.size-tall {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+    .past-tile.size-feature {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+    .past-tile.size-feature .past-tile-name {
+      font-size: 1.3rem;
+    }
+    .past-fade {
+      height: 160px;
     }
   }
 
