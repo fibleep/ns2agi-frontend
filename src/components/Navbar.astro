@@ -12,14 +12,18 @@ const commitmentLinks = [
 const mainLinks = [
     { name: "Collaborate", href: "/work-with-us" },
     { name: "Core", href: "/about" },
-    { name: "Connect", href: "/connect" },
+    { name: "Become a member", href: "https://atlas.ns2agi.com" },
+    { name: "Store", href: "/store" },
 ];
 
 const isActive = (href: string) => {
+    if (href.startsWith("http")) return false;
     const [path] = href.split("#");
     if (href === "/") return currentPath === "/";
     return currentPath === path || currentPath.startsWith(`${path}/`);
 };
+
+const isExternal = (href: string) => href.startsWith("http");
 ---
 
 <!-- Desktop floating nav -->
@@ -44,6 +48,8 @@ const isActive = (href: string) => {
         <a
             href={link.href}
             class={`ns-nav-link ${isActive(link.href) ? "is-active" : ""}`}
+            target={isExternal(link.href) ? "_blank" : undefined}
+            rel={isExternal(link.href) ? "noopener noreferrer" : undefined}
         >
             {link.name}
         </a>
@@ -75,7 +81,12 @@ const isActive = (href: string) => {
         ))}
         <div class="ns-mo-sep"></div>
         {mainLinks.map((link) => (
-            <a href={link.href} class={`ns-mo-link ${isActive(link.href) ? "is-active" : ""}`}>
+            <a
+                href={link.href}
+                class={`ns-mo-link ${isActive(link.href) ? "is-active" : ""}`}
+                target={isExternal(link.href) ? "_blank" : undefined}
+                rel={isExternal(link.href) ? "noopener noreferrer" : undefined}
+            >
                 {link.name}
             </a>
         ))}
