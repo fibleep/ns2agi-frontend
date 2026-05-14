@@ -1,0 +1,24 @@
+---
+import EventLayout from "../../components/EventLayout.astro";
+
+const images = [
+  { src: "/benelux-robotics/1.jpg", alt: "Opening keynote by Pepijn Kooijmans (Hugging Face)" },
+  { src: "/benelux-robotics/3.jpg", alt: "Audience at TU/e Eindhoven" },
+  { src: "/benelux-robotics/7.jpg", alt: "Panel: Robotics in the Benelux" },
+  { src: "/benelux-robotics/2.jpg", alt: "Panel discussion" },
+  { src: "/benelux-robotics/4.jpg", alt: "Networking drinks" },
+];
+---
+
+<EventLayout
+  title="Benelux Robotics Meetup"
+  date="May 12, 2026"
+  location="TU/e, Eindhoven"
+  type="Meetup"
+  description="Our first event outside Belgium. A sold-out night at TU/e Eindhoven, with AISO, on how the Benelux becomes a serious force in robotics."
+  images={images}
+>
+  <p>Sold out. A waiting list. People arriving so early the room was packed thirty minutes before we started.</p>
+  <p>Pepijn Kooijmans (Hugging Face) opened with a keynote on LeRobot - open-source robot learning, affordable hardware, VLA models, and where Europe sits in the physical AI stack. Then a panel with Victor van Dinten (naext), Axel Vlaminck (Datameister), and Joep Selten (Ambyon) on what it actually takes to build a robotics startup in the region.</p>
+  <p>North Star started in Antwerp. Now we&rsquo;re crossing borders.</p>
+</EventLayout>

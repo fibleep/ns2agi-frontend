@@ -17,6 +17,7 @@ export const EVENT_ROUTES: Record<string, string> = {
     "ap-robotics-workshop": "/events/ap-robotics-workshop",
     "openclaw-meetup": "/events/openclaw-deep-dive",
     "ai-community-journal-club-001": "/events/ai-community-journal-club-001",
+    "benelux-robotics-meetup": "/events/benelux-robotics-meetup",
 };
 
 export const getEventLink = (eventId: string, fallbackLink?: string): string => {
