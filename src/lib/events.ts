@@ -225,6 +225,28 @@ export const allEvents: EventItem[] = [
     organizationType: "ORGANIZED",
     link: "https://www.eventbrite.be/e/techxperience-battle-of-the-ais-openclaw-tickets-1985714555690",
   },
+  {
+    id: "hack-nation-brussels",
+    title: "Hack-Nation Global AI Hackathon: Brussels Hub",
+    date: "2026-07-18",
+    description: "With WAT.BXL, North Star brings Hack-Nation's Global AI Hackathon to Brussels. 50 seats alongside teams from MIT, Stanford, Munich, London, Zurich and beyond. $35K+ in prizes and $200K in API credits.",
+    thumbnail: "/hacknation/cover.jpeg",
+    status: "upcoming",
+    organizationType: "ORGANIZED",
+    link: "https://hack-nation.ai/",
+    featured: true,
+  },
+  {
+    id: "openai-codex-meetup",
+    title: "OpenAI Codex Community Meetup",
+    date: "2026-06-22",
+    description: "Belgium's first OpenAI Codex Community Meetup at Wintercircus Ghent: Codex updates, live demos, an agents session, and an on-site OpenAI engineer AMA.",
+    thumbnail: "/codex-meetup/cover.jpeg",
+    status: "upcoming",
+    organizationType: "ORGANIZED",
+    link: "https://luma.com/ofb4ell6",
+    featured: true,
+  },
 ];
 
 export const completedEvents = allEvents.filter((event) => event.status === "completed");

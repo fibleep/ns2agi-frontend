@@ -607,8 +607,16 @@ const commitments = [
   }
   .engage-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: clamp(2rem, 4vw, 3.5rem);
+  }
+  .engage-card:first-child {
+    grid-column: 1 / -1;
+  }
+  @media (max-width: 640px) {
+    .engage-grid {
+      grid-template-columns: 1fr;
+    }
   }
   .engage-card {
     display: flex;
