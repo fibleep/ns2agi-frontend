@@ -140,7 +140,7 @@ const commitments = [
     </div>
     <div class="up-grid">
       <a href="/vessel" class="up-card">
-        <div class="up-thumb">
+        <div class="up-thumb" style={`--thumb-bg: url('/blogs/the-vessel/2026-03-10 16.58.10.jpg')`}>
           <img src="/blogs/the-vessel/2026-03-10 16.58.10.jpg" alt="" loading="lazy" />
         </div>
         <div class="up-body">
@@ -159,7 +159,7 @@ const commitments = [
             target={ext ? "_blank" : undefined}
             rel={ext ? "noopener noreferrer" : undefined}
           >
-            <div class="up-thumb">
+            <div class="up-thumb" style={`--thumb-bg: url('${event.thumbnail}')`}>
               <img src={event.thumbnail} alt="" loading="lazy" />
             </div>
             <div class="up-body">
@@ -1145,16 +1145,31 @@ const commitments = [
     color: inherit;
   }
   .up-thumb {
+    position: relative;
     aspect-ratio: 4 / 3;
     overflow: hidden;
     border-radius: 0.85rem;
     background: var(--offblack);
     border: 1px solid rgba(255,255,255,0.05);
+    isolation: isolate;
+  }
+  .up-thumb::before {
+    content: "";
+    position: absolute;
+    inset: -8%;
+    background-image: var(--thumb-bg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(28px) saturate(1.1) brightness(0.7);
+    transform: scale(1.15);
+    z-index: 0;
   }
   .up-thumb img {
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
   .up-body {
     display: flex;

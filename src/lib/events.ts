@@ -221,7 +221,7 @@ export const allEvents: EventItem[] = [
     date: "2026-05-21",
     description: "Lunch workshop at The Beacon: a hands-on OpenClaw session by North Star covering AI agent architecture, memory, failure modes, and practical automation workflows.",
     thumbnail: "/techxperience/cover.png",
-    status: "upcoming",
+    status: "completed",
     organizationType: "ORGANIZED",
     link: "https://www.eventbrite.be/e/techxperience-battle-of-the-ais-openclaw-tickets-1985714555690",
   },
