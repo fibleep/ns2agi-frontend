@@ -156,7 +156,6 @@ export const allEvents: EventItem[] = [
     thumbnail: "/signal.jpeg",
     status: "completed",
     organizationType: "ORGANIZED",
-    featured: true,
   },
   {
     id: "ap-robotics-workshop",
@@ -224,6 +223,7 @@ export const allEvents: EventItem[] = [
     status: "completed",
     organizationType: "ORGANIZED",
     link: "https://www.eventbrite.be/e/techxperience-battle-of-the-ais-openclaw-tickets-1985714555690",
+    featured: true,
   },
   {
     id: "hack-nation-brussels",
