@@ -1,13 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
-
-const projects = [
-    { name: "Robotics R&D", body: "Embodied AI, VR teleoperation, open-source robotics platforms.", href: "/projects" },
-    { name: "SimpleIdea", body: "Stack for kids hackathons and AI in education.", href: "/projects" },
-    { name: "Etoile", body: "Community-driven event platform built in the open.", href: "https://etoile.events" },
-    { name: "Field challenges", body: "Real problems sourced from Port of Antwerp-Bruges and partners.", href: "/work-with-us" },
-];
+import { ArrowUpRight } from 'lucide-react';
 
 const directions = [
     { mode: "Train", detail: "Antwerpen-Centraal → Antwerpen-Luchtbal (NMBS, ~10 min, every 20 min)." },
@@ -15,6 +8,16 @@ const directions = [
     { mode: "Tram 1", detail: "From Opera, runs to Luchtbal." },
     { mode: "Bike", detail: "~20 min from Antwerp centre via Italiëlei. Covered racks at the door." },
     { mode: "Car", detail: "~10 min from centre. Free parking on-site at Loodglansstraat 5." },
+];
+
+const equipment = [
+    { qty: "×4", name: "SO-101 arm", body: "Hugging Face LeRobot 6-axis arms. Leader / follower teleoperation, imitation learning workflows.", image: "/vessel/equipment/so101.png" },
+    { qty: "×1", name: "LeKiwi", body: "Mobile base from the LeRobot ecosystem. SO-101 mounted on wheels for navigation experiments.", image: "/vessel/equipment/lekiwi.jpg" },
+    { qty: "×1", name: "Bambu Lab A1", body: "Multi-material 3D printer. Keeps the lab self-sufficient for parts, jigs, and prototypes.", image: "/vessel/equipment/bambu-a1.png" },
+    { qty: "×1", name: "Meta Quest 3", body: "Mixed-reality headset used for VR teleoperation and 3D scene visualisation.", image: "/vessel/equipment/quest-3.jpg" },
+    { qty: "×1", name: "Sesame", body: "Open-source ESP32 mini quadruped. A pocket-sized robot for tinkering and demos.", image: "/vessel/equipment/sesame.png" },
+    { qty: "×1", name: "reCamera Gimbal", body: "Seeed Studio open-source AI camera on a 2-axis brushless gimbal for YOLO at the edge.", image: "/vessel/equipment/recamera-gimbal.jpg" },
+    { qty: "Soon", name: "Amazing Hand", body: "Pollen Robotics × Hugging Face open-source dexterous hand. 8 DoF across four fingers.", image: "/vessel/equipment/amazing-hand.jpg" },
 ];
 ---
 
@@ -92,19 +95,26 @@ const directions = [
             </ul>
         </section>
 
-        <!-- Projects -->
+        <!-- Equipment -->
         <section class="vp-section" data-reveal>
-            <h2 class="vp-section-title">What gets built.</h2>
+            <h2 class="vp-section-title">What's in the lab.</h2>
 
-            <div class="vp-project-list">
-                {projects.map((p) => (
-                    <a href={p.href} class="vp-project-row">
-                        <span class="vp-project-name">{p.name}</span>
-                        <span class="vp-project-body">{p.body}</span>
-                        <ArrowRight className="vp-project-arrow w-3.5 h-3.5" />
-                    </a>
+            <div class="vp-equipment-grid">
+                {equipment.map((e) => (
+                    <article class="vp-eq-card">
+                        <div class="vp-eq-thumb" style={`--thumb-bg: url('${e.image}')`}>
+                            <img src={e.image} alt={e.name} loading="lazy" />
+                        </div>
+                        <div class="vp-eq-meta">
+                            <span class="vp-eq-qty">{e.qty}</span>
+                            <h3 class="vp-eq-name">{e.name}</h3>
+                        </div>
+                        <p class="vp-eq-body">{e.body}</p>
+                    </article>
                 ))}
             </div>
+
+            <p class="vp-eq-bench">Plus the bench: soldering station, hand tools, calipers, screwdrivers, a stocked parts drawer.</p>
         </section>
 
         <!-- Vision -->
@@ -480,6 +490,90 @@ const directions = [
         transform: translateX(3px);
     }
 
+
+    /* ── Equipment ── */
+    .vp-equipment-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.4rem 1.2rem;
+        margin: 0 0 2rem;
+    }
+    @media (max-width: 640px) {
+        .vp-equipment-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    .vp-eq-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+    }
+    .vp-eq-thumb {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        border-radius: 0.6rem;
+        overflow: hidden;
+        background: var(--offblack);
+        border: 1px solid rgba(255,255,255,0.05);
+        isolation: isolate;
+    }
+    .vp-eq-thumb::before {
+        content: "";
+        position: absolute;
+        inset: -8%;
+        background-image: var(--thumb-bg);
+        background-size: cover;
+        background-position: center;
+        filter: blur(28px) saturate(1.1) brightness(0.55);
+        transform: scale(1.15);
+        z-index: 0;
+    }
+    .vp-eq-thumb img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    .vp-eq-meta {
+        display: flex;
+        align-items: baseline;
+        gap: 0.6rem;
+    }
+    .vp-eq-qty {
+        font-family: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        color: rgba(255,255,255,0.38);
+        font-variant-numeric: tabular-nums;
+        flex-shrink: 0;
+    }
+    .vp-eq-name {
+        margin: 0;
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: 1.15;
+        color: rgba(255,255,255,0.92);
+    }
+    .vp-eq-body {
+        margin: 0;
+        font-family: "Geist", sans-serif;
+        font-size: 0.84rem;
+        line-height: 1.55;
+        color: rgba(255,255,255,0.5);
+    }
+    .vp-eq-bench {
+        margin: 0;
+        padding-top: 1.4rem;
+        border-top: 1px solid rgba(255,255,255,0.04);
+        font-family: "Geist", sans-serif;
+        font-size: 0.84rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.42);
+        font-style: italic;
+    }
 
     /* ── Vision ── */
     .vp-vision-quote {

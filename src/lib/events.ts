@@ -226,6 +226,16 @@ export const allEvents: EventItem[] = [
     featured: true,
   },
   {
+    id: "hackers-and-ravers",
+    title: "Hackers & Ravers",
+    date: "2026-05-30",
+    description: "12-hour AI hackathon fused with a proper rave inside the Wintercircus dome in Ghent. Co-organised by Soda and Wintercircus, with North Star as a partner.",
+    thumbnail: "/hackers-and-ravers/cover.jpeg",
+    status: "upcoming",
+    organizationType: "CONTRIBUTED",
+    featured: true,
+  },
+  {
     id: "hack-nation-brussels",
     title: "Hack-Nation Global AI Hackathon: Brussels Hub",
     date: "2026-07-18",

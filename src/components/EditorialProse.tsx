@@ -322,10 +322,6 @@ export function EditorialProse({ team }: EditorialProseProps) {
           {" "}{"\ud83d\udee0\ufe0f"}{"\u00a0"}upskill their team or {"\u26a1"}{"\u00a0"}prototype{"\u00a0"}solutions.
         </p>
 
-        <div className="cp-stagger" style={{ "--stagger": 4.5 } as React.CSSProperties}>
-          <OfferingsDrawers />
-        </div>
-
         <p className="cp-prose cp-stagger" style={{ "--stagger": 5.5 } as React.CSSProperties}>
           We{"\u2019"}ve worked with companies such as{" "}
           <CompanyLogo src="/partnerships/workedwith/10.svg" alt="ElevenLabs" />{" "}
