@@ -10,7 +10,7 @@ export interface EventItem {
   featured?: boolean;
 }
 
-export const allEvents: EventItem[] = [
+const rawEvents: EventItem[] = [
   {
     id: "ai-hackathon-i",
     title: "AI Hackathon I",
@@ -278,6 +278,14 @@ export const allEvents: EventItem[] = [
     link: "https://luma.com/4x89l3eh",
   },
 ];
+
+const todayISO = new Date().toISOString().slice(0, 10);
+
+export const allEvents: EventItem[] = rawEvents.map((event) =>
+  event.status !== "coming-soon" && event.date < todayISO
+    ? { ...event, status: "completed" }
+    : event,
+);
 
 export const completedEvents = allEvents.filter((event) => event.status === "completed");
 export const upcomingEvents = allEvents.filter((event) => event.status === "upcoming");
