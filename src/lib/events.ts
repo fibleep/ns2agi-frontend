@@ -262,7 +262,7 @@ const rawEvents: EventItem[] = [
     title: "OpenAI Codex Community Meetup — Antwerp",
     date: "2026-06-06",
     description: "Antwerp edition of the OpenAI Codex Community Meetup at The Vessel: Codex updates, live demos, and an agents session with the Belgian builder community.",
-    thumbnail: "/codex-meetup/cover.jpeg",
+    thumbnail: "/codex-meetup-antwerp/cover.jpeg",
     status: "upcoming",
     organizationType: "ORGANIZED",
     featured: true,
