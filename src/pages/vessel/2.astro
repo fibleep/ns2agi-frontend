@@ -1,0 +1,486 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const equipment = [
+  { qty: "×4", name: "SO-101 arm", body: "Hugging Face LeRobot 6-axis arms. Leader / follower teleoperation, imitation learning workflows.", image: "/vessel/equipment/so101.png", href: "https://huggingface.co/docs/lerobot/so101" },
+  { qty: "×1", name: "LeKiwi", body: "Mobile base from the LeRobot ecosystem. SO-101 mounted on wheels for navigation experiments.", image: "/vessel/equipment/lekiwi.jpg", href: "https://huggingface.co/docs/lerobot/lekiwi" },
+  { qty: "×1", name: "Bambu Lab A1", body: "Multi-material 3D printer. Keeps the lab self-sufficient for parts, jigs, and prototypes.", image: "/vessel/equipment/bambu-a1.png", href: "https://eu.store.bambulab.com/products/a1" },
+  { qty: "×1", name: "Meta Quest 3", body: "Mixed-reality headset used for VR teleoperation and 3D scene visualisation.", image: "/vessel/equipment/quest-3.jpg", href: "https://www.meta.com/quest/quest-3/" },
+  { qty: "×1", name: "Sesame", body: "Open-source ESP32 mini quadruped. A pocket-sized robot for tinkering and demos.", image: "/vessel/equipment/sesame.png", href: "https://github.com/dorianborian/sesame-robot" },
+  { qty: "×1", name: "reCamera Gimbal", body: "Seeed Studio open-source AI camera on a 2-axis brushless gimbal for YOLO at the edge.", image: "/vessel/equipment/recamera-gimbal.jpg", href: "https://www.seeedstudio.com/reCamera-Gimbal-2002w-8GB-p-6402.html" },
+  { qty: "Soon", name: "Amazing Hand", body: "Pollen Robotics × Hugging Face open-source dexterous hand. 8 DoF across four fingers.", image: "/vessel/equipment/amazing-hand.jpg", href: "https://huggingface.co/blog/pollen-robotics/amazing-hand" },
+];
+
+const strip = [
+  { src: "/vessel/mosaic/2.jpeg", caption: "Inside The Vessel" },
+  { src: "/vessel/mosaic/1.jpeg", caption: "YOLO at the bench" },
+  { src: "/blogs/the-vessel/2026-03-10 16.58.10.jpg", caption: "Open Lab Thursday" },
+  { src: "/journal-club-1/photo_2026-03-08 19.28.17.jpeg", caption: "Builders Night" },
+  { src: "/blogs/the-vessel/2026-03-10 16.56.25.jpg", caption: "Build night" },
+  { src: "/blogs/the-vessel/SCR-20260310-ozkx.jpeg", caption: "The Vessel, Antwerp port" },
+];
+---
+
+<Layout title="The Vessel | North Star">
+  <div class="v2-bg" aria-hidden="true">
+    <img src="/vessel-bg.gif" alt="" />
+  </div>
+
+  <header class="v2-hero">
+    <img src="/vessel/vessel-logo.png" alt="The Vessel" class="v2-logo" />
+
+    <h1 class="v2-heading">Belgium's First Open<br />Robotics &amp; AI Lab</h1>
+
+    <div class="v2-strip" aria-label="Photos from The Vessel">
+      <div class="v2-strip-track">
+        {[...strip, ...strip].map((s, i) => (
+          <figure class="v2-strip-tile" aria-hidden={i >= strip.length}>
+            <img src={s.src} alt={s.caption} loading="lazy" />
+            <figcaption class="v2-strip-cap">{s.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+
+    <div class="v2-actions">
+      <a href="#visit" class="v2-btn v2-btn-primary">
+        Visit the Open Lab
+        <svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a href="/events" class="v2-btn v2-btn-secondary">View Events</a>
+    </div>
+
+    <button class="v2-scroll" type="button" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+      <span>Scroll to discover</span>
+      <svg class="v2-scroll-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 2v11M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+  </header>
+
+  <div class="v2-content">
+    <section id="about" class="v2-section">
+      <span class="v2-eyebrow">About</span>
+      <h2 class="v2-h2">A forever hackathon.</h2>
+      <div class="v2-prose">
+        <p>The Vessel is the first open AI and robotics lab in Belgium, hosted in the Antwerp port area. It runs continuously: projects rotate, people come and go, the knowledge compounds.</p>
+      </div>
+    </section>
+
+    <section id="visit" class="v2-section">
+      <span class="v2-eyebrow">Open Lab</span>
+      <h2 class="v2-h2">Loodglansstraat&nbsp;5,<br />2030&nbsp;Antwerpen.</h2>
+      <div class="v2-prose">
+        <p>To enter, please join our <a href="https://discord.gg/m5Hknymurb" target="_blank" rel="noopener noreferrer">Discord</a> and ping us there. Open Lab runs Thursdays and Saturdays &mdash; come build with us.</p>
+      </div>
+
+      <a href="https://www.google.com/maps/place/Loodglansstraat+5,+2030+Antwerpen" target="_blank" rel="noopener noreferrer" class="v2-map" aria-label="Open in Google Maps">
+        <img src="/vessel/vessel-directions.png" alt="Route from Antwerpen-Centraal to The Vessel via De Lijn line 1" loading="lazy" />
+      </a>
+
+      <div class="v2-meta">
+        <div class="v2-meta-row"><span class="v2-meta-key">Train</span><span class="v2-meta-val">Antwerpen-Centraal &rarr; Antwerpen-Luchtbal (NMBS, ~10 min, every 20 min).</span></div>
+        <div class="v2-meta-row"><span class="v2-meta-key">Tram 6</span><span class="v2-meta-val">From Diamant &rarr; Kinepolis terminus, ~30 min.</span></div>
+        <div class="v2-meta-row"><span class="v2-meta-key">Tram 1</span><span class="v2-meta-val">From Opera, runs to Luchtbal.</span></div>
+        <div class="v2-meta-row"><span class="v2-meta-key">Bike</span><span class="v2-meta-val">~20 min from Antwerp centre via Itali&euml;lei. Covered racks at the door.</span></div>
+        <div class="v2-meta-row"><span class="v2-meta-key">Car</span><span class="v2-meta-val">~10 min from centre. Free parking on-site at Loodglansstraat 5.</span></div>
+      </div>
+    </section>
+
+    <section class="v2-section">
+      <span class="v2-eyebrow">Inventory</span>
+      <h2 class="v2-h2">What's in the lab.</h2>
+
+      <div class="v2-gallery">
+        {equipment.map((e) => (
+          <a class="v2-tile" href={e.href} target="_blank" rel="noopener noreferrer" title={e.body} aria-label={e.name}>
+            <div class="v2-tile-img" style={`--thumb-bg: url('${e.image}')`}>
+              <img src={e.image} alt={e.name} loading="lazy" />
+              <span class="v2-tile-qty">{e.qty}</span>
+            </div>
+            <span class="v2-tile-name">{e.name}</span>
+          </a>
+        ))}
+      </div>
+
+    </section>
+
+    <section class="v2-section">
+      <span class="v2-eyebrow">Vision</span>
+      <h2 class="v2-h2">A vessel has a destination.<br />This is the start of our journey.</h2>
+      <div class="v2-prose">
+        <p>We want Belgium to be a place where ambitious people building in AI and robotics have somewhere real to land. Hardware in front of them, context around them, and other builders within arm&rsquo;s reach.</p>
+        <p>Five years from now, we want to look back at this room and recognise the people who shaped what came next.</p>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style is:global>
+  /* ── Background ── */
+  .v2-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: #000;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .v2-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ── Hero ── */
+  .v2-hero {
+    position: relative;
+    z-index: 2;
+    min-height: calc(100dvh - 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 5vh, 4rem) 1.2rem clamp(2rem, 4vh, 3rem);
+    text-align: center;
+    gap: clamp(1rem, 2vh, 1.8rem);
+  }
+  .v2-logo {
+    display: block;
+    width: min(640px, 82vw);
+    height: auto;
+    filter: drop-shadow(0 6px 40px rgba(0,0,0,0.55));
+  }
+  .v2-heading {
+    margin: 0;
+    max-width: 18ch;
+    font-family: "Instrument Serif", "Cormorant", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2rem, 5.4vw, 4.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: rgba(255,255,255,0.96);
+    text-shadow: 0 2px 28px rgba(0,0,0,0.65);
+  }
+  .v2-sub {
+    margin: clamp(1.8rem, 4vh, 2.8rem) 0 0;
+    max-width: 30ch;
+    font-family: "Instrument Serif", "Cormorant", serif;
+    font-style: italic;
+    font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+    line-height: 1.4;
+    font-weight: 400;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: 0.005em;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.55);
+  }
+  /* ── Editorial horizontal strip — auto-scroll ── */
+  .v2-strip {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+    padding: 0.5rem 0;
+    mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  }
+  .v2-strip-track {
+    display: flex;
+    gap: clamp(0.6rem, 1.2vw, 1rem);
+    width: max-content;
+    animation: v2-strip-scroll 75s linear infinite;
+    will-change: transform;
+  }
+  @keyframes v2-strip-scroll {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .v2-strip-track { animation: none; }
+  }
+  .v2-strip-tile {
+    position: relative;
+    margin: 0;
+    flex-shrink: 0;
+    height: clamp(220px, 36vh, 420px);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 0.45rem;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .v2-strip-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .v2-strip-cap { display: none; }
+
+  .v2-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: center;
+    margin-top: 0;
+  }
+  .v2-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.9rem 1.6rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background 220ms ease, color 220ms ease, transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  }
+  .v2-btn-primary {
+    background: rgba(255,255,255,0.96);
+    color: #0b0b0d;
+    box-shadow: 0 8px 24px -8px rgba(0,0,0,0.4);
+  }
+  .v2-btn-primary:hover { background: #fff; transform: translateY(-1px); box-shadow: 0 10px 28px -8px rgba(0,0,0,0.5); }
+  .v2-btn-secondary {
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.95);
+    border: 1px solid rgba(255,255,255,0.32);
+    backdrop-filter: blur(6px) saturate(1.1);
+    -webkit-backdrop-filter: blur(6px) saturate(1.1);
+  }
+  .v2-btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.7);
+    transform: translateY(-1px);
+  }
+  .v2-btn svg { transition: transform 200ms ease; }
+  .v2-btn:hover svg { transform: translateX(2px); }
+
+  /* ── Scroll indicator ── */
+  .v2-scroll {
+    margin-top: clamp(1rem, 2vh, 2rem);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 0;
+    color: rgba(255,255,255,0.6);
+    font-family: "Geist", sans-serif;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 200ms ease;
+  }
+  .v2-scroll:hover { color: #fff; }
+  .v2-scroll-arrow {
+    width: 14px;
+    height: 14px;
+    animation: v2-bob 2s ease-in-out infinite;
+  }
+  @keyframes v2-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  /* ── Below the fold ── */
+  .v2-content {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(6, 10, 22, 0.78) 12%,
+      rgba(6, 10, 22, 0.9) 25%,
+      rgba(6, 10, 22, 0.9) 75%,
+      rgba(6, 10, 22, 0.78) 88%,
+      transparent 100%
+    );
+  }
+  .v2-section {
+    position: relative;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: clamp(3.5rem, 8vh, 6rem) clamp(1.2rem, 4vw, 2.4rem);
+  }
+  .v2-section + .v2-section { border-top: 1px solid rgba(255,255,255,0.08); }
+  .v2-eyebrow {
+    display: block;
+    font-family: "Geist", sans-serif;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.42);
+    margin-bottom: 0.9rem;
+  }
+  .v2-h2 {
+    margin: 0 0 1.4rem;
+    font-family: "Instrument Serif", "Cormorant", serif;
+    font-style: italic;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: rgba(255,255,255,0.94);
+    letter-spacing: -0.01em;
+  }
+  .v2-prose p {
+    margin: 0 0 1rem;
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.96rem, 1.1vw, 1.05rem);
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+    max-width: 62ch;
+  }
+  .v2-prose a {
+    color: rgba(255,255,255,0.94);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(255,255,255,0.25);
+  }
+  /* ── Map ── */
+  .v2-map {
+    display: block;
+    margin: 1.4rem 0 1.4rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: rgba(255,255,255,0.02);
+  }
+  .v2-map img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: brightness(0.94);
+    transition: filter 350ms ease;
+  }
+  .v2-map:hover img { filter: brightness(1); }
+
+  /* ── Equipment gallery ── */
+  .v2-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.7rem;
+    margin: 0 0 1.6rem;
+  }
+  @media (max-width: 760px) { .v2-gallery { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 480px) { .v2-gallery { grid-template-columns: repeat(2, 1fr); } }
+
+  .v2-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  .v2-tile-img {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.55rem;
+    overflow: hidden;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.1);
+    isolation: isolate;
+    transition: border-color 250ms ease, transform 250ms ease;
+  }
+  .v2-tile-img::before {
+    content: "";
+    position: absolute;
+    inset: -10%;
+    background-image: var(--thumb-bg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(24px) brightness(0.5) saturate(1.1);
+    transform: scale(1.2);
+    z-index: 0;
+  }
+  .v2-tile-img img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 0.5rem;
+    transition: transform 350ms cubic-bezier(0.2, 0.85, 0.25, 1);
+  }
+  .v2-tile:hover .v2-tile-img {
+    border-color: rgba(255,255,255,0.32);
+    transform: translateY(-2px);
+  }
+  .v2-tile:hover .v2-tile-img img { transform: scale(1.05); }
+
+  .v2-tile-qty {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 2;
+    padding: 0.18rem 0.4rem;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 999px;
+    font-family: "Geist", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .v2-tile-name {
+    margin: 0;
+    text-align: center;
+    font-family: "Geist", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: rgba(255,255,255,0.78);
+  }
+
+  .v2-eq-bench {
+    margin: 0;
+    padding-top: 1.4rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-family: "Geist", sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+    text-align: center;
+  }
+
+  .v2-meta { margin-top: 1.4rem; }
+  .v2-meta-row {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1.2rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: baseline;
+  }
+  .v2-meta-row:last-child { border-bottom: 0; }
+  .v2-meta-key {
+    font-family: "Geist", sans-serif;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.42);
+  }
+  .v2-meta-val {
+    font-family: "Geist", sans-serif;
+    font-size: 0.94rem;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.7);
+  }
+</style>

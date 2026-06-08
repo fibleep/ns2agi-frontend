@@ -73,17 +73,9 @@ const equipment = [
 
             <p class="vp-section-note">To enter, please join our <a href="https://discord.gg/m5Hknymurb" target="_blank" rel="noopener noreferrer">Discord</a> and ping us there.</p>
 
-            <div class="vp-map-frame">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2498.5!2d4.3847!3d51.2350!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3f700b5e9c6f1%3A0x0!2sLoodglansstraat%205%2C%202030%20Antwerpen!5e0!3m2!1sen!2sbe!4v1"
-                    width="100%"
-                    height="320"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="The Vessel, Loodglansstraat 5, Antwerpen"></iframe>
-            </div>
+            <a href="https://www.google.com/maps/place/Loodglansstraat+5,+2030+Antwerpen" target="_blank" rel="noopener noreferrer" class="vp-map-frame" aria-label="Open in Google Maps">
+                <img src="/vessel/vessel-directions.png" alt="Route from Antwerpen-Centraal to The Vessel via De Lijn line 1" loading="lazy" />
+            </a>
 
             <ul class="vp-directions">
                 {directions.map((d) => (
@@ -379,19 +371,22 @@ const equipment = [
 
     /* ── Map ── */
     .vp-map-frame {
+        display: block;
         margin: 0 0 1.8rem;
         border: 1px solid rgba(255,255,255,0.06);
         border-radius: 0.75rem;
         overflow: hidden;
         background: rgba(255,255,255,0.02);
     }
-    .vp-map-frame iframe {
+    .vp-map-frame img {
         display: block;
-        filter: grayscale(35%) brightness(0.85);
+        width: 100%;
+        height: auto;
+        filter: brightness(0.92);
         transition: filter 400ms ease;
     }
-    .vp-map-frame:hover iframe {
-        filter: grayscale(0%) brightness(1);
+    .vp-map-frame:hover img {
+        filter: brightness(1);
     }
 
     /* ── Directions list ── */
