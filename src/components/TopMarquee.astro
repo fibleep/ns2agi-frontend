@@ -1,0 +1,116 @@
+---
+const message = "JOIN US AS COMMUNITY LEAD";
+const href = "/work-with-us";
+const repeat = 8;
+---
+
+<a class="tm-bar" href={href} aria-label={message}>
+  <div class="tm-track" aria-hidden="true">
+    {Array.from({ length: repeat }).map(() => (
+      <span class="tm-item">
+        {message}
+        <svg class="tm-arrow" viewBox="0 0 16 16" fill="none">
+          <path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span class="tm-dot" aria-hidden="true">·</span>
+      </span>
+    ))}
+    {Array.from({ length: repeat }).map(() => (
+      <span class="tm-item" aria-hidden="true">
+        {message}
+        <svg class="tm-arrow" viewBox="0 0 16 16" fill="none">
+          <path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span class="tm-dot" aria-hidden="true">·</span>
+      </span>
+    ))}
+  </div>
+</a>
+
+<style>
+  .tm-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: rgba(8, 8, 10, 0.92);
+    backdrop-filter: blur(10px) saturate(1.2);
+    -webkit-backdrop-filter: blur(10px) saturate(1.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+  }
+  .tm-track {
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+    white-space: nowrap;
+    animation: tm-scroll 38s linear infinite;
+    will-change: transform;
+    padding-left: 2.2rem;
+  }
+  .tm-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: "Geist", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    background: linear-gradient(
+      90deg,
+      #f4f1ec 0%,
+      #d9e6f3 18%,
+      #e8d6f0 36%,
+      #f7e2d1 54%,
+      #d4ecdf 72%,
+      #e6dff4 88%,
+      #f4f1ec 100%
+    );
+    background-size: 220% 100%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: tm-pearl 9s ease-in-out infinite;
+  }
+  .tm-arrow {
+    width: 11px;
+    height: 11px;
+    color: rgba(255, 255, 255, 0.55);
+    transition: transform 200ms ease, color 200ms ease;
+  }
+  .tm-bar:hover .tm-arrow {
+    transform: translate(2px, -2px);
+    color: rgba(255, 255, 255, 0.95);
+  }
+  @keyframes tm-pearl {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .tm-dot {
+    color: rgba(255, 255, 255, 0.3);
+    margin-left: 1.6rem;
+  }
+  .tm-bar:hover .tm-track {
+    animation-play-state: paused;
+  }
+  @keyframes tm-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tm-track,
+    .tm-item {
+      animation: none;
+    }
+  }
+</style>

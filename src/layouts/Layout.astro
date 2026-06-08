@@ -1,5 +1,6 @@
 ---
 import Navbar from "../components/Navbar.astro";
+import TopMarquee from "../components/TopMarquee.astro";
 import Footer from "../components/Footer.astro";
 
 export interface Props {
@@ -144,6 +145,7 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
           })();
         </script>
         <div class="layout-container relative">
+            <TopMarquee />
             <Navbar />
             {
                 backgroundImageUrl && (
