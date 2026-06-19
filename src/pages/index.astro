@@ -31,6 +31,7 @@ const getTileSize = (e: typeof allEvents[number]): TileSize => {
   return "default";
 };
 
+
 const commitments = [
   {
     id: "events",
@@ -95,15 +96,13 @@ const commitments = [
       <h2 class="engage-title">Engage</h2>
     </div>
     <div class="engage-grid">
-      <article class="engage-card">
-        <span class="engage-eyebrow">Newsletter</span>
+      <article class="engage-card" id="newsletter">
         <div class="engage-newsletter">
           <script src="https://etoile.events/embed/newsletter-widget?org=north-star&color=%23000000&placeholder=polaris%40ns2agi.com&button=Subscribe" async></script>
         </div>
       </article>
 
       <article class="engage-card">
-        <span class="engage-eyebrow">Socials</span>
         <nav class="engage-socials" aria-label="Social links">
           <a href="https://www.linkedin.com/company/north-star-agi" target="_blank" rel="noopener noreferrer" class="engage-social" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -125,9 +124,8 @@ const commitments = [
       </article>
 
       <article class="engage-card">
-        <span class="engage-eyebrow">Membership</span>
         <a href="https://atlas.ns2agi.com" target="_blank" rel="noopener noreferrer" class="engage-cta">
-          Join Atlas <ArrowRight className="engage-cta-arrow" />
+          Become a member <ArrowRight className="engage-cta-arrow" />
         </a>
       </article>
     </div>
@@ -211,10 +209,6 @@ const commitments = [
   </section>
 
   <!-- Scene: Flagship Initiatives -->
-  <div class="flagship-header" data-reveal>
-    <span class="flagship-eyebrow">Flagship Initiatives</span>
-  </div>
-
   <div class="flagship-grid">
     <!-- The Vessel -->
     <section class="vessel-section" data-reveal>
@@ -225,7 +219,7 @@ const commitments = [
       <div class="vessel-gradient-r" aria-hidden="true"></div>
       <div class="vessel-vignette" aria-hidden="true"></div>
       <a href="/vessel" class="vessel-content">
-        <h3 class="vessel-title">The Vessel</h3>
+        <h3 class="vessel-title"><img src="/vessel/vessel-logo-trim.png" alt="The Vessel" class="vessel-logo-img" /></h3>
         <p class="vessel-desc">An atelier for intelligent machines</p>
         <span class="vessel-cta">Visit <ArrowRight className="w-3 h-3" /></span>
         <div class="vessel-supporter">
@@ -662,7 +656,7 @@ const commitments = [
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.1rem;
+    gap: 1.5rem;
     margin-top: auto;
     padding-top: 0.3rem;
   }
@@ -670,12 +664,13 @@ const commitments = [
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 22px;
-    height: 22px;
+    width: 34px;
+    height: 34px;
     color: rgba(255,255,255,0.55);
     text-decoration: none;
-    transition: color 200ms ease;
+    transition: color 200ms ease, transform 200ms ease;
   }
+  .engage-social:hover { transform: translateY(-2px); }
   .engage-social svg {
     width: 100%;
     height: 100%;
@@ -877,13 +872,17 @@ const commitments = [
   }
   .vessel-title {
     margin: 0;
-    font-family: "Cormorant", serif;
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.9);
-    line-height: 1;
+    line-height: 0;
+  }
+  .vessel-logo-img {
+    width: clamp(220px, 28vw, 320px);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.6));
+    transition: transform 300ms ease;
+  }
+  .vessel-content:hover .vessel-logo-img {
+    transform: translateY(-2px);
   }
   .vessel-desc {
     margin: 0;
@@ -907,9 +906,6 @@ const commitments = [
   .vessel-content:hover .vessel-cta {
     color: rgba(255,255,255,0.65);
     gap: 0.5rem;
-  }
-  .vessel-content:hover .vessel-title {
-    color: rgba(255,255,255,1);
   }
   .vessel-supporter {
     display: flex;

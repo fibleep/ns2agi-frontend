@@ -1,6 +1,5 @@
 ---
 import Navbar from "../components/Navbar.astro";
-import TopMarquee from "../components/TopMarquee.astro";
 import Footer from "../components/Footer.astro";
 
 export interface Props {
@@ -31,7 +30,7 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Amaranth&family=Cormorant:wght@500;600&family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Amaranth&family=Caveat:wght@500;600;700&family=Cormorant:wght@500;600&family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&display=swap"
             rel="stylesheet"
         />
 
@@ -145,7 +144,6 @@ const { title = "North Star", backgroundImageUrl } = Astro.props;
           })();
         </script>
         <div class="layout-container relative">
-            <TopMarquee />
             <Navbar />
             {
                 backgroundImageUrl && (

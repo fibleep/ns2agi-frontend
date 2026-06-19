@@ -260,7 +260,7 @@ const rawEvents: EventItem[] = [
   {
     id: "openai-codex-meetup-antwerp",
     title: "OpenAI Codex Community Meetup — Antwerp",
-    date: "2026-06-06",
+    date: "2026-06-27",
     description: "Antwerp edition of the OpenAI Codex Community Meetup at The Vessel: Codex updates, live demos, and an agents session with the Belgian builder community.",
     thumbnail: "/codex-meetup-antwerp/cover.jpeg",
     status: "upcoming",
@@ -276,6 +276,17 @@ const rawEvents: EventItem[] = [
     status: "upcoming",
     organizationType: "CONTRIBUTED",
     link: "https://luma.com/4x89l3eh",
+  },
+  {
+    id: "schip-stem-zomerkamp",
+    title: "SCHIP: STEM-zomerkamp rond AI en robotica",
+    date: "2026-07-03",
+    description: "A five-day STEM summer camp (3–7 July) at The Vessel where kids aged 12–16 explore AI, robotics, and coding through real Port of Antwerp challenges.",
+    thumbnail: "/schip/cover.jpg",
+    status: "upcoming",
+    organizationType: "ORGANIZED",
+    link: "https://luma.com/ss0fizxj",
+    featured: true,
   },
 ];
 
