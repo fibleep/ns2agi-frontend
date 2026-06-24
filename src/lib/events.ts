@@ -252,7 +252,7 @@ const rawEvents: EventItem[] = [
     date: "2026-06-22",
     description: "Belgium's first OpenAI Codex Community Meetup at Wintercircus Ghent: Codex updates, live demos, an agents session, and an on-site OpenAI engineer AMA.",
     thumbnail: "/codex-meetup/cover.jpeg",
-    status: "upcoming",
+    status: "completed",
     organizationType: "ORGANIZED",
     link: "https://luma.com/ofb4ell6",
     featured: true,
