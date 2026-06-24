@@ -265,6 +265,7 @@ const rawEvents: EventItem[] = [
     thumbnail: "/codex-meetup-antwerp/cover.jpeg",
     status: "upcoming",
     organizationType: "ORGANIZED",
+    link: "https://luma.com/j0d0zl2q",
     featured: true,
   },
   {
