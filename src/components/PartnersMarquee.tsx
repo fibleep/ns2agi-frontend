@@ -151,7 +151,6 @@ const PartnersMarquee = () => {
     { src: '/partnerships/workedwith/32.svg', alt: 'Stripe', url: 'https://stripe.com/en-be' },
     { src: '/partnerships/workedwith/17.png', alt: 'Port of Antwerp-Bruges', url: 'https://www.portofantwerpbruges.com/en', size: 'small' },
     { src: '/partnerships/workedwith/26.png', alt: 'Young Engineers Liège', url: 'https://liegeville.youngengineers.org/' },
-    { src: '/partnerships/workedwith/27.png', alt: 'European AI Office', url: 'https://digital-strategy.ec.europa.eu/en/policies/ai-office' },
     { src: '/partnerships/workedwith/28.png', alt: 'La Grand Poste', url: 'https://www.lagrandposte.be/' },
     { src: '/tectonic/tectonic.jpeg', alt: 'Tectonic Conf', url: 'https://tectonicconf.eu/' },
     { src: '/partnerships/workedwith/5.png', alt: 'Campus 19 (42) Belgium', url: 'https://campus19.be/' },
