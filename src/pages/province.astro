@@ -1,0 +1,20 @@
+---
+// /province — serves the standalone PROV-AI landing (public/province/embed.html)
+// in an isolated frame so the site's global Tailwind reset can't alter its design.
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PROV-AI · Public AI Hackathon · Antwerp · 16.09.2026</title>
+    <meta name="description" content="One day building AI tools with the people who serve our communities. 16 September 2026, AP Hogeschool, Antwerp." />
+    <style is:inline>
+      html, body { margin: 0; padding: 0; height: 100%; background: #F8F3EA; }
+      iframe { border: 0; display: block; width: 100vw; height: 100vh; }
+    </style>
+  </head>
+  <body>
+    <iframe src="/province/embed.html" title="Public AI Hackathon · Antwerp" allow="fullscreen"></iframe>
+  </body>
+</html>
