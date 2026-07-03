@@ -91,8 +91,10 @@ const equipment = [
   { qty: "×1", name: "Meta Quest 3", body: "Mixed-reality headset used for VR teleoperation and 3D scene visualisation.", image: "/vessel/equipment/quest-3.jpg", href: "https://www.meta.com/quest/quest-3/" },
   { qty: "×1", name: "Sesame", body: "Open-source ESP32 mini quadruped. A pocket-sized robot for tinkering and demos.", image: "/vessel/equipment/sesame.png", href: "https://github.com/dorianborian/sesame-robot" },
   { qty: "×1", name: "reCamera Gimbal", body: "Seeed Studio open-source AI camera on a 2-axis brushless gimbal for YOLO at the edge.", image: "/vessel/equipment/recamera-gimbal.jpg", href: "https://www.seeedstudio.com/reCamera-Gimbal-2002w-8GB-p-6402.html" },
-  { qty: "Soon", name: "Amazing Hand", body: "Pollen Robotics × Hugging Face open-source dexterous hand. 8 DoF across four fingers.", image: "/vessel/equipment/amazing-hand.jpg", href: "https://huggingface.co/blog/pollen-robotics/amazing-hand" },
 ];
+
+// Toggle to re-show the "What's in the lab" equipment gallery.
+const showLab = false;
 
 const strip = [
   { src: "/vessel/mosaic/day-0.jpeg", caption: "Day 0!" },
@@ -256,6 +258,7 @@ const strip = [
       </div>
     </section>
 
+    {showLab && (
     <section class="v2-section">
       <h2 class="v2-h2">What's in the lab.</h2>
 
@@ -272,6 +275,7 @@ const strip = [
       </div>
 
     </section>
+    )}
 
     <section class="v2-section">
       <h2 class="v2-h2">A vessel has a destination.<br />This is the start of our journey.</h2>
