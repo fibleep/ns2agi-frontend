@@ -6,8 +6,8 @@ const base = "/assets/logos";
 const items = [
   { label: "Main Logo", file: `${base}/nslogo.svg`, type: "SVG" },
   { label: "Main Logo", file: `${base}/nslogo.png`, type: "PNG" },
-  { label: "Horizontal", file: `${base}/logo-horizontal-white.svg`, type: "SVG" },
-  { label: "Horizontal", file: `${base}/logo-horizontal-white.png`, type: "PNG" },
+  { label: "Horizontal", file: `${base}/logo-horizontal-badge-square.svg`, type: "SVG", light: true },
+  { label: "Horizontal", file: `${base}/logo-horizontal-badge-square.png`, type: "PNG", light: true },
   { label: "Stacked", file: `${base}/logo-stacked-white.svg`, type: "SVG" },
   { label: "Stacked", file: `${base}/logo-stacked-white.png`, type: "PNG" },
 ];
@@ -24,7 +24,7 @@ const items = [
       <div class="as-grid">
         {items.map((a) => (
           <a href={a.file} download class="as-card">
-            <div class="as-preview">
+            <div class={`as-preview${a.light ? " as-preview--light" : ""}`}>
               <img src={a.file} alt={a.label} loading="lazy" />
             </div>
             <div class="as-meta">
@@ -100,6 +100,15 @@ const items = [
 
   .as-card:hover .as-preview {
     background: rgba(255, 255, 255, 0.04);
+  }
+
+  .as-preview--light,
+  .as-card:hover .as-preview--light {
+    background: #f8f3ea;
+  }
+
+  .as-preview--light img {
+    filter: none;
   }
 
   .as-preview img {
