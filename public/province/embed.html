@@ -93,6 +93,7 @@
   .fact .k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--prov);margin-bottom:4px;font-weight:700}
   .fact .v{font-family:var(--sans);font-size:clamp(16px,1.4vw,19px);font-weight:800;letter-spacing:-.01em;line-height:1.15}
   .fact .v small{font-family:var(--sans);font-size:12.5px;color:var(--ink-dim);display:block;margin-top:3px;font-weight:500;letter-spacing:0}
+  .fact .v .day{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.02em;color:var(--ink-faint)}
   .hero-actions{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:34px}
   .hero-actions .btn{box-shadow:6px 6px 0 rgba(23,22,21,.12)}
   .ghost-link{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--ink);font-weight:700}
@@ -229,6 +230,29 @@
   .reward span{display:block;margin-top:10px;font-size:14.5px;line-height:1.45;color:var(--ink-dim);font-weight:500}
   @media(max-width:720px){.rewards{grid-template-columns:1fr;max-width:min(420px,100%);padding:0 20px;box-sizing:border-box}}
 
+  /* ====== agenda ====== */
+  .daydate{margin:14px auto 0;font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--prov);font-weight:700}
+  .daydate span{color:var(--ink-faint)}
+  .agenda{max-width:760px;margin:44px auto 0;border-top:2px solid var(--ink);text-align:left}
+  .agenda-row{display:grid;grid-template-columns:118px 1fr;gap:26px;padding:17px 0 16px;border-bottom:1px solid var(--line);align-items:baseline}
+  .agenda-time{font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.04em;color:var(--prov);font-variant-numeric:tabular-nums}
+  .agenda-body b{display:block;font-family:var(--sans);font-size:clamp(16px,1.5vw,19px);font-weight:800;letter-spacing:-.01em;line-height:1.15}
+  .agenda-body span{display:block;margin-top:4px;font-size:14px;line-height:1.4;color:var(--ink-dim);font-weight:500}
+  .agenda-row.peak .agenda-time{color:var(--ink)}
+  .agenda-row.peak .agenda-body b:after{content:'';display:inline-block;width:8px;height:8px;margin-left:9px;background:var(--prov);transform:rotate(45deg);vertical-align:middle}
+  @media(max-width:520px){
+    .agenda{max-width:min(440px,100%);padding:0 20px;box-sizing:border-box}
+    .agenda-row{grid-template-columns:1fr;gap:5px}
+  }
+
+  /* ====== sponsors ====== */
+  .sponsors-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin:44px auto 0;max-width:860px}
+  .sponsor{display:flex;align-items:center;justify-content:center;border:2px solid var(--ink);background:var(--paper-hot);box-shadow:8px 8px 0 rgba(23,22,21,.12);padding:32px 48px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .sponsor:hover{transform:translateY(-2px);box-shadow:10px 12px 0 rgba(23,22,21,.14)}
+  .sponsor:focus-visible{outline:2px solid var(--prov);outline-offset:5px}
+  .sponsor img{height:42px;width:auto}
+  @media(max-width:520px){.sponsor{width:100%;padding:30px 24px;box-sizing:border-box}.sponsor img{height:36px}}
+
   .btn{display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
     text-decoration:none;color:var(--paper-hot);background:var(--ink);padding:20px 36px;font-weight:700;
     transition:background .3s var(--ease),color .3s var(--ease);will-change:transform}
@@ -305,6 +329,7 @@
     <nav class="topnav" aria-label="Primary">
       <a href="#about">About</a>
       <a href="#team">Team</a>
+      <a href="#agenda">Agenda</a>
       <a href="#rewards">Rewards</a>
       <a class="nav-cta" href="https://luma.com/ai388m8c" target="_blank" rel="noopener">Apply to build</a>
     </nav>
@@ -319,7 +344,7 @@
       <div class="factrow rise d5" id="info">
         <div class="fact">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-          <div><div class="k">Date</div><div class="v">16.09.2026</div></div>
+          <div><div class="k">Date</div><div class="v">16.09.2026 <span class="day">// Wednesday</span></div></div>
         </div>
         <div class="fact">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
@@ -428,6 +453,56 @@
   </div>
 </section>
 
+<!-- SCENE · AGENDA -->
+<section class="scene" id="agenda">
+  <div class="scene-inner">
+    <h2 class="reveal">The <em>day.</em></h2>
+    <p class="daydate reveal">Wednesday <span>·</span> 16 September 2026 <span>·</span> AP Hogeschool</p>
+    <div class="agenda reveal">
+      <div class="agenda-row">
+        <div class="agenda-time">09:00</div>
+        <div class="agenda-body"><b>Doors open &amp; check-in</b><span>Coffee, badges, and finding your bench.</span></div>
+      </div>
+      <div class="agenda-row peak">
+        <div class="agenda-time">09:30</div>
+        <div class="agenda-body"><b>Kickoff &amp; challenge briefing</b><span>Local economy officers present the real problems behind each track.</span></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">10:00</div>
+        <div class="agenda-body"><b>Teams form &amp; build starts</b><span>Pick a track, shape the problem, start shipping.</span></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">12:30</div>
+        <div class="agenda-body"><b>Lunch</b><span>Provided on site.</span></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">13:00</div>
+        <div class="agenda-body"><b>Build continues · mentoring</b><span>Officers and technical mentors on hand throughout the afternoon.</span></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">16:30</div>
+        <div class="agenda-body"><b>Submissions close</b><span>Final commits in, demos prepped.</span></div>
+      </div>
+      <div class="agenda-row peak">
+        <div class="agenda-time">17:00</div>
+        <div class="agenda-body"><b>Deputy arrives · judging</b><span>The provincial deputy joins the jury as judging begins.</span></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">17:30</div>
+        <div class="agenda-body"><b>Team pitches</b><span>Teams pitch live to the deputy, press and jury.</span></div>
+      </div>
+      <div class="agenda-row peak">
+        <div class="agenda-time">18:00</div>
+        <div class="agenda-body"><b>Awards</b><span>Winners announced.</span></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">18:30</div>
+        <div class="agenda-body"><b>Drinks &amp; networking</b><span>Wind down with the people who serve the province.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SCENE 4 · REWARDS -->
 <section class="scene" id="rewards">
   <div class="scene-inner">
@@ -450,6 +525,20 @@
         <b>…and more</b><span>More rewards to be revealed.</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SCENE · SPONSORS -->
+<section class="scene" id="sponsors">
+  <div class="scene-inner">
+    <h2 class="reveal">Sponsors</h2>
+    <p class="copy reveal">Our sponsors make the day possible — and back the teams with credits to build.</p>
+    <div class="sponsors-grid reveal">
+      <a class="sponsor" href="https://about.google" target="_blank" rel="noopener" aria-label="Google">
+        <img src="assets/logos/logo-google.png" alt="Google">
+      </a>
+    </div>
+    <p class="note reveal">More sponsors to be announced.</p>
   </div>
 </section>
 
