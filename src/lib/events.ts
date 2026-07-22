@@ -237,13 +237,13 @@ const rawEvents: EventItem[] = [
   },
   {
     id: "hack-nation-brussels",
-    title: "Hack-Nation Global AI Hackathon: Brussels Hub",
+    title: "OpenAI Build Week Community Hackathon - Brussels",
     date: "2026-07-18",
-    description: "With WAT.BXL, North Star brings Hack-Nation's Global AI Hackathon to Brussels. 50 seats alongside teams from MIT, Stanford, Munich, London, Zurich and beyond. $35K+ in prizes and $200K in API credits.",
-    thumbnail: "/hacknation/cover.jpeg",
-    status: "upcoming",
+    description: "A two-day OpenAI Build Week community hackathon hosted by Hack-Nation and North Star at WAT Brussels, with local OpenAI API credit prizes and a global builder challenge.",
+    thumbnail: "/openai-build-week-brussels/cover.png",
+    status: "completed",
     organizationType: "ORGANIZED",
-    link: "https://hack-nation.ai/",
+    link: "https://luma.com/zweuycee",
     featured: true,
   },
   {
